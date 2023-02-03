@@ -14,10 +14,7 @@ public class TreeObject : PlantObject
         // load object configs from config files
         ObjectData config = ObjConfigParser.OCP("Assets/configs/treeObjConfig.json");
 
-        // set the max state
-        // TODO: should we put those argument in a config file 
-        // so that it could be config more easily?
-        // also consider the model pathway
+        // set the attributes
         this.stateLimit = config.stateLimit;
 
         this.currentState = currentState;

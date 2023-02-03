@@ -55,6 +55,7 @@ abstract public class NaturalObject : MonoBehaviour
         
     }
 
+    // load the model
     public void LoadModelGameObj()
     {   
         // try to destroy the old model
