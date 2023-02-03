@@ -13,6 +13,7 @@ abstract public class NaturalObject : MonoBehaviour
     public int stateLimit;
     public string createBy;
     public Vector3 position;
+    public Vector3 positionShift = Vector3.zero;
     public Quaternion rotation;
     public Dictionary<int, string> modelPaths = new();
     public Dictionary<int, Vector3> modelScales = new();

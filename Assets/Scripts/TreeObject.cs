@@ -19,7 +19,7 @@ public class TreeObject : PlantObject
 
         this.currentState = currentState;
         this.createBy = createBy;
-        this.position = translation;
+        this.position = translation + this.positionShift;
         this.rotation = rotation;
 
         this.createTime = DateTime.Now;
