@@ -59,7 +59,8 @@ public class NaObjManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
+        {   
+            // reference for code what you should use when add an object
             TreeObject treeObject = gameObject.AddComponent<TreeObject>();
             treeObject.InitializeParam(0,
                 "aaa",
