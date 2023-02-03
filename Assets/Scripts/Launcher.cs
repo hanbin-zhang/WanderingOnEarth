@@ -9,7 +9,15 @@ public class Launcher : MonoBehaviourPunCallbacks
     #region Private Serializable Fields
     
     [SerializeField]
-    private byte maxPlayersPerRoom = 1;
+    private byte maxPlayersPerRoom = 4;
+    
+    //The Ui Panel to let the user enter name, connect and play
+    [SerializeField]
+    private GameObject controlPanel;
+    
+    //The UI Label to inform the user that the connection is in progress
+    [SerializeField]
+    private GameObject progressLabel;
     
     #endregion
     
@@ -17,6 +25,9 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     //This client's version number.
     string gameVersion = "1";
+    
+    // Keep track of the current process. Since connection is asynchronous and is based on several callbacks from Photon,
+    bool isConnecting;
 
     #endregion
 
@@ -31,6 +42,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        progressLabel.SetActive(false);
+        controlPanel.SetActive(true);
     }
 
     #endregion
@@ -41,6 +54,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     // starting point to connect to Photon Cloud
     public void Connect()
     {
+        progressLabel.SetActive(true);
+        controlPanel.SetActive(false);
         // check if we are connected or not, we join if we are , else we initiate the connection to the server.
         if (PhotonNetwork.IsConnected)
         {
@@ -50,7 +65,8 @@ public class Launcher : MonoBehaviourPunCallbacks
         else
         {
             // first and foremost connect to Photon Online Server.
-            PhotonNetwork.ConnectUsingSettings();
+            // keep track of the will to join a room, because when we come back from the game we will get a callback that we are connected, so we need to know what to do then
+            isConnecting = PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = gameVersion;
         }
     }
@@ -62,27 +78,40 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log(
             "OnConnectedToMaster(): Called when the client is connected to the Master Server and ready for matchmaking and other tasks");
-        // join a potential existing room. else called back with OnJoinRandomFailed()
-        PhotonNetwork.JoinRandomRoom();
+        if (isConnecting)
+        {
+            // join a potential existing room. else called back with OnJoinRandomFailed()
+            PhotonNetwork.JoinRandomRoom();
+            isConnecting = false;
+        }
     }
     
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("OnJoinRandomFailed(): No random room available,Calling: PhotonNetwork.CreateRoom");
+        Debug.Log("OnJoinRandomFailed(): No random room available");
         PhotonNetwork.CreateRoom(null, new RoomOptions{MaxPlayers = maxPlayersPerRoom});
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("OnJoinedRoom(): this client is in a room.");
+        //only load if is the first player, else rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        {
+            int Room = Random.Range(1,5);
+            Debug.LogFormat("We load the World {0}", Room);
+            // Load the Room Level.
+            PhotonNetwork.LoadLevel("World " + Room);
+        }
     }
-    
+
     public override void OnDisconnected(DisconnectCause cause)
     {
+        progressLabel.SetActive(false);
+        controlPanel.SetActive(true);
         Debug.LogWarningFormat(
             "OnDisconnected(): Called after disconnecting from the Photon server with reason {0}", cause);
+        isConnecting = false;
     }
-    
 
     #endregion
 }
