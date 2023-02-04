@@ -8,9 +8,9 @@ public class NaturalObject : MonoBehaviour
 
     public List<GameObject> Prefabs;
 
-    public float greenValue; 
-    int currentState = 0;
-    GameObject currentModel;
+    public float greenValue = 0; 
+    public int currentState = 0;
+    public GameObject currentModel;
 
     // Start is called before the first frame update
     void Start()
