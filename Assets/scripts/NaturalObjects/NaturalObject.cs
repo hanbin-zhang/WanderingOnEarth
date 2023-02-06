@@ -8,6 +8,7 @@ public abstract class NaturalObject : MonoBehaviour
 
     public List<GameObject> Prefabs;
 
+    public int blockID = 0;
     public float greenValue = 0; 
     public int currentState = 0;
     public GameObject currentModel;
@@ -46,10 +47,16 @@ public abstract class NaturalObject : MonoBehaviour
         {
             currentState++;
         }
-        else
-        {   
-            currentState = 0;
+        else throw new ArgumentOutOfRangeException("maximum states");
+    }
+
+    public void SetState(int targetState)
+    {
+        if (targetState <= Prefabs.Count - 1 || targetState >= 0)
+        {
+            currentState = targetState;
         }
+        else throw new ArgumentOutOfRangeException("invalid states");
     }
 
 }
