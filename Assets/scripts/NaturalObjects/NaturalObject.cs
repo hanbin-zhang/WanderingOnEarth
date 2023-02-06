@@ -21,19 +21,23 @@ public abstract class NaturalObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (currentModel != null)
+        {
+            currentModel.transform.tr = this.transform;
+        }*/
     }
 
     public void UpdateObject()
-    {
+    {   
+        
         if (currentModel != null)
         {
             Destroy(currentModel);
         }
 
-        currentModel = Instantiate(Prefabs[currentState], transform);
-
-        currentModel.transform.localPosition = this.transform.localPosition;
+        currentModel = Instantiate(Prefabs[currentState], transform.position, transform.rotation);
+        currentModel.transform.parent= transform;
+        //currentModel.transform.localPosition = this.transform.localPosition;
     }
 
     public void UpdateState()

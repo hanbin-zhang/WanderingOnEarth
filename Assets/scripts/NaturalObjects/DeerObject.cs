@@ -17,7 +17,7 @@ public class DeerObject : NaturalObject
     {
         /*if (Input.GetKeyDown(KeyCode.P))
         {
-            
+
             //this.UpdateObject();
             this.UpdateState();
             this.UpdateObject();
