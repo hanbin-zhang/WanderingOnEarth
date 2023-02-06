@@ -21,5 +21,10 @@ public class TreeObject : NaturalObject
             this.UpdateState();
             this.UpdateObject();
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+
+            Debug.Log(GreenValueJudger(6.0f));
+        }
     }
 }

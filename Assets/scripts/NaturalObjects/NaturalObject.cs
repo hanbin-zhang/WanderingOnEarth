@@ -59,4 +59,15 @@ public abstract class NaturalObject : MonoBehaviour
         else throw new ArgumentOutOfRangeException("invalid states");
     }
 
+    public bool GreenValueJudger(float greenThreshold)
+    {
+        float sum = 0;
+        NaturalObject[] naturalObjects = FindObjectsOfType<NaturalObject>();
+        foreach (NaturalObject naturalObject in naturalObjects)
+        {
+            sum += naturalObject.greenValue * (naturalObject.currentState + 1.0f);
+        }
+        if (sum >= greenThreshold) { return true; }
+        else { return false; }
+    }
 }

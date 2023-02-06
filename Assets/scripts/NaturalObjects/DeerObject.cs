@@ -7,7 +7,6 @@ public class DeerObject : NaturalObject
     // Start is called before the first frame update
     void Start()
     {
-        this.greenValue = 6.0f;
         //this.currentModel = Prefabs[0];
         this.UpdateObject();
     }
