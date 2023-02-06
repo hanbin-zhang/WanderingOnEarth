@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4150571443712375412}
   m_Layer: 0
   m_Name: DeerMain
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,4 +48,5 @@ MonoBehaviour:
   - {fileID: 431954911648066978, guid: 1e01247035a5f584fa7fc9382bee0da7, type: 3}
   - {fileID: 8423429362798953264, guid: bd04177a886c395488c01ca18587f3b5, type: 3}
   greenValue: 0
+  currentState: 0
   currentModel: {fileID: 0}
