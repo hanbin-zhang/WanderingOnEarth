@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NaturalObject : MonoBehaviour
+public abstract class NaturalObject : MonoBehaviour
 {
 
     public List<GameObject> Prefabs;
