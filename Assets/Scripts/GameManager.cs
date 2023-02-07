@@ -7,6 +7,31 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    #region Public Fields
+    
+    //[Tooltip("The prefab to use for representing the player")]
+    //public GameObject playerPrefab;
+
+    public static GameManager Instance;
+
+    #endregion
+    
+    void Start()
+    {
+        Instance = this;
+        /*
+        if (playerPrefab == null)
+        {
+            Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'",this);
+        }
+        else
+        {
+            Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
+            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+            PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f,5f,0f), Quaternion.identity, 0);
+        }*/
+    }
+    
     #region Photon Callbacks
     
     // Called when the local player left the room. the game's logic can clean up it's internal state.
@@ -56,11 +81,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
         
-        int RoomNum = Random.Range(1,5);
         Debug.LogFormat("Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
         
         //wraps loading a level asynchronously and pausing network messages during the process.
-        PhotonNetwork.LoadLevel("World " + RoomNum);
+        PhotonNetwork.LoadLevel("PlayScene");
     }
     
     #endregion

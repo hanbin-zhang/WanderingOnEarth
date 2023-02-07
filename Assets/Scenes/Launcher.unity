@@ -942,7 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1738571033}
-  - component: {fileID: 1738571032}
+  - component: {fileID: 1738571034}
   m_Layer: 0
   m_Name: Launcher
   m_TagString: Untagged
@@ -950,21 +950,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1738571032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738571031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f21cbd93f4e884ab06b18d0d037464, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPlayersPerRoom: 4
-  controlPanel: {fileID: 1996516467}
-  progressLabel: {fileID: 875488740}
 --- !u!4 &1738571033
 Transform:
   m_ObjectHideFlags: 0
@@ -980,6 +965,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1738571034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738571031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd01f5af2b9a0fc4085c42e23da00f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPlayersPerRoom: 4
+  controlPanel: {fileID: 1996516467}
+  progressLabel: {fileID: 875488740}
 --- !u!1 &1786567270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1738571032}
+      - m_Target: {fileID: 1738571034}
         m_TargetAssemblyTypeName: Launcher, Assembly-CSharp
         m_MethodName: Connect
         m_Mode: 1
@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 1991375270}
   - component: {fileID: 1991375269}
   - component: {fileID: 1991375268}
-  - component: {fileID: 1991375267}
+  - component: {fileID: 1991375271}
   m_Layer: 5
   m_Name: 'Name InputField '
   m_TagString: Untagged
@@ -1223,18 +1223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1991375267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991375265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 953c83b1911651e4d89cadcd88eb4af8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1991375268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1285,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1991375267}
+      - m_Target: {fileID: 1991375271}
         m_TargetAssemblyTypeName: PlayerNameInputField, Assembly-CSharp
         m_MethodName: SetPlayerName
         m_Mode: 0
@@ -1383,6 +1371,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991375265}
   m_CullTransparentMesh: 1
+--- !u!114 &1991375271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991375265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc21960813443a644be51c970ef35f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996516467
 GameObject:
   m_ObjectHideFlags: 0

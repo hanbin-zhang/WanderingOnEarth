@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
@@ -97,10 +95,9 @@ public class Launcher : MonoBehaviourPunCallbacks
         //only load if is the first player, else rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
-            int Room = Random.Range(1,5);
-            Debug.LogFormat("We load the World {0}", Room);
+            Debug.LogFormat("We load the World");
             // Load the Room Level.
-            PhotonNetwork.LoadLevel("World " + Room);
+            PhotonNetwork.LoadLevel("PlayScene");
         }
     }
 
@@ -115,3 +112,4 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     #endregion
 }
+
