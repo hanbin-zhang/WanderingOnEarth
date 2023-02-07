@@ -12,6 +12,7 @@ public abstract class NaturalObject : MonoBehaviour
     public float baseGreenValue = 0; 
     public int currentState = 0;
     public GameObject currentModel;
+    public int parentWorldObjID;
 
     public float GetCurrentGreenValue()
     {
@@ -60,7 +61,7 @@ public abstract class NaturalObject : MonoBehaviour
         NaturalObject[] naturalObjects = FindObjectsOfType<NaturalObject>();
         foreach (NaturalObject naturalObject in naturalObjects)
         {
-            sum += naturalObject.baseGreenValue * (naturalObject.currentState + 1.0f);
+            sum += GetCurrentGreenValue() * (naturalObject.currentState + 1.0f);
         }
         if (sum >= greenThreshold) { return true; }
         else { return false; }
