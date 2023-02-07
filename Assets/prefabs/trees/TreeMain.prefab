@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 809197636724401357}
   m_Layer: 0
   m_Name: TreeMain
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16897bbedcbc08b44b52b2f7eb0ed05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefabs:
+  Models:
   - {fileID: 193606236443241765, guid: d829ca512ee8d9047a89242098c4460a, type: 3}
   - {fileID: 8733235346720609890, guid: fa6fa0ec3e7e3ac459fdd6262e14870f, type: 3}
   blockID: 0

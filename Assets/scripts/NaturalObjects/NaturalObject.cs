@@ -6,26 +6,16 @@ using UnityEngine;
 public abstract class NaturalObject : MonoBehaviour
 {
 
-    public List<GameObject> Prefabs;
+    public List<GameObject> Models;
 
     public int blockID = 0;
-    public float greenValue = 0; 
+    public float baseGreenValue = 0; 
     public int currentState = 0;
     public GameObject currentModel;
 
-    // Start is called before the first frame update
-    void Start()
+    public float GetCurrentGreenValue()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*if (currentModel != null)
-        {
-            currentModel.transform.tr = this.transform;
-        }*/
+        return baseGreenValue * (1.0f + currentState);
     }
 
     public void UpdateObject()
@@ -36,14 +26,14 @@ public abstract class NaturalObject : MonoBehaviour
             Destroy(currentModel);
         }
 
-        currentModel = Instantiate(Prefabs[currentState], transform.position, transform.rotation);
+        currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
         currentModel.transform.parent= transform;
         //currentModel.transform.localPosition = this.transform.localPosition;
     }
 
     public void UpdateState()
     {
-        if (currentState < Prefabs.Count - 1)
+        if (currentState < Models.Count - 1)
         {
             currentState++;
         }
@@ -52,22 +42,57 @@ public abstract class NaturalObject : MonoBehaviour
 
     public void SetState(int targetState)
     {
-        if (targetState <= Prefabs.Count - 1 || targetState >= 0)
+        if (targetState <= Models.Count - 1 || targetState >= 0)
         {
             currentState = targetState;
         }
         else throw new ArgumentOutOfRangeException("invalid states");
     }
 
+    // return true is certain condition is meet
+    // false otherwise
+    public abstract bool CheckPlaceCondtion();
+
+    // check whether the sum green value of a area meet a certain threshold
     public bool GreenValueJudger(float greenThreshold)
     {
         float sum = 0;
         NaturalObject[] naturalObjects = FindObjectsOfType<NaturalObject>();
         foreach (NaturalObject naturalObject in naturalObjects)
         {
-            sum += naturalObject.greenValue * (naturalObject.currentState + 1.0f);
+            sum += naturalObject.baseGreenValue * (naturalObject.currentState + 1.0f);
         }
         if (sum >= greenThreshold) { return true; }
         else { return false; }
+    }
+
+    // check whehter number of a kind of Object meet a certain number
+
+    public bool ObjNumberJudger<T>(int ObjNumber) where T : MonoBehaviour
+    {
+        T[] naturalObjects = FindObjectsOfType<T>();
+        return naturalObjects.Length >= ObjNumber;
+    }
+
+    // with one more state constraint for those object has to have a certain state larger than
+    // the required state
+    public bool ObjNumberJudger<T>(int ObjNumber, int requiredState) where T : MonoBehaviour
+    {   
+        int num = 0;
+        T[] naturalObjects = FindObjectsOfType<T>();
+        foreach (T naturalObject in naturalObjects)
+        {
+            NaturalObject no = naturalObject as NaturalObject;
+            if (no.currentState >= requiredState) num++;
+        }
+        return num >= ObjNumber;
+    }
+
+    // check with whether number of an object with a certain tag
+    // meet the condition
+    public bool TagNumberJudger(int ObjNumber, string tagName)
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tagName);
+        return gameObjects.Length >= ObjNumber;
     }
 }
