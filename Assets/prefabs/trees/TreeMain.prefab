@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809197636724401362}
   - component: {fileID: 809197636724401357}
+  - component: {fileID: -1503436689518421520}
   m_Layer: 0
   m_Name: TreeMain
   m_TagString: Plant
@@ -48,6 +49,20 @@ MonoBehaviour:
   - {fileID: 193606236443241765, guid: d829ca512ee8d9047a89242098c4460a, type: 3}
   - {fileID: 8733235346720609890, guid: fa6fa0ec3e7e3ac459fdd6262e14870f, type: 3}
   blockID: 0
-  greenValue: 1
+  baseGreenValue: 1
   currentState: 0
   currentModel: {fileID: 0}
+  parentWorldObjID: 0
+--- !u!114 &-1503436689518421520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809197636724401363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8b611ff54427e48a5886b06f1dcd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
