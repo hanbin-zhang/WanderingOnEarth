@@ -13,6 +13,12 @@ public abstract class NaturalObject : MonoBehaviour
     public int currentState = 0;
     public GameObject currentModel;
     public int parentWorldObjID;
+    public int currentWorldID;
+
+    void Start()
+    {
+        currentWorldID = GetInstanceID();
+    }
 
     public float GetCurrentGreenValue()
     {
