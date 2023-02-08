@@ -7,7 +7,7 @@ public abstract class NaturalObject : MonoBehaviour
 {
 
     public List<GameObject> Models;
-
+    public Vector3 localShift;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
     [HideInInspector] public int currentState = 0;
@@ -26,15 +26,16 @@ public abstract class NaturalObject : MonoBehaviour
     }
 
     public void UpdateObject()
-    {   
-        
+    {
+
         if (currentModel != null)
         {
             Destroy(currentModel);
         }
 
         currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
-        currentModel.transform.parent= transform;
+        currentModel.transform.parent = transform;
+        currentModel.transform.localPosition += localShift;
         //currentModel.transform.localPosition = this.transform.localPosition;
     }
 
@@ -84,7 +85,7 @@ public abstract class NaturalObject : MonoBehaviour
     // with one more state constraint for those object has to have a certain state larger than
     // the required state
     public bool ObjNumberJudger<T>(int ObjNumber, int requiredState) where T : MonoBehaviour
-    {   
+    {
         int num = 0;
         T[] naturalObjects = FindObjectsOfType<T>();
         foreach (T naturalObject in naturalObjects)

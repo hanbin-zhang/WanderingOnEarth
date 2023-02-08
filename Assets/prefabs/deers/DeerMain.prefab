@@ -47,8 +47,10 @@ MonoBehaviour:
   Models:
   - {fileID: 431954911648066978, guid: 1e01247035a5f584fa7fc9382bee0da7, type: 3}
   - {fileID: 8423429362798953264, guid: bd04177a886c395488c01ca18587f3b5, type: 3}
+  localShift: {x: 0, y: 1, z: 4}
   blockID: 0
   baseGreenValue: 6
   currentState: 0
   currentModel: {fileID: 0}
   parentWorldObjID: 0
+  currentWorldID: 0

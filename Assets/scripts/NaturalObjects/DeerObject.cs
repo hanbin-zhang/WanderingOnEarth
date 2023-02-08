@@ -13,6 +13,13 @@ public class DeerObject : NaturalObject
     void Start()
     {
         //this.currentModel = Prefabs[0];
+        this.transform.transform.position = new Vector3
+        (
+         transform.transform.position.x,
+         transform.transform.position.y + 4,
+         transform.transform.position.z
+        );
+
         this.UpdateObject();
     }
 
