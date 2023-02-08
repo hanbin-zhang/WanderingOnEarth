@@ -8,12 +8,12 @@ public abstract class NaturalObject : MonoBehaviour
 
     public List<GameObject> Models;
 
-    public int blockID = 0;
-    public float baseGreenValue = 0; 
-    public int currentState = 0;
-    public GameObject currentModel;
-    public int parentWorldObjID;
-    public int currentWorldID;
+    [HideInInspector] public int blockID = 0;
+    public float baseGreenValue = 0;
+    [HideInInspector] public int currentState = 0;
+    [HideInInspector] public GameObject currentModel;
+    [HideInInspector] public int parentWorldObjID;
+    [HideInInspector] public int currentWorldID;
 
     void Start()
     {
