@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
 
     [Header("Ground Check")]
     //public float playerHeight;
-    public LayerMask whatIsGround;
+    public LayerMask groundLayer;
     bool grounded;
 
     float horizontalInput;
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {       
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight, groundLayer);
 
         MyInput();
         SpeedControl();
