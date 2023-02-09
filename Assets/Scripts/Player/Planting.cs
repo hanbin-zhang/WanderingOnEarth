@@ -48,7 +48,7 @@ public class Planting : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            valid = hit.collider.gameObject.name == "terrain1";
+            valid = hit.collider.gameObject.name == "Terrain1";
             point = hit.point;
         }
        

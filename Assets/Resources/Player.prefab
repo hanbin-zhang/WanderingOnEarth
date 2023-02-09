@@ -16142,9 +16142,9 @@ MonoBehaviour:
   walkSpeed: 0
   sprintSpeed: 0
   jumpKey: 32
-  whatIsGround:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 0
   rb: {fileID: 9070680443464805895}
   text_speed: {fileID: 0}
 --- !u!114 &9070680443464806010
