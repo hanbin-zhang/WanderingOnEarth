@@ -25,7 +25,7 @@ public class NObjStatistics : MonoBehaviour
         NaturalObject[] naturalObjects = FindObjectsOfType<NaturalObject>();
         foreach (NaturalObject naturalObject in naturalObjects)
         {
-            sum += naturalObject.GetCurrentGreenValue() * (naturalObject.currentState+1.0f);
+            sum += naturalObject.greenValue * (naturalObject.currentState+1.0f);
         }
         return sum;
     }
