@@ -39,6 +39,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
