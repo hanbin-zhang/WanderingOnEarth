@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 657884671587381226}
   - component: {fileID: 657884671587381225}
   - component: {fileID: 657884671587381224}
-  m_Layer: 0
-  m_Name: Terrain_0_0_f60be647-03bf-4c9b-be1c-62aec6f3b851
+  m_Layer: 6
+  m_Name: terrain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,9 +167,9 @@ GameObject:
   m_Component:
   - component: {fileID: 657884673189717949}
   - component: {fileID: 657884673189717948}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TerrainGroup_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
