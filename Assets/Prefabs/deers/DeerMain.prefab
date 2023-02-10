@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4150571443712375411}
   - component: {fileID: 4150571443712375412}
+  - component: {fileID: 560579438241409070}
+  - component: {fileID: -4486892261025388547}
   m_Layer: 0
   m_Name: DeerMain
   m_TagString: Animal
@@ -45,10 +47,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 431954911648066978, guid: 1e01247035a5f584fa7fc9382bee0da7, type: 3}
-  - {fileID: 8423429362798953264, guid: bd04177a886c395488c01ca18587f3b5, type: 3}
+  - {fileID: 1846571215336048122, guid: f411e9d42afaa914b851e7a84c3b9287, type: 3}
+  - {fileID: 1417517577202580778, guid: 34ef80475c9f31b46a180509c3ee969d, type: 3}
+  - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
+  localShift: {x: 0, y: 0, z: 0}
   blockID: 0
   baseGreenValue: 6
   currentState: 0
   currentModel: {fileID: 0}
   parentWorldObjID: 0
+  currentWorldID: 0
+--- !u!114 &560579438241409070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150571443712375413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aa6bdbe5b73254bb09e3d7d3541479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotateAngle: -50
+  maxRotateAngle: 50
+  minSpeed: 0
+  maxSpeed: 0.005
+--- !u!114 &-4486892261025388547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150571443712375413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894c2a8c229000947b0079804357cb20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0.5, z: 0}

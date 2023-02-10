@@ -13,12 +13,25 @@ public class DeerObject : NaturalObject
     void Start()
     {
         //this.currentModel = Prefabs[0];
+        /*this.transform.transform.position = new Vector3
+        (
+         transform.transform.position.x,
+         transform.transform.position.y ,
+         transform.transform.position.z
+        );*/
+
         this.UpdateObject();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
 
+            //this.UpdateObject();
+            this.UpdateState();
+            this.UpdateObject();
+        }
     }
 }
