@@ -9,7 +9,7 @@ public class Camera : MonoBehaviour
     public GameObject player;
     public float sensX;
     public float sensY;
-  
+
 
     [HideInInspector] private float xRotation;
     [HideInInspector] private float yRotation;

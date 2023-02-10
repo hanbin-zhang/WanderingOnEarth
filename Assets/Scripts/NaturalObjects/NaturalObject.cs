@@ -45,7 +45,7 @@ public abstract class NaturalObject : MonoBehaviour
         {
             currentState++;
         }
-        else throw new ArgumentOutOfRangeException("maximum states");
+        else Debug.Log("maximum states");
     }
 
     public void SetState(int targetState)
@@ -54,7 +54,7 @@ public abstract class NaturalObject : MonoBehaviour
         {
             currentState = targetState;
         }
-        else throw new ArgumentOutOfRangeException("invalid states");
+        else Debug.Log("invalid states");
     }
 
     // return true is certain condition is meet
