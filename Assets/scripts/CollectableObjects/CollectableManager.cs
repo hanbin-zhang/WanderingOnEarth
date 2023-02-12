@@ -12,10 +12,11 @@ public class CollectableManager : MonoBehaviour
     {
         // Initialize the list of active collectables
         activeCollectables = new List<CollectableObject>();
+        collectables = FindObjectsOfType<CollectableObject>();
     }
 
     private void Update()
-    {   
+    {
         if (collectables == null)
         {
             collectables = FindObjectsOfType<CollectableObject>();
@@ -24,8 +25,8 @@ public class CollectableManager : MonoBehaviour
             // Clear the list of active collectables
             activeCollectables.Clear();
 
-            // Get the player's position
-            Vector3 playerPos = this.transform.position;
+           
+            
 
             // Loop through all the collectables in the scene
             for (int i = 0; i < collectables.Length; i++)
@@ -33,7 +34,7 @@ public class CollectableManager : MonoBehaviour
                 CollectableObject collectable = collectables[i];
 
                 // Check if the collectable is within the player's region
-                if (IsCollectableInRegion(playerPos, collectable.transform.position))
+                if (IsCollectableInRegion(transform.position, collectable.transform.position))
                 {
                     // Add the collectable to the list of active collectables
                     activeCollectables.Add(collectable);
@@ -44,7 +45,7 @@ public class CollectableManager : MonoBehaviour
             for (int i = 0; i < activeCollectables.Count; i++)
             {
                 CollectableObject collectable = activeCollectables[i];
-                collectable.CheckCollect(playerPos);
+                collectable.CheckCollect(transform.position);
             }
         }
     }

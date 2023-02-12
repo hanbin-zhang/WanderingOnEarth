@@ -5,8 +5,8 @@ using UnityEngine;
 public class CollectableObject : MonoBehaviour
 {
     public int collectableID;
-    public float collectDistance = 2.0f;
-    public string collectMessage = "Press 'P' to collect";
+    public float collectDistance;
+    public string collectMessage = "Press 'C' to collect";
 
     public void CheckCollect(Vector3 playerPosition)
     {
@@ -17,8 +17,9 @@ public class CollectableObject : MonoBehaviour
             ShowCollectMessage();
 
             // Check if player presses 'P' to collect
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.C))
             {
+                Debug.Log("AAAAA");
                 Collect();
             }
         }
@@ -26,16 +27,12 @@ public class CollectableObject : MonoBehaviour
 
     private void ShowCollectMessage()
     {
-        Rect rect = new(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50);
-        GUI.Label(rect, collectMessage);
+        Debug.Log(collectMessage);
     }
 
     private void Collect()
     {
         // Add collect logic here
         Debug.Log("Collectable collected!");
-
-        // Destroy the collectable object
-        Destroy(gameObject);
     }
 }
