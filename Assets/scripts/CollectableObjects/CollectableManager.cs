@@ -19,31 +19,33 @@ public class CollectableManager : MonoBehaviour
         if (collectables == null)
         {
             collectables = FindObjectsOfType<CollectableObject>();
-        }
-        // Clear the list of active collectables
-        activeCollectables.Clear();
-
-        // Get the player's position
-        Vector3 playerPos = this.transform.position;
-
-        // Loop through all the collectables in the scene
-        for (int i = 0; i < collectables.Length; i++)
+        } else
         {
-            CollectableObject collectable = collectables[i];
+            // Clear the list of active collectables
+            activeCollectables.Clear();
 
-            // Check if the collectable is within the player's region
-            if (IsCollectableInRegion(playerPos, collectable.transform.position))
+            // Get the player's position
+            Vector3 playerPos = this.transform.position;
+
+            // Loop through all the collectables in the scene
+            for (int i = 0; i < collectables.Length; i++)
             {
-                // Add the collectable to the list of active collectables
-                activeCollectables.Add(collectable);
-            }
-        }
+                CollectableObject collectable = collectables[i];
 
-        // Loop through the active collectables and call the Update method
-        for (int i = 0; i < activeCollectables.Count; i++)
-        {
-            CollectableObject collectable = activeCollectables[i];
-            collectable.CheckCollect(playerPos);
+                // Check if the collectable is within the player's region
+                if (IsCollectableInRegion(playerPos, collectable.transform.position))
+                {
+                    // Add the collectable to the list of active collectables
+                    activeCollectables.Add(collectable);
+                }
+            }
+
+            // Loop through the active collectables and call the Update method
+            for (int i = 0; i < activeCollectables.Count; i++)
+            {
+                CollectableObject collectable = activeCollectables[i];
+                collectable.CheckCollect(playerPos);
+            }
         }
     }
 
