@@ -8,12 +8,6 @@ public class CollectableObject : MonoBehaviour
     public float collectDistance = 2.0f;
     public string collectMessage = "Press 'P' to collect";
 
-    public void Update()
-    {
-        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        CheckCollect(mainCamera.transform.position);
-    }
-
     public void CheckCollect(Vector3 playerPosition)
     {
         float distance = Vector3.Distance(transform.position, playerPosition);
