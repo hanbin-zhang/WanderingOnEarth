@@ -34,9 +34,7 @@ public class CollectableManager : MonoBehaviour
             // Clear the list of active collectables
             activeCollectables.Clear();
 
-            Debug.Log(collectables.Count);
 
-           
             // Loop through all the collectables in the scene
             for (int i = 0; i < collectables.Count; i++)
             {
