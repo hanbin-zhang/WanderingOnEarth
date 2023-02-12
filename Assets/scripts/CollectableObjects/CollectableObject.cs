@@ -8,7 +8,7 @@ public class CollectableObject : MonoBehaviour
     public float collectDistance;
     public string collectMessage = "Press 'C' to collect";
 
-    public void CheckCollect(Vector3 playerPosition)
+    public bool CheckCollect(Vector3 playerPosition)
     {
         float distance = Vector3.Distance(transform.position, playerPosition);
         if (distance <= collectDistance)
@@ -19,10 +19,11 @@ public class CollectableObject : MonoBehaviour
             // Check if player presses 'P' to collect
             if (Input.GetKeyDown(KeyCode.C))
             {
-                Debug.Log("AAAAA");
                 Collect();
+                return true;    
             }
         }
+        return false;
     }
 
     private void ShowCollectMessage()

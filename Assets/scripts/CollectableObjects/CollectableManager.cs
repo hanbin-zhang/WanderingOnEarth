@@ -4,48 +4,64 @@ using UnityEngine;
 
 public class CollectableManager : MonoBehaviour
 {
-    public CollectableObject[] collectables; // An array of all the collectables in the scene
+    public List<CollectableObject> collectables; // An array of all the collectables in the scene
 
     private List<CollectableObject> activeCollectables; // A list of the collectables within the player's region
 
     private void Start()
     {
+
         // Initialize the list of active collectables
         activeCollectables = new List<CollectableObject>();
-        collectables = FindObjectsOfType<CollectableObject>();
+        collectables = new List<CollectableObject>();
+        CollectableObject[] collectableArray = FindObjectsOfType<CollectableObject>();
+        for (int i = 0; i < collectableArray.Length; i++)
+        {
+            Debug.Log("stsdasdaswqtwehyf" + i);
+            collectables.Add(collectableArray[i]);
+        }
+        
+
     }
+
 
     private void Update()
     {
         if (collectables == null)
         {
-            collectables = FindObjectsOfType<CollectableObject>();
+            /*collectables = FindObjectsOfType<CollectableObject>();*/
         } else
         {
             // Clear the list of active collectables
             activeCollectables.Clear();
 
+
+
            
-            
-
             // Loop through all the collectables in the scene
-            for (int i = 0; i < collectables.Length; i++)
+            for (int i = 0; i < collectables.Count; i++)
             {
+                Debug.Log("start");
                 CollectableObject collectable = collectables[i];
-
+                Debug.Log(collectables.Count);
                 // Check if the collectable is within the player's region
                 if (IsCollectableInRegion(transform.position, collectable.transform.position))
                 {
+                    Debug.Log("start67");
                     // Add the collectable to the list of active collectables
                     activeCollectables.Add(collectable);
                 }
+                
             }
-
             // Loop through the active collectables and call the Update method
             for (int i = 0; i < activeCollectables.Count; i++)
             {
                 CollectableObject collectable = activeCollectables[i];
-                collectable.CheckCollect(transform.position);
+                if (collectable.CheckCollect(transform.position))
+                {
+                    collectables.Remove(collectable);
+                    Destroy(collectable);
+                }
             }
         }
     }
