@@ -17,7 +17,6 @@ public class CollectableManager : MonoBehaviour
         CollectableObject[] collectableArray = FindObjectsOfType<CollectableObject>();
         for (int i = 0; i < collectableArray.Length; i++)
         {
-            Debug.Log("stsdasdaswqtwehyf" + i);
             collectables.Add(collectableArray[i]);
         }
         
@@ -35,19 +34,16 @@ public class CollectableManager : MonoBehaviour
             // Clear the list of active collectables
             activeCollectables.Clear();
 
-
+            Debug.Log(collectables.Count);
 
            
             // Loop through all the collectables in the scene
             for (int i = 0; i < collectables.Count; i++)
             {
-                Debug.Log("start");
                 CollectableObject collectable = collectables[i];
-                Debug.Log(collectables.Count);
                 // Check if the collectable is within the player's region
                 if (IsCollectableInRegion(transform.position, collectable.transform.position))
                 {
-                    Debug.Log("start67");
                     // Add the collectable to the list of active collectables
                     activeCollectables.Add(collectable);
                 }
@@ -60,7 +56,7 @@ public class CollectableManager : MonoBehaviour
                 if (collectable.CheckCollect(transform.position))
                 {
                     collectables.Remove(collectable);
-                    Destroy(collectable);
+                    Destroy(collectable.gameObject);
                 }
             }
         }
