@@ -15,7 +15,11 @@ public class CollectableManager : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+        if (collectables == null)
+        {
+            collectables = FindObjectsOfType<CollectableObject>();
+        }
         // Clear the list of active collectables
         activeCollectables.Clear();
 
