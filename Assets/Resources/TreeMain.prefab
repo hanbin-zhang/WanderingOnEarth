@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &809197636724401363
+--- !u!1 &3998598269004964118
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 809197636724401362}
-  - component: {fileID: 809197636724401357}
-  - component: {fileID: -8635968607460776217}
-  - component: {fileID: 3301081356679896786}
+  - component: {fileID: 3998598269004964119}
+  - component: {fileID: 3998598269004964104}
+  - component: {fileID: 3774552262247146274}
+  - component: {fileID: 1263482927242713879}
   m_Layer: 0
   m_Name: TreeMain
   m_TagString: Plant
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &809197636724401362
+--- !u!4 &3998598269004964119
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809197636724401363}
+  m_GameObject: {fileID: 3998598269004964118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.6978436, y: 1.4950573, z: -8.879154}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809197636724401357
+--- !u!114 &3998598269004964104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809197636724401363}
+  m_GameObject: {fileID: 3998598269004964118}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16897bbedcbc08b44b52b2f7eb0ed05a, type: 3}
@@ -56,13 +56,13 @@ MonoBehaviour:
   currentModel: {fileID: 0}
   parentWorldObjID: 0
   currentWorldID: 0
---- !u!114 &-8635968607460776217
+--- !u!114 &3774552262247146274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809197636724401363}
+  m_GameObject: {fileID: 3998598269004964118}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -74,20 +74,20 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1263482927242713879}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3301081356679896786
+--- !u!114 &1263482927242713879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809197636724401363}
+  m_GameObject: {fileID: 3998598269004964118}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c60e407572c35194f88b430507411bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
