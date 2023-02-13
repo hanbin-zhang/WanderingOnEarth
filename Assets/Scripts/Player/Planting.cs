@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Planting : MonoBehaviour
+public class Planting : MonoBehaviourPunCallbacks
 {
     public GameObject crossHair;
     public GameObject tree;
@@ -27,12 +28,12 @@ public class Planting : MonoBehaviour
             
             if (Input.GetMouseButtonDown(0))
             {
-                Instantiate(tree, plantPoint, transform.rotation);
+                PhotonNetwork.Instantiate(tree.name, plantPoint, transform.rotation);
             }
 
             if (Input.GetMouseButtonDown(1))
             {
-                Instantiate(deer, plantPoint, transform.rotation);
+                PhotonNetwork.Instantiate(deer.name, plantPoint, transform.rotation);
             }
         }
 
