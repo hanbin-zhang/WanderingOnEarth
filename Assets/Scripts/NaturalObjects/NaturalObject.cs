@@ -18,6 +18,8 @@ public abstract class NaturalObject : MonoBehaviour
     void Start()
     {
         currentWorldID = GetInstanceID();
+        this.UpdateObject();
+        GameObjectTracker.gameObjects.Add(this);
     }
 
     public float GetCurrentGreenValue()
