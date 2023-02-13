@@ -16142,9 +16142,9 @@ MonoBehaviour:
   walkSpeed: 0
   sprintSpeed: 0
   jumpKey: 32
-  whatIsGround:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 64
   rb: {fileID: 9070680443464805895}
   text_speed: {fileID: 0}
 --- !u!114 &9070680443464806010
@@ -16160,8 +16160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossHair: {fileID: 1312468203}
-  tree: {fileID: 809197636724401363, guid: 989e71f70221bc8429ef079b34762fb9, type: 3}
-  deer: {fileID: 4150571443712375413, guid: 08563260774bda24aa7e09c45b82360c, type: 3}
+  tree: {fileID: 6887105424210784618, guid: e10a924d56d911a418dd99751da3a34e, type: 3}
+  deer: {fileID: 6831507419659239416, guid: 57f553e7bea36524ba04bf775d7a9487, type: 3}
 --- !u!114 &6852415287144461568
 MonoBehaviour:
   m_ObjectHideFlags: 0

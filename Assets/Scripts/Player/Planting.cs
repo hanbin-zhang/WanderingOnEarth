@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Planting : MonoBehaviour
+public class Planting : MonoBehaviourPunCallbacks
 {
     public GameObject crossHair;
     public GameObject tree;
@@ -20,7 +21,7 @@ public class Planting : MonoBehaviour
     {
     
         Vector3 plantingPosition = transform.position + transform.forward * 2;
-        plantingPosition.y = 0;
+
         Vector3 plantPoint;
 
         if (IsValid(plantingPosition, out plantPoint)) {
@@ -32,7 +33,7 @@ public class Planting : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
             {
-                Instantiate(deer, plantPoint, transform.rotation);
+                PhotonNetwork.Instantiate(deer.name, plantPoint, transform.rotation);
             }
         }
 
@@ -40,16 +41,19 @@ public class Planting : MonoBehaviour
 
     private bool IsValid(Vector3 rayOrigin1, out Vector3 point)
     {
-        rayOrigin1.y = 100;
+        rayOrigin1.y = 1000;
 
         bool valid = false;
         point = default;
         Ray ray = new Ray(rayOrigin1, Vector3.down);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            valid = hit.collider.gameObject.name == "terrain1";
             point = hit.point;
+            // Check for collisions with existing objects
+            Collider[] colliders = Physics.OverlapSphere(point, 1f);
+            // terrain is a collider
+            valid = hit.collider.gameObject.name == "Terrain1" && colliders.Length <= 1;
         }
        
         crossHair.GetComponent<Image>().color = valid ? Color.green : Color.red;

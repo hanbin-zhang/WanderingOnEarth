@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4150571443712375413
+--- !u!1 &6887105424210784618
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,81 +8,86 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4150571443712375411}
-  - component: {fileID: 4150571443712375412}
-  - component: {fileID: 560579438241409070}
-  - component: {fileID: -4486892261025388547}
+  - component: {fileID: 6887105424210785255}
+  - component: {fileID: 6887105424210785917}
+  - component: {fileID: 5469170289447542322}
+  - component: {fileID: 2130480834442249090}
   m_Layer: 0
-  m_Name: DeerMain
-  m_TagString: Animal
+  m_Name: TreeMain
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4150571443712375411
+--- !u!4 &6887105424210785255
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6887105424210784618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.6978436, y: 1.4950573, z: -8.879154}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4150571443712375412
+--- !u!114 &6887105424210785917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6887105424210784618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0be59d206af7b48885a66fadf02be7, type: 3}
+  m_Script: {fileID: 11500000, guid: 16897bbedcbc08b44b52b2f7eb0ed05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 1846571215336048122, guid: f411e9d42afaa914b851e7a84c3b9287, type: 3}
-  - {fileID: 1417517577202580778, guid: 34ef80475c9f31b46a180509c3ee969d, type: 3}
-  - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
-  localShift: {x: 0, y: 0, z: 0}
+  - {fileID: 6326810312150003598, guid: 800301b596e9e204cbf89fd8f1fa2ca9, type: 3}
+  - {fileID: 4959905896869581913, guid: 47124e85693bdc147b4ea8b3d888cb53, type: 3}
+  localShift: {x: 0, y: 0, z: 1}
   blockID: 0
-  baseGreenValue: 6
+  baseGreenValue: 1
   currentState: 0
   currentModel: {fileID: 0}
   parentWorldObjID: 0
   currentWorldID: 0
---- !u!114 &560579438241409070
+--- !u!114 &5469170289447542322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6887105424210784618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50aa6bdbe5b73254bb09e3d7d3541479, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRotateAngle: -50
-  maxRotateAngle: 50
-  minSpeed: 0
-  maxSpeed: 0.005
---- !u!114 &-4486892261025388547
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2130480834442249090}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2130480834442249090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6887105424210784618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 894c2a8c229000947b0079804357cb20, type: 3}
+  m_Script: {fileID: 11500000, guid: 183d98a2b4143ed4e85f5e4e08284d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.5, z: 0}

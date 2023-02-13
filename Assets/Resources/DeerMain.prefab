@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4150571443712375413
+--- !u!1 &6831507419659239416
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4150571443712375411}
-  - component: {fileID: 4150571443712375412}
-  - component: {fileID: 560579438241409070}
-  - component: {fileID: -4486892261025388547}
+  - component: {fileID: 6831507419659237791}
+  - component: {fileID: 6831507419659238325}
+  - component: {fileID: 6831507419659238320}
+  - component: {fileID: 6831507419659238353}
+  - component: {fileID: 7739152920596654521}
+  - component: {fileID: 3574282047954639141}
   m_Layer: 0
   m_Name: DeerMain
   m_TagString: Animal
@@ -19,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4150571443712375411
+--- !u!4 &6831507419659237791
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6831507419659239416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +36,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4150571443712375412
+--- !u!114 &6831507419659238325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6831507419659239416}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd0be59d206af7b48885a66fadf02be7, type: 3}
@@ -57,13 +59,13 @@ MonoBehaviour:
   currentModel: {fileID: 0}
   parentWorldObjID: 0
   currentWorldID: 0
---- !u!114 &560579438241409070
+--- !u!114 &6831507419659238320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6831507419659239416}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50aa6bdbe5b73254bb09e3d7d3541479, type: 3}
@@ -73,16 +75,51 @@ MonoBehaviour:
   maxRotateAngle: 50
   minSpeed: 0
   maxSpeed: 0.005
---- !u!114 &-4486892261025388547
+--- !u!114 &6831507419659238353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150571443712375413}
+  m_GameObject: {fileID: 6831507419659239416}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 894c2a8c229000947b0079804357cb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.5, z: 0}
+--- !u!114 &7739152920596654521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831507419659239416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183d98a2b4143ed4e85f5e4e08284d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3574282047954639141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831507419659239416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7739152920596654521}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

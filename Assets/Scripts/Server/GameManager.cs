@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Random=System.Random;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -13,6 +14,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab;
 
     public static GameManager Instance;
+    
+    Random rd = new Random();
+
+    private int rand_x, rand_z;
+    
 
     #endregion
     
@@ -24,9 +30,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             return;
         }
-
+        rand_x = rd.Next(100,800);
+        rand_z = rd.Next(100,800);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(600f,5f,600f), Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(rand_x,5f,rand_z), Quaternion.identity, 0);
         Instance = this;
     }
     
@@ -42,7 +49,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player other)
     {
         // not seen if you're the player connecting
-        Debug.LogFormat("OnPlayerEnteredRoom() {0} joined the room", other.NickName); 
+        Debug.LogFormat("OnPlayerEnteredRoom() {0} joined the room at point ({1},5,{2}) ", other.NickName, rand_x,rand_z); 
 
         if (PhotonNetwork.IsMasterClient)
         {
