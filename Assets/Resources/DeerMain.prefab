@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 1846571215336048122, guid: f411e9d42afaa914b851e7a84c3b9287, type: 3}
-  - {fileID: 1417517577202580778, guid: 34ef80475c9f31b46a180509c3ee969d, type: 3}
+  - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
+  - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
   - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
   localShift: {x: 0, y: 0, z: 0}
   blockID: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8105903888975832105}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50aa6bdbe5b73254bb09e3d7d3541479, type: 3}
   m_Name: 
@@ -75,6 +75,7 @@ MonoBehaviour:
   maxRotateAngle: 50
   minSpeed: 0
   maxSpeed: 0.005
+  escapeAngle: 0
 --- !u!114 &603312328496544161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894c2a8c229000947b0079804357cb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &3030474546199431069
 MonoBehaviour:
   m_ObjectHideFlags: 0
