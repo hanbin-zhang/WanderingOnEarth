@@ -16861,9 +16861,12 @@ MonoBehaviour:
   isActive: 0
   title: {fileID: 8930619025429090041}
   desc: {fileID: 8930619025574638497}
+  showTime: 5
   sumGreenValue: 0
   achive01threshold: 10
   achive01code: 0
+  achive02threshold: 3
+  achive02code: 0
 --- !u!114 &9070680443464806010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16973,9 +16976,12 @@ MonoBehaviour:
   isActive: 0
   title: {fileID: 8930619025429090041}
   desc: {fileID: 8930619025574638497}
+  showTime: 5
   sumGreenValue: 0
   achive01threshold: 10
   achive01code: 0
+  achive02threshold: 3
+  achive02code: 0
 --- !u!1 &9087422589178569652
 GameObject:
   m_ObjectHideFlags: 0
