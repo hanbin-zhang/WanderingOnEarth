@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public abstract class NaturalObject : MonoBehaviour
@@ -8,12 +9,14 @@ public abstract class NaturalObject : MonoBehaviour
 
     public List<GameObject> Models;
     public Vector3 localShift;
+    public int growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
     [HideInInspector] public int parentWorldObjID;
     [HideInInspector] public int currentWorldID;
+    [HideInInspector] public int updateModelCommand = 0;
 
     void Start()
     {
@@ -21,8 +24,32 @@ public abstract class NaturalObject : MonoBehaviour
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache();
+
+        Thread thread = new Thread(new ThreadStart(UpgradeTimer));
+        thread.Start();
     }
 
+    public void UpgradeTimer()
+    {
+        while (currentState + 1 < Models.Count)
+        {
+            Thread.Sleep(1000*growTime);
+            UpdateState();
+            updateModelCommand++;
+        }
+        return;
+    }
+
+    private void Update()
+    {
+        Debug.Log(currentState);
+        Debug.Log(updateModelCommand);
+        while (updateModelCommand > 0)
+        {
+            UpdateObject();
+            updateModelCommand--;
+        }
+    }
     public abstract void AddSpecificCache();
 
     public float GetCurrentGreenValue()

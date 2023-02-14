@@ -48,12 +48,12 @@ public class AchivementsManager : MonoBehaviour
         achive01code = PlayerPrefs.GetInt("Achive01");
         achive02code = PlayerPrefs.GetInt("Achive02");
 
-        if (sumGreenValue >= achive01threshold && achive01code != 101 && !AchivePanel.activeSelf)
+        if (sumGreenValue >= achive01threshold && achive01code != 101)
         {
             StartCoroutine(LoadAchive01());
         }
 
-        else if (GameObjectTracker.TreeCount >= achive02threshold && achive02code != 102 && !AchivePanel.activeSelf)
+        else if (GameObjectTracker.TreeCount >= achive02threshold && achive02code != 102)
         {
             Debug.Log(AchivePanel.activeSelf);
             StartCoroutine(LoadAchive02());

@@ -53,12 +53,14 @@ MonoBehaviour:
   - {fileID: 1417517577202580778, guid: 34ef80475c9f31b46a180509c3ee969d, type: 3}
   - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
   localShift: {x: 0, y: 0, z: 0}
+  growTime: 5
   blockID: 0
   baseGreenValue: 6
   currentState: 0
   currentModel: {fileID: 0}
   parentWorldObjID: 0
   currentWorldID: 0
+  updateModelCommand: 0
 --- !u!114 &5630530981149800050
 MonoBehaviour:
   m_ObjectHideFlags: 0
