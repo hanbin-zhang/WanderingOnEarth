@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TreeObject : NaturalObject
 {
+    public override void AddSpecificCache()
+    {
+        GameObjectTracker.TreeCount++;
+    }
+
     public override bool CheckPlaceCondtion()
     {
         bool cond = true;

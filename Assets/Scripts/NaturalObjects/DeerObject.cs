@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class DeerObject : NaturalObject
 {
+    public override void AddSpecificCache()
+    {
+        GameObjectTracker.DeerCounnt += 1;
+    }
+
     public override bool CheckPlaceCondtion()
     {
         return true;
     }
-
-    
 
     // Update is called once per frame
     void Update()

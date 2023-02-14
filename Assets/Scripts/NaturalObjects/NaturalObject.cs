@@ -20,7 +20,10 @@ public abstract class NaturalObject : MonoBehaviour
         currentWorldID = GetInstanceID();
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
+        AddSpecificCache();
     }
+
+    public abstract void AddSpecificCache();
 
     public float GetCurrentGreenValue()
     {

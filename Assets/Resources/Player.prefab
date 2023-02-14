@@ -16002,9 +16002,12 @@ MonoBehaviour:
   isActive: 0
   title: {fileID: 8930619025429090041}
   desc: {fileID: 8930619025574638497}
+  showTime: 5
   sumGreenValue: 0
   achive01threshold: 10
   achive01code: 0
+  achive02threshold: 3
+  achive02code: 0
 --- !u!114 &9070680443464806010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16110,9 +16113,12 @@ MonoBehaviour:
   isActive: 0
   title: {fileID: 8930619025429090041}
   desc: {fileID: 8930619025574638497}
+  showTime: 5
   sumGreenValue: 0
   achive01threshold: 10
   achive01code: 0
+  achive02threshold: 3
+  achive02code: 0
 --- !u!1 &9087422589178569652
 GameObject:
   m_ObjectHideFlags: 0
@@ -16564,11 +16570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180189226068075100, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
       propertyPath: m_margin.x
-      value: -141.59985
+      value: -70.73883
       objectReference: {fileID: 0}
     - target: {fileID: 1180189226068075100, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
       propertyPath: m_margin.z
-      value: -206.31396
+      value: -222.89844
       objectReference: {fileID: 0}
     - target: {fileID: 1180189226465271556, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
       propertyPath: m_margin.x
@@ -16580,7 +16586,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180189226465271556, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
       propertyPath: m_margin.z
-      value: -258.7284
+      value: -211.66577
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180189226514684265, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -733.3537
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180189226514684265, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 357.70868
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
@@ -16610,9 +16624,12 @@ MonoBehaviour:
   isActive: 0
   title: {fileID: 8930619025429090041}
   desc: {fileID: 8930619025574638497}
+  showTime: 5
   sumGreenValue: 0
   achive01threshold: 10
   achive01code: 0
+  achive02threshold: 3
+  achive02code: 0
 --- !u!1 &8930619024753074322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1180189225790730607, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
