@@ -75,45 +75,40 @@ public class AchivementsManager : MonoBehaviour
     }
 
     IEnumerator LoadAchive01()
-    {
-        achive01code = 101;
-        PlayerPrefs.SetInt("Achive01", achive01code);
-        lock (AchivePanel)
+    {   lock (AchivePanel)
         {   
             mutex.WaitOne();
+            if (isActive == true) yield break;
             isActive = true;
 
-           
+            achive01code = 101;
+            PlayerPrefs.SetInt("Achive01", achive01code);
             AchivePanel.SetActive(true);
 
             title.text = "Green Value increased!";
             desc.text = "Green value reaches " + achive01threshold;
 
 
-            Thread.Sleep(5000);
+            yield return new WaitForSeconds(showTime);
             AchivePanel.SetActive(false);
             title.text = "";
             desc.text = "";
             isActive = false;
             mutex.ReleaseMutex();
-            yield return null;
         }
         
     }
 
     IEnumerator LoadAchive02()
     {
-
-        achive02code = 102;
-        PlayerPrefs.SetInt("Achive02", achive02code);
         lock (AchivePanel)
         {
             mutex.WaitOne();
-            Debug.Log(mutex.ToString());
-            //if (isActive == true) yield break;
+            if (isActive == true) yield break;
             isActive = true;
 
-            
+            achive02code = 102;
+            PlayerPrefs.SetInt("Achive02", achive02code);
 
             AchivePanel.SetActive(true);
 
@@ -137,7 +132,7 @@ public class AchivementsManager : MonoBehaviour
         lock (AchivePanel)
         {
             mutex.WaitOne();
-            //if (isActive == true) yield break;
+            if (isActive == true) yield break;
             isActive = true;
             Debug.Log(AchivePanel.activeSelf);
             AchivePanel.SetActive(true);
