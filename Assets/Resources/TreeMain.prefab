@@ -47,15 +47,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 6326810312150003598, guid: 800301b596e9e204cbf89fd8f1fa2ca9, type: 3}
+  - {fileID: 7356396205156690114, guid: 0eed559d55f16ec449159c1aab599a28, type: 3}
   - {fileID: 4959905896869581913, guid: 47124e85693bdc147b4ea8b3d888cb53, type: 3}
   localShift: {x: 0, y: 0, z: 1}
+  growTime: 5
   blockID: 0
   baseGreenValue: 1
   currentState: 0
   currentModel: {fileID: 0}
   parentWorldObjID: 0
   currentWorldID: 0
+  updateModelCommand: 0
 --- !u!114 &3774552262247146274
 MonoBehaviour:
   m_ObjectHideFlags: 0
