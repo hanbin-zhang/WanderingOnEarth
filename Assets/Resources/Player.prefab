@@ -16807,6 +16807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AchivePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1180189226514684264, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1180189226514684265, guid: d049d3e4b8ff25e478b648b2234dadaa, type: 3}
       propertyPath: m_SizeDelta.x
       value: -733.3537
