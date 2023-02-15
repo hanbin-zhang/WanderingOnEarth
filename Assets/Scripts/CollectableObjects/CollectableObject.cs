@@ -6,6 +6,7 @@ public class CollectableObject : MonoBehaviour
 {
     public int collectableID;
     public float collectDistance;
+    public string collectDesc;
 
 
     public bool CheckCollect(Vector3 playerPosition, GameObject messagePanel)
@@ -33,7 +34,6 @@ public class CollectableObject : MonoBehaviour
 
     private void Collect()
     {
-        // Add collect logic here
-        Debug.Log("Collectable collected!");
+        GameObjectTracker.collected.Add(this.collectableID, collectDesc);
     }
 }

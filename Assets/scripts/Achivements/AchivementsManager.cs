@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class AchivementsManager : MonoBehaviour
 {  
@@ -24,6 +25,9 @@ public class AchivementsManager : MonoBehaviour
     // achivement 02
     public int achive02threshold = 3;
     public int achive02code = 0;
+
+    // achivement 03
+    // collection
 
     private void Start()
     {
@@ -57,6 +61,16 @@ public class AchivementsManager : MonoBehaviour
         {
             Debug.Log(AchivePanel.activeSelf);
             StartCoroutine(LoadAchive02());
+        } else if (GameObjectTracker.collected.Count > 0) {
+            int ID = GameObjectTracker.collected.FirstOrDefault().Key;
+            string desc = GameObjectTracker.collected.FirstOrDefault().Value;
+            GameObjectTracker.collected.Remove(ID);
+
+            GameObjectTracker.updatedcollected.Add(ID);
+            
+            StartCoroutine(LoadAchive03(ID, desc));
+
+            
         }
     }
 
@@ -105,5 +119,28 @@ public class AchivementsManager : MonoBehaviour
             isActive = false;
         }
         
+    }
+
+    IEnumerator LoadAchive03(int collectableID, string collectableDesc)
+    {
+       
+        lock (AchivePanel)
+        {
+            
+            if (isActive == true) yield break;
+            isActive = true;
+            Debug.Log(AchivePanel.activeSelf);
+            AchivePanel.SetActive(true);
+            Debug.Log(collectableID);
+            title.text = "Collection " + collectableID + " Collected!";
+            desc.text = collectableDesc;
+
+            yield return new WaitForSeconds(showTime);
+            AchivePanel.SetActive(false);
+            title.text = "";
+            desc.text = "";
+            isActive = false;
+        }
+
     }
 }
