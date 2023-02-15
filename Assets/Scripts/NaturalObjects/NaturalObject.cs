@@ -60,7 +60,7 @@ public abstract class NaturalObject : MonoBehaviour
     public void UpdateObject()
     {
 
-        if (currentModel != null)
+        /*if (currentModel != null)
         {
             Destroy(currentModel);
         }
@@ -68,7 +68,19 @@ public abstract class NaturalObject : MonoBehaviour
         currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
         currentModel.transform.parent = transform;
         currentModel.transform.localPosition += localShift;
-        //currentModel.transform.localPosition = this.transform.localPosition;
+        //currentModel.transform.localPosition = this.transform.localPosition;*/
+
+        if (currentModel == null)
+        {
+            currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
+        }
+        else
+        {
+            Vector3 pos = currentModel.transform.position;
+            Quaternion rot = currentModel.transform.rotation;
+            Destroy(currentModel);
+            currentModel = Instantiate(Models[currentState], pos, rot);
+        }
     }
 
     public void UpdateState()

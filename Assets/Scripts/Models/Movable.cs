@@ -45,7 +45,7 @@ public class Movable : MonoBehaviour
             float rotateAngle = Random.Range(minRotateAngle, maxRotateAngle);
             transform.Rotate(Quaternion.Euler(0, rotateAngle, 0).eulerAngles);
             readyToRotate = false;
-            Invoke(nameof(resetRotation),1f);
+            Invoke(nameof(resetRotation), Random.Range(5f, 10f));
         }
         if (readyToSpeed)
         {
