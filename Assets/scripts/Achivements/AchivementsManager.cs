@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System.Threading;
 
 public class AchivementsManager : MonoBehaviour
 {  
@@ -11,9 +13,9 @@ public class AchivementsManager : MonoBehaviour
     public TMPro.TMP_Text title;
     public TMPro.TMP_Text desc;
     public int showTime = 5;
+    private Mutex mutex = new();
 
     public float sumGreenValue = 0.0f;
-    private readonly object lockObject = new object();
 
 
     // achivement 01
@@ -24,6 +26,9 @@ public class AchivementsManager : MonoBehaviour
     // achivement 02
     public int achive02threshold = 3;
     public int achive02code = 0;
+
+    // achivement 03
+    // collection
 
     private void Start()
     {
@@ -55,43 +60,60 @@ public class AchivementsManager : MonoBehaviour
 
         else if (GameObjectTracker.TreeCount >= achive02threshold && achive02code != 102)
         {
-            Debug.Log(AchivePanel.activeSelf);
             StartCoroutine(LoadAchive02());
+        } else if (GameObjectTracker.collected.Count > 0) {
+            int ID = GameObjectTracker.collected.FirstOrDefault().Key;
+            string desc = GameObjectTracker.collected.FirstOrDefault().Value;
+            GameObjectTracker.collected.Remove(ID);
+
+            GameObjectTracker.updatedcollected.Add(ID);
+            
+            StartCoroutine(LoadAchive03(ID, desc));
+
+            
         }
     }
 
     IEnumerator LoadAchive01()
-    {   lock (AchivePanel)
-        {
-            if (isActive == true) yield break;
+    {
+        achive01code = 101;
+        PlayerPrefs.SetInt("Achive01", achive01code);
+        lock (AchivePanel)
+        {   
+            mutex.WaitOne();
             isActive = true;
 
-            achive01code = 101;
-            PlayerPrefs.SetInt("Achive01", achive01code);
+           
             AchivePanel.SetActive(true);
 
             title.text = "Green Value increased!";
             desc.text = "Green value reaches " + achive01threshold;
 
 
-            yield return new WaitForSeconds(showTime);
+            Thread.Sleep(5000);
             AchivePanel.SetActive(false);
             title.text = "";
             desc.text = "";
             isActive = false;
+            mutex.ReleaseMutex();
+            yield return null;
         }
         
     }
 
     IEnumerator LoadAchive02()
     {
+
+        achive02code = 102;
+        PlayerPrefs.SetInt("Achive02", achive02code);
         lock (AchivePanel)
         {
-            if (isActive == true) yield break;
+            mutex.WaitOne();
+            Debug.Log(mutex.ToString());
+            //if (isActive == true) yield break;
             isActive = true;
 
-            achive02code = 102;
-            PlayerPrefs.SetInt("Achive02", achive02code);
+            
 
             AchivePanel.SetActive(true);
 
@@ -103,7 +125,33 @@ public class AchivementsManager : MonoBehaviour
             title.text = "";
             desc.text = "";
             isActive = false;
+            mutex.ReleaseMutex();
+
         }
-        
+
+    }
+
+    IEnumerator LoadAchive03(int collectableID, string collectableDesc)
+    {
+       
+        lock (AchivePanel)
+        {
+            mutex.WaitOne();
+            //if (isActive == true) yield break;
+            isActive = true;
+            Debug.Log(AchivePanel.activeSelf);
+            AchivePanel.SetActive(true);
+            Debug.Log(collectableID);
+            title.text = "Collection " + collectableID + " Collected!";
+            desc.text = collectableDesc;
+
+            yield return new WaitForSeconds(showTime);
+            AchivePanel.SetActive(false);
+            title.text = "";
+            desc.text = "";
+            isActive = false;
+            mutex.ReleaseMutex();
+        }
+
     }
 }
