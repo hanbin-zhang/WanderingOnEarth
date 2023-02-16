@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using Random = System.Random;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,8 +26,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
 
+        Random r = new Random();
+        int init_x = r.Next(100, 800);
+        int init_z = r.Next(100, 800);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(600f,5f,600f), Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x,100f,init_z), Quaternion.identity, 0);
         Instance = this;
     }
     

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,6 +17,12 @@ public class Movable : MonoBehaviour
     public float minSpeed;
     public float maxSpeed;
 
+    public float escapeAngle;
+
+    private bool newObj = true;
+
+    private bool afterEscape;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +34,18 @@ public class Movable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerPlanting.preview && newObj) return;
         // go straight 
-        
-        transform.position = transform.position + transform.forward * speed;
+       
+        transform.position += transform.forward * speed;
+        //transform.Translate(Vector3.forward * speed);
 
         if (readyToRotate)
         {
             float rotateAngle = Random.Range(minRotateAngle, maxRotateAngle);
-            transform.rotation = Quaternion.Euler(0, rotateAngle, 0);
+            transform.Rotate(Quaternion.Euler(0, rotateAngle, 0).eulerAngles);
             readyToRotate = false;
-            Invoke(nameof(resetRotation),Random.Range(5f,10f));
+            Invoke(nameof(resetRotation), Random.Range(5f, 10f));
         }
         if (readyToSpeed)
         {
@@ -45,10 +54,19 @@ public class Movable : MonoBehaviour
             Invoke(nameof(resetSpeed), Random.Range(5f, 10f));
         }
 
+        newObj = false;
+
     }
     private void resetRotation()
     {
-        readyToRotate= true;
+        if (afterEscape)
+        {
+            afterEscape= false;
+        }
+        else
+        {
+            readyToRotate = true;
+        }              
     }
 
     private void resetSpeed()
@@ -56,4 +74,14 @@ public class Movable : MonoBehaviour
         readyToSpeed= true;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag != "Ground")
+        {
+            transform.Rotate(Quaternion.Euler(0, escapeAngle, 0).eulerAngles);
+            //transform.rotation *= Quaternion.Euler(0, escapeAngle, 0);
+            afterEscape = true;
+            
+        }
+    }
 }

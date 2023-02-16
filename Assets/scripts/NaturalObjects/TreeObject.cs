@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class TreeObject : NaturalObject
 {
+    public override void AddSpecificCache()
+    {
+        GameObjectTracker.TreeCount++;
+    }
+
     public override bool CheckPlaceCondtion()
     {
         bool cond = true;
@@ -16,28 +22,5 @@ public class TreeObject : NaturalObject
         // check whether there is at least 1 object tagged "Animal"
         cond = cond && TagNumberJudger(1, "Animal");
         return cond;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.UpdateObject();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-
-            //this.UpdateObject();
-            this.UpdateState();
-            this.UpdateObject();
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-
-            Debug.Log(ObjNumberJudger<TreeObject>(1, 1));
-        }
     }
 }
