@@ -12,6 +12,7 @@ public abstract class NaturalObject : MonoBehaviour
     public int growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
+    [HideInInspector] public DateTime CreatedAt;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
     [HideInInspector] public int parentWorldObjID;
@@ -24,20 +25,12 @@ public abstract class NaturalObject : MonoBehaviour
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache();
-
-        Thread thread = new Thread(new ThreadStart(UpgradeTimer));
-        thread.Start();
+        CreatedAt = DateTime.Now;   
     }
 
-    public void UpgradeTimer()
+    public DateTime GetUpdateTime()
     {
-        while (currentState + 1 < Models.Count)
-        {
-            Thread.Sleep(1000*growTime);
-            UpdateState();
-            updateModelCommand++;
-        }
-        return;
+        return CreatedAt.AddSeconds(growTime * (currentState+1));
     }
 
     private void Update()
