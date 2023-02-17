@@ -16084,7 +16084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8930619025480337556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17118,7 +17118,6 @@ GameObject:
   - component: {fileID: 324812180189104337}
   - component: {fileID: 2733994245724083805}
   - component: {fileID: -3295172814817653783}
-  - component: {fileID: 637553131384593234}
   - component: {fileID: -9192255739751137074}
   m_Layer: 0
   m_Name: Player
@@ -17351,23 +17350,6 @@ MonoBehaviour:
   achive01code: 0
   achive02threshold: 3
   achive02code: 0
---- !u!114 &637553131384593234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9070680443464805894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64cb9ae5b87a07a49802e7e2b5a442a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AchivePanel: {fileID: 8930619025480337557}
-  isActive: 0
-  title: {fileID: 8930619025429090041}
-  desc: {fileID: 8930619025574638497}
-  showTime: 5
 --- !u!114 &-9192255739751137074
 MonoBehaviour:
   m_ObjectHideFlags: 0
