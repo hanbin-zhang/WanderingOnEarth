@@ -9,7 +9,7 @@ public abstract class NaturalObject : MonoBehaviour
 
     public List<GameObject> Models;
     public Vector3 localShift;
-    public floa growTime;
+    public float growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
     [HideInInspector] public float CreatedAt;
