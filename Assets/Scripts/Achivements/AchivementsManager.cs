@@ -13,7 +13,7 @@ public class AchivementsManager : MonoBehaviour
     public TMPro.TMP_Text title;
     public TMPro.TMP_Text desc;
     public int showTime = 5;
-    private Object mutex = new();
+    private Mutex mutex = new();
 
     public float sumGreenValue = 0.0f;
 
@@ -52,57 +52,34 @@ public class AchivementsManager : MonoBehaviour
         //PlayerPrefs.SetInt("Achive01", 0);
         achive01code = PlayerPrefs.GetInt("Achive01");
         achive02code = PlayerPrefs.GetInt("Achive02");
-        Debug.Log("out" + isActive + Time.time);
-        if (!isActive & sumGreenValue >= achive01threshold & achive01code != 101)
-        {   
-            if (!isActive)
-            {
-                lock (mutex)
-                {
-                    isActive = true;
-                    StartCoroutine(LoadAchive01());
-                    Debug.Log("condition1" + isActive);
-                }
-            }
-            
-            
+
+        if (sumGreenValue >= achive01threshold && achive01code != 101)
+        {
+            StartCoroutine(LoadAchive01());
         }
 
-        if (!isActive & GameObjectTracker.TreeCount >= achive02threshold && achive02code != 102)
+        else if (GameObjectTracker.TreeCount >= achive02threshold && achive02code != 102)
         {
-            Debug.Log("cond" + isActive);
-            if (!isActive)
-            {   
-                lock (mutex)
-                {
-                    Debug.Log("condition2start" + isActive);
-                    isActive = true;
-                    StartCoroutine(LoadAchive02());
-                    Debug.Log("condition2end" + isActive);
-                }
-            }
-        }
-        /*if (GameObjectTracker.collected.Count > 0 && !isActive)
-        {
-            isActive = true;
+            StartCoroutine(LoadAchive02());
+        } else if (GameObjectTracker.collected.Count > 0) {
             int ID = GameObjectTracker.collected.FirstOrDefault().Key;
             string desc = GameObjectTracker.collected.FirstOrDefault().Value;
             GameObjectTracker.collected.Remove(ID);
 
             GameObjectTracker.updatedcollected.Add(ID);
-
+            
             StartCoroutine(LoadAchive03(ID, desc));
-        }*/
+
+            
+        }
     }
-        
 
     IEnumerator LoadAchive01()
     {   lock (AchivePanel)
-        {
-            Debug.Log("01 start");
-            //mutex.WaitOne();
-            //if (isActive == true) yield break;
-            //isActive = true;
+        {   
+            mutex.WaitOne();
+            if (isActive == true) yield break;
+            isActive = true;
 
             achive01code = 101;
             PlayerPrefs.SetInt("Achive01", achive01code);
@@ -116,15 +93,8 @@ public class AchivementsManager : MonoBehaviour
             AchivePanel.SetActive(false);
             title.text = "";
             desc.text = "";
-            
-            lock (mutex)
-            {
-                yield return new WaitForSeconds(2);
-                isActive = false;
-            }
-            
-            //mutex.ReleaseMutex();
-            Debug.Log("01 end");
+            isActive = false;
+            mutex.ReleaseMutex();
         }
         
     }
@@ -133,10 +103,9 @@ public class AchivementsManager : MonoBehaviour
     {
         lock (AchivePanel)
         {
-            Debug.Log("02 start");
-            //mutex.WaitOne();
-            //if (isActive == true) yield break;
-            //isActive = true;
+            mutex.WaitOne();
+            if (isActive == true) yield break;
+            isActive = true;
 
             achive02code = 102;
             PlayerPrefs.SetInt("Achive02", achive02code);
@@ -150,15 +119,8 @@ public class AchivementsManager : MonoBehaviour
             AchivePanel.SetActive(false);
             title.text = "";
             desc.text = "";
-            lock (mutex)
-            {
-                yield return new WaitForSeconds(2);
-                isActive = false;
-            }
-            yield return new WaitForSeconds(2);
-            
-            //mutex.ReleaseMutex();
-            Debug.Log("02 end");
+            isActive = false;
+            mutex.ReleaseMutex();
 
         }
 
@@ -169,8 +131,9 @@ public class AchivementsManager : MonoBehaviour
        
         lock (AchivePanel)
         {
-            //if (isActive == true) yield break;
-            //isActive = true;
+            mutex.WaitOne();
+            if (isActive == true) yield break;
+            isActive = true;
             Debug.Log(AchivePanel.activeSelf);
             AchivePanel.SetActive(true);
             Debug.Log(collectableID);
@@ -181,8 +144,8 @@ public class AchivementsManager : MonoBehaviour
             AchivePanel.SetActive(false);
             title.text = "";
             desc.text = "";
-
             isActive = false;
+            mutex.ReleaseMutex();
         }
 
     }

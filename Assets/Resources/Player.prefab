@@ -17117,6 +17117,7 @@ GameObject:
   - component: {fileID: 4390012167556441545}
   - component: {fileID: 324812180189104337}
   - component: {fileID: 2733994245724083805}
+  - component: {fileID: -3295172814817653783}
   - component: {fileID: -9192255739751137074}
   m_Layer: 0
   m_Name: Player
@@ -17327,6 +17328,28 @@ MonoBehaviour:
   - {fileID: 9070680443464806010}
   localObjects:
   - {fileID: 8151777146276944715}
+--- !u!114 &-3295172814817653783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9070680443464805894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6aa2e676970964cbc02a6a2d5196aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AchivePanel: {fileID: 8930619025480337557}
+  isActive: 0
+  title: {fileID: 8930619025429090041}
+  desc: {fileID: 8930619025574638497}
+  showTime: 5
+  sumGreenValue: 0
+  achive01threshold: 10
+  achive01code: 0
+  achive02threshold: 3
+  achive02code: 0
 --- !u!114 &-9192255739751137074
 MonoBehaviour:
   m_ObjectHideFlags: 0
