@@ -17157,6 +17157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectables: []
+  CollectMessagePanel: {fileID: 9030554685660515414}
 --- !u!54 &9070680443464805895
 Rigidbody:
   m_ObjectHideFlags: 0
