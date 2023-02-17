@@ -9,10 +9,10 @@ public abstract class NaturalObject : MonoBehaviour
 
     public List<GameObject> Models;
     public Vector3 localShift;
-    public int growTime;
+    public floa growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
-    [HideInInspector] public DateTime CreatedAt;
+    [HideInInspector] public float CreatedAt;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
     [HideInInspector] public int parentWorldObjID;
@@ -25,12 +25,12 @@ public abstract class NaturalObject : MonoBehaviour
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache();
-        CreatedAt = DateTime.Now;   
+        CreatedAt = Time.time;   
     }
 
-    public DateTime GetUpdateTime()
+    public float GetUpdateTime()
     {
-        return CreatedAt.AddSeconds(growTime * (currentState+1));
+        return CreatedAt + growTime * (float)(currentState + 1);
     }
 
     private void Update()

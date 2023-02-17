@@ -1,36 +1,53 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NaObjMananger : MonoBehaviour
+public class NaturalObjManager : MonoBehaviour
 {
-    // Lock object for thread synchronization
-    private object lockObject = new object();
+    private static List<NaturalObject> evolvingNaObjs = new();
+    private static readonly object evolvingLock = new();
 
-    // List of all instances of natural objects
-    private List<NaturalObject> allInstances = new List<NaturalObject>();
-
-    // Registers a new instance of a natural object
-    public void Register(NaturalObject obj)
+    public static void Register(NaturalObject naturalObject)
     {
-        lock (lockObject)
+        lock (evolvingLock)
         {
-            allInstances.Add(obj);
+            int index = evolvingNaObjs.BinarySearch(naturalObject, new NaturalObjectComparer());
+            if (index < 0) index = ~index;
+            evolvingNaObjs.Insert(index, naturalObject);
         }
     }
 
-    // Unregisters an instance of a natural object
-    public void Unregister(NaturalObject obj)
+    private void Update()
     {
-        lock (lockObject)
+        lock (evolvingLock)
         {
-            allInstances.Remove(obj);
+            float currentTime = Time.time;
+            while (evolvingNaObjs.Count > 0 && evolvingNaObjs[0].GetUpdateTime() <= currentTime)
+            {
+                NaturalObject naturalObject = evolvingNaObjs[0];
+                
+
+                naturalObject.UpdateState();
+                naturalObject.UpdateObject();
+
+                evolvingNaObjs.RemoveAt(0);
+
+                if (naturalObject.currentState < naturalObject.Models.Count-1)
+                {
+                    int index = evolvingNaObjs.BinarySearch(naturalObject, new NaturalObjectComparer());
+                    if (index < 0) index = ~index;
+                    evolvingNaObjs.Insert(index, naturalObject);
+                }
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private class NaturalObjectComparer : IComparer<NaturalObject>
     {
-        // TODO: Update natural objects based on their state
+        public int Compare(NaturalObject a, NaturalObject b)
+        {
+            if (a.GetUpdateTime() < b.GetUpdateTime()) return -1;
+            if (a.GetUpdateTime() > b.GetUpdateTime()) return 1;
+            return 0;
+        }
     }
 }
