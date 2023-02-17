@@ -26,6 +26,7 @@ public abstract class NaturalObject : MonoBehaviour
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache();
         CreatedAt = Time.time;   
+        NaObjManager.evolvingNaObjs.Add(this);
     }
 
     public float GetUpdateTime()
@@ -33,16 +34,6 @@ public abstract class NaturalObject : MonoBehaviour
         return CreatedAt + growTime * (float)(currentState + 1);
     }
 
-    private void Update()
-    {
-        Debug.Log(currentState);
-        Debug.Log(updateModelCommand);
-        while (updateModelCommand > 0)
-        {
-            UpdateObject();
-            updateModelCommand--;
-        }
-    }
     public abstract void AddSpecificCache();
 
     public float GetCurrentGreenValue()

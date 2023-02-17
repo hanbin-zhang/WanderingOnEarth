@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NaturalObjManager : MonoBehaviour
+public class NaObjManager : MonoBehaviour
 {
-    private static List<NaturalObject> evolvingNaObjs = new();
+    public static List<NaturalObject> evolvingNaObjs = new();
     private static readonly object evolvingLock = new();
 
     public static void Register(NaturalObject naturalObject)
