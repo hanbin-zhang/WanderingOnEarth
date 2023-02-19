@@ -40,6 +40,17 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         SetText();
     }
 
+    public static List<Vector3> plantTrees = new List<Vector3>();
+
+    public static GameObject PlantObj(string name, Vector3 pos, Quaternion rotation)
+    {
+        if (name == "TreeMain")
+        {
+            plantTrees.Add(pos);
+        }
+        
+        return PhotonNetwork.Instantiate(name, pos, rotation);
+    }
     private void Plant()
     {
         Vector3 plantingPosition = transform.position + transform.forward * 2;
@@ -57,8 +68,9 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             {
                 if ((Time.time - startTime) >= 0.2f)
                 {
-                    newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                    Debug.Log("placed");
+                    //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                    newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                    Debug.Log(objs[objIndex].name);
                 }
                 startTime = 0;
                 preview = false;
