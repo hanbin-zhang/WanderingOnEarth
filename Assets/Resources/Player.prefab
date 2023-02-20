@@ -140,7 +140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: -250}
+  m_AnchoredPosition: {x: 1040, y: -618}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1946500357
@@ -11407,7 +11407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -343.5364, y: 258}
+  m_AnchoredPosition: {x: -1049, y: 653}
   m_SizeDelta: {x: 590.9273, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5969511960620116041
@@ -16196,7 +16196,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -24.098389, y: 4.1262817, z: -258.7284, w: 4.6329956}
+  m_margin: {x: -24.098389, y: -74.4538, z: -451.2406, w: 4.6329956}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16239,8 +16239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 302.14, y: 172.77}
-  m_SizeDelta: {x: -622.22, y: -518}
+  m_AnchoredPosition: {x: 15, y: 611}
+  m_SizeDelta: {x: -1992.0608, y: -1318.9447}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8930619025480337558
 CanvasRenderer:
@@ -16263,7 +16263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0.93333334}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16643,8 +16643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 419.2549, y: -19.482}
-  m_SizeDelta: {x: -838.4224, y: -510.2066}
+  m_AnchoredPosition: {x: 1137.8, y: -304.53}
+  m_SizeDelta: {x: -2275.6318, y: -1415.9479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9030554685660515419
 CanvasRenderer:
@@ -17144,7 +17144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a882d68ced70924ba40a2a596afe8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationText: {fileID: 0}
   displayTime: 5
   greenValueDisplay: {fileID: 4852060866275235249}
 --- !u!1 &9087422589178569652
