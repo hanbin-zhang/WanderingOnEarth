@@ -67,6 +67,7 @@ public abstract class NaturalObject : MonoBehaviour
         }
     }
 
+    [Photon.Pun.PunRPC]
     public void UpdateState()
     {
         if (currentState < Models.Count - 1)
