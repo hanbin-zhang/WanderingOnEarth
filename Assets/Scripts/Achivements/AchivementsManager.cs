@@ -9,23 +9,22 @@ public class AchivementsManager : MonoBehaviour
 {  
 
     public GameObject AchivePanel;
-    public bool isActive = false;
+    [HideInInspector] public bool isActive = false;
     public TMPro.TMP_Text title;
     public TMPro.TMP_Text desc;
     public int showTime = 5;
-    private Object mutex = new();
 
-    public float sumGreenValue = 0.0f;
+    [HideInInspector] public float sumGreenValue = 0.0f;
 
 
     // achivement 01
-    public float achive01threshold = 10.0f;
-    public int achive01code = 0;
+    [HideInInspector] public float achive01threshold = 10.0f;
+    [HideInInspector] public int achive01code = 0;
 
 
     // achivement 02
-    public int achive02threshold = 3;
-    public int achive02code = 0;
+    [HideInInspector] public int achive02threshold = 3;
+    [HideInInspector] public int achive02code = 0;
 
     // achivement 03
     // collection
