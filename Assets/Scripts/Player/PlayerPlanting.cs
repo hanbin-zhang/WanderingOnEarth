@@ -67,7 +67,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (Input.GetMouseButtonUp(0))
             {
                 if ((Time.time - startTime) >= 0.2f)
-                {
+                {   
                     //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
                     newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
                     Debug.Log(objs[objIndex].name);
