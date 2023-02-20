@@ -6,6 +6,14 @@ public class NaObjManager : MonoBehaviour
     public static List<NaturalObject> evolvingNaObjs = new();
     private static readonly object evolvingLock = new();
 
+    private void Start()
+    {
+        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        {
+            this.enabled = false;
+        }
+    }
+
     public static void Register(NaturalObject naturalObject)
     {
         lock (evolvingLock)
