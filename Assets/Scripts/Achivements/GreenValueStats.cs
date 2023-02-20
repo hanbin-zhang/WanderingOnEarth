@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class GreenValueStats : MonoBehaviour
 {
 
-    public TMPro.TMP_Text notificationText;
+    // public TMPro.TMP_Text notificationText;
     public float displayTime = 5f;
     public TMPro.TMP_Text greenValueDisplay;
 
     private void Start()
     {
         
-        notificationText.gameObject.SetActive(false);
+        // notificationText.gameObject.SetActive(false);
     }
 
-    public void ShowNotification(string message)
+    /*public void ShowNotification(string message)
     {
         notificationText.gameObject.SetActive(true);
         notificationText.text = message;
@@ -27,7 +27,7 @@ public class GreenValueStats : MonoBehaviour
     {
         notificationText.gameObject.SetActive(false);
     }
-
+*/
     private void FixedUpdate()
     {
         float sumGreenValue = 0;
@@ -43,7 +43,7 @@ public class GreenValueStats : MonoBehaviour
         //Debug.Log(sumGreenValue);
         if (sumGreenValue > 10.0f)
         {
-            ShowNotification("Reach Green Value ten!");
+            //ShowNotification("Reach Green Value ten!");
         }
         greenValueDisplay.text = $"Green Value: {sumGreenValue}";
     }
