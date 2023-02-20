@@ -7,11 +7,16 @@ public class DeerObject : NaturalObject
 {
     public override void AddSpecificCache()
     {
-        GameObjectTracker.DeerCounnt += 1;
+        Debug.Log(this.GetType().Name);
+        if (GameObjectTracker.objectCount.ContainsKey(this.GetType().Name))
+        {
+            GameObjectTracker.objectCount[this.GetType().Name]++;
+        }
+        else GameObjectTracker.objectCount[this.GetType().Name] = 1;
     }
 
     public override bool CheckPlaceCondtion()
     {
-        return true;
+        return GameObjectTracker.objectCount[typeof(TreeObject).Name] >= 3;
     }
 }

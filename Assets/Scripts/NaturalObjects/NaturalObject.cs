@@ -44,17 +44,6 @@ public abstract class NaturalObject : MonoBehaviour
     [Photon.Pun.PunRPC]
     public void UpdateObject()
     {
-
-        /*if (currentModel != null)
-        {
-            Destroy(currentModel);
-        }
-
-        currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
-        currentModel.transform.parent = transform;
-        currentModel.transform.localPosition += localShift;
-        //currentModel.transform.localPosition = this.transform.localPosition;*/
-
         if (currentModel == null)
         {
             currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);

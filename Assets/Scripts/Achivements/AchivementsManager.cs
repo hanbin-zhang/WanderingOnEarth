@@ -57,16 +57,23 @@ public class AchivementsManager : MonoBehaviour
             StartCoroutine(LoadAchive01());
         }
 
-        if (!isActive & GameObjectTracker.TreeCount >= achive02threshold && achive02code != 102)
+        if (GameObjectTracker.objectCount.ContainsKey(typeof(TreeObject).Name))
         {
-            isActive = true;
-            StartCoroutine(LoadAchive02());
+            if (!isActive & GameObjectTracker.objectCount[typeof(TreeObject).Name] >= achive02threshold && achive02code != 102)
+            {
+                isActive = true;
+                StartCoroutine(LoadAchive02());
+            }
         }
 
-        if (!isActive & GameObjectTracker.DeerCounnt >= achive03threshold && achive03code != 103)
+
+        if (GameObjectTracker.objectCount.ContainsKey(typeof(DeerObject).Name))
         {
-            isActive = true;
-            StartCoroutine(LoadAchive03());
+            if (!isActive & GameObjectTracker.objectCount[typeof(DeerObject).Name] >= achive03threshold && achive03code != 103)
+            {
+                isActive = true;
+                StartCoroutine(LoadAchive03());
+            }
         }
 
         if (GameObjectTracker.collected.Count > 0 && !isActive)
