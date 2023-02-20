@@ -136,4 +136,26 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             pressTime.text = null;
         }*/
     }
+
+    private void DestroyPollution(Vector3 rayOrigin1)
+    {/*
+        rayOrigin1.y = 1000;
+
+        bool valid = false;
+        point = default;
+        Ray ray = new Ray(rayOrigin1, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            point = hit.point;
+            // Check for collisions with existing objects
+            Collider[] colliders = Physics.OverlapSphere(point, 1f);
+            // terrain is a collider
+            valid = hit.collider.gameObject.name == "Terrain1" && colliders.Length <= 1;
+        }
+
+        crossHair.GetComponent<Image>().color = valid ? Color.green : Color.red;
+
+        return valid && !Cursor.visible || startTime != 0;*/
+    }
 }

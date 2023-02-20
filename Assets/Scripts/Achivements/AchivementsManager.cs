@@ -46,7 +46,8 @@ public class AchivementsManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        // load achived achivements
         /*achive01code = PlayerPrefs.GetInt("Achive01");
         achive02code = PlayerPrefs.GetInt("Achive02");
         achive03code = PlayerPrefs.GetInt("Achive03");*/
