@@ -18,23 +18,33 @@ public abstract class NaturalObject : MonoBehaviour
     [HideInInspector] public int parentWorldObjID;
     [HideInInspector] public int currentWorldID;
     [HideInInspector] public int updateModelCommand = 0;
+    public abstract string GetDerivedClassName();
 
     void Start()
     {
         currentWorldID = GetInstanceID();
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
-        AddSpecificCache();
+        AddSpecificCache(GetDerivedClassName());
         CreatedAt = Time.time;   
         NaObjManager.Register(this);
     }
+
+    
 
     public float GetUpdateTime()
     {
         return CreatedAt + growTime * (float)(currentState + 1);
     }
 
-    public abstract void AddSpecificCache();
+    public void AddSpecificCache(string className)
+    {
+        if (GameObjectTracker.objectCount.ContainsKey(className))
+        {
+            GameObjectTracker.objectCount[className]++;
+        }
+        else GameObjectTracker.objectCount[className] = 1;
+    }
 
     public float GetCurrentGreenValue()
     {
