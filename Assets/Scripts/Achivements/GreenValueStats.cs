@@ -8,6 +8,7 @@ public class GreenValueStats : MonoBehaviour
 
     public TMPro.TMP_Text notificationText;
     public float displayTime = 5f;
+    public TMPro.TMP_Text greenValueDisplay;
 
     private void Start()
     {
@@ -44,6 +45,6 @@ public class GreenValueStats : MonoBehaviour
         {
             ShowNotification("Reach Green Value ten!");
         }
-
+        greenValueDisplay.text = $"Green Value: {sumGreenValue}";
     }
 }
