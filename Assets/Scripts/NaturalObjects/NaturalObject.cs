@@ -26,7 +26,7 @@ public abstract class NaturalObject : MonoBehaviour
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache();
         CreatedAt = Time.time;   
-        NaObjManager.evolvingNaObjs.Add(this);
+        NaObjManager.Register(this);
     }
 
     public float GetUpdateTime()
@@ -41,6 +41,7 @@ public abstract class NaturalObject : MonoBehaviour
         return baseGreenValue * (1.0f + currentState);
     }
 
+    [Photon.Pun.PunRPC]
     public void UpdateObject()
     {
 

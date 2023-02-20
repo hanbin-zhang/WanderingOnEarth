@@ -16885,6 +16885,8 @@ MonoBehaviour:
   achive01code: 0
   achive02threshold: 3
   achive02code: 0
+  achive03threshold: 3
+  achive03code: 0
 --- !u!114 &9070680443464806010
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,12 +27,11 @@ public class AchivementsManager : MonoBehaviour
     [HideInInspector] public int achive02code = 0;
 
     // achivement 03
-    // collection
+    [HideInInspector] public int achive03threshold = 3;
+    [HideInInspector] public int achive03code = 0;
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Achive01", 0);
-        PlayerPrefs.SetInt("Achive02", 0);
         AchivePanel.SetActive(false);
     }
 
@@ -48,9 +47,9 @@ public class AchivementsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //PlayerPrefs.SetInt("Achive01", 0);
-        achive01code = PlayerPrefs.GetInt("Achive01");
+        /*achive01code = PlayerPrefs.GetInt("Achive01");
         achive02code = PlayerPrefs.GetInt("Achive02");
+        achive03code = PlayerPrefs.GetInt("Achive03");*/
 
         if (!isActive & sumGreenValue >= achive01threshold & achive01code != 101)
         {
@@ -63,6 +62,13 @@ public class AchivementsManager : MonoBehaviour
             isActive = true;
             StartCoroutine(LoadAchive02());
         }
+
+        if (!isActive & GameObjectTracker.DeerCounnt >= achive03threshold && achive03code != 103)
+        {
+            isActive = true;
+            StartCoroutine(LoadAchive03());
+        }
+
         if (GameObjectTracker.collected.Count > 0 && !isActive)
         {
             isActive = true;
@@ -72,7 +78,7 @@ public class AchivementsManager : MonoBehaviour
 
             GameObjectTracker.updatedcollected.Add(ID);
 
-            StartCoroutine(LoadAchive03(ID, desc));
+            StartCoroutine(LoadAchiveCollect(ID, desc));
         }
     }
         
@@ -110,7 +116,24 @@ public class AchivementsManager : MonoBehaviour
         isActive = false;
     }
 
-    IEnumerator LoadAchive03(int collectableID, string collectableDesc)
+    IEnumerator LoadAchive03()
+    {
+        achive03code = 103;
+        PlayerPrefs.SetInt("Achive03", achive03code);
+
+        AchivePanel.SetActive(true);
+
+        title.text = "deers";
+        desc.text = achive03threshold + " deers breeded";
+
+        yield return new WaitForSeconds(showTime);
+        AchivePanel.SetActive(false);
+        title.text = "";
+        desc.text = "";
+        isActive = false;
+    }
+
+    IEnumerator LoadAchiveCollect(int collectableID, string collectableDesc)
     {
         AchivePanel.SetActive(true);
         title.text = "Collection " + collectableID + " Collected!";
