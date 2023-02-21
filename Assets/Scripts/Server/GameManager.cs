@@ -13,12 +13,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     //[Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
 
+    public GameObject Treasure;
+
     public static GameManager Instance;
 
     #endregion
-    
+
     void Start()
-    {//In case we started this demo with the wrong scene being active, simply load the menu scene
+    {
+        //In case we started this demo with the wrong scene being active, simply load the menu scene
         if (PhotonNetwork.CurrentRoom == null)
         {
             Debug.Log("Is not in the room, returning back to Lobby");
@@ -30,10 +33,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         int init_x = r.Next(100, 800);
         int init_z = r.Next(100, 800);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x,100f,init_z), Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 100f, init_z), Quaternion.identity, 0);
         Instance = this;
+
+        for (int i = 0; i < 4; i++)
+        {
+            Instantiate(this.Treasure, new Vector3(r.Next(100, 800), 100f, r.Next(100, 800)), Quaternion.identity);
+        }
     }
-    
+
     #region Photon Callbacks
     
     // Called when the local player left the room. the game's logic can clean up it's internal state.

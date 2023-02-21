@@ -25,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 063c882222008e44f91101b0bdf76d3a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 610.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 063c882222008e44f91101b0bdf76d3a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 063c882222008e44f91101b0bdf76d3a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 599.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 063c882222008e44f91101b0bdf76d3a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74,6 +74,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 063c882222008e44f91101b0bdf76d3a, type: 3}
   m_PrefabInstance: {fileID: 3416410342165803958}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &3839899063874186886
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569566143460036327}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 10
+  m_AngularDrag: 10
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &8669721533970912788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,21 +101,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09194366, y: 0.07979969, z: 0.08512337}
-  m_Center: {x: 0.0015820444, y: 0.039309997, z: -0.0016354293}
---- !u!54 &3839899063874186886
-Rigidbody:
+  m_Size: {x: 0.09194366, y: 0.04829798, z: 0.04963074}
+  m_Center: {x: 0.0015820444, y: 0.036935568, z: -0.00024871828}
+--- !u!114 &1997403580
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2569566143460036327}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2813bfd67ee38945a579fedfacdcfaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableID: 0
+  collectDistance: 3
+  collectDesc: One small step
