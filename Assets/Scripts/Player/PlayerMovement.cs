@@ -88,13 +88,13 @@ public class PlayerMovement : MonoBehaviour
         // on ground
         if (grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * GetComponent<Rigidbody>().mass * 10f, ForceMode.Force);
         }
             
         // in air
         else
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * GetComponent<Rigidbody>().mass * 10f * airMultiplier, ForceMode.Force);
         }          
     }
 
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up * jumpForce * GetComponent<Rigidbody>().mass, ForceMode.Impulse);
     }
     private void ResetJump()
     {

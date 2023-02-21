@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8105903888975832105
+--- !u!1 &6995246635646439115
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8105903888975832111}
-  - component: {fileID: 8105903888975832104}
-  - component: {fileID: 3030474546199431069}
-  - component: {fileID: 1805912842954267704}
+  - component: {fileID: 6995246635646439114}
+  - component: {fileID: 6995246635646439117}
+  - component: {fileID: -7265609673570778948}
+  - component: {fileID: -4192319403471518309}
   m_Layer: 0
-  m_Name: DeerMain
+  m_Name: RabbitMain
   m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8105903888975832111
+--- !u!4 &6995246635646439114
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105903888975832105}
+  m_GameObject: {fileID: 6995246635646439115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 613.5724, y: 13.446209, z: 601.18976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8105903888975832104
+--- !u!114 &6995246635646439117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105903888975832105}
+  m_GameObject: {fileID: 6995246635646439115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0be59d206af7b48885a66fadf02be7, type: 3}
+  m_Script: {fileID: 11500000, guid: c0b7bb976d7e1af4fa3b5be4c6eca3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
-  - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
-  - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
+  - {fileID: 9128205099626154644, guid: d6493e9b78d796c47b4a176c0c976473, type: 3}
+  - {fileID: 666774244989497019, guid: 724405304f72b4d4ca4750f5070a1bba, type: 3}
+  - {fileID: 4147840071424894380, guid: 4a4e28eaacae4934caddb82ba7e5e921, type: 3}
   localShift: {x: 0, y: 0, z: 0}
   growTime: 5
   blockID: 0
@@ -60,13 +60,13 @@ MonoBehaviour:
   parentWorldObjID: 0
   currentWorldID: 0
   updateModelCommand: 0
---- !u!114 &3030474546199431069
+--- !u!114 &-7265609673570778948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105903888975832105}
+  m_GameObject: {fileID: 6995246635646439115}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -79,17 +79,17 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1805912842954267704}
+  - {fileID: -4192319403471518309}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1805912842954267704
+--- !u!114 &-4192319403471518309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8105903888975832105}
+  m_GameObject: {fileID: 6995246635646439115}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c60e407572c35194f88b430507411bfb, type: 3}
