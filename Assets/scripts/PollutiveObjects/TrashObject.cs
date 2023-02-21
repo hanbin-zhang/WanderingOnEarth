@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class TrashObject : PollutiveObject
 {
-    void Start()
-    {
-        this.pollutionValue = 3;
-    }
+
 }

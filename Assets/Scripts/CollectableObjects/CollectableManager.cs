@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CollectableManager : MonoBehaviour
 {
-    public List<CollectableObject> collectables; // An array of all the collectables in the scene
+    [HideInInspector] public List<CollectableObject> collectables; // An array of all the collectables in the scene
 
     private List<CollectableObject> activeCollectables; // A list of the collectables within the player's region
+
+    public GameObject CollectMessagePanel;
 
     private void Start()
     {
@@ -19,17 +21,19 @@ public class CollectableManager : MonoBehaviour
         {
             collectables.Add(collectableArray[i]);
         }
-        
+
 
     }
 
 
     private void Update()
     {
+        CollectMessagePanel.SetActive(false);
         if (collectables == null)
         {
             /*collectables = FindObjectsOfType<CollectableObject>();*/
-        } else
+        }
+        else
         {
             // Clear the list of active collectables
             activeCollectables.Clear();
@@ -45,13 +49,13 @@ public class CollectableManager : MonoBehaviour
                     // Add the collectable to the list of active collectables
                     activeCollectables.Add(collectable);
                 }
-                
+
             }
             // Loop through the active collectables and call the Update method
             for (int i = 0; i < activeCollectables.Count; i++)
             {
                 CollectableObject collectable = activeCollectables[i];
-                if (collectable.CheckCollect(transform.position))
+                if (collectable.CheckCollect(transform.position, CollectMessagePanel))
                 {
                     collectables.Remove(collectable);
                     Destroy(collectable.gameObject);

@@ -5,13 +5,12 @@ using System.Threading;
 
 public class DeerObject : NaturalObject
 {
-    public override void AddSpecificCache()
-    {
-        GameObjectTracker.DeerCounnt += 1;
-    }
-
     public override bool CheckPlaceCondtion()
     {
-        return true;
+        return GameObjectTracker.objectCount[typeof(TreeObject).Name] >= 3;
+    }
+    public override string GetDerivedClassName()
+    {
+        return GetType().Name;
     }
 }

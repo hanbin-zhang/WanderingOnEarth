@@ -9,67 +9,51 @@ public abstract class NaturalObject : MonoBehaviour
 
     public List<GameObject> Models;
     public Vector3 localShift;
-    public int growTime;
+    public float growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
+    [HideInInspector] public float CreatedAt;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
     [HideInInspector] public int parentWorldObjID;
     [HideInInspector] public int currentWorldID;
     [HideInInspector] public int updateModelCommand = 0;
+    public abstract string GetDerivedClassName();
 
     void Start()
     {
         currentWorldID = GetInstanceID();
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
-        AddSpecificCache();
-
-        Thread thread = new Thread(new ThreadStart(UpgradeTimer));
-        thread.Start();
+        AddSpecificCache(GetDerivedClassName());
+        CreatedAt = Time.time;   
+        NaObjManager.Register(this);
     }
 
-    public void UpgradeTimer()
+    
+
+    public float GetUpdateTime()
     {
-        while (currentState + 1 < Models.Count)
-        {
-            Thread.Sleep(1000*growTime);
-            UpdateState();
-            updateModelCommand++;
-        }
-        return;
+        return CreatedAt + growTime * (float)(currentState + 1);
     }
 
-    private void Update()
+    public void AddSpecificCache(string className)
     {
-        Debug.Log(currentState);
-        Debug.Log(updateModelCommand);
-        while (updateModelCommand > 0)
+        if (GameObjectTracker.objectCount.ContainsKey(className))
         {
-            UpdateObject();
-            updateModelCommand--;
+            GameObjectTracker.objectCount[className]++;
         }
+        else GameObjectTracker.objectCount[className] = 1;
     }
-    public abstract void AddSpecificCache();
 
     public float GetCurrentGreenValue()
     {
         return baseGreenValue * (1.0f + currentState);
     }
 
+    [Photon.Pun.PunRPC]
     public void UpdateObject()
     {
-
-        /*if (currentModel != null)
-        {
-            Destroy(currentModel);
-        }
-
-        currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
-        currentModel.transform.parent = transform;
-        currentModel.transform.localPosition += localShift;
-        //currentModel.transform.localPosition = this.transform.localPosition;*/
-
         if (currentModel == null)
         {
             currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
@@ -83,6 +67,7 @@ public abstract class NaturalObject : MonoBehaviour
         }
     }
 
+    [Photon.Pun.PunRPC]
     public void UpdateState()
     {
         if (currentState < Models.Count - 1)

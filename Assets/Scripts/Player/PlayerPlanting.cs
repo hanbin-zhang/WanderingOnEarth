@@ -40,6 +40,17 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         SetText();
     }
 
+    public static List<Vector3> plantTrees = new List<Vector3>();
+
+    public static GameObject PlantObj(string name, Vector3 pos, Quaternion rotation)
+    {
+        if (name == "TreeMain")
+        {
+            plantTrees.Add(pos);
+        }
+        
+        return PhotonNetwork.Instantiate(name, pos, rotation);
+    }
     private void Plant()
     {
         Vector3 plantingPosition = transform.position + transform.forward * 2;
@@ -56,9 +67,10 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (Input.GetMouseButtonUp(0))
             {
                 if ((Time.time - startTime) >= 0.2f)
-                {
-                    newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                    Debug.Log("placed");
+                {   
+                    //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                    newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                    Debug.Log(objs[objIndex].name);
                 }
                 startTime = 0;
                 preview = false;
@@ -123,5 +135,27 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         {
             pressTime.text = null;
         }*/
+    }
+
+    private void DestroyPollution(Vector3 rayOrigin1)
+    {/*
+        rayOrigin1.y = 1000;
+
+        bool valid = false;
+        point = default;
+        Ray ray = new Ray(rayOrigin1, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            point = hit.point;
+            // Check for collisions with existing objects
+            Collider[] colliders = Physics.OverlapSphere(point, 1f);
+            // terrain is a collider
+            valid = hit.collider.gameObject.name == "Terrain1" && colliders.Length <= 1;
+        }
+
+        crossHair.GetComponent<Image>().color = valid ? Color.green : Color.red;
+
+        return valid && !Cursor.visible || startTime != 0;*/
     }
 }

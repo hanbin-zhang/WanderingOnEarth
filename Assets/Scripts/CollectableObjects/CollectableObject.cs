@@ -6,34 +6,34 @@ public class CollectableObject : MonoBehaviour
 {
     public int collectableID;
     public float collectDistance;
-    public string collectMessage = "Press 'C' to collect";
+    public string collectDesc;
 
-    public bool CheckCollect(Vector3 playerPosition)
+
+    public bool CheckCollect(Vector3 playerPosition, GameObject messagePanel)
     {
         float distance = Vector3.Distance(transform.position, playerPosition);
         if (distance <= collectDistance)
         {
             // Show collect message
-            ShowCollectMessage();
+            ShowCollectMessage(messagePanel);
 
             // Check if player presses 'P' to collect
             if (Input.GetKeyDown(KeyCode.C))
             {
                 Collect();
-                return true;    
+                return true;
             }
         }
         return false;
     }
 
-    private void ShowCollectMessage()
+    private void ShowCollectMessage(GameObject messagePanel)
     {
-        Debug.Log(collectMessage);
+        messagePanel.SetActive(true);
     }
 
     private void Collect()
     {
-        // Add collect logic here
-        Debug.Log("Collectable collected!");
+        GameObjectTracker.collected.Add(this.collectableID, collectDesc);
     }
 }
