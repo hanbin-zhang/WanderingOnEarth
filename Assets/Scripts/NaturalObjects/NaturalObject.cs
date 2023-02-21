@@ -12,6 +12,7 @@ public abstract class NaturalObject : MonoBehaviour
     public float growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
+    public string plantingConditionMessage = "need three trees";
     [HideInInspector] public float CreatedAt;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
@@ -26,11 +27,11 @@ public abstract class NaturalObject : MonoBehaviour
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
-        CreatedAt = Time.time;   
+        CreatedAt = Time.time;
         NaObjManager.Register(this);
     }
 
-    
+
 
     public float GetUpdateTime()
     {

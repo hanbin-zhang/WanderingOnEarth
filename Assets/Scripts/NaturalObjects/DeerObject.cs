@@ -7,7 +7,10 @@ public class DeerObject : NaturalObject
 {
     public override bool CheckPlaceCondtion()
     {
-        return GameObjectTracker.objectCount[typeof(TreeObject).Name] >= 3;
+        if (GameObjectTracker.objectCount.ContainsKey(typeof(TreeObject).Name))
+        {
+            return GameObjectTracker.objectCount[typeof(TreeObject).Name] >= 3;
+        } else return false;
     }
     public override string GetDerivedClassName()
     {

@@ -8,16 +8,19 @@ using Unity.VisualScripting;
 using System.Transactions;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
-{
+{   
     public GameObject crossHair;
-    public GameObject tree;
-    public GameObject deer;
+    // public GameObject tree;
+    // public GameObject deer;
 
 
     public GameObject[] objs;
     private int objIndex = 0;
     public TMP_Text selectedObjName;
     //public TMP_Text pressTime;
+
+    public GameObject PlantingCondPanel;
+    public TMPro.TMP_Text PlantingCondText;
 
     private float startTime;
     private GameObject newObj;
@@ -51,13 +54,19 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         
         return PhotonNetwork.Instantiate(name, pos, rotation);
     }
+
+    private void turnOffPanel()
+    {
+        PlantingCondPanel.SetActive(false);
+    }
     private void Plant()
     {
+        
         Vector3 plantingPosition = transform.position + transform.forward * 2;
-        Vector3 plantPoint;
 
-        if (IsValid(plantingPosition, out plantPoint)  )
+        if (IsValid(plantingPosition, out Vector3 plantPoint)) 
         {
+
             if (Input.GetMouseButtonDown(0))
             {
                 startTime = Time.time;
@@ -67,14 +76,25 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (Input.GetMouseButtonUp(0))
             {
                 if ((Time.time - startTime) >= 0.2f)
-                {   
-                    //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                    newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
-                    Debug.Log(objs[objIndex].name);
+                {
+                    if (!objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion())
+                    {
+                        PlantingCondPanel.SetActive(true);
+                        PlantingCondText.text = objs[objIndex].GetComponent<NaturalObject>().plantingConditionMessage;
+                        Invoke(nameof(turnOffPanel), 2);
+                    }
+                    else
+                    {
+                        //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                        newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                        Debug.Log(objs[objIndex].name);
+                    }
+
                 }
                 startTime = 0;
                 preview = false;
             }
+            
         }
     }
 
