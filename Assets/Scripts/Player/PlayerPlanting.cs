@@ -10,8 +10,8 @@ using System.Transactions;
 public class PlayerPlanting : MonoBehaviourPunCallbacks
 {
     public GameObject crossHair;
-    public GameObject tree;
-    public GameObject deer;
+    // public GameObject tree;
+    // public GameObject deer;
 
 
     public GameObject[] objs;

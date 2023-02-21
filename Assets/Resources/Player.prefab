@@ -17023,12 +17023,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossHair: {fileID: 2384815014802144067}
-  tree: {fileID: 3998598269004964118, guid: d5b7b556d9506624d95998b4505d72d4, type: 3}
-  deer: {fileID: 8105903888975832105, guid: cf66ffad356857d4488de158334aae8f, type: 3}
   objs:
   - {fileID: 8105903888975832105, guid: cf66ffad356857d4488de158334aae8f, type: 3}
   - {fileID: 3998598269004964118, guid: d5b7b556d9506624d95998b4505d72d4, type: 3}
   - {fileID: 6995246635646439115, guid: 6d451996c972dfc49966363153580291, type: 3}
+  - {fileID: 5164290843662913125, guid: e68876dc218923b4caa50570d7647d65, type: 3}
   selectedObjName: {fileID: 1946500356}
 --- !u!114 &6852415287144461568
 MonoBehaviour:
