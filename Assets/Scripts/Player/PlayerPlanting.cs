@@ -52,7 +52,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             plantTrees.Add(pos);
         }
         
-        return PhotonNetwork.Instantiate(name, pos, rotation);
+        return PhotonNetwork.InstantiateSceneObject(name, pos, rotation);
     }
 
     private void turnOffPanel()

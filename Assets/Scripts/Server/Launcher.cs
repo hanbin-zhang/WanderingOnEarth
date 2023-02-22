@@ -80,13 +80,13 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("PUN Basics Tutorial/Launcher: OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+        Debug.Log("OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom, CleanupCacheOnLeave = false });
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+        Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room.");
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             Debug.Log("We load the World");
