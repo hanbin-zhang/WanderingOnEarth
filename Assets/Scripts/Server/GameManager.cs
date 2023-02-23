@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 50f, init_z), Quaternion.identity, 0);
         Instance = this;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 6; i++)
         {
             Instantiate(this.Treasure, new Vector3(r.Next(100, 500), 50f, r.Next(100, 500)), Quaternion.identity);
         }
