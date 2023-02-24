@@ -57,7 +57,7 @@ public abstract class NaturalObject : MonoBehaviour
     {
         if (currentModel == null)
         {
-            currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
+            currentModel = Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
         }
         else
         {
