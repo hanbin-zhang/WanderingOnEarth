@@ -49,11 +49,10 @@ MonoBehaviour:
   Models:
   - {fileID: 6326810312150003598, guid: 64f5a2d47a80bf247a3ffa1206887a81, type: 3}
   - {fileID: 4959905896869581913, guid: 47124e85693bdc147b4ea8b3d888cb53, type: 3}
-  localShift: {x: 0, y: -0.1, z: 1}
+  localShift: {x: 0, y: -0.7, z: 1}
   growTime: 5
   blockID: 0
   baseGreenValue: 1
-  plantingConditionMessage: 
   CreatedAt: 0
   currentState: 0
   currentModel: {fileID: 0}

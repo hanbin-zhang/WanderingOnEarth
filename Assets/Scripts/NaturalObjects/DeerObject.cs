@@ -5,12 +5,17 @@ using System.Threading;
 
 public class DeerObject : NaturalObject
 {
-    public override bool CheckPlaceCondtion()
+    public override string CheckPlaceCondtion()
     {
         if (GameObjectTracker.objectCount.ContainsKey(typeof(TreeObject).Name))
         {
-            return GameObjectTracker.objectCount[typeof(TreeObject).Name] >= 3;
-        } else return false;
+             if (GameObjectTracker.objectCount[typeof(TreeObject).Name] < 3)
+            {
+                return "need 3 trees";
+            };
+        } else return "need 3 trees";
+
+        return null;
     }
     public override string GetDerivedClassName()
     {

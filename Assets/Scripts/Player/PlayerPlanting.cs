@@ -77,10 +77,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             {
                 if ((Time.time - startTime) >= 0.2f)
                 {
-                    if (!objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion())
+                    string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
+                    if (plantCond is not null)
                     {
                         PlantingCondPanel.SetActive(true);
-                        PlantingCondText.text = objs[objIndex].GetComponent<NaturalObject>().plantingConditionMessage;
+                        PlantingCondText.text = plantCond;
                         Invoke(nameof(turnOffPanel), 2);
                     }
                     else

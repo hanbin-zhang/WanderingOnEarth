@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RabbitObject : NaturalObject
 {
-    public override bool CheckPlaceCondtion()
+    public override string CheckPlaceCondtion()
     {
-        return true;
+        return null;
     }
 
     public override string GetDerivedClassName()
