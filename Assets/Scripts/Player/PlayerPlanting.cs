@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using System.Transactions;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
 {   
@@ -51,7 +52,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         {
             plantTrees.Add(pos);
         }
-        
+
+        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos);
         return PhotonNetwork.Instantiate(name, pos, rotation);
     }
 
@@ -94,6 +96,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 }
                 startTime = 0;
                 preview = false;
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                Manager.Instance.EventController.Get<OnWaterEvent>()?.Notify();
             }
             
         }
