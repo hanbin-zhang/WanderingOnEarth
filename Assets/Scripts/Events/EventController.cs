@@ -4,11 +4,6 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-public enum EventLabel
-{
-    ON_PLANT,
-    ON_WATER,
-}
 
 public class EventController : IEnumerable<BaseEvent>
 {

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class OnWaterEvent : BaseEvent
 {
-    // private EventLabel eventLabel = EventLabel.ON_WATER;
     public interface OnWaterListener
     {
         public void OnEvent(OnWaterMessage msg);
@@ -14,7 +13,7 @@ public class OnWaterEvent : BaseEvent
 
     public class OnWaterMessage : BaseMessage
     {
-        public OnWaterMessage() => eventLabel = EventLabel.ON_WATER;
+        
     }
 
     private List<OnWaterListener> listeners = new List<OnWaterListener>();

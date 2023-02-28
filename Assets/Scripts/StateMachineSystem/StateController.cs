@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,22 @@ public enum StateLabel
     GREENED
 }
 
+public class StateProperty
+{
+    public StateLabel label { get; set; }
+    public int greenValue { get; set; }
+
+}
+
 public class StateController : IEnumerable<BaseState>
 {
     private EventController eventController;
     public float mapHeight, mapWidth;
     private int nRows, nColumns;
     public int regionSize;
-    private StateLabel[,] regionStates;
+    
+    private StateProperty[,] statesProperty;
+    public StateProperty[,] StatesProperty => statesProperty;
 
     public Dictionary<StateLabel, BaseState> stateLabelMap = new Dictionary<StateLabel, BaseState>();
     public IEnumerator<BaseState> GetEnumerator() => stateLabelMap.Values.GetEnumerator();
@@ -30,7 +40,12 @@ public class StateController : IEnumerable<BaseState>
             {
                 for (int i = 0; i < nColumns; i++)
                 {
-                    regionStates[j, i] = state.StateLabel;
+                    
+                    statesProperty[j, i] = new StateProperty()
+                    {
+                        label = state.StateLabel,
+                        greenValue = 0
+                    };
                 }
             }
         }
@@ -46,15 +61,13 @@ public class StateController : IEnumerable<BaseState>
         this.nRows = (int)(mapHeight / regionSize);
         this.nColumns = (int)(mapWidth / regionSize);
 
-        regionStates = new StateLabel[nRows, nColumns];
+        statesProperty = new StateProperty[nRows, nColumns];
         BindEvents();
     }
 
     public void BindEvents()
     {
-        eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
-            
-            
+        /*Action<OnPlantEvent.OnPlantMessage> onPlantAction = (msg) => {
             getRegionState(msg.pos).Handle(this, msg);
             string log = "";
             foreach (StateLabel label in regionStates)
@@ -62,37 +75,61 @@ public class StateController : IEnumerable<BaseState>
                 log += label + " ";
             }
             Debug.Log($"region states: {log}");
+        };
+        eventController.Get<OnPlantEvent>()?.AddListener(onPlantAction);
+        // 实现接口方式 listener
+        eventController.Get<OnPlantEvent>()?.AddListener(new StateOnPlantEventListener(this));*/
+        // 实现lambda方式 action
+
+        eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
+
+            StateProperty stateProperty = GetStateProperty(msg.pos);
+            StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
+            stateProperty.label = newState;
+            
+            string log = "";
+            foreach (StateProperty s in statesProperty)
+            {
+                log += s.label + " ";
+            }
+            Debug.Log($"region states: {log}");
         });
         eventController.Get<OnWaterEvent>()?.AddListener((msg) => {
-            //currentState.Handle(this, msg);
-        });
+            foreach (StateProperty s in statesProperty)
+            {
+                StateLabel newState = GetRegionState(s.label).Handle(s, msg);
+                s.label = newState;
+            }
+        });        
     }
 
-    public BaseState getRegionState(Vector3 position)
-    {
-        return stateLabelMap[getRegionStateLabel(position)];
-    }
-
-    public StateLabel getRegionStateLabel(Vector3 position)
-    {
-        int x = (int)Mathf.Clamp(position.x / regionSize, 0, nColumns - 1);
-        int y = (int)Mathf.Clamp(position.z / regionSize, 0, nRows - 1);
-        return regionStates[y, x];
-    }
-
-    public void setRegionState(Vector3 position, BaseState state)
+    public StateProperty GetStateProperty(Vector3 position)
     {
         int x = (int)Mathf.Clamp(position.x / regionSize, 0, nColumns - 1);
         int y = (int)Mathf.Clamp(position.z / regionSize, 0, nRows - 1);
-        regionStates[y, x] = state.StateLabel;
+        return statesProperty[y, x];     
     }
 
-    public void setRegionStateLabel(Vector3 position, StateLabel state)
+    public BaseState GetRegionState(StateLabel stateLabel)
     {
-        int x = (int)Mathf.Clamp(position.x / regionSize, 0, nColumns - 1);
-        int y = (int)Mathf.Clamp(position.z / regionSize, 0, nRows - 1);
-        regionStates[y, x] = state;
+        return stateLabelMap[stateLabel];
     }
 }
 
 
+public class StateOnPlantEventListener : OnPlantEvent.OnPlantListener
+{
+    private StateController stateController;
+    private StateProperty stateProperty;
+
+    public StateOnPlantEventListener(StateController stateController, StateProperty stateProperty)
+    {
+        this.stateController = stateController;
+        this.stateProperty = stateProperty;
+    }
+
+    public void OnEvent(OnPlantEvent.OnPlantMessage msg)
+    {
+        StateLabel newState = stateController.GetRegionState(stateProperty.label).Handle(stateProperty, msg);
+    }
+}

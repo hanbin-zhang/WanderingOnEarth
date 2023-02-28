@@ -90,7 +90,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     {
                         //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
                         newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
-                        Debug.Log(objs[objIndex].name);
+                        //Debug.Log(objs[objIndex].name);
                     }
 
                 }

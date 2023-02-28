@@ -6,16 +6,14 @@ using UnityEngine;
 
 public class OnPlantEvent : BaseEvent
 {
-    //private EventLabel eventLabel = EventLabel.ON_PLANT;
-
+    
     public interface OnPlantListener
     {
         public void OnEvent(OnPlantMessage msg);
     }
 
     public class OnPlantMessage : BaseMessage
-    {
-        public OnPlantMessage() => eventLabel = EventLabel.ON_PLANT;
+    {  
         public Vector3 pos { get; set; }
         public Quaternion rotation { get; set; }
     }
