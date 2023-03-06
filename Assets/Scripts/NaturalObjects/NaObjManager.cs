@@ -32,7 +32,13 @@ public class NaObjManager : MonoBehaviour
             while (evolvingNaObjs.Count > 0 && evolvingNaObjs[0].GetUpdateTime() <= currentTime)
             {
                 NaturalObject naturalObject = evolvingNaObjs[0];
-                
+
+
+                if (naturalObject == null)
+                {
+                    evolvingNaObjs.RemoveAt(0);
+                    continue;
+                }
 
                 naturalObject.UpdateState();
                 naturalObject.UpdateObject();
