@@ -50,7 +50,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     public static List<Vector3> plantTrees = new List<Vector3>();
 
-    public static GameObject PlantObj(string name, Vector3 pos, Quaternion rotation)
+    public static void PlantObj(string name, Vector3 pos, Quaternion rotation)
     {
         if (name == "TreeMain")
         {
@@ -58,7 +58,6 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         }
         GameObject gameObject = PhotonNetwork.Instantiate(name, pos, rotation);
         Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, gameObject.GetComponent<NaturalObject>());
-        return gameObject;
     }
 
     private void turnOffPanel()
@@ -93,7 +92,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     else
                     {
                         //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                        newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                        PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
                         //Debug.Log(objs[objIndex].name);
                     }
 
