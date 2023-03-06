@@ -2,12 +2,16 @@
 using UnityEngine;
 using UnityEditor;
 
+
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
     [InitializeOnLoad]
     public static class NetMQInitializer
     {
-        public static NetMQPublisher Publisher;
+        public static NetMQPublisher? Publisher;
         
         static NetMQInitializer()
         {
@@ -66,13 +70,11 @@ namespace Meryel.UnityCodeAssist.Editor
 
         private static void RunOnceOnUpdate(Action action)
         {
-            EditorApplication.CallbackFunction callback = null;
-
-            callback = () =>
+            void callback()
             {
                 EditorApplication.update -= callback;
                 action();
-            };
+            }
 
             EditorApplication.update += callback;
         }
@@ -84,9 +86,10 @@ namespace Meryel.UnityCodeAssist.Editor
             //return;
 #if !UNITY_EDITOR_WIN
             return;
+#else
+            AppDomain.CurrentDomain.DomainUnload += (_, __) => action();
 #endif
 
-            AppDomain.CurrentDomain.DomainUnload += (_, __) => action();
         }
     }
 }

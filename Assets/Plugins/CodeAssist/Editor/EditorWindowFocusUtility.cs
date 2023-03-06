@@ -9,6 +9,7 @@ namespace Meryel.UnityCodeAssist.Editor
 {
 
     //**--remove this
+#if MY_FOCUS_UTIL
     //[InitializeOnLoad]
     public class EditorWindowFocusUtility
     {
@@ -104,5 +105,6 @@ namespace Meryel.UnityCodeAssist.Editor
         }
 
     }
+#endif
 
 }

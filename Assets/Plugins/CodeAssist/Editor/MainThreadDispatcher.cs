@@ -4,6 +4,10 @@ using System.Collections.Concurrent;
 using UnityEngine;
 using UnityEditor;
 
+
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
 

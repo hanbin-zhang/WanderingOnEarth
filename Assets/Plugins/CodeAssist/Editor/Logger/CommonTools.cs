@@ -4,6 +4,10 @@ using System.IO;
 using System.Text;
 using static System.IO.Path;
 
+
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
     public static class CommonTools
@@ -69,8 +73,8 @@ namespace Meryel.UnityCodeAssist.Editor
             Text = text.Trim();
         }
 
-        public static implicit operator OSPath(string text) => text == null ? null : new OSPath(text);
-        public static implicit operator string(OSPath path) => path?.Normalized;
+        public static implicit operator OSPath(string text) => new OSPath(text);
+        public static implicit operator string(OSPath path) => path.Normalized;
         public override string ToString() => Normalized;
 
         protected string Text { get; }

@@ -6,6 +6,10 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 
+
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor.Logger
 {
     //**--
@@ -67,7 +71,7 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
 
         public string Export()
         {
-            IFormatProvider formatProvider = null;
+            IFormatProvider? formatProvider = null;
             var formatter = new Serilog.Formatting.Display.MessageTemplateTextFormatter(
                 outputTemplate, formatProvider);
 
@@ -76,49 +80,45 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
             using (var outputStream = new MemoryStream())
             {
                 var encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-                using (var output = new StreamWriter(outputStream, encoding))
+                using var output = new StreamWriter(outputStream, encoding);
+                if (!errorLogs.IsEmpty)
                 {
-                    if (!errorLogs.IsEmpty)
+                    var errorArray = errorLogs.ToArray();
+                    foreach (var error in errorArray)
                     {
-                        var errorArray = errorLogs.ToArray();
-                        foreach (var error in errorArray)
-                        {
-                            foreach (var logEvent in error)
-                            {
-                                formatter.Format(logEvent, output);
-                            }
-                        }
-                    }
-
-                    if (!warningLogs.IsEmpty)
-                    {
-                        var warningArray = warningLogs.ToArray();
-                        foreach (var warning in warningArray)
-                        {
-                            foreach (var logEvent in warning)
-                            {
-                                formatter.Format(logEvent, output);
-                            }
-                        }
-                    }
-
-                    if (!logs.IsEmpty)
-                    {
-                        var logArray = logs.ToArray();
-                        foreach (var logEvent in logArray)
+                        foreach (var logEvent in error)
                         {
                             formatter.Format(logEvent, output);
                         }
                     }
+                }
 
-                    output.Flush();
-
-                    outputStream.Seek(0, SeekOrigin.Begin);
-                    using (var streamReader = new StreamReader(outputStream, encoding))
+                if (!warningLogs.IsEmpty)
+                {
+                    var warningArray = warningLogs.ToArray();
+                    foreach (var warning in warningArray)
                     {
-                        result = streamReader.ReadToEnd();
+                        foreach (var logEvent in warning)
+                        {
+                            formatter.Format(logEvent, output);
+                        }
                     }
                 }
+
+                if (!logs.IsEmpty)
+                {
+                    var logArray = logs.ToArray();
+                    foreach (var logEvent in logArray)
+                    {
+                        formatter.Format(logEvent, output);
+                    }
+                }
+
+                output.Flush();
+
+                outputStream.Seek(0, SeekOrigin.Begin);
+                using var streamReader = new StreamReader(outputStream, encoding);
+                result = streamReader.ReadToEnd();
 
 
             }

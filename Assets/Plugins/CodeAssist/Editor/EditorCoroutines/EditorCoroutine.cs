@@ -63,26 +63,16 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
 
             public bool MoveNext(IEnumerator enumerator)
             {
-                bool advance = false;
-                switch (data.type)
+                var advance = data.type switch
                 {
-                    case DataType.WaitForSeconds:
-                        advance = data.targetTime <= EditorApplication.timeSinceStartup;
-                        break;
-                    case DataType.EditorCoroutine:
-                        advance = (data.current as EditorCoroutine).m_IsDone;
-                        break;
-                    case DataType.AsyncOP:
-                        advance = (data.current as AsyncOperation).isDone;
-                        break;
-                    default:
-                        advance = data.current == enumerator.Current; //a IEnumerator or a plain object was passed to the implementation
-                        break;
-                }
-
-                if(advance)
+                    DataType.WaitForSeconds => data.targetTime <= EditorApplication.timeSinceStartup,
+                    DataType.EditorCoroutine => (data.current as EditorCoroutine).m_IsDone,
+                    DataType.AsyncOP => (data.current as AsyncOperation).isDone,
+                    _ => data.current == enumerator.Current,//a IEnumerator or a plain object was passed to the implementation
+                };
+                if (advance)
                 {
-                    data = default(ProcessorData); 
+                    data = default;// (ProcessorData);
                     return enumerator.MoveNext();
                 }
                 return true;
@@ -125,7 +115,7 @@ namespace Meryel.UnityCodeAssist.Editor.EditorCoroutines
                 EditorApplication.update -= MoveNext;
         }
 
-        static Stack<IEnumerator> kIEnumeratorProcessingStack = new Stack<IEnumerator>(32);
+        static readonly Stack<IEnumerator> kIEnumeratorProcessingStack = new Stack<IEnumerator>(32);
         private bool ProcessIEnumeratorRecursive(IEnumerator enumerator)
         {
             var root = enumerator;

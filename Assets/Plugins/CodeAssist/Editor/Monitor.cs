@@ -7,6 +7,9 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
 
@@ -37,7 +40,7 @@ namespace Meryel.UnityCodeAssist.Editor
             //EditorSceneManager.sceneOpened += EditorSceneManager_sceneOpened;
             EditorSceneManager.activeSceneChangedInEditMode += EditorSceneManager_activeSceneChangedInEditMode;
 
-            //Application.logMessageReceived += 
+            Application.logMessageReceived += Application_logMessageReceived;
             //System.Threading.Tasks.TaskScheduler.UnobservedTaskException += 
         }
 
@@ -175,6 +178,20 @@ namespace Meryel.UnityCodeAssist.Editor
             dirtyCounter = 0;
         }
 
+
+        private static void Application_logMessageReceived(string condition, string stackTrace, LogType type)
+        {
+            //if (type != LogType.Exception)
+            if (type != LogType.Exception && type != LogType.Error && type != LogType.Warning)
+                return;
+
+            if (!stackTrace.Contains("Meryel.UnityCodeAssist.Editor"))
+                return;
+
+            var typeStr = type.ToString();
+
+            NetMQInitializer.Publisher?.SendErrorReport(condition, stackTrace, typeStr);
+        }
 
     }
 

@@ -6,13 +6,16 @@ using Serilog.Events;
 using Serilog.Configuration;
 
 
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor.Logger
 {
     public class UnityOutputWindowSink : ILogEventSink
     {
-        private readonly IFormatProvider _formatProvider;
+        private readonly IFormatProvider? _formatProvider;
 
-        public UnityOutputWindowSink(IFormatProvider formatProvider)
+        public UnityOutputWindowSink(IFormatProvider? formatProvider)
         {
             _formatProvider = formatProvider;
         }

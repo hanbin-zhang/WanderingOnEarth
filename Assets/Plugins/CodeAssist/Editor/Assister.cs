@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEditor;
 
 
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
     public class Assister
     {
-        public const string Version = "1.0.0";//**--
+        public const string Version = "1.0.0.18";
 
 #if MERYEL_UCA_LITE_VERSION
         public const string Title = "Code Assist Lite";
@@ -31,6 +34,8 @@ namespace Meryel.UnityCodeAssist.Editor
 
             //NetMQInitializer.Publisher.SendConnect();
             //Serilog.Log.Information("Code Assist is looking for more IDEs to connect to...");
+
+            NetMQInitializer.Publisher?.SendAnalyticsEvent("Gui", "Synchronize_MenuItem");
         }
 
 
@@ -45,26 +50,30 @@ namespace Meryel.UnityCodeAssist.Editor
         static void CompareVersions()
         {
             Application.OpenURL("http://unitycodeassist.netlify.app/compare");
+
+            NetMQInitializer.Publisher?.SendAnalyticsEvent("Gui", "CompareVersions_MenuItem");
         }
 
         [MenuItem("Tools/" + Title + "/Get full version", false, 32)]
         static void GetFullVersion()
         {
             Application.OpenURL("http://u3d.as/2N2H");
+
+            NetMQInitializer.Publisher?.SendAnalyticsEvent("Gui", "FullVersion_MenuItem");
         }
 #endif // MERYEL_UCA_LITE_VERSION
 
 
         static IEnumerator SyncAux()
         {
-            var clientCount = NetMQInitializer.Publisher.clients.Count;
-            NetMQInitializer.Publisher.SendConnect();
+            var clientCount = NetMQInitializer.Publisher?.clients.Count ?? 0;
+            NetMQInitializer.Publisher?.SendConnect();
             Serilog.Log.Information("Code Assist is looking for more IDEs to connect to...");
 
             //yield return new WaitForSeconds(3);
             yield return new EditorCoroutines.EditorWaitForSeconds(3);
 
-            var newClientCount = NetMQInitializer.Publisher.clients.Count;
+            var newClientCount = NetMQInitializer.Publisher?.clients.Count ?? 0;
 
             var dif = newClientCount - clientCount;
 

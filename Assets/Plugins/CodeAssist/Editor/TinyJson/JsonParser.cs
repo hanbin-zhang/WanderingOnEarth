@@ -1,3 +1,6 @@
+// copied from
+// https://github.com/zanders3/json/blob/master/src/JSONParser.cs
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,10 +39,10 @@ namespace Meryel.UnityCodeAssist.Editor.TinyJson
         public static T FromJson<T>(string json)
         {
             // Initialize, if needed, the ThreadStatic variables
-            if (propertyInfoCache == null) propertyInfoCache = new Dictionary<Type, Dictionary<string, PropertyInfo>>();
-            if (fieldInfoCache == null) fieldInfoCache = new Dictionary<Type, Dictionary<string, FieldInfo>>();
-            if (stringBuilder == null) stringBuilder = new StringBuilder();
-            if (splitArrayPool == null) splitArrayPool = new Stack<List<string>>();
+            propertyInfoCache ??= new Dictionary<Type, Dictionary<string, PropertyInfo>>();
+            fieldInfoCache ??= new Dictionary<Type, Dictionary<string, FieldInfo>>();
+            stringBuilder ??= new StringBuilder();
+            splitArrayPool ??= new Stack<List<string>>();
 
             //Remove all whitespace not within strings to make parsing simpler
             stringBuilder.Length = 0;
@@ -147,8 +150,8 @@ namespace Meryel.UnityCodeAssist.Editor.TinyJson
                         }
                         if (json[i + 1] == 'u' && i + 5 < json.Length - 1)
                         {
-                            UInt32 c = 0;
-                            if (UInt32.TryParse(json.Substring(i + 2, 4), System.Globalization.NumberStyles.AllowHexSpecifier, null, out c))
+                            //UInt32 c = 0;
+                            if (UInt32.TryParse(json.Substring(i + 2, 4), System.Globalization.NumberStyles.AllowHexSpecifier, null, out UInt32 c))
                             {
                                 parseStringBuilder.Append((char)c);
                                 i += 5;
@@ -167,14 +170,12 @@ namespace Meryel.UnityCodeAssist.Editor.TinyJson
             }
             if (type == typeof(decimal))
             {
-                decimal result;
-                decimal.TryParse(json, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out result);
+                decimal.TryParse(json, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out decimal result);
                 return result;
             }
             if (type == typeof(DateTime))
             {
-                DateTime result;
-                DateTime.TryParse(json.Replace("\"", ""), System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out result);
+                DateTime.TryParse(json.Replace("\"", ""), System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime result);
                 return result;
             }
             if (json == "null")
@@ -294,14 +295,12 @@ namespace Meryel.UnityCodeAssist.Editor.TinyJson
             {
                 if (json.Contains("."))
                 {
-                    double result;
-                    double.TryParse(json, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out result);
+                    double.TryParse(json, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double result);
                     return result;
                 }
                 else
                 {
-                    int result;
-                    int.TryParse(json, out result);
+                    int.TryParse(json, out int result);
                     return result;
                 }
             }
@@ -345,14 +344,14 @@ namespace Meryel.UnityCodeAssist.Editor.TinyJson
             if (elems.Count % 2 != 0)
                 return instance;
 
-            Dictionary<string, FieldInfo> nameToField;
-            Dictionary<string, PropertyInfo> nameToProperty;
-            if (!fieldInfoCache.TryGetValue(type, out nameToField))
+            //Dictionary<string, FieldInfo> nameToField;
+            //Dictionary<string, PropertyInfo> nameToProperty;
+            if (!fieldInfoCache.TryGetValue(type, out var nameToField))
             {
                 nameToField = CreateMemberNameDictionary(type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy));
                 fieldInfoCache.Add(type, nameToField);
             }
-            if (!propertyInfoCache.TryGetValue(type, out nameToProperty))
+            if (!propertyInfoCache.TryGetValue(type, out var nameToProperty))
             {
                 nameToProperty = CreateMemberNameDictionary(type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy));
                 propertyInfoCache.Add(type, nameToProperty);
@@ -365,11 +364,9 @@ namespace Meryel.UnityCodeAssist.Editor.TinyJson
                 string key = elems[i].Substring(1, elems[i].Length - 2);
                 string value = elems[i + 1];
 
-                FieldInfo fieldInfo;
-                PropertyInfo propertyInfo;
-                if (nameToField.TryGetValue(key, out fieldInfo))
+                if (nameToField.TryGetValue(key, out FieldInfo fieldInfo))
                     fieldInfo.SetValue(instance, ParseValue(fieldInfo.FieldType, value));
-                else if (nameToProperty.TryGetValue(key, out propertyInfo))
+                else if (nameToProperty.TryGetValue(key, out PropertyInfo propertyInfo))
                     propertyInfo.SetValue(instance, ParseValue(propertyInfo.PropertyType, value), null);
             }
 

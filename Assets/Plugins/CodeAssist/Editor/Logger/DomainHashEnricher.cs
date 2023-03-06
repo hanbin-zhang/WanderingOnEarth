@@ -6,11 +6,14 @@ using Serilog.Events;
 using Serilog.Configuration;
 
 
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor.Logger
 {
     public class DomainHashEnricher : ILogEventEnricher
     {
-        static int domainHash;
+        static readonly int domainHash;
 
         static DomainHashEnricher()
         {

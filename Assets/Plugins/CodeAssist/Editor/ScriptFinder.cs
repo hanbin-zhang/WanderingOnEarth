@@ -8,13 +8,16 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 
 
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
 
     public class ScriptFinder //: MonoBehaviour
     {
 
-        static Type GetType123(string typeName)
+        static Type? GetType123(string typeName)
         {
             //**--
             //**--
@@ -75,7 +78,7 @@ namespace Meryel.UnityCodeAssist.Editor
             return null;
         }
 
-        public static bool FindInstanceOfType(string typeName, out GameObject gameObjectInstanceOfType, out ScriptableObject scriptableObjectInstanceOfType)
+        public static bool FindInstanceOfType(string typeName, out GameObject? gameObjectInstanceOfType, out ScriptableObject? scriptableObjectInstanceOfType)
         {
             gameObjectInstanceOfType = null;
             scriptableObjectInstanceOfType = null;
@@ -102,9 +105,9 @@ namespace Meryel.UnityCodeAssist.Editor
             return false;
         }
 
-        static UnityEngine.Object GetObjectOfType(Type type)
+        static UnityEngine.Object? GetObjectOfType(Type type)
         {
-            UnityEngine.Object obj;
+            UnityEngine.Object? obj;
 
 
             obj = getObjectToSend(Selection.activeGameObject, type);
@@ -134,25 +137,42 @@ namespace Meryel.UnityCodeAssist.Editor
                         return obj;
                 }
             }
-            
-            
+
+
 
             //**--rest can be slow, try avoiding them, make own db etc
             //**--can add a stop-wacher and add warning if slow as well
             //**--can also cache the result
 
-
-            // Object.FindObjectOfType will not return Assets (meshes, textures, prefabs, ...) or inactive objects
-            obj = UnityEngine.Object.FindObjectOfType(type);
+            try
+            {
+                // Object.FindObjectOfType will not return Assets (meshes, textures, prefabs, ...) or inactive objects
+                obj = UnityEngine.Object.FindObjectOfType(type);
+            }
+            catch (Exception ex)
+            {
+                var isMonoBehaviour = type.IsSubclassOf(typeof(MonoBehaviour));
+                var isScriptableObject = type.IsSubclassOf(typeof(ScriptableObject));
+                Serilog.Log.Warning(ex, "FindObjectOfType failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(), isMonoBehaviour, isScriptableObject);
+            }
 
             obj = getObjectToSend(obj, type);
             if (obj != null)
                 return obj;
-            
 
-            // This function can return any type of Unity object that is loaded, including game objects, prefabs, materials, meshes, textures, etc.
-            // Contrary to Object.FindObjectsOfType this function will also list disabled objects.
-            var arr = Resources.FindObjectsOfTypeAll(type);
+            UnityEngine.Object[]? arr = null;
+            try
+            {
+                // This function can return any type of Unity object that is loaded, including game objects, prefabs, materials, meshes, textures, etc.
+                // Contrary to Object.FindObjectsOfType this function will also list disabled objects.
+                arr = Resources.FindObjectsOfTypeAll(type);
+            }
+            catch (Exception ex)
+            {
+                var isMonoBehaviour = type.IsSubclassOf(typeof(MonoBehaviour));
+                var isScriptableObject = type.IsSubclassOf(typeof(ScriptableObject));
+                Serilog.Log.Warning(ex, "FindObjectsOfTypeAll failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(), isMonoBehaviour, isScriptableObject);
+            }
 
             if (arr != null)
             {
@@ -169,14 +189,16 @@ namespace Meryel.UnityCodeAssist.Editor
             return obj;
 
 
-            static UnityEngine.Object getObjectToSend(UnityEngine.Object obj, Type type)
+            static UnityEngine.Object? getObjectToSend(UnityEngine.Object? obj, Type type)
             {
                 if (obj == null || !obj)
                     return null;
 
                 if (obj is GameObject go)
                 {
-                    if (go.GetComponent(type) != null)
+                    if (!go)
+                        return null;
+                    if (isTypeComponent(type) && go.GetComponent(type) != null)
                         return go;
                 }
                 else if (obj is Transform transform)
@@ -184,19 +206,42 @@ namespace Meryel.UnityCodeAssist.Editor
                     go = transform.gameObject;
                     if (!go)
                         return null;
-                    if (go.GetComponent(type) != null)
+                    if (isTypeComponent(type) && go.GetComponent(type) != null)
                         return go;
                 }
                 else if (obj is Component comp)
                 {
-                    return comp.gameObject;
+                    go = comp.gameObject;
+                    if (!go)
+                        return null;
+                    else
+                        return go;
                 }
                 else if (obj is ScriptableObject so)
                 {
-                    return so;
+                    if (!so)
+                        return null;
+                    else
+                        return so;
                 }
 
                 return null;
+            }
+
+            static bool isTypeComponent(Type type)
+            {
+                var componentType = typeof(Component);//**--cache these types
+                if (type == componentType || type.IsSubclassOf(componentType))
+                    return true;
+
+                // MonoBehaviour is Component, so below is unnecessary
+                //var monoBehaviourType = typeof(MonoBehaviour);
+                //if (type == monoBehaviourType || type.IsSubclassOf(monoBehaviourType))
+                //    return true;
+                
+                //else if(type is interface)//**--
+
+                return false;
             }
         }
 
@@ -226,7 +271,7 @@ namespace Meryel.UnityCodeAssist.Editor
             }
         }
 
-            public static bool GetActiveGameObject(out GameObject activeGameObject)
+        public static bool GetActiveGameObject(out GameObject activeGameObject)
         {
             activeGameObject = Selection.activeGameObject;
             return activeGameObject ? true : false;

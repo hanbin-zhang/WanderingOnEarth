@@ -10,6 +10,9 @@ using Object = UnityEngine.Object;
 //using OdinSerializer.Utilities;
 
 
+#nullable enable
+
+
 #if MY_SERIALIZER
 namespace Meryel.UnityCodeAssist.Editor
 {

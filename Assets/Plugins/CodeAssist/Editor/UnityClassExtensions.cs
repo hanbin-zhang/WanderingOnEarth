@@ -5,11 +5,15 @@ using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 
+
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor
 {
     internal static class UnityClassExtensions
     {
-        static GameObject getParentGO(GameObject go)
+        static GameObject? GetParentGO(GameObject go)
         {
             if (!go)
                 return null;
@@ -22,7 +26,7 @@ namespace Meryel.UnityCodeAssist.Editor
                 return null;
         }
 
-        static string getId(UnityEngine.Object obj)
+        static string GetId(UnityEngine.Object? obj)
         {
             // obj can be null
 
@@ -31,21 +35,21 @@ namespace Meryel.UnityCodeAssist.Editor
             return objectGuid;
         }
 
-        internal static Synchronizer.Model.GameObject ToSyncModel(this GameObject go, int priority = 0)
+        internal static Synchronizer.Model.GameObject? ToSyncModel(this GameObject go, int priority = 0)
         {
             if (!go)
                 return null;
 
             var data = new Synchronizer.Model.GameObject()
             {
-                Id = getId(go),
+                Id = GetId(go),
 
                 Name = go.name,
                 Layer = go.layer.ToString(),
                 Tag = go.tag,
                 Scene = go.scene.name,
 
-                ParentId = getId(getParentGO(go)),
+                ParentId = GetId(GetParentGO(go)),
                 ChildrenIds = getChildrenIds(go),
 
                 Components = getComponents(go),
@@ -63,7 +67,7 @@ namespace Meryel.UnityCodeAssist.Editor
                     if (!child || !child.gameObject)
                         continue;
 
-                    ids.Add(getId(child.gameObject));
+                    ids.Add(GetId(child.gameObject));
 
                     if (--limit <= 0)
                         break;
@@ -91,16 +95,20 @@ namespace Meryel.UnityCodeAssist.Editor
             }*/
         }
 
-        internal static Synchronizer.Model.GameObject[] ToSyncModelOfHierarchy(this GameObject go)
+        internal static Synchronizer.Model.GameObject[]? ToSyncModelOfHierarchy(this GameObject go)
         {
             if (!go)
                 return null;
 
             var list = new List<Synchronizer.Model.GameObject>();
 
-            var parent = getParentGO(go);
-            if (parent)
-                list.Add(parent.ToSyncModel());
+            var parent = GetParentGO(go);
+            if (parent != null && parent)
+            {
+                var parentModel = parent.ToSyncModel();
+                if (parentModel != null)
+                    list.Add(parentModel);
+            }
 
             int limit = 10;
             foreach (Transform child in go.transform)
@@ -108,7 +116,11 @@ namespace Meryel.UnityCodeAssist.Editor
                 if (!child || !child.gameObject)
                     continue;
 
-                list.Add(child.gameObject.ToSyncModel());
+                var childModel = child.gameObject.ToSyncModel();
+                if (childModel == null)
+                    continue;
+
+                list.Add(childModel);
 
                 if (--limit <= 0)
                     break;
@@ -117,13 +129,13 @@ namespace Meryel.UnityCodeAssist.Editor
             return list.ToArray();
         }
 
-        internal static Synchronizer.Model.ComponentData[] ToSyncModelOfComponents(this GameObject go)
+        internal static Synchronizer.Model.ComponentData[]? ToSyncModelOfComponents(this GameObject go)
         {
             if (!go)
                 return null;
 
             var limit = 10;//**--
-            return go.GetComponents<Component>().Where(c => c).Select(c => c.ToSyncModel(go)).Where(cd => cd != null).Take(limit).ToArray();
+            return go.GetComponents<Component>().Where(c => c).Select(c => c.ToSyncModel(go)).Where(cd => cd != null).Take(limit).ToArray()!;
 
             /*
             var components = go.GetComponents<Component>();
@@ -148,7 +160,7 @@ namespace Meryel.UnityCodeAssist.Editor
             */
         }
 
-        internal static Synchronizer.Model.ComponentData ToSyncModel(this Component component, GameObject go)
+        internal static Synchronizer.Model.ComponentData? ToSyncModel(this Component component, GameObject go)
         {
             if (!component || !go)
                 return null;
@@ -159,7 +171,7 @@ namespace Meryel.UnityCodeAssist.Editor
 
             var data = new Synchronizer.Model.ComponentData()
             {
-                GameObjectId = getId(go),
+                GameObjectId = GetId(go),
                 Component = component.GetType().FullName,
                 Type = Synchronizer.Model.ComponentData.DataType.Component,
                 Data = list.ToArray(),
@@ -167,7 +179,7 @@ namespace Meryel.UnityCodeAssist.Editor
             return data;
         }
 
-        internal static Synchronizer.Model.ComponentData ToSyncModel(this ScriptableObject so)
+        internal static Synchronizer.Model.ComponentData? ToSyncModel(this ScriptableObject so)
         {
             if (!so)
                 return null;
@@ -178,7 +190,7 @@ namespace Meryel.UnityCodeAssist.Editor
 
             var data = new Synchronizer.Model.ComponentData()
             {
-                GameObjectId = getId(so),
+                GameObjectId = GetId(so),
                 Component = so.GetType().FullName,
                 Type = Synchronizer.Model.ComponentData.DataType.ScriptableObject,
                 Data = list.ToArray(),

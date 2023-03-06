@@ -3,36 +3,40 @@ using Serilog.Core;
 using UnityEngine;
 using UnityEditor;
 
+
+#nullable enable
+
+
 namespace Meryel.UnityCodeAssist.Editor.Logger
 {
 
     [InitializeOnLoad]
     public static class ELogger
     {
-        public static event System.Action OnVsInternalLogChanged;
+        public static event System.Action? OnVsInternalLogChanged;
 
 
         // Change 'new LoggerConfiguration().MinimumLevel.Debug();' if you change these values
         const Serilog.Events.LogEventLevel fileMinLevel = Serilog.Events.LogEventLevel.Debug;
         const Serilog.Events.LogEventLevel outputWindowMinLevel = Serilog.Events.LogEventLevel.Information;
-        static LoggingLevelSwitch fileLevelSwitch, outputWindowLevelSwitch;
+        static LoggingLevelSwitch? fileLevelSwitch, outputWindowLevelSwitch;
 
-        static bool IsInitialized { get; set; }
+        //static bool IsInitialized { get; set; }
 
-        static ILogEventSink _outputWindowSink;
-        static ILogEventSink _memorySink;
+        static ILogEventSink? _outputWindowSink;
+        static ILogEventSink? _memorySink;
 
 
-        public static string GetInternalLogContent() => ((MemorySink)_memorySink).Export();
-        public static int GetErrorCountInInternalLog() => ((MemorySink)_memorySink).ErrorCount;
-        public static int GetWarningCountInInternalLog() => ((MemorySink)_memorySink).WarningCount;
+        public static string GetInternalLogContent() => _memorySink == null ? string.Empty : ((MemorySink)_memorySink).Export();
+        public static int GetErrorCountInInternalLog() => _memorySink == null ? 0 : ((MemorySink)_memorySink).ErrorCount;
+        public static int GetWarningCountInInternalLog() => _memorySink == null ? 0 : ((MemorySink)_memorySink).WarningCount;
 
-        public static string FilePath { get; private set; }
-        public static string VSFilePath { get; private set; }
+        public static string? FilePath { get; private set; }
+        public static string? VSFilePath { get; private set; }
 
         //**-- make it work with multiple clients
-        static string _vsInternalLog;
-        public static string VsInternalLog
+        static string? _vsInternalLog;
+        public static string? VsInternalLog
         {
             get => _vsInternalLog;
             set
@@ -125,13 +129,11 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
                 , rollOnEachProcessRun: isFirst
                 );
 
-            if (_outputWindowSink == null)
-                _outputWindowSink = outputWindowSink.Value;
+            _outputWindowSink ??= outputWindowSink.Value;
             if (_outputWindowSink != null)
                 config = config.WriteTo.Sink(_outputWindowSink, outputWindowMinLevel, outputWindowLevelSwitch);
 
-            if (_memorySink == null)
-                _memorySink = new MemorySink(outputTemplate);
+            _memorySink ??= new MemorySink(outputTemplate);
             config = config.WriteTo.Sink(_memorySink, fileMinLevel, null);
 
             Serilog.Log.Logger = config.CreateLogger();
@@ -139,7 +141,7 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
 
             OnOptionsChanged();
 
-            IsInitialized = true;
+            //IsInitialized = true;
         }
 
         public static void OnOptionsChanged()
@@ -148,11 +150,13 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
 
             var isLoggingToFile = OptionsIsLoggingToFile;
             var targetFileLevel = isLoggingToFile ? fileMinLevel : Serilog.Events.LogEventLevel.Fatal;
-            fileLevelSwitch.MinimumLevel = targetFileLevel;
+            if (fileLevelSwitch != null)
+                fileLevelSwitch.MinimumLevel = targetFileLevel;
 
             var isLoggingToOutputWindow = OptionsIsLoggingToOutputWindow;
             var targetOutputWindowLevel = isLoggingToOutputWindow ? outputWindowMinLevel : Serilog.Events.LogEventLevel.Fatal;
-            outputWindowLevelSwitch.MinimumLevel = targetOutputWindowLevel;
+            if (outputWindowLevelSwitch != null)
+                outputWindowLevelSwitch.MinimumLevel = targetOutputWindowLevel;
         }
 
         //**-- UI for these two

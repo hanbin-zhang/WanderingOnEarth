@@ -8,16 +8,25 @@ merryyellow@outlook.com
 Website:
 https://unitycodeassist.netlify.app/
 
-Community:
+Discord:
 https://discord.gg/2CgKHDq
+
+Forum:
+https://forum.unity.com/threads/code-assist-empower-your-ide.1384731/
+
+GitHub:
+https://github.com/merryyellow/Unity-Code-Assist
 
 Asset Store:
 http://u3d.as/2N2H
 
+Visual Studio Marketplace:
+https://marketplace.visualstudio.com/items?itemName=MerryYellow.UCA-Lite
+
 
 Restrictions:
-* Unity 2020.3 or newer.
-* Visual Studio 2022 or newer. Does not work with Visual Studio Code, Visual Studio for Mac, Rider or any other IDE or text editor.
+* Unity 2020.3 and newer.
+* Visual Studio 2022. Does not work with Visual Studio Code, Visual Studio for Mac, Rider or any other IDE or text editor.
 
 
 How to Setup:
@@ -35,7 +44,7 @@ Code Assist is always active while you are coding. The following samples will gi
 
 
 Troubleshooting:
-* Make sure in Unity, "Tools"->"Code Assist"->"Status" is available from the menu bar. If not, reimport the asset. Also confirm package "Newtonsoft.Json" is installed in the project (Check it through "Window"->"Package Manager" from the menu bar).
+* Make sure in Unity, "Tools"->"Code Assist"->"Status" is available from the menu bar. If not, reimport the asset.
 * Make sure in Visual Studio, "View"->"Other Windows"->"Unity Code Assist" is available from the menu bar. If not, reinstall the UnityCodeAssistVSIX.vsix file.
 * If Visual Studio has just been started, just wait; it usually takes around one minute to fully load Code Assist.
 * If still not working, in Unity try "Tools"->"Code Assist"->"Synchronize" from the menu bar. This will attempt a new connection with Visual Studio.
@@ -46,7 +55,7 @@ Error Reporting:
 * In Unity, choose "Tools"->"Code Assist"->"Report Error" from the menu bar, to open feedback window.
 * Or in Visual Studio, choose "View"->"Other Windows"->"Unity Code Assist" from the menu bar, then click "Report Error" button, to open feedback window.
 * In the feedback window, you can view the most recent logs, or view full log of Unity or Visual Studio.
-* You can report the error via email ( merryyellow@outlook.com ) or Discord ( https://discord.gg/2CgKHDq )
+* You can report the error via email ( merryyellow@outlook.com ) or Discord ( https://discord.gg/2CgKHDq ) or GitHub ( https://github.com/merryyellow/Unity-Code-Assist/issues/new )
 * Attaching full logs is recommended when reporting an error.
 
 
