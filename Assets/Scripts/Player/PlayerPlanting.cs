@@ -56,8 +56,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         {
             plantTrees.Add(pos);
         }
-        GameObject gameObject = PhotonNetwork.Instantiate(name, pos, rotation);
-        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, gameObject.GetComponent<NaturalObject>());
+        //GameObject gameObject = PhotonNetwork.Instantiate(name, pos, rotation);
+        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, null, name);
     }
 
     private void turnOffPanel()

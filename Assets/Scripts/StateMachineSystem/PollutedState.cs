@@ -32,8 +32,6 @@ public class PollutedState : BaseState
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
                 //stateProperty.greenValue++;
                 Debug.Log($"you can not plant things on the polluted land, 这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
-                GameObject gameObject = plantMsg.NaturalObject.gameObject;
-                Photon.Pun.PhotonNetwork.Destroy(gameObject);
                 //if (stateProperty.greenValue > 5) return StateLabel.NORMAL;
                 break;
             case OnWaterEvent.OnWaterMessage:
