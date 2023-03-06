@@ -22,15 +22,20 @@ public abstract class NaturalObject : MonoBehaviour
     [HideInInspector] public float nextUpdateTime;
     public abstract string GetDerivedClassName();
 
+    private void Awake()
+    {
+        CreatedAt = Time.time;
+        nextUpdateTime = CreatedAt + growTime;
+        Debug.Log($"inner next update{nextUpdateTime}");
+    }
     void Start()
     {
         currentWorldID = GetInstanceID();
         this.UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
-        CreatedAt = Time.time;
-        nextUpdateTime = CreatedAt + growTime;
-        NaObjManager.Register(this);
+        
+        //NaObjManager.Register(this);
     }
 
 

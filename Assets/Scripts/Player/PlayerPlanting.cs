@@ -42,10 +42,10 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
         SelectObj();
         SetText();
-        /*if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(this.transform.position);
-        }*/
+        }
     }
 
     public static List<Vector3> plantTrees = new List<Vector3>();
@@ -56,9 +56,9 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         {
             plantTrees.Add(pos);
         }
-
-        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos);
-        return PhotonNetwork.Instantiate(name, pos, rotation);
+        GameObject gameObject = PhotonNetwork.Instantiate(name, pos, rotation);
+        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, gameObject.GetComponent<NaturalObject>());
+        return gameObject;
     }
 
     private void turnOffPanel()

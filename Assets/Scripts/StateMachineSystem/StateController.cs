@@ -17,6 +17,8 @@ public class StateProperty
     public StateLabel label { get; set; }
     public int greenValue { get; set; }
 
+    public List<NaturalObject> EvolvingNaObjs { get; set; }
+    public List<NaturalObject> EvolvednaObjs { get; set; }
 }
 
 public class StateController : IEnumerable<BaseState>
@@ -83,11 +85,11 @@ public class StateController : IEnumerable<BaseState>
 
         eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
 
-            /*StateProperty stateProperty = GetStateProperty(msg.pos);
+            StateProperty stateProperty = GetStateProperty(msg.pos);
             StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
             stateProperty.label = newState;
             
-            string log = "";
+            /*string log = "";
             foreach (StateProperty s in statesProperty)
             {
                 log += s.label + " ";

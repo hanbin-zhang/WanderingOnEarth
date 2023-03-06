@@ -59,6 +59,7 @@ MonoBehaviour:
   parentWorldObjID: 0
   currentWorldID: 0
   updateModelCommand: 0
+  nextUpdateTime: 0
 --- !u!114 &3774552262247146274
 MonoBehaviour:
   m_ObjectHideFlags: 0
