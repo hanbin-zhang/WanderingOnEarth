@@ -22,6 +22,7 @@ public sealed class Manager{
 
 
         eventController = new EventController() {
+            new OnLandPrepEvent(),
             new OnPlantEvent(),
             new OnWaterEvent(),
         };
