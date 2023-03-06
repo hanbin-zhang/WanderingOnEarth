@@ -19,6 +19,7 @@ public abstract class NaturalObject : MonoBehaviour
     [HideInInspector] public int parentWorldObjID;
     [HideInInspector] public int currentWorldID;
     [HideInInspector] public int updateModelCommand = 0;
+    [HideInInspector] public float nextUpdateTime;
     public abstract string GetDerivedClassName();
 
     void Start()
@@ -28,6 +29,7 @@ public abstract class NaturalObject : MonoBehaviour
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
         CreatedAt = Time.time;
+        nextUpdateTime = CreatedAt + growTime;
         NaObjManager.Register(this);
     }
 
@@ -35,7 +37,7 @@ public abstract class NaturalObject : MonoBehaviour
 
     public float GetUpdateTime()
     {
-        return CreatedAt + growTime * (float)(currentState + 1);
+        return nextUpdateTime;
     }
 
     public void AddSpecificCache(string className)
@@ -74,6 +76,7 @@ public abstract class NaturalObject : MonoBehaviour
         if (currentState < Models.Count - 1)
         {
             currentState++;
+            nextUpdateTime += growTime;
         }
         else Debug.Log("maximum states");
     }
