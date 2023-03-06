@@ -42,6 +42,10 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
         SelectObj();
         SetText();
+        /*if (Input.GetKeyDown(KeyCode.O))
+        {
+            Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(this.transform.position);
+        }*/
     }
 
     public static List<Vector3> plantTrees = new List<Vector3>();

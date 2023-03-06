@@ -83,7 +83,7 @@ public class StateController : IEnumerable<BaseState>
 
         eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
 
-            StateProperty stateProperty = GetStateProperty(msg.pos);
+            /*StateProperty stateProperty = GetStateProperty(msg.pos);
             StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
             stateProperty.label = newState;
             
@@ -92,15 +92,22 @@ public class StateController : IEnumerable<BaseState>
             {
                 log += s.label + " ";
             }
-            Debug.Log($"region states: {log}");
+            Debug.Log($"region states: {log}");*/
         });
         eventController.Get<OnWaterEvent>()?.AddListener((msg) => {
-            foreach (StateProperty s in statesProperty)
+            /*foreach (StateProperty s in statesProperty)
             {
                 StateLabel newState = GetRegionState(s.label).Handle(s, msg);
                 s.label = newState;
-            }
-        });        
+            }*/
+        });
+        eventController.Get<OnLandPrepEvent>()?.AddListener((msg) => {
+            StateProperty s = GetStateProperty(msg.pos);
+            StateLabel newState = GetRegionState(s.label).Handle(s, msg);
+            s.label = newState;
+            Debug.Log($"region states: {newState}");
+            Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
+        });
     }
 
     public StateProperty GetStateProperty(Vector3 position)

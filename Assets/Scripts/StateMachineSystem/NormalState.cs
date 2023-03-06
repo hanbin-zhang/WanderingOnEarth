@@ -13,7 +13,7 @@ public class NormalState : BaseState
 
     public override StateLabel Handle(StateProperty stateProperty, BaseMessage msg)
     {
-        Debug.Log("现在是NormalState");
+        Debug.Log($"现在是NormalState{Time.time}");
         return stateLabel;
     }
 }

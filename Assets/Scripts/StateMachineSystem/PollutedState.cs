@@ -14,7 +14,7 @@ public class PollutedState : BaseState
 
     public override StateLabel Handle(StateProperty stateProperty, BaseMessage msg)
     {
-        if (msg is OnPlantEvent.OnPlantMessage)
+        /*if (msg is OnPlantEvent.OnPlantMessage)
         {
             OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
             stateProperty.greenValue++;
@@ -25,6 +25,24 @@ public class PollutedState : BaseState
         {
             OnWaterEvent.OnWaterMessage waterMsg = (OnWaterEvent.OnWaterMessage)msg;
             Debug.Log($"这是一个onwater事件，没有pos");            
+        }*/
+        switch (msg)
+        {
+            case OnPlantEvent.OnPlantMessage:
+                OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
+                //stateProperty.greenValue++;
+                Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
+                //if (stateProperty.greenValue > 5) return StateLabel.NORMAL;
+                break;
+            case OnWaterEvent.OnWaterMessage:
+                OnWaterEvent.OnWaterMessage waterMsg = (OnWaterEvent.OnWaterMessage)msg;
+                Debug.Log($"这是一个onwater事件，没有pos");
+                break;
+            case OnLandPrepEvent.OnLandPrepMessage:
+                OnLandPrepEvent.OnLandPrepMessage prepLandMsg = msg.Of<OnLandPrepEvent.OnLandPrepMessage>();
+                //stateProperty.greenValue++;
+                Debug.Log($"这是一个prepland事件，pos位置是{prepLandMsg.pos}");
+                return StateLabel.NORMAL;
         }
         return stateLabel;       
     }
