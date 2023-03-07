@@ -5,7 +5,7 @@ using System.Threading;
 
 public class DeerObject : NaturalObject
 {
-    public override string CheckPlaceCondtion(StateProperty stateProperty)
+    public override string CheckPlaceCondtion()
     {
         if (GameObjectTracker.objectCount.ContainsKey(typeof(TreeObject).Name))
         {
