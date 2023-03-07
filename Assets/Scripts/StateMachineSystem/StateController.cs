@@ -69,32 +69,11 @@ public class StateController : IEnumerable<BaseState>
 
     public void BindEvents()
     {
-        /*Action<OnPlantEvent.OnPlantMessage> onPlantAction = (msg) => {
-            getRegionState(msg.pos).Handle(this, msg);
-            string log = "";
-            foreach (StateLabel label in regionStates)
-            {
-                log += label + " ";
-            }
-            Debug.Log($"region states: {log}");
-        };
-        eventController.Get<OnPlantEvent>()?.AddListener(onPlantAction);
-        // 实现接口方式 listener
-        eventController.Get<OnPlantEvent>()?.AddListener(new StateOnPlantEventListener(this));*/
-        // 实现lambda方式 action
-
         eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
 
             StateProperty stateProperty = GetStateProperty(msg.pos);
             StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
             stateProperty.label = newState;
-            
-            /*string log = "";
-            foreach (StateProperty s in statesProperty)
-            {
-                log += s.label + " ";
-            }
-            Debug.Log($"region states: {log}");*/
         });
         eventController.Get<OnWaterEvent>()?.AddListener((msg) => {
             /*foreach (StateProperty s in statesProperty)

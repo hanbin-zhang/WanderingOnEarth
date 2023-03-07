@@ -18,6 +18,7 @@ public class OnPlantEvent : BaseEvent
         public Quaternion rotation { get; set; }
 
         public string name { get; set; }
+        public string NaObjName { get; set; }
     }
 
     private List<OnPlantListener> listeners = new List<OnPlantListener>();
@@ -43,13 +44,14 @@ public class OnPlantEvent : BaseEvent
         actions.Remove(action);
     }
 
-    public void Notify(Vector3 pos, string name)
+    public void Notify(Vector3 pos, string name, string NaObjName)
     {
         var msg = new OnPlantMessage()
         {
             pos = pos,
             rotation = Quaternion.identity,
-            name = name
+            name = name,
+            NaObjName = NaObjName
             
         };
         listeners.ForEach((x) => x.OnEvent(msg));
