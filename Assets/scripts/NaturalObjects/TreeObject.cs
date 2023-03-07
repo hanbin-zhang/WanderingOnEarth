@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TreeObject : NaturalObject
 {
-    public override string CheckPlaceCondtion()
+    public override string CheckPlaceCondtion(StateProperty stateProperty)
     {
         return null;
     }
