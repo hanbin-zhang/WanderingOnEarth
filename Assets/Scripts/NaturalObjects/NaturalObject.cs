@@ -97,7 +97,7 @@ public abstract class NaturalObject : MonoBehaviour
 
     // return true is certain condition is meet
     // false otherwise
-    public abstract string CheckPlaceCondtion(StateProperty stateProperty);
+    public abstract string CheckPlaceCondtion();
 
     // check whether the sum green value of a area meet a certain threshold
     public bool GreenValueJudger(float greenThreshold)

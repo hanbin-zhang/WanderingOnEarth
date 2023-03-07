@@ -82,7 +82,19 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             {
                 if ((Time.time - startTime) >= 0.2f)
                 {
-                    PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                    string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
+                    if (plantCond is not null)
+                    {
+                        PlantingCondPanel.SetActive(true);
+                        PlantingCondText.text = plantCond;
+                        Invoke(nameof(turnOffPanel), 2);
+                    }
+                    else
+                    {
+                        //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                        PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                        //Debug.Log(objs[objIndex].name);
+                    }
 
                 }
                 startTime = 0;
