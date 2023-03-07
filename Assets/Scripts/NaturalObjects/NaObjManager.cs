@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NaObjManager : MonoBehaviour
 {
-    public static List<NaturalObject> evolvingNaObjs = new();
+    public static List<NaturalObject> evolvingNaObjsQueue = new();
     private static readonly object evolvingLock = new();
 
     private void Start()
@@ -18,9 +18,9 @@ public class NaObjManager : MonoBehaviour
     {
         lock (evolvingLock)
         {
-            int index = evolvingNaObjs.BinarySearch(naturalObject, new NaturalObjectComparer());
+            int index = evolvingNaObjsQueue.BinarySearch(naturalObject, new NaturalObjectComparer());
             if (index < 0) index = ~index;
-            evolvingNaObjs.Insert(index, naturalObject);
+            evolvingNaObjsQueue.Insert(index, naturalObject);
         }
     }
 
@@ -29,14 +29,14 @@ public class NaObjManager : MonoBehaviour
         lock (evolvingLock)
         {
             float currentTime = Time.time;
-            while (evolvingNaObjs.Count > 0 && evolvingNaObjs[0].GetUpdateTime() <= currentTime)
+            while (evolvingNaObjsQueue.Count > 0 && evolvingNaObjsQueue[0].GetUpdateTime() <= currentTime)
             {
-                NaturalObject naturalObject = evolvingNaObjs[0];
+                NaturalObject naturalObject = evolvingNaObjsQueue[0];
 
 
                 if (naturalObject == null)
                 {
-                    evolvingNaObjs.RemoveAt(0);
+                    evolvingNaObjsQueue.RemoveAt(0);
                     continue;
                 }
 
@@ -48,14 +48,27 @@ public class NaObjManager : MonoBehaviour
                 remoteView.RPC(nameof(NaturalObject.UpdateState), Photon.Pun.RpcTarget.Others);
                 remoteView.RPC(nameof(NaturalObject.UpdateObject), Photon.Pun.RpcTarget.Others);
 
-                evolvingNaObjs.RemoveAt(0);
+                evolvingNaObjsQueue.RemoveAt(0);
+
+                StateProperty stateProperty = Manager.Instance.StateController
+                        .GetStateProperty(naturalObject.transform.position);
 
                 if (naturalObject.currentState < naturalObject.Models.Count-1)
                 {
-                    int index = evolvingNaObjs.BinarySearch(naturalObject, new NaturalObjectComparer());
-                    if (index < 0) index = ~index;
-                    evolvingNaObjs.Insert(index, naturalObject);
-                }
+                    
+
+                    if (naturalObject.CheckUpdateCondition(stateProperty) is null)
+                    {
+                        int index = evolvingNaObjsQueue.BinarySearch(naturalObject, new NaturalObjectComparer());
+                        if (index < 0) index = ~index;
+                        evolvingNaObjsQueue.Insert(index, naturalObject);
+                    }
+                    else
+                    {
+                        stateProperty.PendingNaObjs.Add(naturalObject);
+                    }
+                    
+                } else stateProperty.EvolvedNaObjs.Add(naturalObject);
             }
         }
     }

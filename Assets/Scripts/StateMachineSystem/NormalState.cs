@@ -17,7 +17,7 @@ public class NormalState : BaseState
         {
             case OnPlantEvent.OnPlantMessage:
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
-                Debug.Log($"you can not plant things on the polluted land, 这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
+                Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
 
                 GameObject gameObject = Photon.Pun.PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
                 NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
@@ -38,7 +38,7 @@ public class NormalState : BaseState
                         stateProperty.EvolvingNaObjs.Add(stateProperty.PendingNaObjs[i]);
                         stateProperty.PendingNaObjs[i].SetNewUpdateTime();
                         NaObjManager.Register(stateProperty.PendingNaObjs[i]);
-                        stateProperty.EvolvingNaObjs.RemoveAt(i);
+                        stateProperty.PendingNaObjs.RemoveAt(i);
                     }
                 }
 

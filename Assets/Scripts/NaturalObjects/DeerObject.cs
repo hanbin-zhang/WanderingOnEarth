@@ -24,6 +24,19 @@ public class DeerObject : NaturalObject
 
     public override string CheckUpdateCondition(StateProperty stateProperty)
     {
+        switch (currentState)
+        {
+            case 1:
+                int bushNumber = 0;
+                stateProperty.NaObjNums.TryGetValue(nameof(TreeObject), out bushNumber);
+                if (bushNumber < 5)
+                {
+                    string message = "need 3 tree to proceed to next state";
+                    Debug.Log(message);
+                    return message;
+                }
+                break;
+        }
         return null;
     }
 }
