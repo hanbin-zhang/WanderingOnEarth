@@ -40,6 +40,11 @@ public abstract class NaturalObject : MonoBehaviour
 
     public abstract string CheckUpdateCondition(StateProperty stateProperty);
 
+    public void SetNewUpdateTime()
+    {
+        nextUpdateTime = Time.time + growTime;
+    }
+
     public float GetUpdateTime()
     {
         return nextUpdateTime;

@@ -11,10 +11,21 @@ public class TreeObject : NaturalObject
     }
 
     public override string CheckUpdateCondition(StateProperty stateProperty)
-    {
-        int number =0;
-        stateProperty.NaObjNumbers().TryGetValue(nameof(BrushObject), out number);
-        Debug.Log(number);
+    {   
+        switch (currentState)
+        {
+            case 0:
+                int bushNumber = 0;
+                stateProperty.NaObjNums.TryGetValue(nameof(BrushObject), out bushNumber);
+                if (bushNumber < 3)
+                {
+                    string message = "need 3 bush to proceed to next state";
+                    Debug.Log(message);
+                    return message;
+                }
+                break;
+        }
+        
         return null ;
     }
 

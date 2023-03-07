@@ -28,6 +28,20 @@ public class NormalState : BaseState
                 {
                     stateProperty.PendingNaObjs.Add(naturalObject);
                 }
+
+                stateProperty.AddCount(naturalObject.GetDerivedClassName());
+
+                for (int i = stateProperty.PendingNaObjs.Count - 1; i >= 0; i--)
+                {
+                    if (stateProperty.PendingNaObjs[i].CheckUpdateCondition(stateProperty) is null)
+                    {
+                        stateProperty.EvolvingNaObjs.Add(stateProperty.PendingNaObjs[i]);
+                        stateProperty.PendingNaObjs[i].SetNewUpdateTime();
+                        NaObjManager.Register(stateProperty.PendingNaObjs[i]);
+                        stateProperty.EvolvingNaObjs.RemoveAt(i);
+                    }
+                }
+
                 break;
             case OnWaterEvent.OnWaterMessage:
                 OnWaterEvent.OnWaterMessage waterMsg = (OnWaterEvent.OnWaterMessage)msg;

@@ -20,28 +20,25 @@ public class StateProperty
     public List<NaturalObject> PendingNaObjs { get; set; }
     public List<NaturalObject> EvolvingNaObjs { get; set; }
     public List<NaturalObject> EvolvedNaObjs { get; set; }
+    public Dictionary<string, int> NaObjNums { get; set; }
     public StateProperty()
     {
         PendingNaObjs = new List<NaturalObject>();
         EvolvingNaObjs = new List<NaturalObject>();
         EvolvedNaObjs = new List<NaturalObject>();
+        NaObjNums = new Dictionary<string, int>();
     }
 
-    public Dictionary<string, int> NaObjNumbers()
+    public void AddCount(string className)
     {
-        Dictionary<string, int> result = new();
-        List < NaturalObject > mergedList = new List < NaturalObject >();
-        mergedList.AddRange(EvolvedNaObjs);
-        mergedList.AddRange(EvolvingNaObjs);
-        mergedList.AddRange(PendingNaObjs);
-        foreach (NaturalObject n in mergedList)
+        if (NaObjNums.TryGetValue(className, out int value))
         {
-            if (result.ContainsKey(n.GetDerivedClassName())) {
-                result[n.GetDerivedClassName()]++;
-            } else result[n.GetDerivedClassName()]=1;
+            NaObjNums[className] = value + 1;
         }
-
-        return result;
+        else
+        {
+            NaObjNums.Add(className, 1);
+        }
     }
 }
 
