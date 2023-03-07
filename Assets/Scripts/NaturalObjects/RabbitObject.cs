@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RabbitObject : NaturalObject
 {
-    public override string CheckPlaceCondtion()
+    public override string CheckPlaceCondtion(StateProperty stateProperty)
     {
         return null;
     }
