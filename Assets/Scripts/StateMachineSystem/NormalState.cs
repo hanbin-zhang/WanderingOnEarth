@@ -18,8 +18,8 @@ public class NormalState : BaseState
             case OnPlantEvent.OnPlantMessage:
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
                 Debug.Log($"you can not plant things on the polluted land, 这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
-                
                 GameObject gameObject = Photon.Pun.PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
+
                 NaObjManager.Register(gameObject.GetComponent<NaturalObject>());
                 break;
             case OnWaterEvent.OnWaterMessage:
