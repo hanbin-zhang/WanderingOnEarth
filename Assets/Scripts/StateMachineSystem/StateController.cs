@@ -17,8 +17,32 @@ public class StateProperty
     public StateLabel label { get; set; }
     public int greenValue { get; set; }
 
+    public List<NaturalObject> PendingNaObjs { get; set; }
     public List<NaturalObject> EvolvingNaObjs { get; set; }
-    public List<NaturalObject> EvolvednaObjs { get; set; }
+    public List<NaturalObject> EvolvedNaObjs { get; set; }
+    public StateProperty()
+    {
+        PendingNaObjs = new List<NaturalObject>();
+        EvolvingNaObjs = new List<NaturalObject>();
+        EvolvedNaObjs = new List<NaturalObject>();
+    }
+
+    public Dictionary<string, int> NaObjNumbers()
+    {
+        Dictionary<string, int> result = new();
+        List < NaturalObject > mergedList = new List < NaturalObject >();
+        mergedList.AddRange(EvolvedNaObjs);
+        mergedList.AddRange(EvolvingNaObjs);
+        mergedList.AddRange(PendingNaObjs);
+        foreach (NaturalObject n in mergedList)
+        {
+            if (result.ContainsKey(n.GetDerivedClassName())) {
+                result[n.GetDerivedClassName()]++;
+            } else result[n.GetDerivedClassName()]=1;
+        }
+
+        return result;
+    }
 }
 
 public class StateController : IEnumerable<BaseState>
@@ -84,11 +108,12 @@ public class StateController : IEnumerable<BaseState>
         // 实现lambda方式 action
 
         eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
-
-            StateProperty stateProperty = GetStateProperty(msg.pos);
-            StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
-            stateProperty.label = newState;
-            
+            lock (statesProperty)
+            {
+                StateProperty stateProperty = GetStateProperty(msg.pos);
+                StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
+                stateProperty.label = newState;
+            }
             /*string log = "";
             foreach (StateProperty s in statesProperty)
             {
@@ -97,6 +122,10 @@ public class StateController : IEnumerable<BaseState>
             Debug.Log($"region states: {log}");*/
         });
         eventController.Get<OnWaterEvent>()?.AddListener((msg) => {
+            lock (statesProperty)
+            {
+
+            }
             /*foreach (StateProperty s in statesProperty)
             {
                 StateLabel newState = GetRegionState(s.label).Handle(s, msg);
@@ -104,11 +133,14 @@ public class StateController : IEnumerable<BaseState>
             }*/
         });
         eventController.Get<OnLandPrepEvent>()?.AddListener((msg) => {
-            StateProperty s = GetStateProperty(msg.pos);
-            StateLabel newState = GetRegionState(s.label).Handle(s, msg);
-            s.label = newState;
-            Debug.Log($"region states: {newState}");
-            Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
+            lock (statesProperty)
+            {
+                StateProperty s = GetStateProperty(msg.pos);
+                StateLabel newState = GetRegionState(s.label).Handle(s, msg);
+                s.label = newState;
+                Debug.Log($"region states: {newState}");
+                Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
+            }            
         });
     }
 

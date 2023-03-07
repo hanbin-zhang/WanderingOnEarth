@@ -13,5 +13,9 @@ public class RabbitObject : NaturalObject
     {
         return GetType().Name;
     }
-    
+
+    public override string CheckUpdateCondition(StateProperty stateProperty)
+    {
+        return null;
+    }
 }

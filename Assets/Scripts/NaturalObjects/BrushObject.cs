@@ -9,6 +9,11 @@ public class BrushObject : NaturalObject
         return null;
     }
 
+    public override string CheckUpdateCondition(StateProperty stateProperty)
+    {
+        return null ;
+    }
+
     public override string GetDerivedClassName()
     {
         return GetType().Name;

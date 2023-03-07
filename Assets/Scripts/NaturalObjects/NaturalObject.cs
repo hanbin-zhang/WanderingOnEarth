@@ -38,7 +38,7 @@ public abstract class NaturalObject : MonoBehaviour
         //NaObjManager.Register(this);
     }
 
-
+    public abstract string CheckUpdateCondition(StateProperty stateProperty);
 
     public float GetUpdateTime()
     {
