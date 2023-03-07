@@ -50,15 +50,14 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     public static List<Vector3> plantTrees = new List<Vector3>();
 
-    public static void PlantObj(string name, Vector3 pos, Quaternion rotation, string NaObjName)
+    public static void PlantObj(string name, Vector3 pos, Quaternion rotation)
     {
         if (name == "TreeMain")
         {
             plantTrees.Add(pos);
         }
-        
         //GameObject gameObject = PhotonNetwork.Instantiate(name, pos, rotation);
-        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, name, NaObjName);
+        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, name);
     }
 
     private void turnOffPanel()
@@ -83,9 +82,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             {
                 if ((Time.time - startTime) >= 0.2f)
                 {
-                    PlantObj(objs[objIndex].name, plantPoint, 
-                        transform.rotation, 
-                        objs[objIndex].GetComponent<NaturalObject>().GetDerivedClassName());
+                    PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
 
                 }
                 startTime = 0;

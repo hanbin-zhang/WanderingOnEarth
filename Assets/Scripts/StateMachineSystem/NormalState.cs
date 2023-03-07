@@ -16,7 +16,11 @@ public class NormalState : BaseState
         switch (msg)
         {
             case OnPlantEvent.OnPlantMessage:
-                OnPlantHandler(stateProperty, msg);
+                OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
+                Debug.Log($"you can not plant things on the polluted land, 这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
+                
+                GameObject gameObject = Photon.Pun.PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
+                NaObjManager.Register(gameObject.GetComponent<NaturalObject>());
                 break;
             case OnWaterEvent.OnWaterMessage:
                 OnWaterEvent.OnWaterMessage waterMsg = (OnWaterEvent.OnWaterMessage)msg;
@@ -29,22 +33,6 @@ public class NormalState : BaseState
                 break;
         }
         return stateLabel;
-    }
-
-    private void OnPlantHandler(StateProperty stateProperty, BaseMessage msg)
-    {
-        OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
-        Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
-
-
-        NaturalObject instance = (NaturalObject)Activator.CreateInstance(Type.GetType(plantMsg.NaObjName));
-        string placeCond = instance.CheckPlaceCondtion(stateProperty);
-        if (placeCond is null)
-        {
-            GameObject gameObject = Photon.Pun.PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
-            NaObjManager.Register(gameObject.GetComponent<NaturalObject>());
-        }
-        else Debug.Log(placeCond);
     }
 }
 
