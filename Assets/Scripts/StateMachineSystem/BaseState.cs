@@ -9,5 +9,5 @@ public abstract class BaseState
     public StateLabel StateLabel => stateLabel;
 
 
-    public abstract StateLabel Handle(StateProperty stateProperty, BaseMessage msg);
+    public abstract void Handle(StateProperty stateProperty, BaseMessage msg);
 }

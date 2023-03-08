@@ -15,7 +15,6 @@ public sealed class Manager{
     private StateController stateController;
     public StateController StateController => stateController;
 
-    
 
     private Manager() {
 

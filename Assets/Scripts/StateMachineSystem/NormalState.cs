@@ -11,10 +11,9 @@ public class NormalState : BaseState
 {
     public NormalState() => stateLabel = StateLabel.NORMAL;
 
-    public override StateLabel Handle(StateProperty stateProperty, BaseMessage msg)
+    public override void Handle(StateProperty stateProperty, BaseMessage msg)
     {
         Debug.Log("现在是NormalState");
-        return stateLabel;
     }
 }
 
