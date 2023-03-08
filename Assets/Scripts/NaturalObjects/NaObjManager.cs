@@ -52,23 +52,26 @@ public class NaObjManager : MonoBehaviour
 
                 StateProperty stateProperty = Manager.Instance.StateController
                         .GetStateProperty(naturalObject.transform.position);
-
-                if (naturalObject.currentState < naturalObject.Models.Count-1)
+                lock (stateProperty)
                 {
-                    
+                    if (naturalObject.currentState < naturalObject.Models.Count - 1)
+                    {
 
-                    if (naturalObject.CheckUpdateCondition(stateProperty) is null)
-                    {
-                        int index = evolvingNaObjsQueue.BinarySearch(naturalObject, new NaturalObjectComparer());
-                        if (index < 0) index = ~index;
-                        evolvingNaObjsQueue.Insert(index, naturalObject);
+
+                        if (naturalObject.CheckUpdateCondition(stateProperty) is null)
+                        {
+                            int index = evolvingNaObjsQueue.BinarySearch(naturalObject, new NaturalObjectComparer());
+                            if (index < 0) index = ~index;
+                            evolvingNaObjsQueue.Insert(index, naturalObject);
+                        }
+                        else
+                        {
+                            stateProperty.PendingNaObjs.Add(naturalObject);
+                        }
+
                     }
-                    else
-                    {
-                        stateProperty.PendingNaObjs.Add(naturalObject);
-                    }
-                    
-                } else stateProperty.EvolvedNaObjs.Add(naturalObject);
+                    else stateProperty.EvolvedNaObjs.Add(naturalObject);
+                }
             }
         }
     }
