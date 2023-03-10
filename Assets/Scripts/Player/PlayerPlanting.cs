@@ -102,8 +102,9 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     }
                     else
                     {
-                        //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                        
                         newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                        //Manager.Instance.PlantingController.Adapter.Instantiate();
                         //Debug.Log(objs[objIndex].name);
                     }
 
