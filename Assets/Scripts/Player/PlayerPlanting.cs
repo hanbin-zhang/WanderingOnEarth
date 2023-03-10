@@ -30,9 +30,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-        
+    {   
+        lock (GameObjectTracker.playerObjects)
+        {
+            GameObjectTracker.playerObjects.Add(this.gameObject);
+        }
     }
 
     // Update is called once per frame

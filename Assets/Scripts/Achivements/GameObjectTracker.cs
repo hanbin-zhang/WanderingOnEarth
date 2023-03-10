@@ -11,4 +11,5 @@ public static class GameObjectTracker
     
     // record the name of each object
     public static Dictionary<string, int> objectCount = new();
+    public static List<GameObject> playerObjects = new();
 }

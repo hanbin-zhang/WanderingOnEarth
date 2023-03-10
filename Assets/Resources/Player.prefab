@@ -12647,6 +12647,55 @@ Transform:
   m_Father: {fileID: 7078321308237095591}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6736053903580972851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2554236165544324157}
+  - component: {fileID: 5326464892516097395}
+  m_Layer: 0
+  m_Name: minimap clamp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2554236165544324157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736053903580972851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8550742923576947900}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5326464892516097395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736053903580972851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4d6bc5df9fe514eaa14cc03ad1c07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIconPrefab: {fileID: 4476455184675862145, guid: a8b0e986e6a03f049b7d044fa50267f1, type: 3}
+  maxPlayerIcons: 30
+  playerTag: Player
+  MinimapSize: 80
+  outRange: 80
 --- !u!1 &6794309060087396942
 GameObject:
   m_ObjectHideFlags: 0
@@ -17442,7 +17491,7 @@ GameObject:
   - component: {fileID: 7624851668887644200}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17465,6 +17514,7 @@ Transform:
   - {fileID: 993152075}
   - {fileID: 488027059}
   - {fileID: 1835822278}
+  - {fileID: 2554236165544324157}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17647,6 +17697,7 @@ MonoBehaviour:
   - {fileID: 6362831640849574513}
   - {fileID: 2091860525}
   - {fileID: 488027056}
+  - {fileID: 6736053903580972851}
 --- !u!114 &-9192255739751137074
 MonoBehaviour:
   m_ObjectHideFlags: 0
