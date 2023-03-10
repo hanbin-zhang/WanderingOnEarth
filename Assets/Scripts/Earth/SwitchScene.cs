@@ -14,7 +14,7 @@ public class SwitchScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (SceneManager.GetActiveScene().name == "BigEarth")
             {
@@ -25,8 +25,7 @@ public class SwitchScene : MonoBehaviour
                 SceneManager.LoadScene("BigEarth");
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-            }
-            
-        }
+            }            
+        }*/
     }
 }

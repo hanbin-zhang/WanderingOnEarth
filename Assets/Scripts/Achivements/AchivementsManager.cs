@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System.Threading;
+using ExitGames.Client.Photon.StructWrapping;
 
 public class AchivementsManager : MonoBehaviour
 {  
@@ -29,10 +30,11 @@ public class AchivementsManager : MonoBehaviour
     // achivement 03
     [HideInInspector] public int achive03threshold = 3;
     [HideInInspector] public int achive03code = 0;
+    private int plantingCount;
 
     private void Start()
     {
-        AchivePanel.SetActive(false);
+        AchivePanel.SetActive(false);     
     }
 
     private void FixedUpdate()

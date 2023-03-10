@@ -47,14 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
+  - {fileID: 1179253489179473235, guid: 055fec6a2e2b43f4cb77bda8a44da366, type: 3}
   - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
   - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
   localShift: {x: 0, y: 0, z: 0}
   growTime: 5
   blockID: 0
   baseGreenValue: 6
-  plantingConditionMessage: Need 3 trees
   CreatedAt: 0
   currentState: 0
   currentModel: {fileID: 0}

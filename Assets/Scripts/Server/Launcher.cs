@@ -40,7 +40,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-
     }
     
     #endregion

@@ -12,7 +12,7 @@ public abstract class NaturalObject : MonoBehaviour
     public float growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
-    public string plantingConditionMessage = "need three trees";
+    //public string plantingConditionMessage = "need three trees";
     [HideInInspector] public float CreatedAt;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
@@ -57,7 +57,7 @@ public abstract class NaturalObject : MonoBehaviour
     {
         if (currentModel == null)
         {
-            currentModel = Instantiate(Models[currentState], transform.position, transform.rotation);
+            currentModel = Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
         }
         else
         {
@@ -89,7 +89,7 @@ public abstract class NaturalObject : MonoBehaviour
 
     // return true is certain condition is meet
     // false otherwise
-    public abstract bool CheckPlaceCondtion();
+    public abstract string CheckPlaceCondtion();
 
     // check whether the sum green value of a area meet a certain threshold
     public bool GreenValueJudger(float greenThreshold)

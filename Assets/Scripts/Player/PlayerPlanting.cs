@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using System.Transactions;
+using static UnityEditor.PlayerSettings;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
 {   
@@ -27,11 +29,23 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     [HideInInspector] public static bool preview;
 
+    public GameObject inventory;
+    public List<GameObject> slotList;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        slotList = new List<GameObject>();
+        foreach (Transform slots in inventory.transform)
+        {
+            slotList.Add(slots.gameObject);           
+        }
+        foreach(GameObject slot in slotList)
+        {
+            GameObject activeIndicator = slot.transform.GetChild(0).gameObject;
+            activeIndicator.SetActive(true);
+            activeIndicator.GetComponent<Image>().color = Color.black;
+        }
     }
 
     // Update is called once per frame
@@ -39,7 +53,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     {
         Plant();
 
-        SelectObj();
+        SetHotBar();
+        //SelectObj();
         SetText();
     }
 
@@ -51,7 +66,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         {
             plantTrees.Add(pos);
         }
-        
+
+        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos);
         return PhotonNetwork.Instantiate(name, pos, rotation);
     }
 
@@ -77,22 +93,28 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             {
                 if ((Time.time - startTime) >= 0.2f)
                 {
-                    if (!objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion())
+                    string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
+                    if (plantCond is not null)
                     {
                         PlantingCondPanel.SetActive(true);
-                        PlantingCondText.text = objs[objIndex].GetComponent<NaturalObject>().plantingConditionMessage;
+                        PlantingCondText.text = plantCond;
                         Invoke(nameof(turnOffPanel), 2);
                     }
                     else
                     {
                         //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
                         newObj = PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
-                        Debug.Log(objs[objIndex].name);
+                        //Debug.Log(objs[objIndex].name);
                     }
 
                 }
                 startTime = 0;
                 preview = false;
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                Manager.Instance.EventController.Get<OnWaterEvent>()?.Notify();
             }
             
         }
@@ -115,9 +137,39 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             valid = hit.collider.gameObject.name == "Terrain1" && colliders.Length <= 1;
         }
        
-        crossHair.GetComponent<Image>().color = valid ? Color.green : Color.red;
-        
+        //crossHair.GetComponent<Image>().color = valid ? Color.green : Color.red;
+        slotList[objIndex].transform.GetChild(0).gameObject.GetComponent<Image>().color = valid ? Color.green : Color.red;
+
+
         return valid && !Cursor.visible || startTime != 0;
+    }
+
+    private void SetHotBar()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SetSlotActive(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SetSlotActive(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SetSlotActive(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SetSlotActive(3);
+    }
+
+    private void SetSlotActive(int index)
+    {
+        objIndex = index;
+        /*// set indicator color && active
+        Transform activeIndicator = inventory.transform.GetChild(index).GetChild(0);
+        Debug.Log(activeIndicator.gameObject.name);
+        //slot.gameObject.SetActive(false);
+        
+        activeIndicator.gameObject.SetActive(true);
+        activeIndicator.gameObject.GetComponent<Image>().color = Color.green;*/
+
+
+        for (int i = 0; i < slotList.Count; i++)
+        {
+            GameObject activeIndicator = slotList[i].transform.GetChild(0).gameObject;
+            activeIndicator.GetComponent<Image>().color = i == index ? Color.green : Color.black;          
+        }
+
     }
 
     private void SelectObj()

@@ -40,19 +40,19 @@ public class Movable : MonoBehaviour
         //rb.centerOfMass = centerOfMass;
         if (PlayerPlanting.preview && newObj) return;
         // go straight 
-       
+
         transform.position += transform.forward * speed;
 
         /*rb.AddForce(transform.forward * speed * rb.mass * 10f, ForceMode.Force);
         Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
-
+        //²»×ß
         // limit velocity if needed
         if (flatVel.magnitude > speed)
         {
             Vector3 limitedVel = flatVel.normalized * speed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        }
-*/
+        }*/
+
         if (readyToRotate)
         {
             float rotateAngle = Random.Range(minRotateAngle, maxRotateAngle);

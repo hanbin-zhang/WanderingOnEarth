@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class TreeObject : NaturalObject
 {
-    public override bool CheckPlaceCondtion()
+    public override string CheckPlaceCondtion()
     {
-        return true;
+        return null;
     }
 
     public override string GetDerivedClassName()
