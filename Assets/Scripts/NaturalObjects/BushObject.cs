@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrushObject : NaturalObject
+public class BushObject : NaturalObject
 {
     public override string CheckPlaceCondtion()
     {

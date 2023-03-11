@@ -29,19 +29,37 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     [HideInInspector] public static bool preview;
 
+    public GameObject inventory;
+    public List<GameObject> slotList;
+
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         lock (GameObjectTracker.playerObjects)
         {
             GameObjectTracker.playerObjects.Add(this.gameObject);
-        }      
+        }
+
+        slotList = new List<GameObject>();
+        foreach (Transform slots in inventory.transform)
+        {
+            slotList.Add(slots.gameObject);
+        }
+        foreach (GameObject slot in slotList)
+        {
+            GameObject activeIndicator = slot.transform.GetChild(0).gameObject;
+            activeIndicator.SetActive(true);
+            activeIndicator.GetComponent<Image>().color = Color.black;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
-        Plant();
+    {              
+        Plant(false);
 
         SelectObj();
         SetText();
@@ -58,16 +76,15 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         PlantingCondPanel.SetActive(false);
     }
 
-    public void Plant()
-    {
-        
+    public void Plant(bool callToPlant=true)
+    {        
         Vector3 plantingPosition = transform.position + transform.forward * 2;
-
-        if (IsValid(plantingPosition, out Vector3 plantPoint)) 
-        {
+        
+        if (IsValid(plantingPosition, out Vector3 plantPoint) && callToPlant) 
+        {            
             string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
             if (plantCond is not null)
-            {
+            {               
                 PlantingCondPanel.SetActive(true);
                 PlantingCondText.text = plantCond;
                 Invoke(nameof(turnOffPanel), 2);
@@ -79,7 +96,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     plantTrees.Add(plantPoint);
                 }
                 GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
+                //Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
             }
 
             /*if (Input.GetMouseButtonDown(0))
@@ -136,9 +153,20 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             valid = hit.collider.gameObject.name == "Terrain1" && colliders.Length <= 1;
         }
        
-        crossHair.GetComponent<Image>().color = valid ? Color.green : Color.red;
-        
+        slotList[objIndex].transform.GetChild(0).gameObject.GetComponent<Image>().color = valid ? Color.green : Color.red;
+
         return valid && !Cursor.visible || startTime != 0;
+    }
+
+    public void SetSlotActive(int index)
+    {
+        objIndex = index;        
+        for (int i = 0; i < slotList.Count; i++)
+        {
+            GameObject activeIndicator = slotList[i].transform.GetChild(0).gameObject;
+            activeIndicator.GetComponent<Image>().color = i == index ? Color.green : Color.black;
+        }
+
     }
 
     private void SelectObj()

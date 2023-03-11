@@ -49,6 +49,7 @@ namespace StarterAssets
 		public void OnLeftMouseDown(InputValue value)
         {
 			GetComponent<PlayerPlanting>().Plant();
+			
         }
 
         public void OnZoom(InputValue value)
@@ -76,10 +77,36 @@ namespace StarterAssets
 				cursorInputForLook = true;
 			}
 		}
+
+		public void OnItemChange(InputValue value)
+		{			
+			if (Keyboard.current.digit1Key.isPressed)
+			{
+				GetComponent<PlayerPlanting>().SetSlotActive(0);
+			}
+            if (Keyboard.current.digit2Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SetSlotActive(1);
+            }
+            if (Keyboard.current.digit3Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SetSlotActive(2);
+            }
+            if (Keyboard.current.digit4Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SetSlotActive(3);
+            }
+
+        }
+
+		public void OnLandPrep(InputValue value)
+		{
+            Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(transform.position);
+        }
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
