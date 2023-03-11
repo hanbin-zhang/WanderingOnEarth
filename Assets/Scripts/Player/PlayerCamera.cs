@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public GameObject player;
+   /* public GameObject player;
     public float sensX;
     public float sensY;
 
@@ -24,7 +24,7 @@ public class PlayerCamera : MonoBehaviour
     {
 
         CursorManage();
-        
+
     }
 
     private void CursorManage()
@@ -55,6 +55,6 @@ public class PlayerCamera : MonoBehaviour
         // rotate player
         player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
-    }
-   
+    }*/
+
 }

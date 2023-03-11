@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using System.Transactions;
 using static UnityEditor.PlayerSettings;
+using UnityEngine.InputSystem;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
 {   
@@ -34,7 +35,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         lock (GameObjectTracker.playerObjects)
         {
             GameObjectTracker.playerObjects.Add(this.gameObject);
-        }
+        }      
     }
 
     // Update is called once per frame
@@ -44,37 +45,44 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
         SelectObj();
         SetText();
-        if (Input.GetKeyDown(KeyCode.O))
+       /* if (Input.GetKeyDown(KeyCode.O))
         {
             Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(this.transform.position);
-        }
+        }*/
     }
 
     public static List<Vector3> plantTrees = new List<Vector3>();
-
-    public static void PlantObj(string name, Vector3 pos, Quaternion rotation)
-    {
-        if (name == "TreeMain")
-        {
-            plantTrees.Add(pos);
-        }
-        //GameObject gameObject = PhotonNetwork.Instantiate(name, pos, rotation);
-        Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(pos, name);
-    }
 
     private void turnOffPanel()
     {
         PlantingCondPanel.SetActive(false);
     }
-    private void Plant()
+
+    public void Plant()
     {
         
         Vector3 plantingPosition = transform.position + transform.forward * 2;
 
         if (IsValid(plantingPosition, out Vector3 plantPoint)) 
         {
+            string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
+            if (plantCond is not null)
+            {
+                PlantingCondPanel.SetActive(true);
+                PlantingCondText.text = plantCond;
+                Invoke(nameof(turnOffPanel), 2);
+            }
+            else
+            {               
+                if (name == "TreeMain")
+                {
+                    plantTrees.Add(plantPoint);
+                }
+                GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
+            }
 
-            if (Input.GetMouseButtonDown(0))
+            /*if (Input.GetMouseButtonDown(0))
             {
                 startTime = Time.time;
                 preview = true;
@@ -107,7 +115,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             {
                 Manager.Instance.EventController.Get<OnWaterEvent>()?.Notify();
             }
-            
+            */
         }
     }
 
@@ -136,7 +144,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     private void SelectObj()
     {
         
-        //if (Input.GetAxis("Mouse ScrollWheel"))
+       /* //if (Input.GetAxis("Mouse ScrollWheel"))
         float scroll = Input.mouseScrollDelta.y;
         if (scroll > 0)
         {
@@ -153,7 +161,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             }
         }
         //Debug.Log(objIndex);
-
+*/
     }
 
     private void SetText()

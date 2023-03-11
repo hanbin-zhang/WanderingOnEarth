@@ -43,8 +43,8 @@ public class NormalState : BaseState
                 }
 
                 break;
-            case OnWaterEvent.OnWaterMessage:
-                OnWaterEvent.OnWaterMessage waterMsg = (OnWaterEvent.OnWaterMessage)msg;
+            case OnLeftMouseDownEvent.OnWaterMessage:
+                OnLeftMouseDownEvent.OnWaterMessage waterMsg = (OnLeftMouseDownEvent.OnWaterMessage)msg;
                 Debug.Log($"这是一个onwater事件，没有pos");
                 break;
             case OnLandPrepEvent.OnLandPrepMessage:

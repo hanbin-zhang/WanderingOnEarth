@@ -18,7 +18,7 @@ public class TransformEarth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             //Input.GetAxis("MouseX")获取鼠标移动的X轴的距离
             float x = Input.GetAxis("Mouse X");
@@ -36,6 +36,6 @@ public class TransformEarth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SceneManager.LoadScene("PlayScene");
-        }
+        }*/
     }
 }

@@ -18,11 +18,11 @@ public class CollectableObject : MonoBehaviour
             ShowCollectMessage(messagePanel);
 
             // Check if player presses 'P' to collect
-            if (Input.GetKeyDown(KeyCode.C))
+            /*if (Input.GetKeyDown(KeyCode.C))
             {
                 Collect();
                 return true;
-            }
+            }*/
         }
         return false;
     }

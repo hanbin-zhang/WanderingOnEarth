@@ -25,6 +25,7 @@ public sealed class Manager{
             new OnLandPrepEvent(),
             new OnPlantEvent(),
             new OnWaterEvent(),
+            new OnLeftMouseDownEvent(),
         };
 
         stateController = new StateController(eventController)

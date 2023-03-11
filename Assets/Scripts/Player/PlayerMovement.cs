@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
+   /* [Header("Movement")]
     public float moveSpeed;
 
     public float groundDrag;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public Rigidbody rb;
 
-    
+
 
     private float playerHeight;
 
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update()
-    {       
+    {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight, groundLayer);
 
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-       
+
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
@@ -90,17 +90,17 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * GetComponent<Rigidbody>().mass * 10f, ForceMode.Force);
         }
-            
+
         // in air
         else
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * GetComponent<Rigidbody>().mass * 10f * airMultiplier, ForceMode.Force);
-        }          
+        }
     }
 
     private void SpeedControl()
     {
-        
+
         Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
 
         // limit velocity if needed
@@ -109,9 +109,9 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
-        
+
     }
-    
+
     private void Jump()
     {
         // reset y velocity
@@ -122,5 +122,5 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
-    }
+    }*/
 }
