@@ -48,7 +48,7 @@ namespace StarterAssets
 
 		public void OnLeftMouseDown(InputValue value)
         {
-			GetComponent<PlayerPlanting>().Plant();
+			GetComponent<PlayerPlanting>().Plant(true);
 			
         }
 
@@ -103,6 +103,11 @@ namespace StarterAssets
 		{
             Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(transform.position);
         }
+
+		public void OnCollect(InputValue value)
+		{
+			GetComponent<CollectableManager>().CheckCollectable(true);
+		}
 #endif
 
 

@@ -59,7 +59,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {              
-        Plant(false);
+        Plant();
 
         SelectObj();
         SetText();
@@ -76,11 +76,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         PlantingCondPanel.SetActive(false);
     }
 
-    public void Plant(bool callToPlant=true)
+    public void Plant(bool keyPressed=false)
     {        
         Vector3 plantingPosition = transform.position + transform.forward * 2;
         
-        if (IsValid(plantingPosition, out Vector3 plantPoint) && callToPlant) 
+        if (IsValid(plantingPosition, out Vector3 plantPoint) && keyPressed) 
         {            
             string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
             if (plantCond is not null)
@@ -150,7 +150,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             // Check for collisions with existing objects
             Collider[] colliders = Physics.OverlapSphere(point, 1f);
             // terrain is a collider
-            valid = hit.collider.gameObject.name == "Terrain1" && colliders.Length <= 1;
+            valid = hit.collider.gameObject.name == "Terrain" && colliders.Length <= 1;
         }
        
         slotList[objIndex].transform.GetChild(0).gameObject.GetComponent<Image>().color = valid ? Color.green : Color.red;

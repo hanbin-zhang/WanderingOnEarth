@@ -25,8 +25,12 @@ public class CollectableManager : MonoBehaviour
 
     }
 
-
     private void Update()
+    {
+        CheckCollectable();
+    }
+
+    public void CheckCollectable(bool keyPressed=false)
     {
         CollectMessagePanel.SetActive(false);
         if (collectables == null)
@@ -55,7 +59,7 @@ public class CollectableManager : MonoBehaviour
             for (int i = 0; i < activeCollectables.Count; i++)
             {
                 CollectableObject collectable = activeCollectables[i];
-                if (collectable.CheckCollect(transform.position, CollectMessagePanel))
+                if (collectable.CheckCollect(transform.position, CollectMessagePanel, keyPressed))
                 {
                     collectables.Remove(collectable);
                     Destroy(collectable.gameObject);
