@@ -10,12 +10,7 @@ using static UnityEditor.PlayerSettings;
 using UnityEngine.InputSystem;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
-{   
-    public GameObject crossHair;
-    // public GameObject tree;
-    // public GameObject deer;
-
-
+{       
     public GameObject[] objs;
     private int objIndex = 0;
     public TMP_Text selectedObjName;

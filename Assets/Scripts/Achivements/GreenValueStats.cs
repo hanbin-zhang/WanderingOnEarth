@@ -45,6 +45,6 @@ public class GreenValueStats : MonoBehaviour
         {
             //ShowNotification("Reach Green Value ten!");
         }
-        greenValueDisplay.text = $"Green Value: {sumGreenValue}";
+        greenValueDisplay.text = $"{sumGreenValue}";
     }
 }
