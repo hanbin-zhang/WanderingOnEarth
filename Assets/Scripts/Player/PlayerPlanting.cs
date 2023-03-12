@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using System.Transactions;
-using static UnityEditor.PlayerSettings;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
