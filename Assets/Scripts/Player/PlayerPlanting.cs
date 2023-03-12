@@ -90,8 +90,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 {
                     plantTrees.Add(plantPoint);
                 }
-                GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                //Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
+                //GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
             }
 
             /*if (Input.GetMouseButtonDown(0))
