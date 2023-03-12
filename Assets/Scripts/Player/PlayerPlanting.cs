@@ -4,10 +4,6 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
-using System.Transactions;
-using static UnityEditor.PlayerSettings;
-using UnityEngine.InputSystem;
 
 public class PlayerPlanting : MonoBehaviourPunCallbacks
 {       
@@ -90,8 +86,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 {
                     plantTrees.Add(plantPoint);
                 }
-                GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                //Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
+                //GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
             }
 
             /*if (Input.GetMouseButtonDown(0))

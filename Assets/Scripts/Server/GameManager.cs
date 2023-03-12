@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         //In case we started this demo with the wrong scene being active, simply load the menu scene
         if (PhotonNetwork.CurrentRoom == null)
         {
-            Debug.Log("Is not in the room, returning back to Lobby");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            Debug.Log("You are not in the room, returning back to Lobby");
+            SceneManager.LoadScene(0);
             return;
         }
 

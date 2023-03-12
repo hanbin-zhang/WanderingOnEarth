@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Photon.Pun;
 
 
 public class NormalState : BaseState
@@ -19,7 +20,7 @@ public class NormalState : BaseState
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
                 Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, green value是{stateProperty.greenValue}");
 
-                GameObject gameObject = Photon.Pun.PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
+                GameObject gameObject = PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
                 NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
                 if (naturalObject.CheckUpdateCondition(stateProperty) is null) {
                     stateProperty.EvolvingNaObjs.Add(naturalObject);

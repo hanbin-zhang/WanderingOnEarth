@@ -2007,11 +2007,11 @@ RectTransform:
   m_Father: {fileID: 1230801458836531820}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: 21}
-  m_SizeDelta: {x: 129.2791, y: 40.4597}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 160, y: -50}
+  m_SizeDelta: {x: -252, y: 40}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &1230801458372972888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -38.367126, y: 48.63333, z: -115.710815, w: -31.20285}
+  m_margin: {x: -147.26624, y: -1.9519958, z: -66.21307, w: -3.714203}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2142,10 +2142,10 @@ RectTransform:
   m_Father: {fileID: 1230801458836531820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: -15}
-  m_SizeDelta: {x: 181.9819, y: 39.2948}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -30, y: -50}
+  m_SizeDelta: {x: -50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1230801458785020928
 CanvasRenderer:
@@ -2238,7 +2238,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 22.923096, y: -31.710022, z: -115.64276, w: 27.80072}
+  m_margin: {x: 31.714783, y: -31.710022, z: -29.85199, w: 27.80072}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2281,8 +2281,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.3661, y: 210.39838}
-  m_SizeDelta: {x: 263.2679, y: 59.2032}
+  m_AnchoredPosition: {x: 0, y: 400}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1230801458836531822
 CanvasRenderer:
@@ -3557,8 +3557,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847886765017100989}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: -6}
+  m_LocalRotation: {x: 0.037470926, y: -0.73346746, z: 0.040363725, w: 0.67748964}
+  m_LocalPosition: {x: 314.03436, y: 11.420541, z: 33.908222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10773,7 +10773,7 @@ MonoBehaviour:
   CameraDistance: 6
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   IgnoreTag: Player
   CameraRadius: 0.15
   DampingIntoCollision: 0
@@ -14883,7 +14883,7 @@ RectTransform:
   m_GameObject: {fileID: 7708827516069546904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7708827515704139990}
@@ -15182,7 +15182,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -15240,8 +15240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localScripts:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7708827516190544901}
+  - {fileID: 7708827516190544956}
+  - {fileID: 4089986481865516820}
   localObjects:
   - {fileID: 1847886765017100989}
   - {fileID: 1681772677837154194}
@@ -18323,7 +18324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9056064435313012535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18342,7 +18343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -604, y: -62}
+  m_AnchoredPosition: {x: -450, y: -62}
   m_SizeDelta: {x: 310, y: 65}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &9056064435313012533

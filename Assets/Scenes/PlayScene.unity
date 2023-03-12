@@ -245,14 +245,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6385243152272841842, guid: 09fd83791c492b44e9a5ad93e33958ce, type: 3}
-      propertyPath: Treasure
-      value: 
-      objectReference: {fileID: 2569566143460036327, guid: fa1386b7315b6c940b6ea5ea0c899dac, type: 3}
-    - target: {fileID: -6385243152272841842, guid: 09fd83791c492b44e9a5ad93e33958ce, type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 7708827516190544899, guid: 7e40470c5e748ee4180da912ae6a21ce, type: 3}
     - target: {fileID: 3058945785537590471, guid: 09fd83791c492b44e9a5ad93e33958ce, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -440,26 +432,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forest
       objectReference: {fileID: 0}
+    - target: {fileID: 7017338223048344087, guid: a26b4f16589922041837ad2995990bc3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7603398711539834159, guid: a26b4f16589922041837ad2995990bc3, type: 3}
       propertyPath: m_Layer
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a26b4f16589922041837ad2995990bc3, type: 3}
---- !u!1 &1976467886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3058945785537590471, guid: 09fd83791c492b44e9a5ad93e33958ce, type: 3}
-  m_PrefabInstance: {fileID: 1204866491}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1976467887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976467886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970369388072bc6489c7f99dcc102955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

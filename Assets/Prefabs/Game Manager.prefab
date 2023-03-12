@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6607120660956108984}
   - component: {fileID: -6385243152272841842}
+  - component: {fileID: 1976467887}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -44,4 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5662f75040b015d428188b393edd4256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 9070680443464805894, guid: 14f174c9864567e479fc07190385ad7f, type: 3}
+  playerPrefab: {fileID: 7708827516190544899, guid: 7e40470c5e748ee4180da912ae6a21ce, type: 3}
+  Treasure: {fileID: 2569566143460036327, guid: fa1386b7315b6c940b6ea5ea0c899dac, type: 3}
+--- !u!114 &1976467887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058945785537590471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970369388072bc6489c7f99dcc102955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
