@@ -48,7 +48,11 @@ namespace StarterAssets
 
 		public void OnLeftMouseDown(InputValue value)
         {
-			GetComponent<PlayerPlanting>().Plant(true);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            cursorInputForLook = true;
+
+            GetComponent<PlayerPlanting>().Plant(true);
 			
         }
 
