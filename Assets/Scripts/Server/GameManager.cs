@@ -33,17 +33,16 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         Random r = new Random();
-        int init_x = r.Next(100, 400);
-        int init_z = r.Next(100, 400);
+        int init_x = r.Next(10, 490);
+        int init_z = r.Next(10, 490);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 50f, init_z), Quaternion.identity, 0);
+        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 20f, init_z), Quaternion.identity, 0);
         Player.name = PhotonNetwork.NickName;
-        //DontDestroyOnLoad(this.playerPrefab);
         Instance = this;
 
         for (int i = 0; i < 6; i++)
         {
-            Instantiate(this.Treasure, new Vector3(r.Next(100, 400), 50f, r.Next(100, 400)), Quaternion.identity);
+            Instantiate(this.Treasure, new Vector3(r.Next(10, 490), 20f, r.Next(10, 4900)), Quaternion.identity);
         }
     }
 
@@ -64,9 +63,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            // called before OnPlayerLeftRoom
-            Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0} someone joined", PhotonNetwork.IsMasterClient);
-        }
+            Debug.LogFormat("MasterClient: {0} someone joined", PhotonNetwork.IsMasterClient);
+            /*LeftPlayer = GameObject.Find("Player(Clone)");
+            Debug.Log("find the player cloned");
+            Debug.Log(LeftPlayer);
+            LeftPlayer.name = other.NickName;
+        */}
     }
     
     //Called when a remote player left the room or became inactive. Check otherPlayer.IsInactive.
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         // seen when other disconnects
         if (PhotonNetwork.IsMasterClient)
         {
-            LeftPlayer = GameObject.Find(other.NickName);
+            LeftPlayer = GameObject.Find("Player(Clone)");
             PhotonNetwork.Destroy(LeftPlayer);
             Debug.LogFormat("delete player"); 
         }
