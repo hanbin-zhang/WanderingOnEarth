@@ -85,7 +85,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 if (objs[objIndex].name == "TreeMain")
                 {
                     plantTrees.Add(plantPoint);
+<<<<<<< Updated upstream
                 }               
+=======
+                }
+>>>>>>> Stashed changes
                 Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, objs[objIndex].name);
             }
 
