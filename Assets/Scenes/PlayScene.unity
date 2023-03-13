@@ -384,6 +384,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 119963035810021910, guid: a26b4f16589922041837ad2995990bc3, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 280965373651126426, guid: a26b4f16589922041837ad2995990bc3, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -2,44 +2,44 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class Manager{
+public sealed class Manager
+{
     private static readonly Lazy<Manager> self = new Lazy<Manager>(() => new Manager());
-    public static Manager Instance => self.Value;
+    private static Manager manager => self.Value;
 
     private GameLoop gameLoop;
-    public GameLoop GameLoop => gameLoop;
+    public static GameLoop GameLoop => manager.gameLoop;
 
     private EventController eventController;
-    public EventController EventController => eventController;
+    public static EventController EventController => manager.eventController;
 
     private StateController stateController;
-    public StateController StateController => stateController;
+    public static StateController StateController => manager.stateController;
 
-    
+    private Manager()
+    {
+         // dont change this
+        
+    }
 
-    private Manager() {
+    public static void Init(GameLoop gameLoop)
+    {
+        manager.gameLoop = gameLoop;
 
-
-
-        eventController = new EventController() {
+        manager.eventController = new EventController() {
             new OnLandPrepEvent(),
             new OnPlantEvent(),
             new OnWaterEvent(),
             new OnLeftMouseDownEvent(),
         };
 
-        stateController = new StateController(eventController)
-        {
+        manager.stateController = new StateController(manager.eventController)
+        {          
             new PollutedState(),
-            new NormalState()
+            new NormalState(),
+            new SafeState(),
         };
 
     }
 
-    public void Init(GameLoop gameLoop) {
-        this.gameLoop = gameLoop;
-    }
-
 }
-
-

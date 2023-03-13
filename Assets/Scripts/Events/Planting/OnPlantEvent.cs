@@ -43,12 +43,12 @@ public class OnPlantEvent : BaseEvent
         actions.Remove(action);
     }
 
-    public void Notify(Vector3 pos, string name)
+    public void Notify(Vector3 pos, Quaternion rotation, string name)
     {
         var msg = new OnPlantMessage()
         {
             pos = pos,
-            rotation = Quaternion.identity,
+            rotation = rotation,
             name = name
             
         };
