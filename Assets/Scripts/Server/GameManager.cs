@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public static GameManager Instance;
 
+    private GameObject Player;
+    private GameObject LeftPlayer;
+
     #endregion
 
     void Start()
@@ -33,7 +36,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         int init_x = r.Next(100, 400);
         int init_z = r.Next(100, 400);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 50f, init_z), Quaternion.identity, 0);
+        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 50f, init_z), Quaternion.identity, 0);
+        Player.name = PhotonNetwork.NickName;
+        //DontDestroyOnLoad(this.playerPrefab);
         Instance = this;
 
         for (int i = 0; i < 6; i++)
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Called when the local player left the room. the game's logic can clean up it's internal state.
     public override void OnLeftRoom()
     {
+        
         SceneManager.LoadScene(0);
     }
     
@@ -67,6 +73,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player other)
     {
         // seen when other disconnects
+        if (PhotonNetwork.IsMasterClient)
+        {
+            LeftPlayer = GameObject.Find(other.NickName);
+            PhotonNetwork.Destroy(LeftPlayer);
+            Debug.LogFormat("delete player"); 
+        }
+        
         Debug.LogFormat("OnPlayerLeftRoom() {0} left the room", other.NickName); 
 
         if (PhotonNetwork.IsMasterClient)
@@ -85,6 +98,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         //Leave the current room and return to the Master Server where you can join or create rooms
         PhotonNetwork.LeaveRoom();
+
     }
 
     #endregion
