@@ -82,12 +82,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             }
             else
             {               
-                if (name == "TreeMain")
+                if (objs[objIndex].name == "TreeMain")
                 {
                     plantTrees.Add(plantPoint);
-                }
-                //GameObject gameObject = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, name);
+                }               
+                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, objs[objIndex].name);
             }
 
             /*if (Input.GetMouseButtonDown(0))
