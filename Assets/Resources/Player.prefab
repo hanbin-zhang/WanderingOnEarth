@@ -15036,6 +15036,8 @@ MonoBehaviour:
   LockCameraPosition: 0
   PlayerFollowCamera: {fileID: 7708827515161443745}
   ZoomSensitive: 0.25
+  MoveAnimationFactor: 1.15
+  SprintAnimationFactor: 1.3
 --- !u!114 &452622888446069431
 MonoBehaviour:
   m_ObjectHideFlags: 0

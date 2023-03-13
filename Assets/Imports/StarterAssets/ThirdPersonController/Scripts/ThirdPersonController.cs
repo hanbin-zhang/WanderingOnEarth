@@ -79,6 +79,9 @@ namespace StarterAssets
         public CinemachineVirtualCamera PlayerFollowCamera;
         public float ZoomSensitive = 0.25f;
         private Cinemachine3rdPersonFollow PlayerFollowCamera3rdPersonFollow;
+        public float MoveAnimationFactor = 1.15f;
+        public float SprintAnimationFactor = 1.3f;
+
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -289,8 +292,13 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                float speedDiff = SprintSpeed - MoveSpeed;
+                
+                float factorDiff = SprintAnimationFactor - MoveAnimationFactor;
+                float factor = (_speed - MoveSpeed) / speedDiff * factorDiff + MoveAnimationFactor;
+
+                _animator.SetFloat(_animIDSpeed, _animationBlend * factor);
+                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude * factor);
             }
         }
 

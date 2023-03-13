@@ -22,7 +22,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     public GameObject inventory;
     public List<GameObject> slotList;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -71,59 +71,27 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     {        
         Vector3 plantingPosition = transform.position + transform.forward * 2;
         
-        if (IsValid(plantingPosition, out Vector3 plantPoint) && keyPressed) 
-        {            
-            string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
-            if (plantCond is not null)
-            {               
-                PlantingCondPanel.SetActive(true);
-                PlantingCondText.text = plantCond;
-                Invoke(nameof(turnOffPanel), 2);
-            }
-            else
+        if (IsValid(plantingPosition, out Vector3 plantPoint)) 
+        {           
+            if (keyPressed)
             {
-                if (objs[objIndex].name == "TreeMain")
+                string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
+                if (plantCond is not null)
                 {
-                    plantTrees.Add(plantPoint);
+                    PlantingCondPanel.SetActive(true);
+                    PlantingCondText.text = plantCond;
+                    Invoke(nameof(turnOffPanel), 2);
                 }
-
-                Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, objs[objIndex].name);
-            }
-
-            /*if (Input.GetMouseButtonDown(0))
-            {
-                startTime = Time.time;
-                preview = true;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                if ((Time.time - startTime) >= 0.2f)
+                else
                 {
-                    string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
-                    if (plantCond is not null)
+                    if (objs[objIndex].name == "TreeMain")
                     {
-                        PlantingCondPanel.SetActive(true);
-                        PlantingCondText.text = plantCond;
-                        Invoke(nameof(turnOffPanel), 2);
+                        plantTrees.Add(plantingPosition);
                     }
-                    else
-                    {
-                        //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
-                        PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
-                        //Debug.Log(objs[objIndex].name);
-                    }
-
+                    Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantingPosition, objs[objIndex].name);
                 }
-                startTime = 0;
-                preview = false;
             }
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                Manager.Instance.EventController.Get<OnWaterEvent>()?.Notify();
-            }
-            */
+            
         }
     }
 
@@ -219,3 +187,38 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         return valid && !Cursor.visible || startTime != 0;*/
     }
 }
+
+/*if (Input.GetMouseButtonDown(0))
+            {
+                startTime = Time.time;
+                preview = true;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if ((Time.time - startTime) >= 0.2f)
+                {
+                    string plantCond = objs[objIndex].GetComponent<NaturalObject>().CheckPlaceCondtion();
+                    if (plantCond is not null)
+                    {
+                        PlantingCondPanel.SetActive(true);
+                        PlantingCondText.text = plantCond;
+                        Invoke(nameof(turnOffPanel), 2);
+                    }
+                    else
+                    {
+                        //newObj = PhotonNetwork.Instantiate(objs[objIndex].name, plantPoint, transform.rotation);
+                        PlantObj(objs[objIndex].name, plantPoint, transform.rotation);
+                        //Debug.Log(objs[objIndex].name);
+                    }
+
+                }
+                startTime = 0;
+                preview = false;
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                Manager.Instance.EventController.Get<OnWaterEvent>()?.Notify();
+            }
+            */
