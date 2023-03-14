@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Models:
-  - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
+  - {fileID: 236010958473858321, guid: 15fa6fca39d6b294986449be6d03db62, type: 3}
   - {fileID: 6493271695876196142, guid: 81ba7b73920e9024cbd37dab5a076106, type: 3}
   - {fileID: 7559005100268599896, guid: 237ffe5bd0e38554a8f449c81a996e89, type: 3}
   localShift: {x: 0, y: 0, z: 0}
