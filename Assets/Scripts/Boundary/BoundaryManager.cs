@@ -38,27 +38,13 @@ public class BoundaryManager : MonoBehaviour
             switch ((BarrierSides)i)
             {
                 case BarrierSides.FOWARD:
-                    StateProperty adjacentProperty = Manager.StateController.GetStateProperty(originPosition + new Vector3(0f, 0f, 2 * regionSize));
-                    if (adjacentProperty.boundaries[i + 2] is not null)
-                    {
-                        // Disable the corresponding wall in the adjacent region
-                        adjacentProperty.boundaries[i + 2].SetActive(false);
-                        // Destroy the current wall
-                        Destroy(stateProperty.boundaries[i]);
-                        stateProperty.boundaries[i] = null;
-                        continue; // Skip to the next iteration of the loop
-                    }
-                    else
-                    {
-                        stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
-                    }
-
                     if (originPosition.z + 2 * regionSize > Manager.StateController.mapHeight)
                     {
                         stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
                     }
                     else
                     {
+                        StateProperty adjacentProperty = Manager.StateController.GetStateProperty(originPosition + new Vector3(0f, 0f, 2 * regionSize));
                         if (adjacentProperty.boundaries[i + 2] is not null)
                         {
                             // Disable the corresponding wall in the adjacent region
