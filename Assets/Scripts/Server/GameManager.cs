@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
         Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 50f, init_z), Quaternion.identity, 0);
         Player.name = PhotonNetwork.NickName;
+        //PlayerUI.
         Instance = this;
 
         for (int i = 0; i < 6; i++)
