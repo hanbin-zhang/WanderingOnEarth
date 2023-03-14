@@ -81,7 +81,7 @@ public class StateController : IEnumerable<BaseState>
         stateLabelMap[state.StateLabel] = state;        
     }
 
-    public StateController(EventController eventController, float mapWidth = 1000, float mapHeight = 1000, int regionSize = 500)
+    public StateController(EventController eventController, float mapWidth=500, float mapHeight=500, int regionSize=250)
     {
         this.eventController = eventController;
         this.mapWidth = mapWidth;
