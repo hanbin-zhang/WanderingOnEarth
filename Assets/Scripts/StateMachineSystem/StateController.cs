@@ -13,6 +13,14 @@ public enum StateLabel
     GREENED
 }
 
+public enum BarrierSides
+{
+    FOWARD,
+    BACKWARD,
+    RIGHT,
+    LEFT
+}
+
 public class StateProperty
 {
     public StateLabel label { get; set; }
