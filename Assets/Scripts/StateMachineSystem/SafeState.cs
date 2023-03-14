@@ -1,31 +1,29 @@
-ï»¿using System;
-using System.Collections.Generic;
-
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 using Photon.Pun;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-
-public class NormalState : BaseState
+public class SafeState : BaseState
 {
-    public NormalState() => stateLabel = StateLabel.NORMAL;
-
+    public SafeState() => stateLabel = StateLabel.SAFE;
     public override void Handle(StateProperty stateProperty, BaseMessage msg)
     {
+        Debug.Log("ÏÖÔÚÊÇSAFE×´Ì¬£¡");
+
         switch (msg)
         {
             case OnPlantEvent.OnPlantMessage:
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
-                
+
 
                 GameObject gameObject = PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
                 NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
-                if (naturalObject.CheckUpdateCondition(stateProperty) is null) {
+                if (naturalObject.CheckUpdateCondition(stateProperty) is null)
+                {
                     stateProperty.EvolvingNaObjs.Add(naturalObject);
                     NaObjManager.Register(naturalObject);
-                } else
+                }
+                else
                 {
                     stateProperty.PendingNaObjs.Add(naturalObject);
                 }
@@ -42,23 +40,23 @@ public class NormalState : BaseState
                         stateProperty.PendingNaObjs.RemoveAt(i);
                     }
                 }
-                
-                if (plantMsg.name == "TreeMain") stateProperty.treeNumber++;
-                if (stateProperty.treeNumber > 10) stateProperty.SetState(StateLabel.SAFE);
 
-                Debug.Log($"è¿™æ˜¯ä¸€ä¸ªonplantäº‹ä»¶ï¼Œposä½ç½®æ˜¯{plantMsg.pos}, tree Numberæ˜¯{stateProperty.treeNumber}");
+                if (plantMsg.name == "TreeMain") stateProperty.treeNumber++;
+                
+
+                Debug.Log($"ÕâÊÇÒ»¸öonplantÊÂ¼þ£¬posÎ»ÖÃÊÇ{plantMsg.pos}, tree NumberÊÇ{stateProperty.treeNumber}");
                 break;
             case OnLeftMouseDownEvent.OnWaterMessage:
                 OnLeftMouseDownEvent.OnWaterMessage waterMsg = (OnLeftMouseDownEvent.OnWaterMessage)msg;
-                Debug.Log($"è¿™æ˜¯ä¸€ä¸ªonwateräº‹ä»¶ï¼Œæ²¡æœ‰pos");
+                Debug.Log($"ÕâÊÇÒ»¸öonwaterÊÂ¼þ£¬Ã»ÓÐpos");
                 break;
             case OnLandPrepEvent.OnLandPrepMessage:
                 OnLandPrepEvent.OnLandPrepMessage prepLandMsg = msg.Of<OnLandPrepEvent.OnLandPrepMessage>();
                 //stateProperty.greenValue++;
-                Debug.Log($"è¿™æ˜¯ä¸€ä¸ªpreplandäº‹ä»¶ï¼Œposä½ç½®æ˜¯{prepLandMsg.pos}");
+                Debug.Log($"ÕâÊÇÒ»¸öpreplandÊÂ¼þ£¬posÎ»ÖÃÊÇ{prepLandMsg.pos}");
                 break;
         }
-        
     }
-}
 
+    
+}

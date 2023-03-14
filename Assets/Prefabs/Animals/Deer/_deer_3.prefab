@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: -4597107667637640440, guid: 4e9f781ce772f424d9b39a8c67880cfb, type: 3}
     - target: {fileID: 919132149155446097, guid: 4e9f781ce772f424d9b39a8c67880cfb, type: 3}
       propertyPath: m_Name
-      value: _deer3
+      value: _deer_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9f781ce772f424d9b39a8c67880cfb, type: 3}
@@ -95,12 +95,12 @@ Rigidbody:
   m_GameObject: {fileID: 7559005100268599896}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 10
-  m_AngularDrag: 300
+  m_Drag: 0
+  m_AngularDrag: 100
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &-5238108245855448684
 BoxCollider:

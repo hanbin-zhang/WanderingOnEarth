@@ -105,7 +105,7 @@ namespace StarterAssets
 
 		public void OnLandPrep(InputValue value)
 		{
-            Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(transform.position);
+            Manager.EventController.Get<OnLandPrepEvent>()?.Notify(transform.position);
         }
 
 		public void OnCollect(InputValue value)

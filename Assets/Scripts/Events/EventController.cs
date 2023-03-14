@@ -10,7 +10,12 @@ public class EventController : IEnumerable<BaseEvent>
     private Dictionary<Type, BaseEvent> eventTypes = new Dictionary<Type, BaseEvent>();
     public IEnumerator<BaseEvent> GetEnumerator() => eventTypes.Values.GetEnumerator();
     IEnumerator IEnumerable.GetEnumerator() => eventTypes.Values.GetEnumerator();
-    public void Add(BaseEvent e) => eventTypes[e!.GetType()] = e!;
+    public void Add(BaseEvent e)
+    {
+        if (eventTypes.ContainsKey(e!.GetType())) throw new Exception("double registered event");
+        eventTypes[e!.GetType()] = e!;
+    }
+        
 
     public EventController() { }
 

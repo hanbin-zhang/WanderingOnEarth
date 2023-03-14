@@ -50,7 +50,7 @@ public class NaObjManager : MonoBehaviour
 
                 evolvingNaObjsQueue.RemoveAt(0);
 
-                StateProperty stateProperty = Manager.Instance.StateController
+                StateProperty stateProperty = Manager.StateController
                         .GetStateProperty(naturalObject.transform.position);
                 lock (stateProperty)
                 {

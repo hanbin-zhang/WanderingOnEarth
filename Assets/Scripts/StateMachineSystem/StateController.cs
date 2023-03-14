@@ -9,13 +9,14 @@ public enum StateLabel
 {
     POLLUTED,
     NORMAL,
+    SAFE,
     GREENED
 }
 
 public class StateProperty
 {
     public StateLabel label { get; set; }
-    public int greenValue { get; set; }
+    public int treeNumber { get; set; }
 
     public List<NaturalObject> PendingNaObjs { get; set; }
     public List<NaturalObject> EvolvingNaObjs { get; set; }
@@ -27,6 +28,11 @@ public class StateProperty
         EvolvingNaObjs = new List<NaturalObject>();
         EvolvedNaObjs = new List<NaturalObject>();
         NaObjNums = new Dictionary<string, int>();
+    }
+
+    public void SetState(StateLabel label)
+    {
+        this.label = label;
     }
 
     public void AddCount(string className)
@@ -58,21 +64,21 @@ public class StateController : IEnumerable<BaseState>
     public void Add(BaseState state)
     {
         if (!stateLabelMap.Any())
-        {
+        {            
             for (int j = 0; j < nRows; j++)
             {
                 for (int i = 0; i < nColumns; i++)
-                {
-                    
+                {                   
                     statesProperty[j, i] = new StateProperty()
                     {
                         label = state.StateLabel,
-                        greenValue = 0
+                        treeNumber = 0
                     };
                 }
             }
         }
-        stateLabelMap[state.StateLabel] = state;
+        if (stateLabelMap.ContainsKey(state.StateLabel)) throw new Exception("double registered state");
+        stateLabelMap[state.StateLabel] = state;        
     }
 
     public StateController(EventController eventController, float mapWidth = 1000, float mapHeight = 1000, int regionSize = 500)
@@ -89,54 +95,22 @@ public class StateController : IEnumerable<BaseState>
     }
 
     public void BindEvents()
-    {
-        /*Action<OnPlantEvent.OnPlantMessage> onPlantAction = (msg) => {
-            getRegionState(msg.pos).Handle(this, msg);
-            string log = "";
-            foreach (StateLabel label in regionStates)
-            {
-                log += label + " ";
-            }
-            Debug.Log($"region states: {log}");
-        };
-        eventController.Get<OnPlantEvent>()?.AddListener(onPlantAction);
-        // 实现接口方式 listener
-        eventController.Get<OnPlantEvent>()?.AddListener(new StateOnPlantEventListener(this));*/
-        // 实现lambda方式 action
-
+    {       
         eventController.Get<OnPlantEvent>()?.AddListener((msg) => {
             lock (statesProperty)
             {
                 StateProperty stateProperty = GetStateProperty(msg.pos);
-                StateLabel newState = GetRegionState(stateProperty.label).Handle(stateProperty, msg);
-                stateProperty.label = newState;
-            }
-            /*string log = "";
-            foreach (StateProperty s in statesProperty)
-            {
-                log += s.label + " ";
-            }
-            Debug.Log($"region states: {log}");*/
-        });
-        eventController.Get<OnWaterEvent>()?.AddListener((msg) => {
-            lock (statesProperty)
-            {
-
-            }
-            /*foreach (StateProperty s in statesProperty)
-            {
-                StateLabel newState = GetRegionState(s.label).Handle(s, msg);
-                s.label = newState;
-            }*/
-        });
+                GetRegionState(stateProperty).Handle(stateProperty, msg);                
+            }            
+        });        
         eventController.Get<OnLandPrepEvent>()?.AddListener((msg) => {
             lock (statesProperty)
-            {
+            {               
                 StateProperty s = GetStateProperty(msg.pos);
-                StateLabel newState = GetRegionState(s.label).Handle(s, msg);
-                s.label = newState;
-                Debug.Log($"region states: {newState}");
+                GetRegionState(s).Handle(s, msg);                
+                Debug.Log($"region states: {s.label}");
                 Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
+                Debug.Log(GetRegionState(s).GetType());
             }            
         });
     }
@@ -148,26 +122,8 @@ public class StateController : IEnumerable<BaseState>
         return statesProperty[y, x];     
     }
 
-    public BaseState GetRegionState(StateLabel stateLabel)
+    public BaseState GetRegionState(StateProperty property)
     {
-        return stateLabelMap[stateLabel];
-    }
-}
-
-
-public class StateOnPlantEventListener : OnPlantEvent.OnPlantListener
-{
-    private StateController stateController;
-    private StateProperty stateProperty;
-
-    public StateOnPlantEventListener(StateController stateController, StateProperty stateProperty)
-    {
-        this.stateController = stateController;
-        this.stateProperty = stateProperty;
-    }
-
-    public void OnEvent(OnPlantEvent.OnPlantMessage msg)
-    {
-        StateLabel newState = stateController.GetRegionState(stateProperty.label).Handle(stateProperty, msg);
+        return stateLabelMap[property.label];
     }
 }

@@ -86,9 +86,9 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 {
                     if (objs[objIndex].name == "TreeMain")
                     {
-                        plantTrees.Add(plantingPosition);
+                        plantTrees.Add(plantPoint);
                     }
-                    Manager.Instance.EventController.Get<OnPlantEvent>()?.Notify(plantingPosition, objs[objIndex].name);
+                    Manager.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, transform.rotation, objs[objIndex].name);
                 }
             }
             
@@ -109,7 +109,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             // Check for collisions with existing objects
             Collider[] colliders = Physics.OverlapSphere(point, 1f);
             // terrain is a collider
-            valid = hit.collider.gameObject.name == "Terrain" && colliders.Length <= 1;
+            valid = hit.collider.gameObject.tag == "Ground" && colliders.Length <= 1;
         }
        
         slotList[objIndex].transform.GetChild(0).gameObject.GetComponent<Image>().color = valid ? Color.green : Color.red;

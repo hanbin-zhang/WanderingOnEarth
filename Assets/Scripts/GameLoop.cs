@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class GameLoop : MonoBehaviour
 {
-    private Manager manager;
-
-    void Awake() {
-        manager = Manager.Instance;
-        manager.Init(this);
+    void Awake() {        
+        Manager.Init(this);
     }
 
     // Start is called before the first frame update

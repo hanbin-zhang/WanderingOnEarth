@@ -22,7 +22,6 @@ public class Movable : MonoBehaviour
 
     private bool newObj = true;
 
-    private bool afterEscape;
     private Rigidbody rb;
     public Vector3 centerOfMass;
 
@@ -37,22 +36,11 @@ public class Movable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.centerOfMass = centerOfMass;
-        if (PlayerPlanting.preview && newObj) return;
-        // go straight 
+        
+        //if (PlayerPlanting.preview && newObj) return;
        
         transform.position += transform.forward * speed;
-
-        /*rb.AddForce(transform.forward * speed * rb.mass * 10f, ForceMode.Force);
-        Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
-
-        // limit velocity if needed
-        if (flatVel.magnitude > speed)
-        {
-            Vector3 limitedVel = flatVel.normalized * speed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        }
-*/
+       
         if (readyToRotate)
         {
             float rotateAngle = Random.Range(minRotateAngle, maxRotateAngle);
@@ -63,7 +51,7 @@ public class Movable : MonoBehaviour
         if (readyToSpeed)
         {
             speed = Random.Range(minSpeed, maxSpeed);
-            readyToSpeed= false;
+            readyToSpeed = false;
             Invoke(nameof(resetSpeed), Random.Range(5f, 10f));
         }
 
@@ -72,14 +60,7 @@ public class Movable : MonoBehaviour
     }
     private void resetRotation()
     {
-        if (afterEscape)
-        {
-            afterEscape= false;
-        }
-        else
-        {
-            readyToRotate = true;
-        }              
+        readyToRotate = true;
     }
 
     private void resetSpeed()
@@ -92,9 +73,7 @@ public class Movable : MonoBehaviour
         if(other.gameObject.tag != "Ground")
         {
             transform.Rotate(Quaternion.Euler(0, escapeAngle, 0).eulerAngles);
-            //transform.rotation *= Quaternion.Euler(0, escapeAngle, 0);
-            afterEscape = true;
-            
+            //transform.rotation *= Quaternion.Euler(0, escapeAngle, 0);           
         }
     }
 }
