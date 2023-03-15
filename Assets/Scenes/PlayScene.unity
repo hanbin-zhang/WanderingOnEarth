@@ -256,18 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boundary: {fileID: 8174465283081750567, guid: 79fd7e0467c65994f862d1e23e41b7b6, type: 3}
---- !u!114 &1164713129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164713124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9fc9127a0a0eb641b15e1d7b0e480a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1204866491
 PrefabInstance:
   m_ObjectHideFlags: 0

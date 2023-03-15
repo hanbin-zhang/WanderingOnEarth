@@ -21,9 +21,7 @@ public class SafeState : BaseState
                 if (naturalObject.CheckUpdateCondition(stateProperty) is null)
                 {
                     stateProperty.EvolvingNaObjs.Add(naturalObject);
-                    PhotonView remoteView = naturalObject.GetComponent<PhotonView>();
-                    remoteView.RPC(nameof(NaObjManager.Register), RpcTarget.MasterClient, naturalObject);
-
+                    NaObjManager.Register(naturalObject);
                 }
                 else
                 {
@@ -38,9 +36,7 @@ public class SafeState : BaseState
                     {
                         stateProperty.EvolvingNaObjs.Add(stateProperty.PendingNaObjs[i]);
                         stateProperty.PendingNaObjs[i].SetNewUpdateTime();
-                        PhotonView remoteView = GameObjectTracker.gameManager.GetComponent<PhotonView>();
-                        remoteView.RPC(nameof(NaObjManager.Register), RpcTarget.MasterClient, naturalObject);
-
+                        NaObjManager.Register(stateProperty.PendingNaObjs[i]);
                         stateProperty.PendingNaObjs.RemoveAt(i);
                     }
                 }

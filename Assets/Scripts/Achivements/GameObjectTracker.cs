@@ -13,5 +13,4 @@ public static class GameObjectTracker
     public static Dictionary<string, int> objectCount = new();
     public static List<GameObject> playerObjects = new();
     public static BoundaryManager boundaryManager;
-    public static GameObject gameManager;
 }
