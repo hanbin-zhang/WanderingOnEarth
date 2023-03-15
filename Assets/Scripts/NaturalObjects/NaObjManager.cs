@@ -8,10 +8,10 @@ public class NaObjManager : MonoBehaviour
 
     private void Start()
     {
-        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        /*if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
             this.enabled = false;
-        }
+        }*/
     }
 
     public static void Register(NaturalObject naturalObject)
