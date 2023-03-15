@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: tree_2Leaf
-  m_Shader: {fileID: -6465566751694194690, guid: 4a411f4b2c3de45438e8265d436d7950, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4a411f4b2c3de45438e8265d436d7950,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -56,6 +57,6 @@ Material:
     - _wind_speed: 1.2
     - _wind_strength: 0.2
     m_Colors:
-    - _Color: {r: 0, g: 0.11764706, b: 0, a: 1}
+    - _Color: {r: 0, g: 0.23529412, b: 0, a: 1}
     - _wind_direction: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
