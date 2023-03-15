@@ -1,6 +1,9 @@
+using Cyan;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerLifeStatus : MonoBehaviour
 {
@@ -9,12 +12,20 @@ public class PlayerLifeStatus : MonoBehaviour
     private bool triggered;
     private int elapseTime;
     private int disasterElapseTime;
+    
+    public UniversalRendererData RendererData;
+    private Blit blit;
+    private bool blitState = false;
+    private StateLabel state;
 
     // Start is called before the first frame update
     void Start()
     {
+        blit = RendererData.rendererFeatures.OfType<Blit>().FirstOrDefault();
+        blit.SetActive(blitState);
+        RendererData.SetDirty();
         lifeValueDisplay.text = $"{lifeValue}";
-        Invoke("Timer", 1f);
+        Invoke("Loop", 1f);
     }
 
     // Update is called once per frame
@@ -23,29 +34,22 @@ public class PlayerLifeStatus : MonoBehaviour
         
     }
 
-    private void Timer()
-    {        
-        elapseTime++;
-        disasterElapseTime++;
+    private void Loop()
+    { 
+        PreProcess();
         ProcessLifeValue();
         ProcessDisaster();
-        if (lifeValue >= 0)
-        {
-            lifeValueDisplay.text = $"{lifeValue}";
-            Invoke("Timer", 1f);
-        }
-        else
-        {
-            lifeValueDisplay.text = $"{0}";
-            // game over
-        }
-        
+        ProcessRendererEffect();
+        PostProcess();        
     }
 
+    private void PreProcess()
+    {               
+        state = Manager.StateController.GetStateProperty(transform.position).label;
+    }
     private void ProcessLifeValue()
-    {
-        StateLabel stateLabel = Manager.StateController.GetStateProperty(transform.position).label;
-        if (stateLabel == StateLabel.POLLUTED)
+    {        
+        if (state == StateLabel.POLLUTED)
         {
             if (elapseTime >= 1)
             {
@@ -54,7 +58,7 @@ public class PlayerLifeStatus : MonoBehaviour
             }
         }
         
-        if (stateLabel == StateLabel.NORMAL)
+        if (state == StateLabel.NORMAL)
         {
             if (elapseTime >= 3)
             {
@@ -63,17 +67,16 @@ public class PlayerLifeStatus : MonoBehaviour
             }
         }
         
-        if (stateLabel == StateLabel.SAFE)
+        if (state == StateLabel.SAFE)
         {
 
         }
-       
+        elapseTime++;
     }
 
     private void ProcessDisaster()
-    {
-        StateLabel stateLabel = Manager.StateController.GetStateProperty(transform.position).label;
-        if (stateLabel == StateLabel.POLLUTED)
+    {       
+        if (state == StateLabel.POLLUTED)
         {
             if (disasterElapseTime >= 5)
             {
@@ -82,7 +85,7 @@ public class PlayerLifeStatus : MonoBehaviour
             }
         }
         
-        if (stateLabel == StateLabel.NORMAL)
+        if (state == StateLabel.NORMAL)
         {
             if (disasterElapseTime >= 10)
             {
@@ -91,10 +94,43 @@ public class PlayerLifeStatus : MonoBehaviour
             }
         }
         
-        if (stateLabel == StateLabel.SAFE)
+        if (state == StateLabel.SAFE)
         {
 
         }
+        disasterElapseTime++;
     }
 
+    private void ProcessRendererEffect()
+    {               
+        bool newBlitState = state switch
+        {
+            StateLabel.POLLUTED => true,
+            StateLabel.NORMAL => true,
+            StateLabel.SAFE => false,
+            _ => false,
+        };
+        
+
+        if (newBlitState != blitState)
+        {
+            blitState = newBlitState;
+            blit.SetActive(newBlitState);
+            RendererData.SetDirty();
+        }
+    }
+
+    private void PostProcess()
+    {
+        if (lifeValue >= 0)
+        {
+            lifeValueDisplay.text = $"{lifeValue}";
+            Invoke("Loop", 1f);
+        }
+        else
+        {
+            lifeValueDisplay.text = $"{0}";
+            // game over
+        }
+    }
 }
