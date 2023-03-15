@@ -13,22 +13,10 @@ public enum StateLabel
     GREENED
 }
 
-public enum BarrierSides
-{
-    FOWARD,
-    RIGHT,
-    BACKWARD,
-    LEFT
-}
-
 public class StateProperty
 {
     public StateLabel label { get; set; }
     public int treeNumber { get; set; }
-    public int RowNum { get; set; }
-    public int ColNum { get; set; }
-
-    public List<GameObject> boundaries;
 
     public List<NaturalObject> PendingNaObjs { get; set; }
     public List<NaturalObject> EvolvingNaObjs { get; set; }
@@ -39,7 +27,6 @@ public class StateProperty
         PendingNaObjs = new List<NaturalObject>();
         EvolvingNaObjs = new List<NaturalObject>();
         EvolvedNaObjs = new List<NaturalObject>();
-        boundaries = new List<GameObject> { null, null, null, null };
         NaObjNums = new Dictionary<string, int>();
     }
 
@@ -85,9 +72,7 @@ public class StateController : IEnumerable<BaseState>
                     statesProperty[j, i] = new StateProperty()
                     {
                         label = state.StateLabel,
-                        treeNumber = 0,
-                        RowNum = j,
-                        ColNum = i,
+                        treeNumber = 0
                     };
                 }
             }
@@ -96,7 +81,7 @@ public class StateController : IEnumerable<BaseState>
         stateLabelMap[state.StateLabel] = state;        
     }
 
-    public StateController(EventController eventController, float mapWidth = 500, float mapHeight = 500, int regionSize = 250)
+    public StateController(EventController eventController, float mapWidth=500, float mapHeight=500, int regionSize=250)
     {
         this.eventController = eventController;
         this.mapWidth = mapWidth;
@@ -106,7 +91,6 @@ public class StateController : IEnumerable<BaseState>
         this.nColumns = (int)(mapWidth / regionSize);
 
         statesProperty = new StateProperty[nRows, nColumns];
-
         BindEvents();
     }
 

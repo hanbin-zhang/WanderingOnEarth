@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6245885964851853913
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,15 +20,16 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ZoneWall
-  m_Shader: {fileID: -6465566751694194690, guid: fab32ff143aa64d49a8ec633030d70eb, type: 3}
+  m_Name: trunk _2
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap: {}
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -78,16 +92,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_0712cf4b63234cccacd61f9278a6e2b3: 1
-    - Vector1_138a64488a3a4b77a6a489543d613111: 0.2
-    - Vector1_4c1fbc4c3288499db696453f41b15de5: 10
-    - Vector1_9153d406b8664da4ab0d460ce1e18537: 0.5
-    - Vector1_97092b82e48345d1acc4ff9b015c1390: 5
-    - Vector1_9be005653b944285b37bcfec07ca58e3: 4.17
-    - Vector1_cc3e3d16bfb9416d85606820b1bd21d3: 6.63
-    - Vector1_e39a18389c6d455f9a2fad4c7d7a185a: 2.5
-    - Vector1_ea076a97dd2f40c68e7b2c2b194d33fe: 1
-    - Vector1_faed95e103f54a809434eb18a308750a: 12.46
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -105,7 +109,6 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -116,24 +119,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_9deced82e3a9410b9f98be954e61e2c3: {r: 0.3773585, g: 0.029903853, b: 0.0704348, a: 0}
-    - Color_e2885873dc934b5da2a6e619b42fbd56: {r: 0.9716981, g: 0.22756512, b: 0.003666713, a: 1}
-    - Color_fdb6f2774caf4a5890a4cd3197ac33e4: {r: 1, g: 0.22832607, b: 0.0603773, a: 0.24705882}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.3679245, g: 0.30159596, b: 0.011801328, a: 1}
+    - _Color: {r: 0.36792448, g: 0.30159593, b: 0.011801328, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1103675736762279315
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
