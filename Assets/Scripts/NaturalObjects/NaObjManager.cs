@@ -8,12 +8,14 @@ public class NaObjManager : MonoBehaviour
 
     private void Start()
     {
+        GameObjectTracker.gameManager = this.gameObject;
         if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
             this.enabled = false;
         }
     }
 
+    [Photon.Pun.PunRPC]
     public static void Register(NaturalObject naturalObject)
     {
         lock (evolvingLock)
