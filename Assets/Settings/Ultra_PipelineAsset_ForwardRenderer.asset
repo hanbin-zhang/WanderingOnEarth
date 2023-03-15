@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
-  m_RendererFeatures:
-  - {fileID: 6788354213219548711}
-  m_RendererFeatureMap: 273e7ad03014355e
+  m_RendererFeatures: []
+  m_RendererFeatureMap: 
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -53,30 +52,3 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
---- !u!114 &6788354213219548711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306e7c1b69c14334ca1878443dc7a314, type: 3}
-  m_Name: Blit
-  m_EditorClassIdentifier: 
-  m_Active: 0
-  settings:
-    Event: 500
-    blitMaterial: {fileID: 2100000, guid: 8e66f3fc405d5d047b4ee470307e671c, type: 2}
-    blitMaterialPassIndex: 0
-    setInverseViewMatrix: 0
-    requireDepthNormals: 0
-    srcType: 0
-    srcTextureId: _CameraColorTexture
-    srcTextureObject: {fileID: 0}
-    dstType: 0
-    dstTextureId: _BlitPassTexture
-    dstTextureObject: {fileID: 0}
-    overrideGraphicsFormat: 0
-    graphicsFormat: 4
