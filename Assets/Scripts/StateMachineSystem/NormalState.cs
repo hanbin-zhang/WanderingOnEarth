@@ -20,7 +20,7 @@ public class NormalState : BaseState
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
                 
 
-                GameObject gameObject = PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
+                /*GameObject gameObject = PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
                 NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
                 if (naturalObject.CheckUpdateCondition(stateProperty) is null) {
                     stateProperty.EvolvingNaObjs.Add(naturalObject);
@@ -42,7 +42,7 @@ public class NormalState : BaseState
                         stateProperty.PendingNaObjs.RemoveAt(i);
                     }
                 }
-                
+                */
                 if (plantMsg.name == "TreeMain") stateProperty.treeNumber++;
                 if (stateProperty.treeNumber > 10)
                 {
