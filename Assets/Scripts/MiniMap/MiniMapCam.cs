@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MiniMapCam : MonoBehaviour
 {
-    public Transform target;
+    public Transform targetCamera;
+    public Transform playerBody;
 
     float defaultPosY;
 
@@ -18,8 +19,7 @@ public class MiniMapCam : MonoBehaviour
     void Update()
     {
         // Apply position
-        transform.position = new Vector3(target.position.x, defaultPosY, target.position.z);
         // Apply rotation
-        transform.rotation = Quaternion.Euler(90, target.eulerAngles.y, 0);
+        transform.SetPositionAndRotation(new Vector3(targetCamera.position.x, defaultPosY, targetCamera.position.z), Quaternion.Euler(90, targetCamera.eulerAngles.y, 0));
     }
 }

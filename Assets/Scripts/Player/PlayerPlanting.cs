@@ -85,7 +85,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 else if (Manager.StateController.GetStateProperty(plantPoint).label == StateLabel.POLLUTED)
                 {
                     PlantingCondPanel.SetActive(true);
-                    PlantingCondText.text = $"Can on plant objects on the region with state {StateLabel.POLLUTED}";
+                    PlantingCondText.text = $"unable to plant on {StateLabel.POLLUTED}";
                     Invoke(nameof(turnOffPanel), 2);
                 }
                 else
