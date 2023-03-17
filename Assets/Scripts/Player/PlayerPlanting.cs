@@ -82,6 +82,12 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     PlantingCondText.text = plantCond;
                     Invoke(nameof(turnOffPanel), 2);
                 }
+                else if (Manager.StateController.GetStateProperty(plantPoint).label == StateLabel.POLLUTED)
+                {
+                    PlantingCondPanel.SetActive(true);
+                    PlantingCondText.text = $"unable to plant on {StateLabel.POLLUTED}";
+                    Invoke(nameof(turnOffPanel), 2);
+                }
                 else
                 {
                     if (objs[objIndex].name == "TreeMain")
@@ -89,9 +95,42 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                         plantTrees.Add(plantPoint);
                     }
                     Manager.EventController.Get<OnPlantEvent>()?.Notify(plantPoint, transform.rotation, objs[objIndex].name);
+
+                    InstantiateNaObj(objs[objIndex].name, plantPoint, transform.rotation);
                 }
             }
             
+        }
+    }
+
+    private void InstantiateNaObj(string objName, Vector3 position, Quaternion rotation)
+    {
+        GameObject gameObject = PhotonNetwork.Instantiate(objName, position, rotation);
+        NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
+
+        StateProperty stateProperty = Manager.StateController.GetStateProperty(position);
+
+        if (naturalObject.CheckUpdateCondition(stateProperty) is null)
+        {
+            stateProperty.EvolvingNaObjs.Add(naturalObject);
+            NaObjManager.Register(naturalObject);
+        }
+        else
+        {
+            stateProperty.PendingNaObjs.Add(naturalObject);
+        }
+
+        stateProperty.AddCount(naturalObject.GetDerivedClassName());
+
+        for (int i = stateProperty.PendingNaObjs.Count - 1; i >= 0; i--)
+        {
+            if (stateProperty.PendingNaObjs[i].CheckUpdateCondition(stateProperty) is null)
+            {
+                stateProperty.EvolvingNaObjs.Add(stateProperty.PendingNaObjs[i]);
+                stateProperty.PendingNaObjs[i].SetNewUpdateTime();
+                NaObjManager.Register(stateProperty.PendingNaObjs[i]);
+                stateProperty.PendingNaObjs.RemoveAt(i);
+            }
         }
     }
 
