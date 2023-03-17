@@ -54,8 +54,11 @@ public class ObjectClamp : MonoBehaviour
             if (DistanceOnXZPlane(otherPlayer.transform.position,
                 transform.position) >= outRange)
             {
+                float d = DistanceOnXZPlane(otherPlayer.transform.position,
+                transform.position);
+                Debug.Log($"this location:{transform.position}; other position{otherPlayer.transform.position}," +
+                    $"distance:{d}");
                 newOtherPlayerTransforms.Add(otherPlayer.transform);
-
                 // activate pooled player icon and add to list
                 if (pooledIcons.Count > 0)
                 {
