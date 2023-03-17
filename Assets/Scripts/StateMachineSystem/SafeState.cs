@@ -16,7 +16,7 @@ public class SafeState : BaseState
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
 
 
-                GameObject gameObject = PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
+                /*GameObject gameObject = PhotonNetwork.Instantiate(plantMsg.name, plantMsg.pos, plantMsg.rotation);
                 NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
                 if (naturalObject.CheckUpdateCondition(stateProperty) is null)
                 {
@@ -40,7 +40,7 @@ public class SafeState : BaseState
                         stateProperty.PendingNaObjs.RemoveAt(i);
                     }
                 }
-
+*/
                 if (plantMsg.name == "TreeMain") stateProperty.treeNumber++;
                 
 
