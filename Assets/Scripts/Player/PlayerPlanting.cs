@@ -29,6 +29,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        lock (GameObjectTracker.playerObjects)
+        {
+            GameObjectTracker.playerObjects.Add(this.gameObject);
+        }
+
         slotList = new List<GameObject>();
         foreach (Transform slots in inventory.transform)
         {
