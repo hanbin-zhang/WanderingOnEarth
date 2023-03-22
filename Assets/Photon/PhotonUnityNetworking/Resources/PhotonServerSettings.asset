@@ -41,6 +41,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - UpdateObject
   - UpdateState
+  - Notify
+  - rpcTarget
+  - StateMachineRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

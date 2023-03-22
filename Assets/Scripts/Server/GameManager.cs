@@ -5,6 +5,8 @@ using Photon.Realtime;
 using Random = System.Random;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using System.Reflection;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     #region Photon Callbacks
-    
+
     // Called when the local player left the room. the game's logic can clean up it's internal state.
     public override void OnLeftRoom()
     {
