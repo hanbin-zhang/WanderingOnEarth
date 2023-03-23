@@ -42,8 +42,15 @@ public class OnWaterEvent : BaseEvent
     public void Notify()
     {
         OnWaterMessage msg = new OnWaterMessage();
-        listeners.ForEach((x) => x.OnEvent(msg));
-        actions.ForEach((x) => x.Invoke(msg));
+        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        {
+            NotifyMaster(GetType().Name, msg);
+        }
+        else
+        {
+            listeners.ForEach((x) => x.OnEvent(msg));
+            actions.ForEach((x) => x.Invoke(msg));
+        }
     }
 
     public void Clear()
