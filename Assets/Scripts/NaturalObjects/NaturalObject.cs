@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using Photon.Pun;
 
 public abstract class NaturalObject : MonoBehaviour
 {
@@ -32,8 +33,11 @@ public abstract class NaturalObject : MonoBehaviour
         UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
-        if (Photon.Pun.PhotonNetwork.IsMasterClient)
+        PhotonView photonView = gameObject.GetComponent<PhotonView>();
+        if (PhotonNetwork.IsMasterClient &&
+            photonView.Owner.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
         {
+            Debug.Log($"generate info{this.gameObject.name}; position{transform.position}");
             Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name);
         }
     }
