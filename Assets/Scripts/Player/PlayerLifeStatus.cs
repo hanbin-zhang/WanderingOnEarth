@@ -21,9 +21,14 @@ public class PlayerLifeStatus : MonoBehaviour
     private StateLabel state;
     private SemaphoreSlim rpcSemaphore = new(0);
 
+
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        if (!gameObject.GetComponent<PhotonView>().IsMine)
+        {
+            enabled = false;
+        }
         blit = RendererData.rendererFeatures.OfType<Blit>().FirstOrDefault();
         blit.SetActive(blitState);
         RendererData.SetDirty();
@@ -58,7 +63,7 @@ public class PlayerLifeStatus : MonoBehaviour
     [PunRPC]
     public void ServerLabelCallback(StateLabel label) {
         state = label;
-        //rpcSemaphore.Release();
+        rpcSemaphore.Release();
     }
 
     private void PreProcess()
@@ -69,7 +74,7 @@ public class PlayerLifeStatus : MonoBehaviour
         // Call the RPC method and specify a callback function
         photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
         //Debug.Log("lock");
-        //rpcSemaphore.Wait();
+        rpcSemaphore.Wait();
     }
     private void ProcessLifeValue()
     {        
