@@ -47,4 +47,10 @@ public class sychronizeState : MonoBehaviour
     {
         Manager.EventController.Get<OnLandPrepEvent>()?.Notify(pos);
     }
+
+    [PunRPC]
+    public void GetServerStateLabel(Vector3 pos)
+    {
+        
+    }
 }

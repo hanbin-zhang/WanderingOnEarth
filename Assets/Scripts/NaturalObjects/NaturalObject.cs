@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Photon.Pun;
+using Newtonsoft.Json;
 
 public abstract class NaturalObject : MonoBehaviour
 {
@@ -20,7 +21,20 @@ public abstract class NaturalObject : MonoBehaviour
     [HideInInspector] public int currentWorldID;
     [HideInInspector] public int updateModelCommand = 0;
     [HideInInspector] public float nextUpdateTime;
+    private StateLabel stateLabel;
+    private Dictionary<string, int> NaObjNums;
     public abstract string GetDerivedClassName();
+
+    [PunRPC]
+    public void ReceiveStateLabel(StateLabel stateLabel)
+    {
+        this.stateLabel = stateLabel;
+    }
+    [PunRPC]
+    public void ReceiveNaObjNum(string serializedData)
+    {
+        NaObjNums = JsonConvert.DeserializeObject<Dictionary<string, int>>(serializedData);
+    }
 
     private void Awake()
     {

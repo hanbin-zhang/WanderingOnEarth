@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Photon.Pun;
+using System.Threading;
 
 public class PlayerLifeStatus : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class PlayerLifeStatus : MonoBehaviour
     private Blit blit;
     private bool blitState = false;
     private StateLabel state;
+    private SemaphoreSlim rpcSemaphore = new(0);
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class PlayerLifeStatus : MonoBehaviour
         
     }
 
+
     private void Loop()
     { 
         PreProcess();
@@ -43,9 +47,29 @@ public class PlayerLifeStatus : MonoBehaviour
         PostProcess();        
     }
 
+    [PunRPC]
+    public void GetServerLabel(PhotonMessageInfo info)
+    {
+        StateLabel label = Manager.StateController.GetStateProperty(transform.position).label;
+
+        gameObject.GetComponent<PhotonView>()
+            .RPC(nameof(ServerLabelCallback), info.Sender, label);
+    }
+
+    [PunRPC]
+    public void ServerLabelCallback(StateLabel label) {
+        state = label;
+        rpcSemaphore.Release();
+    }
+
     private void PreProcess()
-    {               
-        state = Manager.StateController.GetStateProperty(transform.position).label;
+    {
+        //state = Manager.StateController.GetStateProperty(transform.position).label;
+        PhotonView photonView = gameObject.GetComponent<PhotonView>();
+        PhotonMessageInfo info = new PhotonMessageInfo(PhotonNetwork.LocalPlayer, PhotonNetwork.ServerTimestamp, photonView);
+        // Call the RPC method and specify a callback function
+        photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
+        rpcSemaphore.Wait();
     }
     private void ProcessLifeValue()
     {        
