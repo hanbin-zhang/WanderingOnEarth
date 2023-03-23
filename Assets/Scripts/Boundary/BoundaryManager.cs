@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class BoundaryManager : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class BoundaryManager : MonoBehaviour
     }
 
     public void InstantiateBoundary(StateProperty stateProperty)
-    {
+    {   
+        if (!PhotonNetwork.IsMasterClient) { return; }
         int regionSize = Manager.StateController.regionSize;
         Vector3 originPosition = new Vector3(stateProperty.ColNum * regionSize, 0f, stateProperty.RowNum * regionSize);
 
@@ -40,7 +42,7 @@ public class BoundaryManager : MonoBehaviour
                 case BarrierSides.FOWARD:
                     if (originPosition.z + 2 * regionSize > Manager.StateController.mapHeight)
                     {
-                        stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                        stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                     }
                     else
                     {
@@ -50,7 +52,7 @@ public class BoundaryManager : MonoBehaviour
                             // Disable the corresponding wall in the adjacent region
                             adjacentProperty.boundaries[i + 2].SetActive(false);
                             // Destroy the current wall
-                            Destroy(stateProperty.boundaries[i]);
+                            PhotonNetwork.Destroy(stateProperty.boundaries[i]);
                             stateProperty.boundaries[i] = null;
                             continue; // Skip to the next iteration of the loop
                         }
@@ -74,7 +76,7 @@ public class BoundaryManager : MonoBehaviour
                             // Disable the corresponding wall in the adjacent region
                             adjacentProperty.boundaries[i + 2].SetActive(false);
                             // Destroy the current wall
-                            Destroy(stateProperty.boundaries[i]);
+                            PhotonNetwork.Destroy(stateProperty.boundaries[i]);
                             stateProperty.boundaries[i] = null;
                             continue; // Skip to the next iteration of the loop
                         }
@@ -99,7 +101,7 @@ public class BoundaryManager : MonoBehaviour
                             // Disable the corresponding wall in the adjacent region
                             adjacentProperty.boundaries[i - 2].SetActive(false);
                             // Destroy the current wall
-                            Destroy(stateProperty.boundaries[i]);
+                            PhotonNetwork.Destroy(stateProperty.boundaries[i]);
                             stateProperty.boundaries[i] = null;
                             continue; // Skip to the next iteration of the loop
                         }
@@ -122,7 +124,7 @@ public class BoundaryManager : MonoBehaviour
                             // Disable the corresponding wall in the adjacent region
                             adjacentProperty.boundaries[i - 2].SetActive(false);
                             // Destroy the current wall
-                            Destroy(stateProperty.boundaries[i]);
+                            PhotonNetwork.Destroy(stateProperty.boundaries[i]);
                             stateProperty.boundaries[i] = null;
                             continue; // Skip to the next iteration of the loop
                         }
