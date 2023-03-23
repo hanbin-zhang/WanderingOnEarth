@@ -10,9 +10,13 @@ public class sychronizeState : MonoBehaviour
         GameObjectTracker.StateSynchronizer = this.gameObject;
     }
     [PunRPC]
-    public void notifyStateMachineRPC(string typeName, BaseMessage msg)
+    public void notifyStateMachineRPC(string typeName)
     {   
         Debug.Log("synchrnized"+typeName);
+        var msg = new OnLandPrepEvent.OnLandPrepMessage()
+        {
+            pos = Vector3.zero,
+        };
         switch (typeName)
         {
             case nameof(OnPlantEvent):
