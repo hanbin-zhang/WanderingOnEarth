@@ -12,7 +12,7 @@ public class sychronizeState : MonoBehaviour
     [PunRPC]
     public void notifyStateMachineRPC(string typeName, BaseMessage msg)
     {   
-        Debug.Log(typeName);
+        Debug.Log("synchrnized"+typeName);
         switch (typeName)
         {
             case nameof(OnPlantEvent):

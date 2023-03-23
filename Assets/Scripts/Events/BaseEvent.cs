@@ -11,11 +11,12 @@ public abstract class BaseEvent {
     public void NotifyMaster(string className, BaseMessage msg)
     {
         PhotonView view = GameObjectTracker.StateSynchronizer.GetComponent<PhotonView>();
-        Debug.Log(className);
+        Debug.Log("notigfy master"+className);
         view.RPC(nameof(sychronizeState.notifyStateMachineRPC), RpcTarget.MasterClient, className, msg);
     }
 }
 
+[Serializable]
 public abstract class BaseMessage
 {
     public T Of<T>() where T : BaseMessage => (T)this;
