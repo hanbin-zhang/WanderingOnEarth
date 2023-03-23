@@ -12,7 +12,6 @@ public abstract class NaturalObject : MonoBehaviour
     public float growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
-    //public string plantingConditionMessage = "need three trees";
     [HideInInspector] public float CreatedAt;
     [HideInInspector] public int currentState = 0;
     [HideInInspector] public GameObject currentModel;
@@ -26,16 +25,18 @@ public abstract class NaturalObject : MonoBehaviour
     {
         CreatedAt = Time.time;
         nextUpdateTime = CreatedAt + growTime;
-        Debug.Log($"inner next update{nextUpdateTime}");
     }
     void Start()
     {
         currentWorldID = GetInstanceID();
-        this.UpdateObject();
+        UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
-        
-        //NaObjManager.Register(this);
+        if (Photon.Pun.PhotonNetwork.IsMasterClient)
+        {
+            Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name);
+
+        }
     }
 
     public abstract string CheckUpdateCondition(StateProperty stateProperty);
