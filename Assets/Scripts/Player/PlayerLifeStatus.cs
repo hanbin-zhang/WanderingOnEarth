@@ -69,6 +69,7 @@ public class PlayerLifeStatus : MonoBehaviour
         PhotonMessageInfo info = new PhotonMessageInfo(PhotonNetwork.LocalPlayer, PhotonNetwork.ServerTimestamp, photonView);
         // Call the RPC method and specify a callback function
         photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
+        Debug.Log("lock");
         rpcSemaphore.Wait();
     }
     private void ProcessLifeValue()
