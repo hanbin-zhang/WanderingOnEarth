@@ -35,7 +35,6 @@ public abstract class NaturalObject : MonoBehaviour
         if (Photon.Pun.PhotonNetwork.IsMasterClient)
         {
             Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name);
-
         }
     }
 
