@@ -8,12 +8,6 @@ public class GameLoop : MonoBehaviour
         Manager.Init(this);
     }
 
-    [Photon.Pun.PunRPC]
-    void rpcTarget()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
