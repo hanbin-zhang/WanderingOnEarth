@@ -34,14 +34,14 @@ public abstract class NaturalObject : MonoBehaviour
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
         PhotonView photonView = gameObject.GetComponent<PhotonView>();
-        Debug.Log($"generate info{this.gameObject.name}; position{transform.position}");
-        Debug.Log($"is master{PhotonNetwork.IsMasterClient}");
-        Debug.Log($"matching{photonView.Owner.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber}");
+        Debug.Log($"matching{photonView.Owner.ActorNumber}");
+        Debug.Log($"matching{PhotonNetwork.LocalPlayer.ActorNumber}");
+
         if (PhotonNetwork.IsMasterClient &&
             photonView.Owner.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
         {
             
-            Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name);
+            Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name.Replace("(Clone)", ""));
         }
     }
 
