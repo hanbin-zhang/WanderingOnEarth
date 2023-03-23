@@ -33,7 +33,7 @@ public class PlayerLifeStatus : MonoBehaviour
         blit.SetActive(blitState);
         RendererData.SetDirty();
         lifeValueDisplay.text = $"{lifeValue}";
-        Invoke(nameof(PreProcess), 0f);
+        Invoke(nameof(PreProcess), 1f);
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public class PlayerLifeStatus : MonoBehaviour
         photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
         //Debug.Log("lock");
         //rpcSemaphore.Wait();
-        Invoke(nameof(Loop), 0.5f);
+        Invoke(nameof(Loop), 1f);
     }
     private void ProcessLifeValue()
     {        
