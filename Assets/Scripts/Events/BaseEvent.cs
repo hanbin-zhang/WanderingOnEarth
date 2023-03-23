@@ -12,7 +12,7 @@ public abstract class BaseEvent {
     {
         PhotonView view = GameObjectTracker.StateSynchronizer.GetComponent<PhotonView>();
         Debug.Log("notigfy master"+className);
-        view.RPC(nameof(sychronizeState.notifyStateMachineRPC), RpcTarget.MasterClient, className, msg);
+        view.RPC(nameof(sychronizeState.notifyStateMachineRPC), RpcTarget.MasterClient, className);
     }
 }
 
