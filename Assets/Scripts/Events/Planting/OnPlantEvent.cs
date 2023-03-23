@@ -54,7 +54,6 @@ public class OnPlantEvent : BaseEvent
         };
         if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
-            NotifyMaster(GetType().Name, msg);
         }
         else
         {

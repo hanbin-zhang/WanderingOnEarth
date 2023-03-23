@@ -8,12 +8,7 @@ using UnityEngine;
 using Photon.Pun;
 
 public abstract class BaseEvent { 
-    public void NotifyMaster(string className, BaseMessage msg)
-    {
-        PhotonView view = GameObjectTracker.StateSynchronizer.GetComponent<PhotonView>();
-        Debug.Log("notigfy master"+className);
-        view.RPC(nameof(sychronizeState.notifyStateMachineRPC), RpcTarget.MasterClient, className);
-    }
+    
 }
 
 [Serializable]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Photon.Pun;
 
 
 public class OnLandPrepEvent : BaseEvent
@@ -47,15 +48,14 @@ public class OnLandPrepEvent : BaseEvent
             pos = pos
         };
 
-        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        if (!PhotonNetwork.IsMasterClient)
         {
-            NotifyMaster(GetType().Name, msg);
+            PhotonView view = GameObjectTracker.StateSynchronizer.GetComponent<PhotonView>();
+            
+            view.RPC(nameof(sychronizeState.NotifyServerLandPrep), RpcTarget.MasterClient, pos);
         }
-        else
-        {
-            listeners.ForEach((x) => x.OnEvent(msg));
-            actions.ForEach((x) => x.Invoke(msg));
-        }
+        listeners.ForEach((x) => x.OnEvent(msg));
+        actions.ForEach((x) => x.Invoke(msg));
     }
 
     public void Clear()

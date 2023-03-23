@@ -45,7 +45,6 @@ public class OnLeftMouseDownEvent : BaseEvent
         
         if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
-            NotifyMaster( GetType().Name, msg);
         }else
         {
             listeners.ForEach((x) => x.OnEvent(msg));

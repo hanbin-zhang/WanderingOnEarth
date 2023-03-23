@@ -44,7 +44,6 @@ public class OnWaterEvent : BaseEvent
         OnWaterMessage msg = new OnWaterMessage();
         if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
-            NotifyMaster(GetType().Name, msg);
         }
         else
         {
