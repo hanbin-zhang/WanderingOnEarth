@@ -58,7 +58,7 @@ public class BoundaryManager : MonoBehaviour
                         }
                         else
                         {
-                            stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                            stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                         }
                     }
                     continue;
@@ -66,7 +66,7 @@ public class BoundaryManager : MonoBehaviour
                 case BarrierSides.RIGHT:
                     if (originPosition.x + 2 * regionSize > Manager.StateController.mapWidth)
                     {
-                        stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                        stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                     }
                     else
                     {
@@ -82,7 +82,7 @@ public class BoundaryManager : MonoBehaviour
                         }
                         else
                         {
-                            stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                            stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                         }
                     }
                     continue;
@@ -90,7 +90,7 @@ public class BoundaryManager : MonoBehaviour
             
                     if (originPosition.z - regionSize < 0)
                     {
-                        stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                        stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                     }
                     else
                     {
@@ -107,14 +107,14 @@ public class BoundaryManager : MonoBehaviour
                         }
                         else
                         {
-                            stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                            stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                         }
                     }
                     continue;
                 case BarrierSides.LEFT:
                     if (originPosition.x - regionSize < 0)
                     {
-                        stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                        stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                     }
                     else
                     {
@@ -130,12 +130,12 @@ public class BoundaryManager : MonoBehaviour
                         }
                         else
                         {
-                            stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                            stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                         }
                     }
                     break;
                 default:
-                    stateProperty.boundaries[i] = Instantiate(Boundary, positions[i], rotations[i]);
+                    stateProperty.boundaries[i] = PhotonNetwork.Instantiate(Boundary.name, positions[i], rotations[i]);
                     continue;
             }
         }
