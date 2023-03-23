@@ -51,7 +51,6 @@ public class PlayerLifeStatus : MonoBehaviour
     public void GetServerLabel(PhotonMessageInfo info)
     {
         StateLabel label = Manager.StateController.GetStateProperty(transform.position).label;
-
         gameObject.GetComponent<PhotonView>()
             .RPC(nameof(ServerLabelCallback), info.Sender, label);
     }
@@ -59,18 +58,18 @@ public class PlayerLifeStatus : MonoBehaviour
     [PunRPC]
     public void ServerLabelCallback(StateLabel label) {
         state = label;
-        rpcSemaphore.Release();
+        //rpcSemaphore.Release();
     }
 
     private void PreProcess()
     {
         //state = Manager.StateController.GetStateProperty(transform.position).label;
         PhotonView photonView = gameObject.GetComponent<PhotonView>();
-        PhotonMessageInfo info = new PhotonMessageInfo(PhotonNetwork.LocalPlayer, PhotonNetwork.ServerTimestamp, photonView);
+        PhotonMessageInfo info = new(PhotonNetwork.LocalPlayer, PhotonNetwork.ServerTimestamp, photonView);
         // Call the RPC method and specify a callback function
         photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
-        Debug.Log("lock");
-        rpcSemaphore.Wait();
+        //Debug.Log("lock");
+        //rpcSemaphore.Wait();
     }
     private void ProcessLifeValue()
     {        
