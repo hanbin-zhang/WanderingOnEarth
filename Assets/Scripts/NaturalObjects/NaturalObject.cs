@@ -90,7 +90,6 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         }
     }
 
-    [PunRPC]
     public void UpdateState()
     {
         if (currentState < Models.Count - 1)
@@ -99,11 +98,6 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
             nextUpdateTime += growTime;
         }
         else Debug.Log("maximum states");
-    }
-    
-    public void RPCUpdateState()
-    {
-        gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateState), RpcTarget.All);
     }
 
     public void RPCUpdateObject() {
