@@ -40,7 +40,8 @@ public class NaObjManager : MonoBehaviour
                     continue;
                 }
                 
-                naturalObject.RPCUpdateState();
+                naturalObject.UpdateState();
+                //naturalObject.RPCUpdateState();
                 naturalObject.UpdateObject();
 
                 // update remote

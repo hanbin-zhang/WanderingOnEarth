@@ -6,7 +6,7 @@ using UnityEngine;
 using Photon.Pun;
 using Newtonsoft.Json;
 
-public abstract class NaturalObject : MonoBehaviour
+public abstract class NaturalObject : MonoBehaviour, IPunObservable
 {
 
     public List<GameObject> Models;
@@ -79,14 +79,14 @@ public abstract class NaturalObject : MonoBehaviour
     {
         if (currentModel == null)
         {
-            currentModel = PhotonNetwork.Instantiate(Models[currentState].name, transform.position+localShift, transform.rotation);
+            currentModel =  Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
         }
         else
         {
             Vector3 pos = currentModel.transform.position;
             Quaternion rot = currentModel.transform.rotation;
-            PhotonNetwork.Destroy(currentModel);
-            currentModel = PhotonNetwork.Instantiate(Models[currentState].name, pos, rot);
+            Destroy(currentModel);
+            currentModel = Instantiate(Models[currentState], pos, rot);
         }
     }
 
@@ -104,6 +104,10 @@ public abstract class NaturalObject : MonoBehaviour
     public void RPCUpdateState()
     {
         gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateState), RpcTarget.All);
+    }
+
+    public void RPCUpdate() {
+        gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateObject), RpcTarget.All);
     }
 
     public void SetState(int targetState)
@@ -160,5 +164,19 @@ public abstract class NaturalObject : MonoBehaviour
     {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tagName);
         return gameObjects.Length >= ObjNumber;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We are the owner of this GameObject and are sending data to others.
+            stream.SendNext(currentState);
+        }
+        else
+        {
+            // We are receiving data from the owner of this GameObject.
+            currentState = (int)stream.ReceiveNext();
+        }
     }
 }
