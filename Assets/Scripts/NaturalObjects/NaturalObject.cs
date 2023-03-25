@@ -79,14 +79,14 @@ public abstract class NaturalObject : MonoBehaviour
     {
         if (currentModel == null)
         {
-            currentModel =  Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
+            currentModel = PhotonNetwork.Instantiate(Models[currentState].name, transform.position+localShift, transform.rotation);
         }
         else
         {
             Vector3 pos = currentModel.transform.position;
             Quaternion rot = currentModel.transform.rotation;
-            Destroy(currentModel);
-            currentModel = Instantiate(Models[currentState], pos, rot);
+            PhotonNetwork.Destroy(currentModel);
+            currentModel = PhotonNetwork.Instantiate(Models[currentState].name, pos, rot);
         }
     }
 
