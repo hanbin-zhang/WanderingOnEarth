@@ -106,7 +106,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateState), RpcTarget.All);
     }
 
-    public void RPCUpdate() {
+    public void RPCUpdateObject() {
         gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateObject), RpcTarget.All);
     }
 
