@@ -8,10 +8,10 @@ public class NaObjManager : MonoBehaviour
 
     private void Start()
     {
-        /*if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
             this.enabled = false;
-        }*/
+        }
     }
 
     public static void Register(NaturalObject naturalObject)
@@ -39,13 +39,12 @@ public class NaObjManager : MonoBehaviour
                     evolvingNaObjsQueue.RemoveAt(0);
                     continue;
                 }
-
-                naturalObject.UpdateState();
+                
+                naturalObject.RPCUpdateState();
                 naturalObject.UpdateObject();
 
                 // update remote
                 Photon.Pun.PhotonView remoteView = naturalObject.GetComponent<Photon.Pun.PhotonView>();
-                remoteView.RPC(nameof(NaturalObject.UpdateState), Photon.Pun.RpcTarget.Others);
                 remoteView.RPC(nameof(NaturalObject.UpdateObject), Photon.Pun.RpcTarget.Others);
 
                 evolvingNaObjsQueue.RemoveAt(0);

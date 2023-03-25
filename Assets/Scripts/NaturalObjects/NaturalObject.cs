@@ -25,17 +25,6 @@ public abstract class NaturalObject : MonoBehaviour
     private Dictionary<string, int> NaObjNums;
     public abstract string GetDerivedClassName();
 
-    [PunRPC]
-    public void ReceiveStateLabel(StateLabel stateLabel)
-    {
-        this.stateLabel = stateLabel;
-    }
-    [PunRPC]
-    public void ReceiveNaObjNum(string serializedData)
-    {
-        NaObjNums = JsonConvert.DeserializeObject<Dictionary<string, int>>(serializedData);
-    }
-
     private void Awake()
     {
         CreatedAt = Time.time;
@@ -85,12 +74,12 @@ public abstract class NaturalObject : MonoBehaviour
         return baseGreenValue * (1.0f + currentState);
     }
 
-    [Photon.Pun.PunRPC]
+    [PunRPC]
     public void UpdateObject()
     {
         if (currentModel == null)
         {
-            currentModel = Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
+            currentModel =  Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
         }
         else
         {
@@ -101,7 +90,7 @@ public abstract class NaturalObject : MonoBehaviour
         }
     }
 
-    [Photon.Pun.PunRPC]
+    [PunRPC]
     public void UpdateState()
     {
         if (currentState < Models.Count - 1)
@@ -110,6 +99,11 @@ public abstract class NaturalObject : MonoBehaviour
             nextUpdateTime += growTime;
         }
         else Debug.Log("maximum states");
+    }
+    
+    public void RPCUpdateState()
+    {
+        gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateState), RpcTarget.All);
     }
 
     public void SetState(int targetState)
