@@ -15,14 +15,33 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
     [HideInInspector] public float CreatedAt;
-    [HideInInspector] public int currentState = 0;
+    //[HideInInspector] public int CurrentState = 0;
     [HideInInspector] public GameObject currentModel;
     [HideInInspector] public int parentWorldObjID;
     [HideInInspector] public int currentWorldID;
     [HideInInspector] public int updateModelCommand = 0;
     [HideInInspector] public float nextUpdateTime;
-    private StateLabel stateLabel;
-    private Dictionary<string, int> NaObjNums;
+
+    private delegate void ObjStateChangedHandler(int newValue);
+
+    private event ObjStateChangedHandler OnObjStateChanged;
+
+    // Declare an int attribute to observe
+    private int _currentState = 0;
+
+    public int CurrentState
+    {
+        get => _currentState;
+        set
+        {
+            // Set the new value of the attribute
+            _currentState = value;
+
+            // Trigger the event
+            OnObjStateChanged?.Invoke(_currentState);
+        }
+    }
+
     public abstract string GetDerivedClassName();
 
     private void Awake()
@@ -32,6 +51,8 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
     }
     void Start()
     {
+        OnObjStateChanged += HandledObjStateChanged;
+
         currentWorldID = GetInstanceID();
         UpdateObject();
         GameObjectTracker.gameObjects.Add(this);
@@ -46,6 +67,11 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
             
             Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name.Replace("(Clone)", ""));
         }
+    }
+
+    void HandledObjStateChanged(int newValue)
+    {
+        UpdateObject();
     }
 
     public abstract string CheckUpdateCondition(StateProperty stateProperty);
@@ -71,7 +97,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
 
     public float GetCurrentGreenValue()
     {
-        return baseGreenValue * (1.0f + currentState);
+        return baseGreenValue * (1.0f + CurrentState);
     }
 
     [PunRPC]
@@ -79,22 +105,22 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
     {
         if (currentModel == null)
         {
-            currentModel =  Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
+            currentModel =  Instantiate(Models[CurrentState], transform.position+localShift, transform.rotation);
         }
         else
         {
             Vector3 pos = currentModel.transform.position;
             Quaternion rot = currentModel.transform.rotation;
             Destroy(currentModel);
-            currentModel = Instantiate(Models[currentState], pos, rot);
+            currentModel = Instantiate(Models[CurrentState], pos, rot);
         }
     }
 
     public void UpdateState()
     {
-        if (currentState < Models.Count - 1)
+        if (CurrentState < Models.Count - 1)
         {
-            currentState++;
+            CurrentState++;
             nextUpdateTime += growTime;
         }
         else Debug.Log("maximum states");
@@ -109,7 +135,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
     {
         if (targetState <= Models.Count - 1 || targetState >= 0)
         {
-            currentState = targetState;
+            CurrentState = targetState;
         }
         else Debug.Log("invalid states");
     }
@@ -125,7 +151,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         NaturalObject[] naturalObjects = FindObjectsOfType<NaturalObject>();
         foreach (NaturalObject naturalObject in naturalObjects)
         {
-            sum += GetCurrentGreenValue() * (naturalObject.currentState + 1.0f);
+            sum += GetCurrentGreenValue() * (naturalObject.CurrentState + 1.0f);
         }
         if (sum >= greenThreshold) { return true; }
         else { return false; }
@@ -148,7 +174,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         foreach (T naturalObject in naturalObjects)
         {
             NaturalObject no = naturalObject as NaturalObject;
-            if (no.currentState >= requiredState) num++;
+            if (no.CurrentState >= requiredState) num++;
         }
         return num >= ObjNumber;
     }
@@ -166,12 +192,12 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         if (stream.IsWriting)
         {
             // We are the owner of this GameObject and are sending data to others.
-            stream.SendNext(currentState);
+            stream.SendNext(CurrentState);
         }
         else
         {
             // We are receiving data from the owner of this GameObject.
-            currentState = (int)stream.ReceiveNext();
+            CurrentState = (int)stream.ReceiveNext();
         }
     }
 }

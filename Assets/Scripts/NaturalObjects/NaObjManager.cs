@@ -42,7 +42,7 @@ public class NaObjManager : MonoBehaviour
                 
                 naturalObject.UpdateState();
                 //naturalObject.RPCUpdateState();
-                naturalObject.Invoke(nameof(naturalObject.RPCUpdateObject), 1f);
+                //naturalObject.Invoke(nameof(naturalObject.RPCUpdateObject), 1f);
 
                 // update remote
                 //Photon.Pun.PhotonView remoteView = naturalObject.GetComponent<Photon.Pun.PhotonView>();
@@ -54,7 +54,7 @@ public class NaObjManager : MonoBehaviour
                         .GetStateProperty(naturalObject.transform.position);
                 lock (stateProperty)
                 {
-                    if (naturalObject.currentState < naturalObject.Models.Count - 1)
+                    if (naturalObject.CurrentState < naturalObject.Models.Count - 1)
                     {
 
 

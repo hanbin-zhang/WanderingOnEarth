@@ -12,7 +12,7 @@ public class TreeObject : NaturalObject
 
     public override string CheckUpdateCondition(StateProperty stateProperty)
     {   
-        switch (currentState)
+        switch (CurrentState)
         {
             case 0:
                 int bushNumber = 0;

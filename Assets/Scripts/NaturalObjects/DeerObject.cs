@@ -24,7 +24,7 @@ public class DeerObject : NaturalObject
 
     public override string CheckUpdateCondition(StateProperty stateProperty)
     {
-        switch (currentState)
+        switch (CurrentState)
         {
             case 1:
                 int bushNumber = 0;
