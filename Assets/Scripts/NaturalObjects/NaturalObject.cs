@@ -74,6 +74,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         return baseGreenValue * (1.0f + currentState);
     }
 
+    [PunRPC]
     public void UpdateObject()
     {
         if (currentModel == null)
@@ -171,6 +172,5 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
             // We are receiving data from the owner of this GameObject.
             currentState = (int)stream.ReceiveNext();
         }
-        UpdateObject();
     }
 }
