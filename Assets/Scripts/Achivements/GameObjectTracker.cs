@@ -14,4 +14,12 @@ public static class GameObjectTracker
     public static List<GameObject> playerObjects = new();
     public static BoundaryManager boundaryManager;
     public static GameObject StateSynchronizer;
+
+    public static Dictionary<string, int>[,] NaObjNumberTrackers;
+    public static Dictionary<string, int> GetRegionObjNumber(Vector3 position)
+    {
+        int x = (int)Mathf.Clamp(position.x / Manager.StateController.regionSize, 0, Manager.StateController.nColumns - 1);
+        int y = (int)Mathf.Clamp(position.z / Manager.StateController.regionSize, 0, Manager.StateController.nRows - 1);
+        return NaObjNumberTrackers[y, x];
+    }
 }

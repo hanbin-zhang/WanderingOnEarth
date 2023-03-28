@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 
@@ -65,7 +66,7 @@ public class StateController : IEnumerable<BaseState>
 {
     private EventController eventController;
     public float mapHeight, mapWidth;
-    private int nRows, nColumns;
+    public int nRows, nColumns;
     public int regionSize;
     
     private StateProperty[,] statesProperty;
@@ -141,5 +142,48 @@ public class StateController : IEnumerable<BaseState>
     public BaseState GetRegionState(StateProperty property)
     {
         return stateLabelMap[property.label];
+    }
+
+    public string SerializeStatesProperty()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        int rowCount = StatesProperty.GetLength(0);
+        int colCount = StatesProperty.GetLength(1);
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            for (int j = 0; j < colCount; j++)
+            {
+                sb.Append(((int)StatesProperty[i, j].label).ToString());
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    public void DeserializeStatesProperty(string data)
+    {
+        int rowCount = StatesProperty.GetLength(0);
+        int colCount = StatesProperty.GetLength(1);
+
+        if (data.Length != rowCount * colCount)
+        {
+            Debug.LogError("Invalid data length.");
+            return;
+        }
+
+        int dataIndex = 0;
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            for (int j = 0; j < colCount; j++)
+            {
+                int labelInt = int.Parse(data[dataIndex].ToString());
+                StatesProperty[i, j].label = (StateLabel)labelInt;
+
+                dataIndex++;
+            }
+        }
     }
 }
