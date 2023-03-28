@@ -41,12 +41,6 @@ public class NaObjManager : MonoBehaviour
                 }
                 
                 naturalObject.UpdateState();
-                //naturalObject.RPCUpdateState();
-                //naturalObject.Invoke(nameof(naturalObject.RPCUpdateObject), 1f);
-
-                // update remote
-                //Photon.Pun.PhotonView remoteView = naturalObject.GetComponent<Photon.Pun.PhotonView>();
-                //remoteView.RPC(nameof(NaturalObject.UpdateObject), Photon.Pun.RpcTarget.Others);
 
                 evolvingNaObjsQueue.RemoveAt(0);
 

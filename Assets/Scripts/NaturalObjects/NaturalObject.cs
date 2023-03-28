@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using Photon.Pun;
-using Newtonsoft.Json;
 
 public abstract class NaturalObject : MonoBehaviour, IPunObservable
 {
