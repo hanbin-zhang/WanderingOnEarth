@@ -30,15 +30,15 @@ public class StateProperty
 
     public List<GameObject> boundaries;
 
-    public List<NaturalObject> PendingNaObjs { get; set; }
+/*    public List<NaturalObject> PendingNaObjs { get; set; }
     public List<NaturalObject> EvolvingNaObjs { get; set; }
-    public List<NaturalObject> EvolvedNaObjs { get; set; }
+    public List<NaturalObject> EvolvedNaObjs { get; set; }*/
     public Dictionary<string, int> NaObjNums { get; set; }
     public StateProperty()
     {
-        PendingNaObjs = new List<NaturalObject>();
+        /*PendingNaObjs = new List<NaturalObject>();
         EvolvingNaObjs = new List<NaturalObject>();
-        EvolvedNaObjs = new List<NaturalObject>();
+        EvolvedNaObjs = new List<NaturalObject>();*/
         boundaries = new List<GameObject> { null, null, null, null };
         NaObjNums = new Dictionary<string, int>();
         

@@ -60,11 +60,11 @@ public class NaObjManager : MonoBehaviour
                         }
                         else
                         {
-                            stateProperty.PendingNaObjs.Add(naturalObject);
+                            //stateProperty.PendingNaObjs.Add(naturalObject);
                         }
 
                     }
-                    else stateProperty.EvolvedNaObjs.Add(naturalObject);
+                    //else stateProperty.EvolvedNaObjs.Add(naturalObject);
                 }
             }
         }

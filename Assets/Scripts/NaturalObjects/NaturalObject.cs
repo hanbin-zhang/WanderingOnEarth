@@ -78,7 +78,7 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
             UpdateState();
         }
 
-        if (CurrentState <= Models.Count - 1)
+        if (CurrentState < Models.Count - 1)
         {
             Invoke(nameof(UpdatingLoop), 1f);
         }
