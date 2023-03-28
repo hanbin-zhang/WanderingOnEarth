@@ -18,6 +18,8 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
     [HideInInspector] public int updateModelCommand = 0;
     [HideInInspector] public float nextUpdateTime;
 
+    private int ObjElapsedTime = 0;
+
     private delegate void ObjStateChangedHandler(int newValue);
 
     private event ObjStateChangedHandler OnObjStateChanged;
@@ -50,19 +52,37 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         OnObjStateChanged += HandledObjStateChanged;
 
         currentWorldID = GetInstanceID();
+
         UpdateObject();
+
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
+
         PhotonView photonView = gameObject.GetComponent<PhotonView>();
-        Debug.Log($"matching{photonView.Owner.ActorNumber}");
-        Debug.Log($"matching{PhotonNetwork.LocalPlayer.ActorNumber}");
 
         if (PhotonNetwork.IsMasterClient &&
             photonView.Owner.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
-        {
-            
+        {            
             Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name.Replace("(Clone)", ""));
         }
+        if (PhotonNetwork.IsMasterClient) Invoke(nameof(UpdatingLoop), 1f);
+    }
+
+    void UpdatingLoop()
+    {
+        string updateCond = CheckUpdateCondition(Manager.StateController.GetStateProperty(transform.position));
+        if (updateCond == null) ObjElapsedTime += 1;
+        if (ObjElapsedTime >= growTime)
+        {
+            ObjElapsedTime = 0;
+            UpdateState();
+        }
+
+        if (CurrentState <= Models.Count - 1)
+        {
+            Invoke(nameof(UpdatingLoop), 1f);
+        }
+        
     }
 
     void HandledObjStateChanged(int newValue)
