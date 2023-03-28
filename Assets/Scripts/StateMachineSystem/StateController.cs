@@ -40,8 +40,7 @@ public class StateProperty
         EvolvingNaObjs = new List<NaturalObject>();
         EvolvedNaObjs = new List<NaturalObject>();*/
         boundaries = new List<GameObject> { null, null, null, null };
-        NaObjNums = new Dictionary<string, int>();
-        
+        NaObjNums = new Dictionary<string, int>();  
     }
 
     public void SetState(StateLabel label)
