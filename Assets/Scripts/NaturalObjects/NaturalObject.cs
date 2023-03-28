@@ -100,7 +100,8 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
         else Debug.Log("maximum states");
     }
 
-    public void RPCUpdateObject() {
+    public void RPCUpdateObject() 
+    {
         gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateObject), RpcTarget.All);
     }
 
