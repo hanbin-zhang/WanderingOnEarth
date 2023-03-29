@@ -13,7 +13,7 @@ public class TreeObject : NaturalObject
         {
             case 0:
                 int bushNumber = 0;
-                stateProperty.NaObjNums.TryGetValue(nameof(BushObject), out bushNumber);
+                GameObjectTracker.GetRegionObjNumber(transform.position).TryGetValue(nameof(BushObject), out bushNumber);
                 if (bushNumber < 3)
                 {
                     string message = "need 3 bush to proceed to next state";

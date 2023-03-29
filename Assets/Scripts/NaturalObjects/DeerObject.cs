@@ -28,11 +28,12 @@ public class DeerObject : NaturalObject
         {
             case 1:
                 int bushNumber = 0;
-                stateProperty.NaObjNums.TryGetValue(nameof(TreeObject), out bushNumber);
+                //stateProperty.NaObjNums.TryGetValue(nameof(TreeObject), out bushNumber);
+                GameObjectTracker.GetRegionObjNumber(transform.position).TryGetValue(nameof(TreeObject), out bushNumber);
                 if (bushNumber < 5)
                 {
                     string message = "need 3 tree to proceed to next state";
-                    Debug.Log(message);
+                    // Debug.Log(message);
                     return message;
                 }
                 break;

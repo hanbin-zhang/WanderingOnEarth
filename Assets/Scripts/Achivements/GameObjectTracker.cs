@@ -20,6 +20,34 @@ public static class GameObjectTracker
     {
         int x = (int)Mathf.Clamp(position.x / Manager.StateController.regionSize, 0, Manager.StateController.nColumns - 1);
         int y = (int)Mathf.Clamp(position.z / Manager.StateController.regionSize, 0, Manager.StateController.nRows - 1);
+
+        // check if the dictionary is null and instantiate it if needed
+        if (NaObjNumberTrackers == null)
+        {
+            NaObjNumberTrackers = new Dictionary<string, int>[Manager.StateController.nRows, Manager.StateController.nColumns];
+            for (int i = 0; i < Manager.StateController.nRows; i++)
+            {
+                for (int j = 0; j < Manager.StateController.nColumns; j++)
+                {
+                    NaObjNumberTrackers[i, j] = new Dictionary<string, int>();
+                }
+            }
+        }
+
         return NaObjNumberTrackers[y, x];
+    }
+
+    public static void AddNaObj(Vector3 position, string className)
+    {
+        Dictionary<string, int> regionNaObj = GetRegionObjNumber(position);
+        if (regionNaObj.ContainsKey(className))
+        {
+            regionNaObj[className]++;
+        }
+        else
+        {
+            regionNaObj.Add(className, 0);
+        }
+
     }
 }

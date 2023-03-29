@@ -53,6 +53,8 @@ public abstract class NaturalObject : MonoBehaviour, IPunObservable
 
         currentWorldID = GetInstanceID();
 
+        GameObjectTracker.AddNaObj(transform.position, GetDerivedClassName());
+
         UpdateObject();
 
         GameObjectTracker.gameObjects.Add(this);
