@@ -13,7 +13,9 @@ public class OnStateChangeEvent : BaseEvent
 
     public class OnStateChangeMessage : BaseMessage
     {
-
+        public int RowNum { get; set; }
+        public int ColNum { get; set; }
+        public StateLabel StateLabel { get; set; }
     }
 
     private List<OnStateChangeListener> listeners = new List<OnStateChangeListener>();
@@ -39,9 +41,14 @@ public class OnStateChangeEvent : BaseEvent
         actions.Remove(action);
     }
 
-    public void Notify()
+    public void Notify(int rowNum, int colNum, StateLabel state)
     {
-        OnStateChangeMessage msg = new OnStateChangeMessage();
+        OnStateChangeMessage msg = new OnStateChangeMessage 
+        { 
+            ColNum = colNum,
+            RowNum = rowNum,
+            StateLabel = state,
+        };
 
         if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
