@@ -54,6 +54,7 @@ public class OnLandPrepEvent : BaseEvent
             
             view.RPC(nameof(sychronizeState.NotifyServerLandPrep), RpcTarget.MasterClient, pos);
         }*/
+        Debug.Log("Onlandprp notified");
         listeners.ForEach((x) => x.OnEvent(msg));
         actions.ForEach((x) => x.Invoke(msg));
     }
