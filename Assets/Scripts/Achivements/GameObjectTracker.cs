@@ -50,4 +50,18 @@ public static class GameObjectTracker
         }
 
     }
+
+    public static int GetNaObj(Vector3 position, string className)
+    {
+        Dictionary<string, int> regionNaObj = GetRegionObjNumber(position);
+        if (regionNaObj.ContainsKey(className))
+        {
+            return regionNaObj[className];
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
 }

@@ -13,8 +13,7 @@ public class OnStateChangeEvent : BaseEvent
 
     public class OnStateChangeMessage : BaseMessage
     {
-        public int RowNum { get; set; }
-        public int ColNum { get; set; }
+        public Vector3 pos{ get; set; }    
         public StateLabel StateLabel { get; set; }
     }
 
@@ -41,12 +40,11 @@ public class OnStateChangeEvent : BaseEvent
         actions.Remove(action);
     }
 
-    public void Notify(int rowNum, int colNum, StateLabel state)
+    public void Notify(Vector3 pos, StateLabel state)
     {
         OnStateChangeMessage msg = new OnStateChangeMessage 
         { 
-            ColNum = colNum,
-            RowNum = rowNum,
+            pos = pos,
             StateLabel = state,
         };
 

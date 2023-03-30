@@ -125,10 +125,19 @@ public class StateController : IEnumerable<BaseState>
             {               
                 StateProperty s = GetStateProperty(msg.pos);
                 GetRegionState(s).Handle(s, msg);                
+            }            
+        });
+        eventController.Get<OnStateChangeEvent>()?.AddListener((msg) => {
+            lock (statesProperty)
+            {
+                StateProperty s = GetStateProperty(msg.pos);
+                s.SetState(msg.StateLabel);
+                if (msg.StateLabel == StateLabel.SAFE) GameObjectTracker.boundaryManager.InstantiateBoundary(s);
+
                 Debug.Log($"region states: {s.label}");
                 Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
                 Debug.Log(GetRegionState(s).GetType());
-            }            
+            }
         });
     }
 

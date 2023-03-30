@@ -12,10 +12,12 @@ public class NormalState : BaseState
                 OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
                 
                 if (plantMsg.name == "TreeMain") stateProperty.treeNumber++;
-                if (stateProperty.treeNumber > 10)
+                if (GameObjectTracker.GetNaObj(plantMsg.pos, nameof(TreeObject)) > 10)
                 {
-                    stateProperty.SetState(StateLabel.SAFE);
-                    GameObjectTracker.boundaryManager.InstantiateBoundary(stateProperty);
+
+                    /* stateProperty.SetState(StateLabel.SAFE);
+                     GameObjectTracker.boundaryManager.InstantiateBoundary(stateProperty);*/
+                    Manager.EventController.Get<OnStateChangeEvent>()?.Notify(plantMsg.pos, StateLabel.SAFE);
                 }
                 Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, tree Number是{stateProperty.treeNumber}");
                 break;
