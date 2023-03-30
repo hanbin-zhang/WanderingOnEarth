@@ -9,7 +9,16 @@ public class BoundaryManager : MonoBehaviour
 
     private void Start()
     {
-        GameObjectTracker.boundaryManager = this;
+        if (!PhotonNetwork.IsMasterClient) { this.enabled = false; return; }
+        else
+        {
+            Manager.EventController.Get<OnStateChangeEvent>()?.AddListener((msg) =>
+            {
+
+                StateProperty s = Manager.StateController.GetStateProperty(msg.pos);
+                if (msg.StateLabel == StateLabel.SAFE) InstantiateBoundary(s);
+            });
+        }
     }
 
     public void InstantiateBoundary(StateProperty stateProperty)

@@ -134,7 +134,7 @@ public class StateController : IEnumerable<BaseState>
             {
                 StateProperty s = GetStateProperty(msg.pos);
                 s.SetState(msg.StateLabel);
-                if (msg.StateLabel == StateLabel.SAFE) GameObjectTracker.boundaryManager.InstantiateBoundary(s);
+                //if (msg.StateLabel == StateLabel.SAFE) GameObjectTracker.boundaryManager.InstantiateBoundary(s);
 
                 GameObjectTracker.StateSynchronizer
                 .GetComponent<Photon.Pun.PhotonView>()
