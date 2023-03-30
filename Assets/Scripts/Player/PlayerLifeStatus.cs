@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 using Photon.Pun;
 using System.Threading;
 
-public class PlayerLifeStatus : MonoBehaviour
+public class PlayerLifeStatus : MonoBehaviourPunCallbacks
 {
     public TMPro.TMP_Text lifeValueDisplay;
     public int lifeValue = 100;
@@ -72,9 +72,9 @@ public class PlayerLifeStatus : MonoBehaviour
         PhotonView photonView = gameObject.GetComponent<PhotonView>();
         PhotonMessageInfo info = new(PhotonNetwork.LocalPlayer, PhotonNetwork.ServerTimestamp, photonView);
         // Call the RPC method and specify a callback function
-        photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
-        //Debug.Log("lock");
-        //rpcSemaphore.Wait();
+        //photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
+        state = Manager.StateController.GetStateProperty(transform.position).label;
+
         Invoke(nameof(Loop), 1f);
     }
     private void ProcessLifeValue()

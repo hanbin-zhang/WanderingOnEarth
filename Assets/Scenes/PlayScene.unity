@@ -247,8 +247,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 937216761}
-  - component: {fileID: 937216762}
   - component: {fileID: 937216763}
+  - component: {fileID: 937216762}
   m_Layer: 0
   m_Name: StateScynchro
   m_TagString: Untagged
