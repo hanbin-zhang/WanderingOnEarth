@@ -79,7 +79,6 @@ MonoBehaviour:
   blockID: 0
   baseGreenValue: 6
   CreatedAt: 0
-  currentState: 0
   currentModel: {fileID: 0}
   parentWorldObjID: 0
   currentWorldID: 0

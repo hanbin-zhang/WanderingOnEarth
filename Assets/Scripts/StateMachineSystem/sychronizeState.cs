@@ -6,7 +6,7 @@ public class sychronizeState : MonoBehaviourPunCallbacks
 {
     private void Start()
     {
-        GameObjectTracker.StateSynchronizer = this.gameObject;
+        GameObjectTracker.StateSynchronizer = gameObject;
     }
 
     [PunRPC]
