@@ -42,14 +42,9 @@ public class OnLeftMouseDownEvent : BaseEvent
     public void Notify()
     {
         OnWaterMessage msg = new OnWaterMessage();
-        
-        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
-        {
-        }else
-        {
-            listeners.ForEach((x) => x.OnEvent(msg));
-            actions.ForEach((x) => x.Invoke(msg));
-        }
+
+        listeners.ForEach((x) => x.OnEvent(msg));
+        actions.ForEach((x) => x.Invoke(msg));
     }
 
     public void Clear()
