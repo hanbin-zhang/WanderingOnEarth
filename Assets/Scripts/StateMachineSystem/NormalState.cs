@@ -17,7 +17,7 @@ public class NormalState : BaseState
 
                     /* stateProperty.SetState(StateLabel.SAFE);
                      GameObjectTracker.boundaryManager.InstantiateBoundary(stateProperty);*/
-                    Manager.EventController.Get<OnStateChangeEvent>()?.Notify(plantMsg.pos, StateLabel.SAFE);
+                    Manager.EventController.Get<OnStateChangeEvent>()?.Notify(plantMsg.pos, StateLabel.SAFE, false);
                 }
                 Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, tree Number是{stateProperty.treeNumber}");
                 break;

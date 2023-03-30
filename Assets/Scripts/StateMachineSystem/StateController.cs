@@ -134,12 +134,13 @@ public class StateController : IEnumerable<BaseState>
             {
                 StateProperty s = GetStateProperty(msg.pos);
                 s.SetState(msg.StateLabel);
-                //if (msg.StateLabel == StateLabel.SAFE) GameObjectTracker.boundaryManager.InstantiateBoundary(s);
 
+                if (!msg.isRPC)
+                {
                 GameObjectTracker.StateSynchronizer
                 .GetComponent<Photon.Pun.PhotonView>()
                 .RPC(nameof(sychronizeState.NotifyRemoteStateChange), Photon.Pun.RpcTarget.Others, msg.pos, msg.StateLabel);
-
+                }
                 Debug.Log($"region states: {s.label}");
                 Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
                 Debug.Log(GetRegionState(s).GetType());
