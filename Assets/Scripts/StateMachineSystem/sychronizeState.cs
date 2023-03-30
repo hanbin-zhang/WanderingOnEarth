@@ -21,6 +21,12 @@ public class sychronizeState : MonoBehaviourPunCallbacks
         Manager.StateController.DeserializeStatesProperty(serializedStateP);
     }
 
+    [PunRPC]
+    public void NotifyRemoteStateChange(Vector3 pos, StateLabel state)
+    {
+        Manager.EventController.Get<OnStateChangeEvent>()?.Notify(pos, state);
+    }
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         if (PhotonNetwork.IsMasterClient)
