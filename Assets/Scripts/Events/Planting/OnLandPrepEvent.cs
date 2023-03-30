@@ -48,12 +48,12 @@ public class OnLandPrepEvent : BaseEvent
             pos = pos
         };
 
-        if (!PhotonNetwork.IsMasterClient)
+        /*if (!PhotonNetwork.IsMasterClient)
         {
             PhotonView view = GameObjectTracker.StateSynchronizer.GetComponent<PhotonView>();
             
             view.RPC(nameof(sychronizeState.NotifyServerLandPrep), RpcTarget.MasterClient, pos);
-        }
+        }*/
         listeners.ForEach((x) => x.OnEvent(msg));
         actions.ForEach((x) => x.Invoke(msg));
     }
