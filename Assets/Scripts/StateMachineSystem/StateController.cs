@@ -123,8 +123,9 @@ public class StateController : IEnumerable<BaseState>
         eventController.Get<OnLandPrepEvent>()?.AddListener((msg) => {
             lock (statesProperty)
             {
-                Debug.Log("onlandprop");
+                Debug.Log($"onlandprop");
                 StateProperty s = GetStateProperty(msg.pos);
+                Debug.Log($"state{s.label}");
                 GetRegionState(s).Handle(s, msg);                
             }            
         });

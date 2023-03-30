@@ -48,14 +48,8 @@ public class OnStateChangeEvent : BaseEvent
             StateLabel = state,
         };
 
-        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
-        {
-        }
-        else
-        {
-            listeners.ForEach((x) => x.OnEvent(msg));
-            actions.ForEach((x) => x.Invoke(msg));
-        }
+        listeners.ForEach((x) => x.OnEvent(msg));
+        actions.ForEach((x) => x.Invoke(msg));
     }
 
     public void Clear()
