@@ -45,9 +45,12 @@ public class StateProperty
 
     public void SetState(StateLabel stateAfterChange)
     {
-        StateLabel stateBeforeChange = label;
-        label = stateAfterChange;
-        Manager.EventController.Get<OnStateChangeEvent>()?.Notify(stateBeforeChange, stateAfterChange);
+        StateLabel stateBeforeChange = label;       
+        if (stateBeforeChange != stateAfterChange)
+        {
+            label = stateAfterChange;
+            Manager.EventController.Get<OnStateChangeEvent>()?.Notify(stateBeforeChange, stateAfterChange);
+        }        
     }
 
     public void AddCount(string className)
