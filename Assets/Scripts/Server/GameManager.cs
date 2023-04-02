@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < 6; i++)
         {
-            Instantiate(this.Treasure, new Vector3(r.Next(10, 490), 100f, r.Next(10, 4900)), Quaternion.identity);
+            Instantiate(this.Treasure, new Vector3(r.Next(10, 490), 100f, r.Next(10, 490)), Quaternion.identity);
         }
     }
 
