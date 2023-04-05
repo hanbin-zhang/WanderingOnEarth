@@ -46,12 +46,13 @@ public class StateProperty
 
     public void SetState(StateLabel stateAfterChange)
     {
-        StateLabel stateBeforeChange = label;       
+        label = stateAfterChange;
+        /*StateLabel stateBeforeChange = label;       
         if (stateBeforeChange != stateAfterChange)
         {
             label = stateAfterChange;
             Manager.EventController.Get<OnStateChangeEvent>()?.Notify(stateBeforeChange, stateAfterChange);
-        }        
+        }  */      
     }
 
     public void AddCount(string className)
@@ -138,14 +139,14 @@ public class StateController : IEnumerable<BaseState>
             lock (statesProperty)
             {
                 StateProperty s = GetStateProperty(msg.pos);
-                s.SetState(msg.StateLabel);
+                s.SetState(msg.stateAfter);
 
-                if (!msg.isRPC)
+                /*if (!msg.isRPC)
                 {
                 GameObjectTracker.StateSynchronizer
                 .GetComponent<Photon.Pun.PhotonView>()
-                .RPC(nameof(sychronizeState.NotifyRemoteStateChange), Photon.Pun.RpcTarget.Others, msg.pos, msg.StateLabel);
-                }
+                .RPC(nameof(sychronizeState.NotifyRemoteStateChange), Photon.Pun.RpcTarget.Others, msg.pos, msg.stateAfter);
+                }*/
                 Debug.Log($"region states: {s.label}");
                 Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
                 Debug.Log(GetRegionState(s).GetType());

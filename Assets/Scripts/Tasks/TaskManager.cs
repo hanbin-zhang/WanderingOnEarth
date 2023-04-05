@@ -12,7 +12,7 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
-        SetTask(new Task0());
+        SetTask(new Task1());
         ListenEvents();
         
     }
@@ -56,26 +56,6 @@ public abstract class Task
     public abstract void OnTaskComplete(TaskManager taskManager);
 }
 
-public class Task0: Task
-{
-    public override void OnEvent(TaskManager taskManager, BaseMessage msg)
-    {
-                
-    }
-
-    public override void OnTaskActivate(TaskManager taskManager)
-    {
-        Manager.Invoke(() => taskManager.ShowOnScreen("Hi, Protect yourself and help make the world a better place!"), 0f, taskManager);
-        Manager.Invoke(() => taskManager.ShowOnScreen("You have the option to place some items which can be found in the inventory."), 2f, taskManager);
-        taskManager.SetTask(new Task1(), 4f);
-    }
-
-    public override void OnTaskComplete(TaskManager taskManager)
-    {
-        
-    }
-}
-
 public class Task1 : Task
 {   
     public override void OnEvent(TaskManager taskManager, BaseMessage msg)
@@ -92,7 +72,9 @@ public class Task1 : Task
 
     public override void OnTaskActivate(TaskManager taskManager)
     {
-        Manager.Invoke(() => taskManager.ShowOnScreen("this land is polluted, cannot plant, press O"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("Hi, Protect yourself and help make the world a better place!"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("You have the option to place some items which can be found in the inventory."), 2f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("this land is polluted, cannot plant, press O"), 4f, taskManager);
     }
 
     public override void OnTaskComplete(TaskManager taskManager)

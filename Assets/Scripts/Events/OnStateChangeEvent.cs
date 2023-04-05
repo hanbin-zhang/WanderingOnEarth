@@ -13,8 +13,9 @@ public class OnStateChangeEvent : BaseEvent
 
     public class OnStateChangeMessage : BaseMessage
     {
-        public Vector3 pos{ get; set; }    
-        public StateLabel StateLabel { get; set; }
+        public Vector3 pos{ get; set; }
+        public StateLabel stateBefore { get; set; }
+        public StateLabel stateAfter { get; set; }
         public bool isRPC { get; set; }
     }
 
@@ -41,12 +42,13 @@ public class OnStateChangeEvent : BaseEvent
         actions.Remove(action);
     }
 
-    public void Notify(Vector3 pos, StateLabel state, bool isRPC)
+    public void Notify(Vector3 pos, StateLabel stateBefore, StateLabel stateAfter, bool isRPC)
     {
         OnStateChangeMessage msg = new OnStateChangeMessage 
         { 
             pos = pos,
-            StateLabel = state,
+            stateBefore = stateBefore,
+            stateAfter = stateAfter,
             isRPC = isRPC,
         };
 

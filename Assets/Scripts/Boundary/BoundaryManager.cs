@@ -16,7 +16,7 @@ public class BoundaryManager : MonoBehaviour
             {
 
                 StateProperty s = Manager.StateController.GetStateProperty(msg.pos);
-                if (msg.StateLabel == StateLabel.SAFE) InstantiateBoundary(s);
+                if (msg.stateAfter == StateLabel.SAFE) InstantiateBoundary(s);
             });
         }
     }

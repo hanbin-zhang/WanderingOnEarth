@@ -24,7 +24,7 @@ public class sychronizeState : MonoBehaviourPunCallbacks
     [PunRPC]
     public void NotifyRemoteStateChange(Vector3 pos, StateLabel state)
     {
-        Manager.EventController.Get<OnStateChangeEvent>()?.Notify(pos, state, true);
+        Manager.EventController.Get<OnStateChangeEvent>()?.Notify(pos, StateLabel.POLLUTED, state, true);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
