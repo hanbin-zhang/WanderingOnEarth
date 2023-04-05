@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class PlayerSync : MonoBehaviourPun, IPunObservable
 {
@@ -11,6 +12,8 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     //Values that will be synced over network
     Vector3 latestPos;
     Quaternion latestRot;
+    private Animator animator;
+    private AnimatorStateInfo stateInfo;
 
     // Use this for initialization
     void Start()
@@ -30,6 +33,7 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             {
                 localObjects[i].SetActive(false);
             }
+            //animator = GetComponent<Animator>();
         }
     }
 
@@ -41,12 +45,14 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
             Debug.Log("Send Player Info");
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
+            //stream.SendNext(animator.GetCurrentAnimatorStateInfo(0));
         }
         else
         {
             //Network player, receive data
             latestPos = (Vector3)stream.ReceiveNext();
             latestRot = (Quaternion)stream.ReceiveNext();
+            //stateInfo = (AnimatorStateInfo)stream.ReceiveNext();
         }
     }
 

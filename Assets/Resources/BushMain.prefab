@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 4729324599249976067, guid: 11cbc5d047529964fb1fb1f3e5965817, type: 3}
   - {fileID: 2734633245236384130, guid: befca213aa4086741aec9a07ea5136f6, type: 3}
   localShift: {x: 0, y: 0, z: 0}
-  growTime: 5
+  growTime: 10
   blockID: 0
   baseGreenValue: 1
   CreatedAt: 0
