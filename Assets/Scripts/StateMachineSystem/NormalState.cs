@@ -51,8 +51,8 @@ public class NormalState : BaseState
                 }
                 Debug.Log($"这是一个onplant事件，pos位置是{plantMsg.pos}, tree Number是{stateProperty.treeNumber}");
                 break;
-            case OnLeftMouseDownEvent.OnWaterMessage:
-                OnLeftMouseDownEvent.OnWaterMessage waterMsg = (OnLeftMouseDownEvent.OnWaterMessage)msg;
+            case OnWaterEvent.OnWaterMessage:
+                OnWaterEvent.OnWaterMessage waterMsg = (OnWaterEvent.OnWaterMessage)msg;
                 Debug.Log($"这是一个onwater事件，没有pos");
                 break;
             case OnLandPrepEvent.OnLandPrepMessage:

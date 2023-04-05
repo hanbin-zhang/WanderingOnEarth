@@ -53,9 +53,8 @@ public class ObjectClamp : MonoBehaviour
         {
             if (DistanceOnXZPlane(otherPlayer.transform.position,
                 transform.position) >= outRange)
-            {
+            {   
                 newOtherPlayerTransforms.Add(otherPlayer.transform);
-
                 // activate pooled player icon and add to list
                 if (pooledIcons.Count > 0)
                 {

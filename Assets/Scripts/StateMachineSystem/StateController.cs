@@ -43,9 +43,14 @@ public class StateProperty
         NaObjNums = new Dictionary<string, int>();
     }
 
-    public void SetState(StateLabel label)
+    public void SetState(StateLabel stateAfterChange)
     {
-        this.label = label;
+        StateLabel stateBeforeChange = label;       
+        if (stateBeforeChange != stateAfterChange)
+        {
+            label = stateAfterChange;
+            Manager.EventController.Get<OnStateChangeEvent>()?.Notify(stateBeforeChange, stateAfterChange);
+        }        
     }
 
     public void AddCount(string className)

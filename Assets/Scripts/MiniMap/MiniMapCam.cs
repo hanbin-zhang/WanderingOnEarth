@@ -20,6 +20,7 @@ public class MiniMapCam : MonoBehaviour
     {
         // Apply position
         // Apply rotation
-        transform.SetPositionAndRotation(new Vector3(targetCamera.position.x, defaultPosY, targetCamera.position.z), Quaternion.Euler(90, targetCamera.eulerAngles.y, 0));
+        transform.SetPositionAndRotation(new Vector3(playerBody.position.x, defaultPosY, playerBody.position.z), Quaternion.Euler(90, 0, 0));
+        //transform.position = new Vector3(playerBody.position.x, defaultPosY, playerBody.position.z);
     }
 }

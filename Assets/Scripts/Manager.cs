@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,7 @@ public sealed class Manager
             new OnPlantEvent(),
             new OnWaterEvent(),
             new OnLeftMouseDownEvent(),
+            new OnStateChangeEvent(),
         };
 
         manager.stateController = new StateController(manager.eventController)
@@ -41,5 +43,26 @@ public sealed class Manager
         };
 
     }
+
+    public static void Invoke(Action action, float time, MonoBehaviour mono)
+    {
+        if (time > 0f)
+        {
+            mono.StartCoroutine(InvokeAction(action, time));
+        }
+        else
+        {
+            action.Invoke();
+        }
+
+
+    }
+
+    static IEnumerator InvokeAction(Action action, float time)
+    {
+        yield return new WaitForSeconds(time);
+        action.Invoke();
+    }
+
 
 }
