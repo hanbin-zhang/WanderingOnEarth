@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 
@@ -30,17 +31,17 @@ public class StateProperty
 
     public List<GameObject> boundaries;
 
-    public List<NaturalObject> PendingNaObjs { get; set; }
+/*    public List<NaturalObject> PendingNaObjs { get; set; }
     public List<NaturalObject> EvolvingNaObjs { get; set; }
-    public List<NaturalObject> EvolvedNaObjs { get; set; }
+    public List<NaturalObject> EvolvedNaObjs { get; set; }*/
     public Dictionary<string, int> NaObjNums { get; set; }
     public StateProperty()
     {
-        PendingNaObjs = new List<NaturalObject>();
+        /*PendingNaObjs = new List<NaturalObject>();
         EvolvingNaObjs = new List<NaturalObject>();
-        EvolvedNaObjs = new List<NaturalObject>();
+        EvolvedNaObjs = new List<NaturalObject>();*/
         boundaries = new List<GameObject> { null, null, null, null };
-        NaObjNums = new Dictionary<string, int>();
+        NaObjNums = new Dictionary<string, int>();  
     }
 
     public void SetState(StateLabel stateAfterChange)
@@ -70,7 +71,7 @@ public class StateController : IEnumerable<BaseState>
 {
     private EventController eventController;
     public float mapHeight, mapWidth;
-    private int nRows, nColumns;
+    public int nRows, nColumns;
     public int regionSize;
     
     private StateProperty[,] statesProperty;
@@ -126,13 +127,29 @@ public class StateController : IEnumerable<BaseState>
         });        
         eventController.Get<OnLandPrepEvent>()?.AddListener((msg) => {
             lock (statesProperty)
-            {               
+            {
+                Debug.Log($"onlandprop");
                 StateProperty s = GetStateProperty(msg.pos);
+                Debug.Log($"state{s.label}");
                 GetRegionState(s).Handle(s, msg);                
+            }            
+        });
+        eventController.Get<OnStateChangeEvent>()?.AddListener((msg) => {
+            lock (statesProperty)
+            {
+                StateProperty s = GetStateProperty(msg.pos);
+                s.SetState(msg.StateLabel);
+
+                if (!msg.isRPC)
+                {
+                GameObjectTracker.StateSynchronizer
+                .GetComponent<Photon.Pun.PhotonView>()
+                .RPC(nameof(sychronizeState.NotifyRemoteStateChange), Photon.Pun.RpcTarget.Others, msg.pos, msg.StateLabel);
+                }
                 Debug.Log($"region states: {s.label}");
                 Debug.Log($"property region states: {GetStateProperty(msg.pos).label}");
                 Debug.Log(GetRegionState(s).GetType());
-            }            
+            }
         });
     }
 
@@ -146,5 +163,48 @@ public class StateController : IEnumerable<BaseState>
     public BaseState GetRegionState(StateProperty property)
     {
         return stateLabelMap[property.label];
+    }
+
+    public string SerializeStatesProperty()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        int rowCount = StatesProperty.GetLength(0);
+        int colCount = StatesProperty.GetLength(1);
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            for (int j = 0; j < colCount; j++)
+            {
+                sb.Append(((int)StatesProperty[i, j].label).ToString());
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    public void DeserializeStatesProperty(string data)
+    {
+        int rowCount = StatesProperty.GetLength(0);
+        int colCount = StatesProperty.GetLength(1);
+
+        if (data.Length != rowCount * colCount)
+        {
+            Debug.LogError("Invalid data length.");
+            return;
+        }
+
+        int dataIndex = 0;
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            for (int j = 0; j < colCount; j++)
+            {
+                int labelInt = int.Parse(data[dataIndex].ToString());
+                StatesProperty[i, j].label = (StateLabel)labelInt;
+
+                dataIndex++;
+            }
+        }
     }
 }

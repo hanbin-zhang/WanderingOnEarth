@@ -12,10 +12,10 @@ public class OnStateChangeEvent : BaseEvent
     }
 
     public class OnStateChangeMessage : BaseMessage
-    {        
-        public StateLabel stateBefore { get; set; }
-        public StateLabel stateAfter { get; set; }
-
+    {
+        public Vector3 pos{ get; set; }    
+        public StateLabel StateLabel { get; set; }
+        public bool isRPC { get; set; }
     }
 
     private List<OnStateChangeListener> listeners = new List<OnStateChangeListener>();
@@ -41,12 +41,13 @@ public class OnStateChangeEvent : BaseEvent
         actions.Remove(action);
     }
 
-    public void Notify(StateLabel stateBefore, StateLabel stateAfter)
+    public void Notify(Vector3 pos, StateLabel state, bool isRPC)
     {
         OnStateChangeMessage msg = new OnStateChangeMessage 
-        {            
-            stateBefore = stateBefore,
-            stateAfter = stateAfter,
+        { 
+            pos = pos,
+            StateLabel = state,
+            isRPC = isRPC,
         };
 
         listeners.ForEach((x) => x.OnEvent(msg));

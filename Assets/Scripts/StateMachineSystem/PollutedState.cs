@@ -30,7 +30,8 @@ public class PollutedState : BaseState
                 OnLandPrepEvent.OnLandPrepMessage prepLandMsg = msg.Of<OnLandPrepEvent.OnLandPrepMessage>();
                 //stateProperty.greenValue++;
                 Debug.Log($"这是一个prepland事件，pos位置是{prepLandMsg.pos}");
-                stateProperty.SetState(StateLabel.NORMAL);
+                //stateProperty.SetState(StateLabel.NORMAL);
+                Manager.EventController.Get<OnStateChangeEvent>()?.Notify(prepLandMsg.pos, StateLabel.NORMAL, false);
                 break;
         }
                

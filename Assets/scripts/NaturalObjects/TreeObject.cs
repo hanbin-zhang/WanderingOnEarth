@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class TreeObject : NaturalObject
@@ -12,11 +9,11 @@ public class TreeObject : NaturalObject
 
     public override string CheckUpdateCondition(StateProperty stateProperty)
     {   
-        switch (currentState)
+        switch (CurrentState)
         {
             case 0:
                 int bushNumber = 0;
-                stateProperty.NaObjNums.TryGetValue(nameof(BushObject), out bushNumber);
+                GameObjectTracker.GetRegionObjNumber(transform.position).TryGetValue(nameof(BushObject), out bushNumber);
                 if (bushNumber < 3)
                 {
                     string message = "need 3 bush to proceed to next state";

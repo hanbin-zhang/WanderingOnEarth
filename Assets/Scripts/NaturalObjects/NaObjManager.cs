@@ -8,10 +8,10 @@ public class NaObjManager : MonoBehaviour
 
     private void Start()
     {
-        /*if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
         {
             this.enabled = false;
-        }*/
+        }
     }
 
     public static void Register(NaturalObject naturalObject)
@@ -39,14 +39,8 @@ public class NaObjManager : MonoBehaviour
                     evolvingNaObjsQueue.RemoveAt(0);
                     continue;
                 }
-
+                
                 naturalObject.UpdateState();
-                naturalObject.UpdateObject();
-
-                // update remote
-                Photon.Pun.PhotonView remoteView = naturalObject.GetComponent<Photon.Pun.PhotonView>();
-                remoteView.RPC(nameof(NaturalObject.UpdateState), Photon.Pun.RpcTarget.Others);
-                remoteView.RPC(nameof(NaturalObject.UpdateObject), Photon.Pun.RpcTarget.Others);
 
                 evolvingNaObjsQueue.RemoveAt(0);
 
@@ -54,7 +48,7 @@ public class NaObjManager : MonoBehaviour
                         .GetStateProperty(naturalObject.transform.position);
                 lock (stateProperty)
                 {
-                    if (naturalObject.currentState < naturalObject.Models.Count - 1)
+                    if (naturalObject.CurrentState < naturalObject.Models.Count - 1)
                     {
 
 
@@ -66,11 +60,11 @@ public class NaObjManager : MonoBehaviour
                         }
                         else
                         {
-                            stateProperty.PendingNaObjs.Add(naturalObject);
+                            //stateProperty.PendingNaObjs.Add(naturalObject);
                         }
 
                     }
-                    else stateProperty.EvolvedNaObjs.Add(naturalObject);
+                    //else stateProperty.EvolvedNaObjs.Add(naturalObject);
                 }
             }
         }

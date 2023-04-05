@@ -41,6 +41,20 @@ MonoBehaviour:
   - RespawnSpaceship
   - UpdateObject
   - UpdateState
+  - Notify
+  - rpcTarget
+  - StateMachineRPC
+  - notifyStateMachineRPC
+  - NotifyServerLandPrep
+  - GetServerLabel
+  - GetServerStateLabel
+  - ReceiveNaObjNum
+  - ReceiveStateLabel
+  - ServerLabelCallback
+  - RPCUpdateObject
+  - ServerStatePropertyCallback
+  - NotifyOtherStateChange
+  - NotifyRemoteStateChange
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

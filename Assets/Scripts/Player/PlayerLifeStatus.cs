@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Photon.Pun;
+using System.Threading;
 
-public class PlayerLifeStatus : MonoBehaviour
+public class PlayerLifeStatus : MonoBehaviourPunCallbacks
 {
     public TMPro.TMP_Text lifeValueDisplay;
     public int lifeValue = 100;
@@ -17,15 +19,21 @@ public class PlayerLifeStatus : MonoBehaviour
     private Blit blit;
     private bool blitState = false;
     private StateLabel state;
+    private SemaphoreSlim rpcSemaphore = new(0);
+
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        if (!gameObject.GetComponent<PhotonView>().IsMine)
+        {
+            enabled = false;
+        }
         blit = RendererData.rendererFeatures.OfType<Blit>().FirstOrDefault();
         blit.SetActive(blitState);
         RendererData.SetDirty();
         lifeValueDisplay.text = $"{lifeValue}";
-        Invoke("Loop", 1f);
+        Invoke(nameof(PreProcess), 1f);
     }
 
     // Update is called once per frame
@@ -34,18 +42,40 @@ public class PlayerLifeStatus : MonoBehaviour
         
     }
 
+
     private void Loop()
     { 
-        PreProcess();
+        //PreProcess();
         ProcessLifeValue();
         ProcessDisaster();
         ProcessRendererEffect();
         PostProcess();        
     }
 
+    [PunRPC]
+    public void GetServerLabel(PhotonMessageInfo info)
+    {
+        StateLabel label = Manager.StateController.GetStateProperty(transform.position).label;
+        gameObject.GetComponent<PhotonView>()
+            .RPC(nameof(ServerLabelCallback), info.Sender, label);
+    }
+
+    [PunRPC]
+    public void ServerLabelCallback(StateLabel label) {
+        state = label;
+        //rpcSemaphore.Release();
+    }
+
     private void PreProcess()
-    {               
+    {
+        //state = Manager.StateController.GetStateProperty(transform.position).label;
+        PhotonView photonView = gameObject.GetComponent<PhotonView>();
+        PhotonMessageInfo info = new(PhotonNetwork.LocalPlayer, PhotonNetwork.ServerTimestamp, photonView);
+        // Call the RPC method and specify a callback function
+        //photonView.RPC(nameof(GetServerLabel), RpcTarget.MasterClient);
         state = Manager.StateController.GetStateProperty(transform.position).label;
+
+        Invoke(nameof(Loop), 1f);
     }
     private void ProcessLifeValue()
     {        
@@ -125,7 +155,7 @@ public class PlayerLifeStatus : MonoBehaviour
         if (lifeValue >= 0)
         {
             lifeValueDisplay.text = $"{lifeValue}";
-            Invoke("Loop", 1f);
+            Invoke(nameof(PreProcess), 1f);
         }
         else
         {

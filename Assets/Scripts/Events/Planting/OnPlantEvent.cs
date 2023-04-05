@@ -52,8 +52,14 @@ public class OnPlantEvent : BaseEvent
             name = name
             
         };
-        listeners.ForEach((x) => x.OnEvent(msg));
-        actions.ForEach((x) => x.Invoke(msg));
+        if (!Photon.Pun.PhotonNetwork.IsMasterClient)
+        {
+        }
+        else
+        {
+            listeners.ForEach((x) => x.OnEvent(msg));
+            actions.ForEach((x) => x.Invoke(msg));
+        }
     }
 
     public void Clear()

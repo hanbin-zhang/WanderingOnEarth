@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+using Photon.Pun;
 
-public abstract class NaturalObject : MonoBehaviour
+public abstract class NaturalObject : MonoBehaviour, IPunObservable
 {
 
     public List<GameObject> Models;
@@ -12,30 +10,86 @@ public abstract class NaturalObject : MonoBehaviour
     public float growTime;
     [HideInInspector] public int blockID = 0;
     public float baseGreenValue = 0;
-    //public string plantingConditionMessage = "need three trees";
     [HideInInspector] public float CreatedAt;
-    [HideInInspector] public int currentState = 0;
+    //[HideInInspector] public int CurrentState = 0;
     [HideInInspector] public GameObject currentModel;
     [HideInInspector] public int parentWorldObjID;
     [HideInInspector] public int currentWorldID;
     [HideInInspector] public int updateModelCommand = 0;
     [HideInInspector] public float nextUpdateTime;
+
+    private int ObjElapsedTime = 0;
+
+    private delegate void ObjStateChangedHandler(int newValue);
+
+    private event ObjStateChangedHandler OnObjStateChanged;
+
+    // Declare an int attribute to observe
+    private int _currentState = 0;
+
+    public int CurrentState
+    {
+        get => _currentState;
+        set
+        {
+            // Set the new value of the attribute
+            _currentState = value;
+
+            // Trigger the event
+            OnObjStateChanged?.Invoke(_currentState);
+        }
+    }
+
     public abstract string GetDerivedClassName();
 
     private void Awake()
     {
         CreatedAt = Time.time;
         nextUpdateTime = CreatedAt + growTime;
-        Debug.Log($"inner next update{nextUpdateTime}");
     }
     void Start()
     {
+        OnObjStateChanged += HandledObjStateChanged;
+
         currentWorldID = GetInstanceID();
-        this.UpdateObject();
+
+        GameObjectTracker.AddNaObj(transform.position, GetDerivedClassName());
+
+        UpdateObject();
+
         GameObjectTracker.gameObjects.Add(this);
         AddSpecificCache(GetDerivedClassName());
+
+        PhotonView photonView = gameObject.GetComponent<PhotonView>();
+
+        if (PhotonNetwork.IsMasterClient &&
+            photonView.Owner.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
+        {            
+            Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, gameObject.name.Replace("(Clone)", ""));
+        }
+        if (PhotonNetwork.IsMasterClient) Invoke(nameof(UpdatingLoop), 1f);
+    }
+
+    void UpdatingLoop()
+    {
+        string updateCond = CheckUpdateCondition(Manager.StateController.GetStateProperty(transform.position));
+        if (updateCond == null) ObjElapsedTime += 1;
+        if (ObjElapsedTime >= growTime)
+        {
+            ObjElapsedTime = 0;
+            UpdateState();
+        }
+
+        if (CurrentState < Models.Count - 1)
+        {
+            Invoke(nameof(UpdatingLoop), 1f);
+        }
         
-        //NaObjManager.Register(this);
+    }
+
+    void HandledObjStateChanged(int newValue)
+    {
+        UpdateObject();
     }
 
     public abstract string CheckUpdateCondition(StateProperty stateProperty);
@@ -61,41 +115,45 @@ public abstract class NaturalObject : MonoBehaviour
 
     public float GetCurrentGreenValue()
     {
-        return baseGreenValue * (1.0f + currentState);
+        return baseGreenValue * (1.0f + CurrentState);
     }
 
-    [Photon.Pun.PunRPC]
+    [PunRPC]
     public void UpdateObject()
     {
         if (currentModel == null)
         {
-            currentModel = Instantiate(Models[currentState], transform.position+localShift, transform.rotation);
+            currentModel =  Instantiate(Models[CurrentState], transform.position+localShift, transform.rotation);
         }
         else
         {
             Vector3 pos = currentModel.transform.position;
             Quaternion rot = currentModel.transform.rotation;
             Destroy(currentModel);
-            currentModel = Instantiate(Models[currentState], pos, rot);
+            currentModel = Instantiate(Models[CurrentState], pos, rot);
         }
     }
 
-    [Photon.Pun.PunRPC]
     public void UpdateState()
     {
-        if (currentState < Models.Count - 1)
+        if (CurrentState < Models.Count - 1)
         {
-            currentState++;
+            CurrentState++;
             nextUpdateTime += growTime;
         }
         else Debug.Log("maximum states");
+    }
+
+    public void RPCUpdateObject() 
+    {
+        gameObject.GetComponent<PhotonView>().RPC(nameof(UpdateObject), RpcTarget.All);
     }
 
     public void SetState(int targetState)
     {
         if (targetState <= Models.Count - 1 || targetState >= 0)
         {
-            currentState = targetState;
+            CurrentState = targetState;
         }
         else Debug.Log("invalid states");
     }
@@ -111,7 +169,7 @@ public abstract class NaturalObject : MonoBehaviour
         NaturalObject[] naturalObjects = FindObjectsOfType<NaturalObject>();
         foreach (NaturalObject naturalObject in naturalObjects)
         {
-            sum += GetCurrentGreenValue() * (naturalObject.currentState + 1.0f);
+            sum += GetCurrentGreenValue() * (naturalObject.CurrentState + 1.0f);
         }
         if (sum >= greenThreshold) { return true; }
         else { return false; }
@@ -134,7 +192,7 @@ public abstract class NaturalObject : MonoBehaviour
         foreach (T naturalObject in naturalObjects)
         {
             NaturalObject no = naturalObject as NaturalObject;
-            if (no.currentState >= requiredState) num++;
+            if (no.CurrentState >= requiredState) num++;
         }
         return num >= ObjNumber;
     }
@@ -145,5 +203,19 @@ public abstract class NaturalObject : MonoBehaviour
     {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tagName);
         return gameObjects.Length >= ObjNumber;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We are the owner of this GameObject and are sending data to others.
+            stream.SendNext(CurrentState);
+        }
+        else
+        {
+            // We are receiving data from the owner of this GameObject.
+            CurrentState = (int)stream.ReceiveNext();
+        }
     }
 }

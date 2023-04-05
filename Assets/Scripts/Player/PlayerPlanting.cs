@@ -54,10 +54,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
         SelectObj();
         SetText();
-       /* if (Input.GetKeyDown(KeyCode.O))
-        {
-            Manager.Instance.EventController.Get<OnLandPrepEvent>()?.Notify(this.transform.position);
-        }*/
+
     }
 
     public static List<Vector3> plantTrees = new List<Vector3>();
@@ -109,8 +106,9 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         NaturalObject naturalObject = gameObject.GetComponent<NaturalObject>();
 
         StateProperty stateProperty = Manager.StateController.GetStateProperty(position);
+        stateProperty.AddCount(naturalObject.GetDerivedClassName());
 
-        if (naturalObject.CheckUpdateCondition(stateProperty) is null)
+        /*if (naturalObject.CheckUpdateCondition(stateProperty) is null)
         {
             stateProperty.EvolvingNaObjs.Add(naturalObject);
             NaObjManager.Register(naturalObject);
@@ -118,11 +116,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         else
         {
             stateProperty.PendingNaObjs.Add(naturalObject);
-        }
+        }*/
 
-        stateProperty.AddCount(naturalObject.GetDerivedClassName());
 
-        for (int i = stateProperty.PendingNaObjs.Count - 1; i >= 0; i--)
+
+        /*for (int i = stateProperty.PendingNaObjs.Count - 1; i >= 0; i--)
         {
             if (stateProperty.PendingNaObjs[i].CheckUpdateCondition(stateProperty) is null)
             {
@@ -131,7 +129,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 NaObjManager.Register(stateProperty.PendingNaObjs[i]);
                 stateProperty.PendingNaObjs.RemoveAt(i);
             }
-        }
+        }*/
     }
 
     private bool IsValid(Vector3 rayOrigin1, out Vector3 point)
