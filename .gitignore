@@ -1,9 +1,5 @@
 # This .gitignore file should be placed at the root of your Unity project directory
 #
-# Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
-# This .gitignore file should be placed at the root of your Unity project directory
-#
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 /[Ll]ibrary/
@@ -75,4 +71,14 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-.idea
+# Windows
+Thumbs.db
+Thumbs.db.meta
+
+# MacOS
+.DS_Store
+
+# VS Code
+.vscode
+
+.vsconfig
