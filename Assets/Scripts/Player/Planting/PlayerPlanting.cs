@@ -5,9 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-
-
 public struct Slot
 {
     public GameObject activeIndicator;
