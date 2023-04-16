@@ -16,3 +16,16 @@ Flagship Technology idea:
   Whole PC lab inclusion to create a multi-machine game. 
 
   Rendering by nanite to get high performance and reduce computing pressure. 
+  
+ 
+#softwares: 
+    unity
+    maya
+    blender
+    anffinity desginer 2
+    photoShop
+    ...
+  
+# unity version
+
+2021.3.10
