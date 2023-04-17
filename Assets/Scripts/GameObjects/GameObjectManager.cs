@@ -24,6 +24,10 @@ public class GameObjectManager
     }
 
     private List<GameObject> InternalGet(string name) {
+        // if (globalGameObjects[name] == null){
+        //     globalGameObjects[name].Remove()
+        //     return null;
+        // }
         if (!globalGameObjects.ContainsKey(name)) {
            globalGameObjects[name] = new List<GameObject>();
         }

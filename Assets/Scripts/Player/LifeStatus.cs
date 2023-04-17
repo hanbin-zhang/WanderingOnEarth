@@ -51,7 +51,7 @@ public class LifeStatus : MonoBehaviour
     {        
         if (state == StateLabel.POLLUTED)
         {
-            if (elapseTime >= 1)
+            if (elapseTime >= 5)
             {
                 lifeValue--;
                 elapseTime = 0;
@@ -60,7 +60,7 @@ public class LifeStatus : MonoBehaviour
         
         if (state == StateLabel.NORMAL)
         {
-            if (elapseTime >= 3)
+            if (elapseTime >= 10)
             {
                 lifeValue--;
                 elapseTime = 0;

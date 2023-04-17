@@ -113,8 +113,7 @@ public class Achievement1 : Achievement
             if (onStateChangeMsg.stateBefore == StateLabel.NORMAL && onStateChangeMsg.stateAfter == StateLabel.SAFE)
             {
                 achievementManager.ShowNotification("[STATE CHANGE!] NORMAL --> SAFE");
-            }
-            
+            }           
         }
     }
 }
@@ -126,7 +125,7 @@ public class Achievement2 : Achievement
     {
         if (msg is OnGreenValueReach100Message)
         {
-            achievementManager.ShowNotification("[GREEN VALUE!]  --> 100");
+            achievementManager.ShowNotification("GREEN VALUE reached 100!");
             achievementManager.Complete(this);
         } 
         

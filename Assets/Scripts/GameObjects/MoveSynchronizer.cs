@@ -16,8 +16,6 @@ public class MoveSynchronizer : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector]
     private Vector3 movement;
 
-
-
     void Awake() {
         TransferOwnershipToMaster();
     }
