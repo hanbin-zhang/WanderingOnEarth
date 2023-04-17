@@ -13,6 +13,7 @@ public class AchievementManager : MonoBehaviour
     {
         new Achievement1(),
         new Achievement2(),
+        new Achievement3(),
     };    
    
     public GameObject notificationPanel;
@@ -27,7 +28,11 @@ public class AchievementManager : MonoBehaviour
     }
 
     private void ListenEvents()
-    {
+    {   
+        // Is it necessary to iterate through all the achivements in the list?
+        // As the number of the achivements grows, the process time when each event is triggered grows
+        // which could be a cause for some latency.
+
         Manager.EventController.Get<OnStateChangeEvent>()?.AddListener(msg =>
         {
             for (int i = 0; i < achievements.Count; i++)
@@ -128,3 +133,23 @@ public class Achievement2 : Achievement
 
     }
 }
+
+public class Achievement3 : Achievement
+{
+    // about plant a tree with a height over 100
+    public override void OnEvent(AchievementManager achievementManager, BaseMessage msg)
+    {
+        if (msg is OnPlantMessage)
+        {   
+            OnPlantMessage onPlantMessage = msg.Of<OnPlantMessage>();
+            if (onPlantMessage.pos.y >= 70)
+            {
+                achievementManager.ShowNotification("reaching the worldd highest tree - LITANG");
+                achievementManager.Complete(this);
+            }           
+        }
+
+
+    }
+}
+
