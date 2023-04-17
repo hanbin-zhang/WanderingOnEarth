@@ -466,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7708827516190544899, guid: 7e40470c5e748ee4180da912ae6a21ce, type: 3}
   Treasure: {fileID: 2569566143460036327, guid: fa1386b7315b6c940b6ea5ea0c899dac, type: 3}
+  SpaceShipPrefeb: {fileID: 4814045314985680998, guid: 208266865db95f647b5d44cdb93072ac, type: 3}
 --- !u!1 &3058945786541095292
 GameObject:
   m_ObjectHideFlags: 0

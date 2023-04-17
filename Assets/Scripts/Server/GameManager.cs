@@ -16,10 +16,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab;
 
     public GameObject Treasure;
+    public GameObject SpaceShipPrefeb;
 
     public static GameManager Instance;
 
     private GameObject Player;
+    private GameObject SpaceShip;
     private GameObject LeftPlayer;
 
     #endregion
@@ -42,7 +44,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         int init_x = r.Next(10, 490);
         int init_z = r.Next(10, 490);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(400, 100f, 400), Quaternion.identity, 0);
+        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(400, 50f, 400), Quaternion.identity, 0);
+        SpaceShip = Instantiate(SpaceShipPrefeb, new Vector3(400, 50f, 400), Quaternion.identity);
         Player.name = PhotonNetwork.NickName;
         //PlayerUI.
         Instance = this;

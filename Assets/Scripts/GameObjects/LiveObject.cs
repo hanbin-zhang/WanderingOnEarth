@@ -45,10 +45,25 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
         if (children.Count != greenValue.Count) {
             throw new UnityException("[LiveObject] Green values should be matched with models");
         }
-        
-        if (growingTime.Count > 0 && (photonView.IsMine || !photonView.IsOwnerActive)) {
+
+        /*if (growingTime.Count > 0 && (photonView.IsMine || !photonView.IsOwnerActive)) {
+            Invoke(nameof(Evolve), growingTime[age]);
+        }*/
+
+        // old version might cause conflict when 3 or more players joined
+        // new version change only trigger the update loop in the master client
+        if (PhotonNetwork.IsMasterClient)
+        {
             Invoke(nameof(Evolve), growingTime[age]);
         }
+        // possible upgrade:
+        // 1: distributed the update loop to the creater or the object,
+        // when the player quit the give make master client restart the loop
+        // minimum load
+        // 2: individual update, each client holds there own update loop
+        // based on the photon view
+        // potential higher cost but could be no crucial
+
         SetModel(age);
     }
 

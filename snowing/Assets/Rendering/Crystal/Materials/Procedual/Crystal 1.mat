@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7235442657296531278
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Crystal 1
+  m_Shader: {fileID: -6465566751694194690, guid: b8f356440e68cc44cb351e525ba99163,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_484092e60203419787da1ffd14086b6d: 0.8
+    - Vector1_488d7fc8ffb349a39b0377d6a4a335fb: 0.5
+    - Vector1_c8aeace7d0fc4af495e8dacdb190f616: 0.5
+    - _0: 0.9
+    - _CrystalIOR: 1.5
+    - _DelaunayAngleOffset1: 8
+    - _DelaunayAngleOffset2: 6
+    - _DelaunayCellDensity1: 4
+    - _DelaunayCellDensity2: 5
+    - _DelaunayStrength1: 2
+    - _DelaunayStrength2: 2.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - Color_a3b56a6f7768425a881443bb178c148a: {r: 14.259478, g: 0, b: 0.52597815,
+        a: 0}
+    - Color_c90420ba18a042029fbeb22f9a60ed55: {r: 2, g: 0, b: 1.6078432, a: 0}
+    - Color_ea259f6571d049bf97da50e213b7af48: {r: 0.2735849, g: 0.250616, b: 0.21551263,
+        a: 0}
+    - _CrystalColor: {r: 4, g: 0, b: 1.2101822, a: 0}
+  m_BuildTextureStacks: []
