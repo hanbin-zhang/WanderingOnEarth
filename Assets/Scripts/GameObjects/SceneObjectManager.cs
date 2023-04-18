@@ -9,7 +9,11 @@ public class SceneObjectManager : MonoBehaviour
     
     void Start()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            this.enabled = false;
+            return;
+        }
         Manager.EventController.Get<OnStateChangeEvent>().AddListener((msg) => {
             TornadoControl(StateLabel.POLLUTED, true);                  
         });
@@ -57,14 +61,14 @@ public class SceneObjectManager : MonoBehaviour
         // };        
 
         //List<StateProperty> states = Manager.StateController.StatesProperty;
-        Vector3 po = new Vector3(400, 10f, 400);
+        Vector3 po = new Vector3(200f, 450f, 200f);
         StateLabel state = Manager.StateController.StatesProperty[3].state;
         if (fromListener || state == lastState){          
             if(state == StateLabel.POLLUTED){
-                Appear(tornado, po, 20f);               
+                Appear(tornado, po, 1020f);               
                 Manager.Invoke(() => {
                     TornadoControl(StateLabel.POLLUTED, false);
-                }, 30, this);
+                }, 1030, this);
             }
             if(state == StateLabel.NORMAL){
                 Appear(tornado, po, 10f);

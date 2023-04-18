@@ -1,15 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Tornado : BaseObject
+public class Tornado : DisasterObject
 {
-    // void Update(){
-    //     TornadoMove();
-    // }
+    public override void DisasterLifeCycle()
+    {
+        StateLabel state = Manager.StateController.GetRegionalState(transform.position).StateLabel;
+        if (state == StateLabel.POLLUTED)
+        {
+            Disasterlife -= 1;
+        }
+        else if (state == StateLabel.NORMAL)
+        {
+            Disasterlife -= 3;
+        }
+        else if (state == StateLabel.SAFE)
+        {
+            Disasterlife -= 5;
+        }
 
-    // private void TornadoMove(){        
-    //     transform.Rotate(Quaternion.Euler(0, 10f, 0).eulerAngles);
-    //     transform.position = Vector3.MoveTowards(transform.position, transform.forward, Time.deltaTime*20);
-    // }
+        if (Disasterlife > 0)
+        {
+            Invoke(nameof(DisasterLifeCycle), 1f);
+        } 
+        else
+        {
+            // for the manager
+        }
+    }
 }
