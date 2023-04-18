@@ -38,4 +38,12 @@ public class Tornado : DisasterObject
             sceneManager.ActivateDisaster(gameObject, reActivateTime);
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Collided with enemy!");
+        }
+    }
 }
