@@ -14,18 +14,25 @@ public class SceneObjectManager : MonoBehaviour
             this.enabled = false;
             return;
         }
-        Manager.EventController.Get<OnStateChangeEvent>().AddListener((msg) => {
+        /*Manager.EventController.Get<OnStateChangeEvent>().AddListener((msg) => {
             TornadoControl(StateLabel.POLLUTED, true);                  
         });
-        TornadoControl(StateLabel.POLLUTED, true);
+        TornadoControl(StateLabel.POLLUTED, true);*/
+
+        Vector3 po = new Vector3(200f, 450f, 200f);
+
+        GameObject sceneObject = PhotonNetwork.Instantiate(tornado.name, po, Quaternion.identity);
+        //sceneObject.SetActive(false);
+        ActivateDisaster(sceneObject, 0f);
+
     }
 
-    public void ReactivateDisaster(GameObject disasterObj, float timeWait)
+    public void ActivateDisaster(GameObject disasterObj, float timeWait)
     {
         Manager.Invoke(() =>
         {
             disasterObj.SetActive(true);
-
+            //disasterObj.SetActive(!disasterObj.activeSelf);
             disasterObj.GetComponent<DisasterObject>()
                 .StartDisasterLifeCycle();
         }, timeWait, this);
