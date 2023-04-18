@@ -1,49 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone1.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone1.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone2.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone2.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone3.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone3.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone3.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone4.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone4.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone4.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone4.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stones1.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stones1.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stones1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stones1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stump.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stump.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stump.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stump.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/spaceship Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/spaceship Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Planting/PlayerPlanting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Planting/PlayerPlanting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Black_Sand_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Black_Sand_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Grass_Moss_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Grass_Moss_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Pebbles_A_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Pebbles_A_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Pebbles_B_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Pebbles_B_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Pebbles_C_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Pebbles_C_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Rock_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Rock_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Sand_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Sand_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Soil_Rocks_TerrainLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/TerrainLayers/Soil_Rocks_TerrainLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Black_Sand_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Black_Sand_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Grass_Moss_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Grass_Moss_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Pebbles_A_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Pebbles_A_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Pebbles_B_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Pebbles_B_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Pebbles_C_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Pebbles_C_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Rock_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Rock_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Sand_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Sand_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Soil_Rocks_Normal.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/TerrainSampleAssets/Textures/Terrain/Soil_Rocks_Normal.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Terrain/terraingroundwater/water.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/terraingroundwater/water.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,7 +120,7 @@
       <workItem from="1676287997345" duration="11181000" />
       <workItem from="1676460407920" duration="35500000" />
       <workItem from="1678371539558" duration="48550000" />
-      <workItem from="1680700510619" duration="33378000" />
+      <workItem from="1680700510619" duration="34224000" />
     </task>
     <servers />
   </component>
