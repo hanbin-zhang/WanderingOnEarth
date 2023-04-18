@@ -6,7 +6,27 @@ using UnityEngine;
 public class SceneObjectManager : MonoBehaviour
 {
     public GameObject tornado;
-    
+
+    public Vector3 RandomTerrainPosition(float yHeight)
+    {
+        Vector3 terrainSize = Terrain.activeTerrain.terrainData.size;
+
+        float randomX = Random.Range(0,terrainSize.x);
+        float randomZ = Random.Range(0, terrainSize.z);
+        float terrainHeight = Terrain.activeTerrain.SampleHeight(new Vector3(randomX, 0f, randomZ));
+        Vector3 position = new Vector3(randomX, terrainHeight + yHeight, randomZ);
+
+        // Check if position is within terrain bounds
+        if (position.x < 0f || position.x > terrainSize.x || position.z < 0f || position.z > terrainSize.z)
+        {
+            // Regenerate position if it's outside of terrain bounds
+            position = RandomTerrainPosition(yHeight);
+        }
+
+        return position;
+    }
+
+
     void Start()
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -31,10 +51,18 @@ public class SceneObjectManager : MonoBehaviour
     {
         Manager.Invoke(() =>
         {
+            Vector3 randomPos = RandomTerrainPosition(3f);
+
+            Debug.Log($"random pos {randomPos}");
+            disasterObj.transform.position = randomPos;
+
             disasterObj.SetActive(true);
-            //disasterObj.SetActive(!disasterObj.activeSelf);
+
+            disasterObj.GetComponent<PhotonView>()
+            .RPC(nameof(DisasterObject.SetGObjActive), RpcTarget.Others, true);
+
             disasterObj.GetComponent<DisasterObject>()
-                .StartDisasterLifeCycle();
+                .StartDisasterLifeCycle(this);
         }, timeWait, this);
     }
 
