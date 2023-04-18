@@ -23,6 +23,8 @@ public class Tornado : DisasterObject
         else
         {
             // for the manager
+
+            gameObject.SetActive(false);
         }
     }
 }

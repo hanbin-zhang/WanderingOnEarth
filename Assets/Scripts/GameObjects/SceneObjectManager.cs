@@ -20,6 +20,17 @@ public class SceneObjectManager : MonoBehaviour
         TornadoControl(StateLabel.POLLUTED, true);
     }
 
+    public void ReactivateDisaster(GameObject disasterObj, float timeWait)
+    {
+        Manager.Invoke(() =>
+        {
+            disasterObj.SetActive(true);
+
+            disasterObj.GetComponent<DisasterObject>()
+                .StartDisasterLifeCycle();
+        }, timeWait, this);
+    }
+
     private void Appear(GameObject obj, Vector3 pos) {
         PhotonNetwork.Instantiate(obj.name, pos, Quaternion.identity);      
     }
