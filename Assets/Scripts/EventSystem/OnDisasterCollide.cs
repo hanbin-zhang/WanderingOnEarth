@@ -12,6 +12,7 @@ public class OnDisasterCollide : BaseEvent
 
     public class OnDisasterCollideMessage : BaseMessage
     {
+        string DisasterName { get; set; }
 
     }
 
