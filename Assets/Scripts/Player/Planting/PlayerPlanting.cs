@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -31,6 +31,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
     public GameObject collectMessagePanel;
     public GameObject notificationPanel;
+    public Button LeaveButton;
     public TMP_Text notificationText;
     private Queue<string> notificationQueue;   
 
@@ -65,6 +66,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             slot.activeIndicator.GetComponent<Image>().color = Color.black;
         });
         SwitchSlot(0);
+    }
+    
+    void Start()
+    {
+        LeaveButton.onClick.AddListener(ButtonClicked);
     }
 
     void Update()
@@ -121,8 +127,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
         {
             point = hit.point;
             Collider[] colliders = Physics.OverlapSphere(point, 1f);
-            valid = hit.collider.gameObject.tag == "Ground" && colliders.Length <= 1;
-
+            valid = (hit.collider.gameObject.tag == "Ground"  && colliders.Length <= 1) || (hit.collider.gameObject.tag == "MiniMap"  && colliders.Length <= 2);
         }
         return valid && !Cursor.visible;
     }
@@ -144,8 +149,26 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     ShowNotification(text, 2f);
                 }
             }
+            if (BaseObject.Is<SpaceShip>(collider.gameObject, out var _))
+            {
+                hasChest = true;
+                if (keyPressed)
+                {
+                    Manager.GameObjectManager.Remove(collider.gameObject);
+                    Destroy(collider.gameObject);
+                    string text = "SpaceShip: quit the game";
+                    ShowNotification(text, 2f);
+                    LeaveButton.onClick.Invoke();
+                    break;
+                }
+            }
         }
         collectMessagePanel.SetActive(hasChest);
+    }
+    
+    void ButtonClicked()
+    {
+        Debug.LogFormat("leave the game"); 
     }
 }
 

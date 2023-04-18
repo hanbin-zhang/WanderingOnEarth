@@ -8,6 +8,7 @@ TagManager:
   - Plant
   - Ground
   - CinemachineTarget
+  - MiniMap
   layers:
   - Default
   - TransparentFX

@@ -82,7 +82,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom, CleanupCacheOnLeave = false});
-        //, CleanupCacheOnLeave = false
+        
     }
 
     public override void OnJoinedRoom()

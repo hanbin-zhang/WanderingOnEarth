@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Reflection;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -14,7 +15,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     //[Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
-
     public GameObject Treasure;
     public GameObject SpaceShipPrefeb;
 
