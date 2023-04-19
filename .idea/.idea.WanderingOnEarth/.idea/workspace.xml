@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Deer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Deer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Rabbit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Rabbit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Tree.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AchievementSystem/AchievementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AchievementSystem/AchievementManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
