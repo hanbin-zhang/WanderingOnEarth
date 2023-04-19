@@ -41,11 +41,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         Random r = new Random();
-        int init_x = r.Next(10, 490);
-        int init_z = r.Next(10, 490);
+        int init_x = r.Next(100, 400);
+        int init_z = r.Next(100, 400);
         //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(400, 50f, 400), Quaternion.identity, 0);
-        SpaceShip = Instantiate(SpaceShipPrefeb, new Vector3(400, 50f, 400), Quaternion.identity);
+        Player = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(init_x, 50f, init_z), Quaternion.identity, 0);
+        SpaceShip = Instantiate(SpaceShipPrefeb, new Vector3(init_x, 50f, init_z), Quaternion.identity);
         Player.name = PhotonNetwork.NickName;
         //PlayerUI.
         Instance = this;
