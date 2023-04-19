@@ -2,62 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/branch_bg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/branch_bg.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/branch_multi.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/branch_multi.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/dryTree1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/dryTree1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/dryTree2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/dryTree2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/dryTree3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/dryTree3.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone3.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stone4.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stone4.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stoneM.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stoneM.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stoneM.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stoneM.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stones1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stones1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stones2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stones2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stump.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stump.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/stump_bg_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/stump_bg_1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/trunkM.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/trunkM.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/trunkM.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/trunkM.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/normal_specular.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/normal_specular.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/shadow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/shadow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/translucency_gloss.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tree_Textures/translucency_gloss.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/dryTree3 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/dryTree3 Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/dryTree3 Variant.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/dryTree3 Variant.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/stump Variant Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/stump Variant Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/stump Variant Variant.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/stump Variant Variant.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/stump Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/stump Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/stump Variant.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/stump Variant.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Rabbit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Rabbit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Tree.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SnowMountain.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SnowMountain.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bark_snow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/bark_snow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/leaves.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/leaves.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/snow leaves.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/snow leaves.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/snow leaves.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/snow leaves.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/snowMountain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/snowMountain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/snowMountain.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/snowMountain.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 1.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 1.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 1.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 1.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 2.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 2.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 2.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer 2.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/NewLayer.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/bottom.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/bottom.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/snow_field_aerial_col_4k.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/snow_field_aerial_col_4k.jpg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/texturesSnow/snow_field_aerial_rough_4k.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/texturesSnow/snow_field_aerial_rough_4k.jpg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/tree.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/tree.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/tree.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/tree.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
