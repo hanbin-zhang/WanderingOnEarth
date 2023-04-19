@@ -30,6 +30,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     public static List<Vector3> plantTrees = new List<Vector3>();
 
     public GameObject collectMessagePanel;
+    public TMP_Text collectMessageText;
     public GameObject notificationPanel;
     public Button LeaveButton;
     public TMP_Text notificationText;
@@ -136,11 +137,13 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
         bool hasChest = false;
+        string collectText = "";
         foreach (Collider collider in colliders)
         {
             if (BaseObject.Is<Chest>(collider.gameObject, out var _))
             {
                 hasChest = true;
+                collectText = "Press C To Collect";
                 if (keyPressed)
                 {
                     Manager.GameObjectManager.Remove(collider.gameObject);
@@ -152,6 +155,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (BaseObject.Is<SpaceShip>(collider.gameObject, out var _))
             {
                 hasChest = true;
+                collectText = "Press C To Leave";
                 if (keyPressed)
                 {
                     Manager.GameObjectManager.Remove(collider.gameObject);
@@ -163,6 +167,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 }
             }
         }
+
+        collectMessageText.text = collectText;
         collectMessagePanel.SetActive(hasChest);
     }
     

@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growingTime:
-  - 3
-  - 5
+  - 20
+  - 20
   greenValue:
   - -1
   - -1

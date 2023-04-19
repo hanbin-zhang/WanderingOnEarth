@@ -108,11 +108,11 @@ public class Achievement1 : Achievement
             OnStateChangeMessage onStateChangeMsg = msg.Of<OnStateChangeMessage>();
             if (onStateChangeMsg.stateBefore == StateLabel.POLLUTED && onStateChangeMsg.stateAfter == StateLabel.NORMAL)
             {
-                achievementManager.ShowNotification("[STATE CHANGE!] POLLUTED --> NORMAL");
+                achievementManager.ShowNotification("Try to Plant a Tree");
             }
             if (onStateChangeMsg.stateBefore == StateLabel.NORMAL && onStateChangeMsg.stateAfter == StateLabel.SAFE)
             {
-                achievementManager.ShowNotification("[STATE CHANGE!] NORMAL --> SAFE");
+                achievementManager.ShowNotification("10 Trees!!! We are safe now!!!");
             }           
         }
     }

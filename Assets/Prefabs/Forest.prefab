@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forest
       objectReference: {fileID: 0}
+    - target: {fileID: 7056331557825939910, guid: ef95dc6be62254b4dba7d8df25a5a62d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c8e213e84a64dd243b3235a052f13d8b, type: 2}
     - target: {fileID: 7692183907586699144, guid: ef95dc6be62254b4dba7d8df25a5a62d, type: 3}
       propertyPath: m_Layer
       value: 6

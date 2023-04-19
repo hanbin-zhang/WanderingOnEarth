@@ -38,7 +38,7 @@ public class LifeStatus : MonoBehaviour
     { 
         PreProcess();
         ProcessLifeValue();
-        ProcessDisaster();
+        //ProcessDisaster();
         ProcessRendererEffect();
         PostProcess();        
     }
@@ -80,7 +80,7 @@ public class LifeStatus : MonoBehaviour
         {
             if (disasterElapseTime >= 5)
             {
-                lifeValue -= 10;
+                lifeValue -= 50;
                 disasterElapseTime = 0;
             }
         }
@@ -89,7 +89,7 @@ public class LifeStatus : MonoBehaviour
         {
             if (disasterElapseTime >= 10)
             {
-                lifeValue -= 10;
+                lifeValue -= 50;
                 disasterElapseTime = 0;
             }
         }
