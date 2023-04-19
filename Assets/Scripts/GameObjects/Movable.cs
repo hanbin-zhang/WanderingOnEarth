@@ -40,12 +40,17 @@ public class Movable : MonoBehaviour
     [HideInInspector]
     private CharacterController controller;
 
+    [HideInInspector]
+    private Vector3 TerrainSize;
+
     private void Start() {
         controller = GetComponent<CharacterController>();
         groundedRadius = controller.radius;
         rotation = transform.rotation.eulerAngles.y;
         target = Random.Range(rotation - 100f, rotation + 100f);
         rotateSpeed = Random.Range(0.1f, 0.4f);
+
+        TerrainSize = Terrain.activeTerrain.terrainData.size;
     }
 
     private void FixedUpdate() {
@@ -76,9 +81,23 @@ public class Movable : MonoBehaviour
         }
     }
 
-    private void Move() {
+    private void Move()
+    {
         transform.rotation = Quaternion.Euler(0, rotation, 0);
-        controller.Move(transform.forward * (moveSpeed * Time.fixedDeltaTime) +  new Vector3(0.0f, verticalVelocity, 0.0f) * Time.fixedDeltaTime);
+        controller.Move(transform.forward * (moveSpeed * Time.fixedDeltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.fixedDeltaTime);
+
+        // Get the position of the object after moving
+        Vector3 currentPosition = transform.position;
+
+        // Clamp the position of the object on the X and Z axes within the boundaries of the terrain
+        float clampedX = Mathf.Clamp(currentPosition.x, 0, TerrainSize.x);
+        float clampedY = Mathf.Clamp(currentPosition.y, 0, 100f);
+
+        float clampedZ = Mathf.Clamp(currentPosition.z, 0, TerrainSize.z);
+        Vector3 clampedPosition = new Vector3(clampedX, clampedY, clampedZ);
+
+        // Set the position of the object to the clamped position
+        transform.position = clampedPosition;
     }
-    
+
 }

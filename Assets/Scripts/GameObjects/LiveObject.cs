@@ -8,8 +8,17 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
 
     public new static LiveObject From(GameObject obj) => obj.GetComponent<LiveObject>();
 
-    public static bool TryFrom(GameObject gameObject, out LiveObject liveObject) =>
-        gameObject.TryGetComponent<LiveObject>(out liveObject);
+    public static bool TryFrom(GameObject gameObject, out LiveObject liveObject) {
+        // if (gameObject.TryGetComponent<PhotonView>(out var obj))
+        // {
+        //     Debug.LogError(obj.ViewID);
+        //     return gameObject.TryGetComponent<LiveObject>(out liveObject);
+        // } 
+        // liveObject = null;
+        // return false;
+        return gameObject.TryGetComponent<LiveObject>(out liveObject);
+    }
+        
     
   
     public List<float> growingTime;
@@ -45,10 +54,25 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
         if (children.Count != greenValue.Count) {
             throw new UnityException("[LiveObject] Green values should be matched with models");
         }
-        
-        if (growingTime.Count > 0 && (photonView.IsMine || !photonView.IsOwnerActive)) {
+
+        /*if (growingTime.Count > 0 && (photonView.IsMine || !photonView.IsOwnerActive)) {
+            Invoke(nameof(Evolve), growingTime[age]);
+        }*/
+
+        // old version might cause conflict when 3 or more players joined
+        // new version change only trigger the update loop in the master client
+        if (PhotonNetwork.IsMasterClient)
+        {
             Invoke(nameof(Evolve), growingTime[age]);
         }
+        // possible upgrade:
+        // 1: distributed the update loop to the creater or the object,
+        // when the player quit the give make master client restart the loop
+        // minimum load
+        // 2: individual update, each client holds there own update loop
+        // based on the photon view
+        // potential higher cost but could be no crucial
+
         SetModel(age);
     }
 
@@ -78,12 +102,41 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
             PhotonNetwork.SendAllOutgoingCommands();
             if (age < growingTime.Count) {
                 Invoke(nameof(Evolve), growingTime[age]);
+            } else {        
+                OnEvolveComplete();         
+                // each player control their own obj   
+                photonView.RPC(nameof(OnEvolveComplete), RpcTarget.Others);
+                PhotonNetwork.SendAllOutgoingCommands();                
             }
         } else {
             Debug.Log($"[LiveObject] Unable to evolve: {reason}");
             waitEvolveConditionSatisfied = true;
             Invoke(nameof(Evolve), 1f);
         }
+    }
+
+    [PunRPC]
+    public void OnEvolveComplete() {
+        // discard
+        Manager.Invoke(() => {                  
+            Manager.GameObjectManager.Remove(gameObject);   
+               
+            // if (PhotonNetwork.IsMasterClient){              
+            //     Manager.Invoke(() => PhotonNetwork.Destroy(gameObject), 3f, this);
+            // }    
+            PhotonView photonView = PhotonView.Get(this);
+            if(photonView.IsMine){
+                Manager.Invoke(() => PhotonNetwork.Destroy(gameObject), 3f, this);
+            }
+            
+            //PhotonNetwork.Destroy(gameObject);
+            Manager.EventController.Get<OnEvolveEvent>()?.Notify(currentGreenValue);
+        }, 5f, this);
+    }
+
+    [PunRPC]
+    private void RPCRemove(GameObject obj){
+        Manager.GameObjectManager.Remove(obj);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer) {

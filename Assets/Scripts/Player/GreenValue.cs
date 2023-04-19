@@ -24,7 +24,7 @@ public class GreenValue : MonoBehaviour
     private void UpdateGreenValueDisplay() {
         int globalGreenValue = Manager.GameObjectManager.GetGlobalGreenValue();
         greenValueDisplay.text = $"{globalGreenValue}";
-        if (globalGreenValue == 10) {
+        if (globalGreenValue == 100) {
             Manager.EventController.Get<OnGreenValueReach100Event>()?.Notify();
         }
     }

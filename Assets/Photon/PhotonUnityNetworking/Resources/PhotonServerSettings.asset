@@ -43,6 +43,10 @@ MonoBehaviour:
   - RespawnSpaceship
   - SetModel
   - SetState
+  - Discard
+  - RPCRemove
+  - OnEvolveComplete
+  - SetGObjActive
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

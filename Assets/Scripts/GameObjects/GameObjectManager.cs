@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 
@@ -26,6 +24,10 @@ public class GameObjectManager
     }
 
     private List<GameObject> InternalGet(string name) {
+        // if (globalGameObjects[name] == null){
+        //     globalGameObjects[name].Remove()
+        //     return null;
+        // }
         if (!globalGameObjects.ContainsKey(name)) {
            globalGameObjects[name] = new List<GameObject>();
         }
