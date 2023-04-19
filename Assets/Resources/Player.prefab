@@ -196,7 +196,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 829679546}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999713
+  m_Size: 0.9999817
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -690,7 +690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000044385004}
+  m_AnchoredPosition: {x: 0, y: -0.0000044087587}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1914384585
@@ -15922,6 +15922,7 @@ MonoBehaviour:
   currentLiveObjectName: {fileID: 1681772677837154196}
   inventory: {fileID: 8184423076615978465}
   collectMessagePanel: {fileID: 9056064435313012534}
+  collectMessageText: {fileID: 7639269297123737887}
   notificationPanel: {fileID: 1230801458836531821}
   LeaveButton: {fileID: 1300846591267603681, guid: 1156c0340a0d97943a04afde4f21cf62, type: 3}
   notificationText: {fileID: 7506383898770364623}
