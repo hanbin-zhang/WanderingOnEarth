@@ -3,51 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Materials/spaceshiptexture 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Materials/spaceshiptexture 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tree 4.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tree 4.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tree 5.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tree 5.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tree.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tree.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert-02.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert-02.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert_01.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert_01.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert_03.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert_03.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Forest_01.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Forest_01.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Forest_02.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Forest_02.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Snow_01.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Snow_01.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Snow_02.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Snow_02.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Snow_03.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Snow_03.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/13 - Default.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/roof.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoSlotRacer/Kenney Assets/Stylized city/Materials/roof.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert/Desert-02.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert/Desert-02.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Music/Forest/Forest_02.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Music/Forest/Forest_02.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree - Copy.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree - Copy.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree 3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree 3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/tree/Tree.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Deer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Deer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/des Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/des Variant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Desert.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Desert.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Forest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Forest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Snow.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Snow.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Music/MusicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Music/MusicController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shader/WaterF.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shader/WaterF.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/material.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
