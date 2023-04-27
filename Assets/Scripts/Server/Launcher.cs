@@ -92,11 +92,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room.");
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
-            //Debug.LogWarningFormat("We load the World {0}", level);
+            Debug.LogWarningFormat("We load the World {0}", level);
             
             PhotonNetwork.LoadLevel(level);
             //test
-            //PhotonNetwork.LoadLevel(4);
+            //PhotonNetwork.LoadLevel(3);
         }
     }
 
