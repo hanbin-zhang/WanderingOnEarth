@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976330476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 250, y: 40, z: 250}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2964,6 +2964,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
+      propertyPath: musicLow
+      value: 
+      objectReference: {fileID: 8300000, guid: 1eed0bd4375ee894abff123667f4599e, type: 3}
+    - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
+      propertyPath: musicMid
+      value: 
+      objectReference: {fileID: 8300000, guid: d464e3fd9c6f6964ba330a310900b232, type: 3}
+    - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
+      propertyPath: musicHigh
+      value: 
+      objectReference: {fileID: 8300000, guid: d6b312371237e644691ba952be8f64f5, type: 3}
     - target: {fileID: 3861097492548034887, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
       propertyPath: m_Name
       value: des Variant
