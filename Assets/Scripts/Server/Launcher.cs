@@ -96,7 +96,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             
             PhotonNetwork.LoadLevel(level);
             //test
-            //PhotonNetwork.LoadLevel(3);
+            //PhotonNetwork.LoadLevel(4);
         }
     }
 
@@ -108,5 +108,4 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
 
     #endregion
-
 }
