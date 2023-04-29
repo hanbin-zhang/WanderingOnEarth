@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WanderingOnEarth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert/Desert-02.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Desert/Desert-02.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/Forest/Forest_02.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Music/Forest/Forest_02.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Forest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/des Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/des Variant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Desert.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Desert.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Forest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Forest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Music/MusicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Music/MusicController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Snow.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Snow.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain/terraingroundwater/2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Terrain/terraingroundwater/2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/snowMountain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/snowMountain.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
