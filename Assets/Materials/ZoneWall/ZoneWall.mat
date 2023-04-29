@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ZoneWall
-  m_Shader: {fileID: -6465566751694194690, guid: fab32ff143aa64d49a8ec633030d70eb,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: fab32ff143aa64d49a8ec633030d70eb, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -117,12 +116,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_9deced82e3a9410b9f98be954e61e2c3: {r: 0.3773585, g: 0.029903853, b: 0.0704348,
-        a: 0}
-    - Color_e2885873dc934b5da2a6e619b42fbd56: {r: 0.9716981, g: 0.22756512, b: 0.003666713,
-        a: 1}
-    - Color_fdb6f2774caf4a5890a4cd3197ac33e4: {r: 1, g: 0.22832607, b: 0.0603773,
-        a: 0.24705882}
+    - Color_9deced82e3a9410b9f98be954e61e2c3: {r: 0.3773585, g: 0.029903853, b: 0.0704348, a: 0}
+    - Color_e2885873dc934b5da2a6e619b42fbd56: {r: 0.9716981, g: 0.22756512, b: 0.003666713, a: 1}
+    - Color_fdb6f2774caf4a5890a4cd3197ac33e4: {r: 1, g: 0.22832607, b: 0.0603773, a: 0.24705882}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
