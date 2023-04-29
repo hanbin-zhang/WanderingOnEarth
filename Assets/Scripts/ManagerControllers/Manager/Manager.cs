@@ -78,5 +78,8 @@ public sealed class Manager
         action.Invoke();
     }
 
-
+    public static void Destroy()
+    {
+        hasInit = false;
+    }
 }

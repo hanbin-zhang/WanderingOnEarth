@@ -11,15 +11,17 @@ public class StateMachineTest
     [Test]
     public void StateChangeTest()
     {
+        Manager.Destroy();
         Manager.Init(new MonoBehaviour());
 
         OnStateChangeEvent.OnStateChangeMessage stateMsg = null;
-        Manager.EventController.Get<OnStateChangeEvent>()?.AddListener((msg) =>
+
+        void OnStateChange(OnStateChangeEvent.OnStateChangeMessage msg)
         {
-            /*Assert.That(msg.stateBefore,  Is.EqualTo(StateLabel.POLLUTED));
-            Assert.That(msg.stateAfter, Is.EqualTo(StateLabel.SAFE));*/
             stateMsg = msg;
-        });
+        }
+
+        Manager.EventController.Get<OnStateChangeEvent>()?.AddListener(OnStateChange);
 
         Vector3 pos = new Vector3(1, 1, 1);
         Manager.EventController.Get<OnLandPrepEvent>()?.Notify(pos);
@@ -44,6 +46,7 @@ public class StateMachineTest
         Assert.That(Manager.StateController.GetRegionalStateProperty(pos).state, Is.EqualTo(StateLabel.SAFE));
         Assert.That(stateMsg.stateBefore, Is.EqualTo(StateLabel.NORMAL));
         Assert.That(stateMsg.stateAfter, Is.EqualTo(StateLabel.SAFE));
+        Manager.EventController.Get<OnStateChangeEvent>()?.RemoveListener(OnStateChange);
 
     }
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
