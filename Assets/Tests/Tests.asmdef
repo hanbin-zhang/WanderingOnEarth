@@ -5,7 +5,9 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "ManagerAssembly",
-        "PhotonUnityNetworking"
+        "PhotonUnityNetworking",
+        "AchivementManagerAssmbly",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [
         "Editor"
