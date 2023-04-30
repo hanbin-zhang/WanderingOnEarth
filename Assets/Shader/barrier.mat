@@ -35,19 +35,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _Depth: 1
-    - _Foam: 50
+    - _Foam: 8
     - _FoamScale: 1
-    - _FoamSpeed: 1
+    - _FoamSpeed: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Refraction: 1
-    - _WaveScale: 1
-    - _WaveSpeed: 1
-    - _transparent: 0.5
+    - _Refraction: 0
+    - _WaveScale: 0
+    - _WaveSpeed: 0
+    - _transparent: 0.27
     m_Colors:
-    - _Color1: {r: 0.4784314, g: 1.247059, b: 1.835294, a: 0}
-    - _Color2: {r: 0.3372549, g: 1.403922, b: 1.380392, a: 0}
-    - _FoamColor: {r: 0.9622642, g: 0.9568174, b: 0.9568174, a: 0}
+    - _Color1: {r: 0.745283, g: 0.08129426, b: 0.02511061, a: 0.53333336}
+    - _Color2: {r: 0.4245283, g: 0, b: 0, a: 0.4392157}
+    - _FoamColor: {r: 0.42326775, g: 0, b: 0, a: 0.3529412}
   m_BuildTextureStacks: []
 --- !u!114 &5600890433481973444
 MonoBehaviour:

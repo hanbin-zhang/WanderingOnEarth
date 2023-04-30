@@ -152,6 +152,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                     ShowNotification(text, 2f);
                 }
             }
+            
             if (BaseObject.Is<SpaceShip>(collider.gameObject, out var _))
             {
                 hasChest = true;
