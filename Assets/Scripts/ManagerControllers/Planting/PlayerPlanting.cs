@@ -35,7 +35,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     public Button LeaveButton;
     public TMP_Text notificationText;
     private Queue<string> notificationQueue;   
-    private int collectIndex;
+    [HideInInspector]
+    public int collectIndex;
 
     public void SwitchSlot(int index)
     {

@@ -15449,6 +15449,7 @@ MonoBehaviour:
   notificationPanel: {fileID: 1230801458836531821}
   LeaveButton: {fileID: 1300846591267603681, guid: 1156c0340a0d97943a04afde4f21cf62, type: 3}
   notificationText: {fileID: 7506383898770364623}
+  collectIndex: 0
 --- !u!114 &4029383816920437872
 MonoBehaviour:
   m_ObjectHideFlags: 0
