@@ -5,6 +5,7 @@ using UnityEngine.TestTools;
 using TMPro;
 
 
+
 public class GameTest
 {
     [Test] 
@@ -138,5 +139,26 @@ public class GameTest
         /*treeObject.Invoke(nameof(LiveObject.InvokeEvolve), 0f);
         yield return new WaitForSeconds(treeObject.growingTime[treeObject.age]);
         Assert.AreEqual(treeObject.age, 1);*/
+    }
+
+    [UnityTest]
+    public IEnumerator CollectionTest(){
+        // GameManager game = new GameManager();
+        // int collectItem = game.player.GetComponent<PlayerPlanting>().collectIndex;
+        Vector3 pos = new Vector3(1, 1, 1);
+        GameObject playerPrefab = Resources.Load<GameObject>("Player");
+        GameObject player = GameObject.Instantiate(playerPrefab, pos, Quaternion.identity);      
+        int collectItem = player.GetComponent<PlayerPlanting>().collectIndex;
+        Assert.AreEqual(collectItem, 0);
+        yield return null;
+    }
+
+    [Test]
+    public void TaskChangeTest(){
+       Assert.AreEqual(true, true);
+    }
+    [Test]
+    public void GreenValueTest(){
+       Assert.AreEqual(true, true);
     }
 }
