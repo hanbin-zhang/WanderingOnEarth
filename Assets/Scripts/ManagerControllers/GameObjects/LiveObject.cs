@@ -76,6 +76,11 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
         SetModel(age);
     }
 
+    public void InvokeEvolve()
+    {
+        Invoke(nameof(Evolve), growingTime[age]);
+    }
+
     [PunRPC]
     public void SetModel(int index) {
         foreach (GameObject child in children)  {
