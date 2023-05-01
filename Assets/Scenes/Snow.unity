@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1372661390985689345, guid: 35bb8da0a66adad40b14e4e7f12be0ef, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 7005215964183481904, guid: 35bb8da0a66adad40b14e4e7f12be0ef, type: 3}
       propertyPath: m_Name
       value: SnowMoutain

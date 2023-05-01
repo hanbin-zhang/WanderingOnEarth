@@ -14,7 +14,7 @@ public class MusicController : MonoBehaviour
         if (greenvalue <= 100)
         {
             GetComponent<AudioSource>().clip = musicLow;
-            Debug.Log("music low");
+            //Debug.Log("music low");
         }
 
         else if(greenvalue >= 500)

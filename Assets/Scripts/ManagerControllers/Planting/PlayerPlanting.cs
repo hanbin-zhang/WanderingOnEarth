@@ -35,9 +35,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     public Button LeaveButton;
     public TMP_Text notificationText;
     private Queue<string> notificationQueue;   
+    private int collectIndex;
 
     public void SwitchSlot(int index)
     {
+        if(index>collectIndex) return;
         currentSlotIndex = index;
         currentLiveObject = liveObjects[index];
         currentLiveObjectName.text = currentLiveObject.name;
@@ -64,8 +66,15 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
         inventorySlots.ForEach((slot) => {
             slot.activeIndicator.SetActive(true);
-            slot.activeIndicator.GetComponent<Image>().color = Color.black;
+            slot.activeIndicator.GetComponent<Image>().color = Color.black;           
+            slot.image.SetActive(false);
         });
+        collectIndex = 3;
+        for (int i = 0; i < inventorySlots.Count; i++){
+            if (i<=collectIndex){
+                inventorySlots[i].image.SetActive(true);
+            }
+        }
         SwitchSlot(0);
     }
     
@@ -93,6 +102,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 ShowNotification(reason, 2f);
             }
         }
+        //Debug.LogError($"hasRoom: {hasRoom}, isPlantable: {isPlantable}");
         currentSlot.activeIndicator.GetComponent<Image>().color = hasRoom && isPlantable ? Color.green : Color.red;
     }
 
@@ -129,6 +139,8 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             point = hit.point;
             Collider[] colliders = Physics.OverlapSphere(point, 1f);
             valid = (hit.collider.gameObject.tag == "Ground"  && colliders.Length <= 1) || (hit.collider.gameObject.tag == "MiniMap"  && colliders.Length <= 2);
+            // Debug.LogError($"colliders.Length: {colliders.Length}, hit tag: {hit.collider.gameObject.tag}");
+            // Debug.LogError($"valid: {valid}, !Cursor.visible: {!Cursor.visible}");
         }
         return valid && !Cursor.visible;
     }
@@ -148,8 +160,11 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
                 {
                     Manager.GameObjectManager.Remove(collider.gameObject);
                     Destroy(collider.gameObject);
-                    string text = "TREASURE collected!";
+                    collectIndex++;
+                    inventorySlots[collectIndex].image.SetActive(true);
+                    string text = $"{liveObjects[collectIndex].name} collected!";
                     ShowNotification(text, 2f);
+                    
                 }
             }
             
