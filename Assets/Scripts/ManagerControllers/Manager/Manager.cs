@@ -29,7 +29,7 @@ public sealed class Manager
 
     private Manager()
     {
-         // dont change this
+        // dont change this
     }
 
     public static void Init(MonoBehaviour hook)
@@ -47,7 +47,7 @@ public sealed class Manager
             new OnGreenValueReach100Event(),
         };
 
-        manager.stateController = new StateController(manager.eventController) {          
+        manager.stateController = new StateController(manager.eventController) {
             new PollutedState(),
             new NormalState(),
             new SafeState(),
@@ -62,9 +62,12 @@ public sealed class Manager
 
     public static void Invoke(Action action, float time, MonoBehaviour mono)
     {
-        if (time > 0f) {
+        if (time > 0f)
+        {
             mono.StartCoroutine(InvokeAction(action, time));
-        } else {
+        }
+        else
+        {
             action.Invoke();
         }
     }
@@ -75,5 +78,8 @@ public sealed class Manager
         action.Invoke();
     }
 
-
+    public static void Destroy()
+    {
+        hasInit = false;
+    }
 }
