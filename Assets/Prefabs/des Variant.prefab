@@ -2965,6 +2965,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
+      propertyPath: skybox1
+      value: 
+      objectReference: {fileID: 2100000, guid: efe5ba14bb41e7445a90b7b9196d2ff5, type: 2}
+    - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
+      propertyPath: skybox2
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d55838ad96288d4a90ff668740837c9, type: 2}
+    - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
+      propertyPath: skybox3
+      value: 
+      objectReference: {fileID: 2100000, guid: 06231a521f78c2d42afec44cfdea6e4e, type: 2}
+    - target: {fileID: 1993781059, guid: 99d9144b45cd54f4e8296a5dbcf59b8a, type: 3}
       propertyPath: musicLow
       value: 
       objectReference: {fileID: 8300000, guid: 1eed0bd4375ee894abff123667f4599e, type: 3}
