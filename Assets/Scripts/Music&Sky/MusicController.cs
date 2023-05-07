@@ -17,8 +17,12 @@ public class MusicController : MonoBehaviour
         if (greenvalue <= 100)
         {
             GetComponent<AudioSource>().clip = musicLow;
+<<<<<<< HEAD:Assets/Scripts/Music&Sky/MusicController.cs
             RenderSettings.skybox = skybox1;
             Debug.Log("music low");
+=======
+            //Debug.Log("music low");
+>>>>>>> main:Assets/Scripts/Music/MusicController.cs
         }
 
         else if(greenvalue >= 500)

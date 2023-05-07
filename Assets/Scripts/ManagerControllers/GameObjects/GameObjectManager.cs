@@ -41,6 +41,10 @@ public class GameObjectManager
         return regionalGameObjects[index][name];
     }
 
+    public Dictionary<string, List<GameObject>> GetAll()
+    {
+        return globalGameObjects;
+    }
 
     public void Add(GameObject obj) {
         InternalGet(obj.name).Add(obj);

@@ -100,6 +100,26 @@ namespace StarterAssets
             {
                 GetComponent<PlayerPlanting>().SwitchSlot(3);
             }
+			if (Keyboard.current.digit5Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SwitchSlot(4);
+            }
+			if (Keyboard.current.digit6Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SwitchSlot(5);
+            }
+			if (Keyboard.current.digit7Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SwitchSlot(6);
+            }
+			if (Keyboard.current.digit8Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SwitchSlot(7);
+            }
+			if (Keyboard.current.digit9Key.isPressed)
+            {
+                GetComponent<PlayerPlanting>().SwitchSlot(8);
+            }
 
         }
 
