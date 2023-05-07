@@ -24,6 +24,7 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
     public List<float> growingTime;
 
     public List<float> greenValue;
+    public List<float> animalHeights;
 
     [HideInInspector]
     private GameObject currentModel;
@@ -39,6 +40,8 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
 
     [HideInInspector]
     private bool waitEvolveConditionSatisfied = false;
+    [HideInInspector]
+    private bool evolveComplete = false;
     
     new protected void Awake() {
         base.Awake();
@@ -86,6 +89,11 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
         foreach (GameObject child in children)  {
             child.SetActive(false);
         }
+        // give deer a hight
+        CharacterController animal = GetComponent<CharacterController>();
+        if (animal != null){
+            animal.height = animalHeights[index];
+        }
         currentModel = children[index];
         currentModel.SetActive(true);
         currentGreenValue = greenValue[index];
@@ -108,10 +116,12 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
             if (age < growingTime.Count) {
                 Invoke(nameof(Evolve), growingTime[age]);
             } else {        
-                OnEvolveComplete();         
-                // each player control their own obj   
-                photonView.RPC(nameof(OnEvolveComplete), RpcTarget.Others);
-                PhotonNetwork.SendAllOutgoingCommands();                
+                if(evolveComplete == false){
+                    OnEvolveComplete();         
+                    // each player control their own obj   
+                    photonView.RPC(nameof(OnEvolveComplete), RpcTarget.Others);
+                    PhotonNetwork.SendAllOutgoingCommands(); 
+                }           
             }
         } else {
             Debug.Log($"[LiveObject] Unable to evolve: {reason}");
@@ -122,6 +132,7 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
 
     [PunRPC]
     public void OnEvolveComplete() {
+        evolveComplete = true;
         // discard
         Manager.Invoke(() => {                  
             Manager.GameObjectManager.Remove(gameObject);   
