@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="" />
+    <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Server/Launcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Launcher.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Launcher.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
