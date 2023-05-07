@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Launcher.unity
     guid: eb52f59ec929df84f96c9b47a231a278
-  - enabled: 0
-    path: Assets/Scenes/OldLauncher.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/BigEarth.unity
     guid: 7136627919b9bc7408515e50f55a8a80
