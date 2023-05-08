@@ -19757,18 +19757,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6377751161807274930, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 190.00005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6377751161807274930, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 6377751161807274930, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 190.00006
-      objectReference: {fileID: 0}
-    - target: {fileID: 6377751161807274930, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000061035156
       objectReference: {fileID: 0}
@@ -19808,14 +19796,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6377751161807274930, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8774249115068820607, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
-      propertyPath: plane
-      value: 
-      objectReference: {fileID: 89574342285878899}
     - target: {fileID: 8774249115068820607, guid: 91870c0520fc4f44e9fa2c2bd94e2ccc, type: 3}
       propertyPath: Camera
       value: 
