@@ -35,6 +35,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Awake()
