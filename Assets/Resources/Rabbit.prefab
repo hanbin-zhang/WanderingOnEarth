@@ -55,9 +55,13 @@ MonoBehaviour:
   - 20
   - 20
   greenValue:
-  - -1
-  - -1
-  - -1
+  - 2
+  - 2
+  - 2
+  animalHeights:
+  - 0
+  - 0
+  - 0
   age: 0
   currentGreenValue: 0
 --- !u!114 &6795050871824540994

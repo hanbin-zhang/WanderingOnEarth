@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bush : LiveObject
 {
 
-
     public override bool IsEvolveConditionSatisfied(out string reason)
     {
         reason = "";
@@ -18,7 +17,7 @@ public class Bush : LiveObject
 
         if (Manager.StateController.GetRegionalStateProperty(pos).state == StateLabel.POLLUTED)
         {
-            reason = "It's polluted, cannot put anything";
+            reason = "Polluted area. Press O to start planting";
 
             return false;
         }

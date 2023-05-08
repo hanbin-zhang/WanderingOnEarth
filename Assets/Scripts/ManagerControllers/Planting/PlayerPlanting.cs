@@ -100,7 +100,10 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (isPlantable) {
                 Manager.PlantingController.Plant(currentLiveObject, plantingPosition, transform.rotation);
             } else {
-                ShowNotification(reason, 2f);
+                ShowNotification(reason, 0.8f);
+            }
+            if (reason != ""){
+                ShowNotification(reason, 0.8f);
             }
         }
         //Debug.LogError($"hasRoom: {hasRoom}, isPlantable: {isPlantable}");

@@ -103,8 +103,12 @@ public class GameObjectManager
         float greenValue = 0;
         foreach (var kvp in globalGameObjects) {
             foreach (GameObject gameObject in kvp.Value) {
-                if (LiveObject.TryFrom(gameObject, out var liveObject)) {
-                    greenValue += liveObject.currentGreenValue;
+                if (gameObject is null){
+                    Remove(gameObject);
+                }else{
+                    if (LiveObject.TryFrom(gameObject, out var liveObject)) {
+                        greenValue += liveObject.currentGreenValue;
+                    }
                 }
             }
         }
@@ -119,13 +123,15 @@ public class GameObjectManager
         {
             foreach (GameObject gameObject in kvp.Value)
             {
-                if (LiveObject.TryFrom(gameObject, out var liveObject))
-                {
-                    greenValue += liveObject.currentGreenValue;
+                if (gameObject is null){
+                    Remove(gameObject);
+                }else{
+                    if (LiveObject.TryFrom(gameObject, out var liveObject)) {
+                        greenValue += liveObject.currentGreenValue;
+                    }
                 }
             }
         }
-        
         return (int)Math.Round(greenValue);
     }
 

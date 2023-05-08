@@ -16,8 +16,16 @@ public class Rabbit : LiveObject
 
         if (Manager.StateController.GetRegionalStateProperty(pos).state == StateLabel.POLLUTED)
         {
-            reason = "It's polluted, cannot put anything";
+            reason = "Polluted area. Press O to start planting";
 
+            return false;
+        }
+        
+        int regionalGrassCount = Manager.GameObjectManager
+            .GetRegionalGameObjects<Grass>(pos).Count;
+        if (regionalGrassCount < 3)
+        {
+            reason = $"Insufficient plants. Rabbit needs 3 grasses";
             return false;
         }
         return true;

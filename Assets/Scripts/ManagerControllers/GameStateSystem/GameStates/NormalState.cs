@@ -9,7 +9,8 @@ public class NormalState : BaseState
         if (msg is OnPlantEvent.OnPlantMessage) {
             OnPlantEvent.OnPlantMessage plantMsg = msg.Of<OnPlantEvent.OnPlantMessage>();
             
-            if (Manager.GameObjectManager.GetRegionalGameObjects<Tree>(stateProperty).Count >= 10) {
+            if (Manager.GameObjectManager.GetRegionalGameObjects<Grass>(stateProperty).Count >= 10 && 
+                Manager.GameObjectManager.GetRegionalGameObjects<Bush>(stateProperty).Count >= 10) {
                 stateProperty.SetState(StateLabel.SAFE);
             }
         }

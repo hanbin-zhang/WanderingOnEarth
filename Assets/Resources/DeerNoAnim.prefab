@@ -55,15 +55,12 @@ MonoBehaviour:
   - 20
   - 20
   greenValue:
-  - -1
-  - -1
-  - -1
+  - 1
+  - 1
+  - 1
+  animalHeights: []
   age: 0
   currentGreenValue: 0
-  heights:
-  - 0
-  - 0
-  - 0
 --- !u!114 &2346693507026161097
 MonoBehaviour:
   m_ObjectHideFlags: 0

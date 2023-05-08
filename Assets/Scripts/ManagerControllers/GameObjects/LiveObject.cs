@@ -5,6 +5,10 @@ using Photon.Realtime;
 
 public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
 {
+    private void Start()
+    {
+        Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, name);
+    }
 
     public new static LiveObject From(GameObject obj) => obj.GetComponent<LiveObject>();
 
