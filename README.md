@@ -7,23 +7,23 @@ In this 3D game, players will be able to experience restoring different parts of
 
 Flagship Technology idea:  
 
-  Render a live simulation of nature, vivid, complicated, and beautiful 3D worlds.   
+1. Render a live simulation of nature, vivid, complicated, and beautiful 3D worlds.   
 
-  Asynchronous cooperation. 
+2. Asynchronous cooperation. 
 
-  Complex particle system. 
+3. Complex particle system. 
 
-  Whole PC lab inclusion to create a multi-machine game. 
+4. Whole PC lab inclusion to create a multi-machine game. 
 
-  Rendering by nanite to get high performance and reduce computing pressure. 
+5. Rendering by nanite to get high performance and reduce computing pressure. 
   
  
 ## Softwares Used: 
-    Unity
-    Maya
-    Blender
-    Anffinity Desginer 2
-    PhotoShop
+- Unity
+- Maya
+- Blender
+- Anffinity Desginer 2
+- PhotoShop
     
   
 ## Unity Editor Version
