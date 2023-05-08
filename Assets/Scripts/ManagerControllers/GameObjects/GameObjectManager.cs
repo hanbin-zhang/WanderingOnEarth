@@ -54,9 +54,11 @@ public class GameObjectManager
 
     public void Remove(GameObject obj)
     {       
-        InternalGet(obj.name).Remove(obj);
-        int region = Manager.StateController.GetRegionalIndex(obj.transform.position);
-        InternalRegionalGet(region, obj.name).Remove(obj);
+        if (obj != null){
+            InternalGet(obj.name).Remove(obj);
+            int region = Manager.StateController.GetRegionalIndex(obj.transform.position);
+            InternalRegionalGet(region, obj.name).Remove(obj);
+        }       
     }
 
     public List<GameObject> Get(string name) {
@@ -103,7 +105,7 @@ public class GameObjectManager
         float greenValue = 0;
         foreach (var kvp in globalGameObjects) {
             foreach (GameObject gameObject in kvp.Value) {
-                if (gameObject is null){
+                if (gameObject == null){
                     Remove(gameObject);
                 }else{
                     if (LiveObject.TryFrom(gameObject, out var liveObject)) {
