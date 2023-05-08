@@ -143,7 +143,7 @@ public class Achievement3 : Achievement
             OnPlantMessage onPlantMessage = msg.Of<OnPlantMessage>();
             if (onPlantMessage.pos.y >= 70)
             {
-                achievementManager.ShowNotification("reaching the worldd highest tree - LITANG");
+                achievementManager.ShowNotification("Reaching the highest tree in the world!");
                 achievementManager.Complete(this);
             }           
         }

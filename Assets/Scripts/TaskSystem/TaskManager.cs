@@ -70,15 +70,15 @@ public class Task1 : Task
     }
 
     public override void OnTaskActivate(TaskManager taskManager)
-    {
-        Manager.Invoke(() => taskManager.ShowOnScreen("Hi, Protect yourself and help make the world a better place!"), 0f, taskManager);
+    { // Welcome back to the Earth // Hi, Protect yourself and help make the world a better place!
+        Manager.Invoke(() => taskManager.ShowOnScreen("Welcome back to the Earth! Let's make it better!"), 0f, taskManager);
         Manager.Invoke(() => taskManager.ShowOnScreen("You have the option to place some items which can be found in the inventory."), 2f, taskManager);
         Manager.Invoke(() => taskManager.ShowOnScreen("this land is polluted, cannot plant, press O"), 4f, taskManager);
     }
 
     public override void OnTaskComplete(TaskManager taskManager)
     {
-        Manager.Invoke(() => taskManager.ShowOnScreen("Congratulation! now you can plant!"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("Congratulation! now we can plant!"), 0f, taskManager);
     }
 }
 
@@ -86,7 +86,7 @@ public class Task2 : Task
 {    
     public override void OnTaskActivate(TaskManager taskManager)
     {
-        Manager.Invoke(() => taskManager.ShowOnScreen("plant 10 grasses and 10 bushes can be a safe space"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("We need 10 grasses and 10 bushes to be safe!"), 0f, taskManager);
     }
 
     public override void OnEvent(TaskManager taskManager, BaseMessage msg) {
@@ -102,7 +102,7 @@ public class Task2 : Task
             if (onPlantMsg.name == LiveObject.Name<Grass>() || onPlantMsg.name == LiveObject.Name<Bush>()) {
                 int grassNum = Manager.GameObjectManager.GetRegionalGameObjects<Grass>(onPlantMsg.pos).Count;       
                 int bushNum = Manager.GameObjectManager.GetRegionalGameObjects<Bush>(onPlantMsg.pos).Count;          
-                Manager.Invoke(() => taskManager.ShowOnScreen($"you are planting {grassNum} grasses, {bushNum} bushes"), 0f, taskManager);
+                Manager.Invoke(() => taskManager.ShowOnScreen($"We've got {grassNum} grasses, {bushNum} bushes"), 0f, taskManager);
             }
         }
     }
@@ -110,7 +110,7 @@ public class Task2 : Task
    
 
     public override void OnTaskComplete(TaskManager taskManager) {
-        Manager.Invoke(() => taskManager.ShowOnScreen("Congratulation! you are safe!"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("Congratulation! we are safe now!"), 0f, taskManager);
     }
 }
 
@@ -125,7 +125,7 @@ public class Task3 : Task
 
     public override void OnTaskActivate(TaskManager taskManager)
     {
-        Manager.Invoke(() => taskManager.ShowOnScreen("you can find some surprise!"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("Let's find some surprises!"), 0f, taskManager);
     }
 
     public override void OnTaskComplete(TaskManager taskManager)
