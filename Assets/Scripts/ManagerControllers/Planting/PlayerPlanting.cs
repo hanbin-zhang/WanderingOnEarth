@@ -88,6 +88,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
     {
         HandlePlanting();
         HandleCollectable();
+        HandleDive();
     }
 
     public void HandlePlanting(bool keyPressed = false)
@@ -190,6 +191,18 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
 
         collectMessageText.text = collectText;
         collectMessagePanel.SetActive(hasChest);
+    }
+
+    void HandleDive(bool keyPressed = false)
+    {
+        float y_val = transform.position.y;
+        if (y_val < -30)
+        {
+            string text = "SpaceShip: quit the game";
+            ShowNotification(text, 2f);
+            LeaveButton.onClick.Invoke();
+        }
+        Debug.LogWarningFormat("transform position {0}", y_val);
     }
     
     void ButtonClicked()
