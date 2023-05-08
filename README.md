@@ -48,6 +48,7 @@ Flagship Technology idea:
 
 ## External Unity Assets
 - [Unity Starter Assets](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
+- [Temporary Player Model](https://www.bilibili.com/blackboard/activity-HtiRSOn8K9.html)
 
 ## Play Instruction
 [See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
