@@ -31,3 +31,10 @@ Flagship Technology idea:
 2021.3.10f1
 
 ## Package Dependencies
+
+- Unity Cinemachine (Version 2.8.9)
+- Unity Input System (Version 1.4.4)
+- Unity JetBrains Rider Editor (Version 3.0.15)
+- Unity Terrain Tools (Version 4.0.3)
+- Unity Test Framework (Version 1.1.31)
+- 
