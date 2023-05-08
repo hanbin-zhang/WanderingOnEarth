@@ -48,7 +48,7 @@ Flagship Technology idea:
 
 ## External Unity Assets
 
-- [Unity Starter Assets](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
+[Unity Starter Assets](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
 
 ## Play Instruction
-- [See Wiki page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
+[See Wiki page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
