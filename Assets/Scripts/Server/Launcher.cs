@@ -87,9 +87,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        //int level = Random.Range(2, 5);
-        int level = 3;
-        
+        int level = Random.Range(2, 5);
+        //int level = 2;
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room.");
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {

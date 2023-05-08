@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 271559412}
   m_Layer: 6
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11084,6 +11084,9 @@ MonoBehaviour:
   musicLow: {fileID: 8300000, guid: e2dc8064981ebd14fa5c93e3829528ee, type: 3}
   musicMid: {fileID: 8300000, guid: d6f96def1b9d90d4792e468bd24e1154, type: 3}
   musicHigh: {fileID: 8300000, guid: 7796353081eaaf542afec758f89665f3, type: 3}
+  skybox1: {fileID: 2100000, guid: efe5ba14bb41e7445a90b7b9196d2ff5, type: 2}
+  skybox2: {fileID: 2100000, guid: 7d55838ad96288d4a90ff668740837c9, type: 2}
+  skybox3: {fileID: 2100000, guid: c57bfd788b8ea964d9efca20969bcd82, type: 2}
 --- !u!82 &5610844059433130904
 AudioSource:
   m_ObjectHideFlags: 0

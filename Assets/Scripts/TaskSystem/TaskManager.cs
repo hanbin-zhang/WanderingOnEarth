@@ -86,7 +86,7 @@ public class Task2 : Task
 {    
     public override void OnTaskActivate(TaskManager taskManager)
     {
-        Manager.Invoke(() => taskManager.ShowOnScreen("plant 10 trees can be a safe space"), 0f, taskManager);
+        Manager.Invoke(() => taskManager.ShowOnScreen("plant 10 grasses and 10 bushes can be a safe space"), 0f, taskManager);
     }
 
     public override void OnEvent(TaskManager taskManager, BaseMessage msg) {
@@ -99,9 +99,10 @@ public class Task2 : Task
 
         if (msg is OnPlantMessage) {
             OnPlantMessage onPlantMsg = msg as OnPlantMessage;
-            if (onPlantMsg.name == LiveObject.Name<Tree>()) {
-                int treeNum = Manager.GameObjectManager.GetRegionalGameObjects<Tree>(onPlantMsg.pos).Count;                
-                Manager.Invoke(() => taskManager.ShowOnScreen($"you are planting {treeNum} trees"), 0f, taskManager);
+            if (onPlantMsg.name == LiveObject.Name<Grass>() || onPlantMsg.name == LiveObject.Name<Bush>()) {
+                int grassNum = Manager.GameObjectManager.GetRegionalGameObjects<Grass>(onPlantMsg.pos).Count;       
+                int bushNum = Manager.GameObjectManager.GetRegionalGameObjects<Bush>(onPlantMsg.pos).Count;          
+                Manager.Invoke(() => taskManager.ShowOnScreen($"you are planting {grassNum} grasses, {bushNum} bushes"), 0f, taskManager);
             }
         }
     }

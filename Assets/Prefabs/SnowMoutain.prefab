@@ -235,6 +235,9 @@ MonoBehaviour:
   musicLow: {fileID: 8300000, guid: 58e2b6a6611c0464bbd569838e77d7f3, type: 3}
   musicMid: {fileID: 8300000, guid: 88bbd25da83c1204ea3ebe8a903a2176, type: 3}
   musicHigh: {fileID: 8300000, guid: 5bd3ba87e46de5e4eb002f5d06b3c186, type: 3}
+  skybox1: {fileID: 2100000, guid: efe5ba14bb41e7445a90b7b9196d2ff5, type: 2}
+  skybox2: {fileID: 2100000, guid: 7d55838ad96288d4a90ff668740837c9, type: 2}
+  skybox3: {fileID: 2100000, guid: 06231a521f78c2d42afec44cfdea6e4e, type: 2}
 --- !u!82 &4495331975043351028
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7066,6 +7069,10 @@ PrefabInstance:
     - target: {fileID: 8694378656048610954, guid: 3867dc5c9e9134ae795aa082340e3c15, type: 3}
       propertyPath: m_Name
       value: Terrain Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694378656048610954, guid: 3867dc5c9e9134ae795aa082340e3c15, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8694378656048610964, guid: 3867dc5c9e9134ae795aa082340e3c15, type: 3}
       propertyPath: m_DrawTreesAndFoliage
