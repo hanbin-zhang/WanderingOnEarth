@@ -70,7 +70,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             slot.activeIndicator.GetComponent<Image>().color = Color.black;           
             slot.image.SetActive(false);
         });
-        collectIndex = 8; //2
+        collectIndex = 2; //2
         for (int i = 0; i < inventorySlots.Count; i++){
             if (i<=collectIndex){
                 inventorySlots[i].image.SetActive(true);
