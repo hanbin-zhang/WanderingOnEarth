@@ -130,12 +130,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 0.24
-  m_Radius: 0.2
+  m_Radius: 0.25
   m_SlopeLimit: 20
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: -0.3, y: 0.26, z: 0.38}
+  m_Center: {x: -0.39, y: 0.32, z: 0.38}
 --- !u!1001 &1429233530187928305
 PrefabInstance:
   m_ObjectHideFlags: 0
