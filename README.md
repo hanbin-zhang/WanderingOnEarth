@@ -18,7 +18,7 @@ Flagship Technology idea:
   Rendering by nanite to get high performance and reduce computing pressure. 
   
  
-#softwares: 
+## Softwares Used: 
     unity
     maya
     blender
@@ -26,6 +26,8 @@ Flagship Technology idea:
     photoShop
     ...
   
-# unity version
+## Unity Editor Version
 
-2021.3.10
+2021.3.10f1
+
+## Package Dependencies
