@@ -146,12 +146,12 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
             // }    
             PhotonView photonView = PhotonView.Get(this);
             if(photonView.IsMine){
-                Manager.Invoke(() => PhotonNetwork.Destroy(gameObject), 3f, this);
+                Manager.Invoke(() => PhotonNetwork.Destroy(gameObject), 5f, this);
             }
             
             //PhotonNetwork.Destroy(gameObject);
             Manager.EventController.Get<OnEvolveEvent>()?.Notify(currentGreenValue);
-        }, 5f, this);
+        }, 10f, this);
     }
 
     [PunRPC]

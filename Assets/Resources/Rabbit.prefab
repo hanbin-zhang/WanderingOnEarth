@@ -59,9 +59,9 @@ MonoBehaviour:
   - 2
   - 2
   animalHeights:
-  - 0.2
   - 0.4
   - 0.5
+  - 0.6
   age: 0
   currentGreenValue: 0
 --- !u!114 &997749160338955619
@@ -129,13 +129,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.5
+  m_Height: 0.4
   m_Radius: 0.15
   m_SlopeLimit: 20
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.06, z: -0.04}
+  m_Center: {x: 0, y: 0.11, z: -0.04}
 --- !u!1001 &2661356945226132648
 PrefabInstance:
   m_ObjectHideFlags: 0
