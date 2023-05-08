@@ -19,12 +19,12 @@ Flagship Technology idea:
   
  
 ## Softwares Used: 
-    unity
-    maya
-    blender
-    anffinity desginer 2
-    photoShop
-    ...
+    Unity
+    Maya
+    Blender
+    Anffinity Desginer 2
+    PhotoShop
+    
   
 ## Unity Editor Version
 
