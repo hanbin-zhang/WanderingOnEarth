@@ -37,4 +37,11 @@ Flagship Technology idea:
 - Unity JetBrains Rider Editor (Version 3.0.15)
 - Unity Terrain Tools (Version 4.0.3)
 - Unity Test Framework (Version 1.1.31)
-- 
+- Unity TextMeshPro (Version 3.0.6)
+- Unity Timeline (Version 1.6.4)
+- Unity UI (Version 1.0.0)
+- Unity Universal RP (Version 12.1.7)
+- Unity Version Control (Version 1.17.2)
+- Unity Visual Scripting (Version 1.7.8)
+- Unity Visual Studio Code Editor (Version 1.2.5)
+- Unity Visual Studio Editor (Visual Studio Editor)
