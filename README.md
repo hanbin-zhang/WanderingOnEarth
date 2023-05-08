@@ -45,3 +45,6 @@ Flagship Technology idea:
 - Unity Visual Scripting (Version 1.7.8)
 - Unity Visual Studio Code Editor (Version 1.2.5)
 - Unity Visual Studio Editor (Visual Studio Editor)
+
+## Play Instruction
+[See Wiki page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
