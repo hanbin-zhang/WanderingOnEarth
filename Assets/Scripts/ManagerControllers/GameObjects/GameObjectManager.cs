@@ -125,7 +125,7 @@ public class GameObjectManager
         {
             foreach (GameObject gameObject in kvp.Value)
             {
-                if (gameObject is null){
+                if (gameObject == null){
                     Remove(gameObject);
                 }else{
                     if (LiveObject.TryFrom(gameObject, out var liveObject)) {
