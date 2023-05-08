@@ -49,12 +49,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growingTime:
-  - 1000
-  - 1000
+  - 50
+  - 50
   greenValue:
-  - 10
-  - 10
-  - 10
+  - 5
+  - 5
+  - 5
+  animalHeights: []
   age: 0
   currentGreenValue: 0
 --- !u!114 &42578125220333483

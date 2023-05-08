@@ -17,17 +17,17 @@ public class Deer : LiveObject
 
         if (Manager.StateController.GetRegionalStateProperty(pos).state == StateLabel.POLLUTED)
         {
-            reason = "It's polluted, cannot put anything";
+            reason = "Polluted area. Press O to start planting";
 
             return false;
         }
 
-        int regionalTreeCount = Manager.GameObjectManager
-            .GetRegionalGameObjects<Tree>(pos).Count;
+        int regionalBushCount = Manager.GameObjectManager
+            .GetRegionalGameObjects<Bush>(pos).Count;
 
-        if (regionalTreeCount < 3)
+        if (regionalBushCount < 3)
         {
-            reason = $"Need 3 tree to plant, currently have {regionalTreeCount}";
+            reason = $"Insufficient plants. Deer needs 3 bushes";
             return false;
         }
 

@@ -70,7 +70,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             slot.activeIndicator.GetComponent<Image>().color = Color.black;           
             slot.image.SetActive(false);
         });
-        collectIndex = 3;
+        collectIndex = 8; //2
         for (int i = 0; i < inventorySlots.Count; i++){
             if (i<=collectIndex){
                 inventorySlots[i].image.SetActive(true);
@@ -100,7 +100,10 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (isPlantable) {
                 Manager.PlantingController.Plant(currentLiveObject, plantingPosition, transform.rotation);
             } else {
-                ShowNotification(reason, 2f);
+                ShowNotification(reason, 0.8f);
+            }
+            if (reason != ""){
+                ShowNotification(reason, 0.8f);
             }
         }
         //Debug.LogError($"hasRoom: {hasRoom}, isPlantable: {isPlantable}");

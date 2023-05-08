@@ -55,9 +55,9 @@ MonoBehaviour:
   - 20
   - 20
   greenValue:
-  - -1
-  - -1
-  - -1
+  - 3
+  - 3
+  - 3
   animalHeights:
   - 0.65
   - 1

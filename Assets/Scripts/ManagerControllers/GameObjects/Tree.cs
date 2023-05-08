@@ -5,14 +5,10 @@ using UnityEngine;
 
 public class Tree : LiveObject
 {
-    private void Start()
-    {
-        Manager.EventController.Get<OnPlantEvent>()?.Notify(transform.position, transform.rotation, name);
-    }
     public override bool IsEvolveConditionSatisfied(out string reason) {
         reason = "";
         if (Manager.GameObjectManager.Get<Bush>().Count <= 2) {
-            reason = $"Tree evolves need 3 bush, currently have {Manager.GameObjectManager.Get<Bush>().Count}";
+            reason = $"Tree evolves need 3 bushes, currently have {Manager.GameObjectManager.Get<Bush>().Count}";
             return false;
         }
         return true;
@@ -23,9 +19,13 @@ public class Tree : LiveObject
         
         if (Manager.StateController.GetRegionalStateProperty(pos).state == StateLabel.POLLUTED)
         {
-            reason = "It's polluted, cannot put anything";
+            reason = "Polluted area. Press O to start planting";
 
             return false;
+        }
+        if (Manager.GameObjectManager.Get<Bush>().Count <= 2) {
+            reason = $"Tree requires 3 bushes to grow";
+            return true;
         }
         return true;
     }
