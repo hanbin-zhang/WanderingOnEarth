@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="" />
+    <list default="true" id="67d35545-b679-49a1-aaa3-14a0901d903c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Basic/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Basic/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/minimap/Plane.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/minimap/Plane.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Bush.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

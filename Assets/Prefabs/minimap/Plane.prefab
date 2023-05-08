@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3815719667282494542}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 190.60497, y: 190.6049, z: 190.60478}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 190.00005, y: 190, z: 190.00006}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 864ecdf3730266f4bb26ef7e5c13bbd0, type: 2}
+  - {fileID: 2100000, guid: 95a0e8d2b7f23364a80ba6d316e528e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,4 +98,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
   Player: {fileID: 0}
-  plane: {fileID: 0}
+  plane: {fileID: 3815719667282494542}
