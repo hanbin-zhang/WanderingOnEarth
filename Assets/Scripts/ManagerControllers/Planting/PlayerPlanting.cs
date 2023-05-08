@@ -175,7 +175,7 @@ public class PlayerPlanting : MonoBehaviourPunCallbacks
             if (BaseObject.Is<SpaceShip>(collider.gameObject, out var _))
             {
                 hasChest = true;
-                collectText = "Press C To Leave";
+                collectText = "Press C To Leave The Game";
                 if (keyPressed)
                 {
                     Manager.GameObjectManager.Remove(collider.gameObject);
