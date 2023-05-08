@@ -15441,7 +15441,7 @@ MonoBehaviour:
   - {fileID: 1951496211499360868, guid: b3c12d409491c3f449e7bc22a571b3b7, type: 3}
   - {fileID: 6201918027346197105, guid: 27398ab9a6f251c4596189e7da14edf0, type: 3}
   - {fileID: 4734330218285173307, guid: 5f7b9597bd38f2b4fb622fe2105fc856, type: 3}
-  - {fileID: 283797107568340635, guid: ede5b441fc0d0294a900ceff23f1c455, type: 3}
+  - {fileID: -6923173253405180817, guid: 6c9e6454385487b4fa119940eb50eb31, type: 3}
   currentLiveObjectName: {fileID: 1681772677837154196}
   inventory: {fileID: 8184423076615978465}
   collectMessagePanel: {fileID: 9056064435313012534}
@@ -19255,7 +19255,7 @@ PrefabInstance:
     - target: {fileID: 2360780631351739005, guid: 017f4c3f6621bce4abf10b0f7c2f659a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8744ac424af1de44ebff08d40611bfa3, type: 3}
+      objectReference: {fileID: 21300000, guid: 35bb8e29cd1a97d45a56146c32cd528d, type: 3}
     - target: {fileID: 2360780631351739005, guid: 017f4c3f6621bce4abf10b0f7c2f659a, type: 3}
       propertyPath: m_Color.b
       value: 1
