@@ -48,6 +48,10 @@ Flagship Technology idea:
 
 ## External Unity Assets
 - [Unity Starter Assets](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
+- [Terrain Sample Asset Pack](https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808)
+- [AllSky Free - 10 Sky / Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014)
+- [URP_BlitRenderFeature](https://github.com/Cyanilux/URP_BlitRenderFeature)
+- [Fantasy Forest Set - FREE!(for some textures)](https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-forest-set-free-70568)
 
 ## Play Instruction
 [See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
