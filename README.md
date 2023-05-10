@@ -16,15 +16,15 @@ Flagship Technology idea:
 4. Whole PC lab inclusion to create a multi-machine game. 
 
 5. Rendering by nanite to get high performance and reduce computing pressure. 
-  
- 
+
+
 ## Softwares Used: 
 - Unity
 - Maya
 - Blender
 - Anffinity Desginer 2
 - PhotoShop
-    
+  
   
 ## Unity Editor Version
 
@@ -48,6 +48,23 @@ Flagship Technology idea:
 
 ## External Unity Assets
 - [Unity Starter Assets](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
+- [Temporary Player Model](https://www.bilibili.com/blackboard/activity-HtiRSOn8K9.html)
+- [Terrain Sample Asset Pack](https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808)
+- [AllSky Free - 10 Sky / Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014)
+- [URP_BlitRenderFeature](https://github.com/Cyanilux/URP_BlitRenderFeature)
+- [Fantasy Forest Set - FREE!(for some textures)](https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-forest-set-free-70568)
+
+## Deployment
+### Build game
+In Unity
++ Go to `File` > `Build Settings...` 
+  (make sure there are 6 scenes in the `Scenes in Build` box)
++ Select `Build` and choose a location (create a new folder for it is a better way)
+Go to the location, open `The Wander On Earth.exe`, and play the game.
+### Run game in Unity
+In Unity, in Project chunk
++ Go to `Assets/Scenes`, select `Launcher.unity`.
++ Click the Run(or Play) button in the tool bar.
 
 ## Play Instruction
 [See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)

@@ -20,7 +20,12 @@ public abstract class LiveObject : BaseObject, IPunInstantiateMagicCallback
         // } 
         // liveObject = null;
         // return false;
-        return gameObject.TryGetComponent<LiveObject>(out liveObject);
+        if (gameObject == null){
+            liveObject = null;
+            return false;
+        }else{
+            return gameObject.TryGetComponent<LiveObject>(out liveObject);
+        }
     }
         
     
