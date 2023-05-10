@@ -53,6 +53,19 @@ Flagship Technology idea:
 - [URP_BlitRenderFeature](https://github.com/Cyanilux/URP_BlitRenderFeature)
 - [Fantasy Forest Set - FREE!(for some textures)](https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-forest-set-free-70568)
 
+## Deployment
+
+### Build game
+In Unity
++ Go to *File* > *Build Settings...* 
+  (make sure there are 6 scenes in the *Scenes in Build* box)
++ Select *Build* and choose a location (create a new folder for it is a better way)
+Go to the location, open *The Wander On Earth.exe*, and play the game.
+### Run game in Unity
+In Unity, in Project chunk
++ Go to *Assets/Scenes*, select *Launcher.unity*.
++ click the Run(or play) button in the tool bar.
+
 ## Play Instruction
 [See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
 
