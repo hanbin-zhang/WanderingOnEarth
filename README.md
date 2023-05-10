@@ -7,25 +7,66 @@ In this 3D game, players will be able to experience restoring different parts of
 
 Flagship Technology idea:  
 
-  Render a live simulation of nature, vivid, complicated, and beautiful 3D worlds.   
+1. Render a live simulation of nature, vivid, complicated, and beautiful 3D worlds.   
 
-  Asynchronous cooperation. 
+2. Asynchronous cooperation. 
 
-  Complex particle system. 
+3. Complex particle system. 
 
-  Whole PC lab inclusion to create a multi-machine game. 
+4. Whole PC lab inclusion to create a multi-machine game. 
 
-  Rendering by nanite to get high performance and reduce computing pressure. 
+5. Rendering by nanite to get high performance and reduce computing pressure. 
   
  
-#softwares: 
-    unity
-    maya
-    blender
-    anffinity desginer 2
-    photoShop
-    ...
+## Softwares Used: 
+- Unity
+- Maya
+- Blender
+- Anffinity Desginer 2
+- PhotoShop
+    
   
-# unity version
+## Unity Editor Version
 
-2021.3.10
+2021.3.10f1
+
+## Unity Package Dependencies
+
+- Unity Cinemachine (Version 2.8.9)
+- Unity Input System (Version 1.4.4)
+- Unity JetBrains Rider Editor (Version 3.0.15)
+- Unity Terrain Tools (Version 4.0.3)
+- Unity Test Framework (Version 1.1.31)
+- Unity TextMeshPro (Version 3.0.6)
+- Unity Timeline (Version 1.6.4)
+- Unity UI (Version 1.0.0)
+- Unity Universal RP (Version 12.1.7)
+- Unity Version Control (Version 1.17.2)
+- Unity Visual Scripting (Version 1.7.8)
+- Unity Visual Studio Code Editor (Version 1.2.5)
+- Unity Visual Studio Editor (Visual Studio Editor)
+
+## External Unity Assets
+- [Unity Starter Assets](https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526)
+- [Terrain Sample Asset Pack](https://assetstore.unity.com/packages/3d/environments/landscapes/terrain-sample-asset-pack-145808)
+- [AllSky Free - 10 Sky / Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014)
+- [URP_BlitRenderFeature](https://github.com/Cyanilux/URP_BlitRenderFeature)
+- [Fantasy Forest Set - FREE!(for some textures)](https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-forest-set-free-70568)
+
+## Deployment
+### Build game
+In Unity
++ Go to `File` > `Build Settings...` 
+  (make sure there are 6 scenes in the `Scenes in Build` box)
++ Select `Build` and choose a location (create a new folder for it is a better way)
+Go to the location, open `The Wander On Earth.exe`, and play the game.
+### Run game in Unity
+In Unity, in Project chunk
++ Go to `Assets/Scenes`, select `Launcher.unity`.
++ Click the Run(or Play) button in the tool bar.
+
+## Play Instruction
+[See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
+
+## Add More Objects
+[See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Expansion)
