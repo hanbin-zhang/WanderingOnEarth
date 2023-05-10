@@ -63,7 +63,7 @@ Go to the location, open `The Wander On Earth.exe`, and play the game.
 ### Run game in Unity
 In Unity, in Project chunk
 + Go to `Assets/Scenes`, select `Launcher.unity`.
-+ Click the Run(or play) button in the tool bar.
++ Click the Run(or Play) button in the tool bar.
 
 ## Play Instruction
 [See Wiki Page](https://github.com/hanbin-zhang/WanderingOnEarth/wiki/Play-Instruction)
